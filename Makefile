@@ -1,4 +1,4 @@
-objetos = main.o Clases/Asignatura.o Clases/Clase.o Clases/Docente.o Clases/Estudiante.o Clases/Monitoreo.o Clases/Practico.o Clases/Sistema.o Clases/Teorico.o Clases/Usuario.o Datatypes/DtFechaHora.o
+objetos = main.o Clases/Asignatura.o Clases/Clase.o Clases/Docente.o Clases/Estudiante.o Clases/Mensaje.o Clases/Monitoreo.o Clases/Practico.o Clases/Sistema.o Clases/Teorico.o Clases/Usuario.o Datatypes/DtFechaHora.o
 
 main: $(objetos)
 	g++ $(objetos)
@@ -17,6 +17,9 @@ Docente.o: Docente.cpp
 
 Estudiante.o: Estudiante.cpp
 	g++ -c Estudiante.cpp
+
+Mensaje.o: Mensaje.cpp
+	g++ -c Mensaje.cpp
 
 Monitoreo.o: Monitoreo.cpp
 	g++ -c Monitoreo.cpp

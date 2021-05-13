@@ -11,6 +11,7 @@ private:
     string nombre;
     string email;
     string urlImgPerfil;
+    string contrasenia;
 public:
     Usuario();
     ~Usuario();
@@ -18,9 +19,11 @@ public:
     string getNombre() const;
     string getEmail() const;
     string getUrlImgPerfil() const;
+    string getContrasenia() const;
     void setNombre(string);
     void setEmail(string);
     void setUrlImgPerfil(string);
+    void setContrasenia(string);
 };
 
 #endif

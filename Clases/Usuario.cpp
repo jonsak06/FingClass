@@ -24,6 +24,10 @@ string Usuario::getUrlImgPerfil() const {
     return urlImgPerfil;
 }
 
+string Usuario::getContrasenia() const {
+    return contrasenia;
+}
+
 void Usuario::setNombre(string nombre) {
     this->nombre = nombre;
 }
@@ -34,4 +38,8 @@ void Usuario::setEmail(string email) {
 
 void Usuario::setUrlImgPerfil(string urlImgPerfil) {
     this->urlImgPerfil = urlImgPerfil;
+}
+
+void Usuario::setContrasenia(string contrasenia) {
+    this->contrasenia = contrasenia;
 }
