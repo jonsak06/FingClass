@@ -6,10 +6,11 @@ Usuario::Usuario() {
 Usuario::~Usuario() {
 }
 
-Usuario::Usuario(string nombre, string email, string urlImgPerfil) {
+Usuario::Usuario(string nombre, string email, string urlImgPerfil, string contrasenia) {
     this->nombre = nombre;
     this->email = email;
     this->urlImgPerfil = urlImgPerfil;
+    this->contrasenia = contrasenia;
 }
 
 string Usuario::getNombre() const {

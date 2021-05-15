@@ -6,10 +6,9 @@
 class Monitoreo : public Clase
 {
 private:
-    /* data */
+    /* ... */
 public:
     Monitoreo();
-    ~Monitoreo();
     Monitoreo(string, int, DtFechaHora);
 };
 

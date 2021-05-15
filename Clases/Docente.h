@@ -9,8 +9,7 @@ private:
     string nombreInstituto;
 public:
     Docente();
-    ~Docente();
-    Docente(string, string, string, string);
+    Docente(string, string, string, string, string);
     string getNombreInstituto() const;
     void setNombreInstituto(string);
 };

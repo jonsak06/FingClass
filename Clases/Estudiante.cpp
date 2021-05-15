@@ -3,10 +3,7 @@
 Estudiante::Estudiante() {
 }
 
-Estudiante::~Estudiante() {
-}
-
-Estudiante::Estudiante(string nombre, string email, string urlImgPerfil, string cedula) : Usuario(nombre, email, urlImgPerfil) {
+Estudiante::Estudiante(string nombre, string email, string urlImgPerfil, string contrasenia, string cedula) : Usuario(nombre, email, urlImgPerfil, contrasenia) {
     this->cedula = cedula;
 }
 

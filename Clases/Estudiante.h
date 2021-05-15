@@ -9,8 +9,7 @@ private:
     string cedula;
 public:
     Estudiante();
-    ~Estudiante();
-    Estudiante(string, string, string, string);
+    Estudiante(string, string, string, string, string);
     string getCedula() const;
     void setCedula(string);
 };

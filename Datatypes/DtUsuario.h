@@ -1,11 +1,11 @@
-#ifndef USUARIO_H
-#define USUARIO_H
+#ifndef DTUSUARIO_H
+#define DTUSUARIO_H
 
 #include <string>
 
 using namespace std;
 
-class Usuario
+class DtUsuario
 {
 private:
     string nombre;
@@ -13,17 +13,13 @@ private:
     string urlImgPerfil;
     string contrasenia;
 public:
-    Usuario();
-    virtual ~Usuario() = 0;
-    Usuario(string, string, string, string);
+    DtUsuario();
+    virtual ~DtUsuario() = 0;
+    DtUsuario(string, string, string, string);
     string getNombre() const;
     string getEmail() const;
     string getUrlImgPerfil() const;
     string getContrasenia() const;
-    void setNombre(string);
-    void setEmail(string);
-    void setUrlImgPerfil(string);
-    void setContrasenia(string);
 };
 
 #endif

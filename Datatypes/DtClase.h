@@ -1,12 +1,12 @@
-#ifndef CLASE_H
-#define CLASE_H
+#ifndef DTCLASE_H
+#define DTCLASE_H
 
 #include "../Datatypes/DtFechaHora.h"
 #include <string>
 
 using namespace std;
 
-class Clase
+class DtClase
 {
 private:
     string nombre;
@@ -17,9 +17,10 @@ private:
     DtFechaHora fechaHoraFinalizacion;
     float promedioTiempoAsistencia;
 public:
-    Clase();
-    virtual ~Clase() = 0;
-    Clase(string, int, DtFechaHora);
+    DtClase();
+    virtual ~DtClase() = 0;
+    DtClase(string, int, DtFechaHora);
+    DtClase(string, int, DtFechaHora, bool, string, DtFechaHora, float);
     string getNombre() const;
     int getNumero() const;
     DtFechaHora getFechaHoraComienzo() const;
@@ -27,13 +28,6 @@ public:
     string getUrlGrabacion() const;
     DtFechaHora getFechaHoraFinalizacion() const;
     float getPromedioTiempoAsistencia() const;
-    void setNombre(string);
-    void setNumero(int);
-    void setFechaHoraComienzo(DtFechaHora);
-    void setEnVivo(bool);
-    void setUrlGrabacion(string);
-    void setFechaHoraFinalizacion(DtFechaHora);
-    void setPromedioTiempoAsistencia(float);
 };
 
 #endif

@@ -9,7 +9,6 @@ private:
     int cantAsistentes;
 public:
     Teorico();
-    ~Teorico();
     Teorico(string, int, DtFechaHora);
     int getCantAsistentes() const;
     void setCantAsistentes(int);

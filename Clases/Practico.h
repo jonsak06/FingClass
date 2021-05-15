@@ -6,10 +6,9 @@
 class Practico : public Clase
 {
 private:
-    /* data */
+    /* ... */
 public:
     Practico();
-    ~Practico();
     Practico(string, int, DtFechaHora);
 };
 
