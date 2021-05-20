@@ -42,6 +42,14 @@ float Clase::getPromedioTiempoAsistencia() const {
     return promedioTiempoAsistencia;
 }
 
+ColDocentes Clase::getDocentes() const {
+    return docentes;
+}
+
+ColEstudiantes Clase::getEstudiantes() const {
+    return estudiantes;
+}
+
 void Clase::setNombre(string nombre) {
     this->nombre = nombre;
 }
@@ -68,4 +76,12 @@ void Clase::setFechaHoraFinalizacion(DtFechaHora) {
 
 void Clase::setPromedioTiempoAsistencia(float promedioTiempoAsistencia) {
     this->promedioTiempoAsistencia = promedioTiempoAsistencia;
+}
+
+void Clase::setDocentes(ColDocentes docentes) {
+    this->docentes = docentes;
+}
+
+void Clase::setEstudiantes(ColEstudiantes estudiantes) {
+    this->estudiantes = estudiantes;
 }

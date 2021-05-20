@@ -2,6 +2,8 @@
 #define CLASE_H
 
 #include "../Datatypes/DtFechaHora.h"
+#include "../Colecciones/ColDocentes.h"
+#include "../Colecciones/ColEstudiantes.h"
 #include <string>
 
 using namespace std;
@@ -16,6 +18,8 @@ private:
     string urlGrabacion;
     DtFechaHora fechaHoraFinalizacion;
     float promedioTiempoAsistencia;
+    ColDocentes docentes;
+    ColEstudiantes estudiantes;
 public:
     Clase();
     virtual ~Clase() = 0;
@@ -27,6 +31,8 @@ public:
     string getUrlGrabacion() const;
     DtFechaHora getFechaHoraFinalizacion() const;
     float getPromedioTiempoAsistencia() const;
+    ColDocentes getDocentes() const;
+    ColEstudiantes getEstudiantes() const;
     void setNombre(string);
     void setNumero(int);
     void setFechaHoraComienzo(DtFechaHora);
@@ -34,6 +40,8 @@ public:
     void setUrlGrabacion(string);
     void setFechaHoraFinalizacion(DtFechaHora);
     void setPromedioTiempoAsistencia(float);
+    void setDocentes(ColDocentes);
+    void setEstudiantes(ColEstudiantes);
 };
 
 #endif

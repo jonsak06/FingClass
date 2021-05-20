@@ -1,5 +1,6 @@
 objetos = main.o Clases/Asignacion.o Clases/Asignatura.o Clases/Asistencia.o Clases/Clase.o Clases/Docente.o Clases/Estudiante.o \
 Clases/Mensaje.o Clases/Monitoreo.o Clases/Practico.o Clases/Sistema.o Clases/Teorico.o Clases/Usuario.o Colecciones/ColFechaHora.o \
+Colecciones/ColClases.o Colecciones/ColDocentes.o Colecciones/ColEstudiantes.o  \
 Datatypes/DtAsignatura.o Datatypes/DtClase.o Datatypes/DtDocente.o Datatypes/DtEstudiante.o Datatypes/DtFechaHora.o \
 Datatypes/DtMensaje.o Datatypes/DtMonitoreo.o Datatypes/DtPractico.o Datatypes/DtTeorico.o Datatypes/DtUsuario.o 
 
@@ -44,6 +45,15 @@ Teorico.o: Teorico.cpp
 
 Usuario.o: Usuario.cpp
 	g++ -c Usuario.cpp
+
+ColClases.o: ColClases.cpp
+	g++ -c ColClases.cpp
+
+ColDocentes.o: ColDocentes.cpp
+	g++ -c ColDocentes.cpp
+
+ColEstudiantes.o: ColEstudiantes.cpp
+	g++ -c ColEstudiantes.cpp
 
 ColFechaHora.o: ColFechaHora.cpp
 	g++ -c ColFechaHora.cpp

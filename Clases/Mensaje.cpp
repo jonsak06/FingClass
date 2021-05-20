@@ -24,6 +24,14 @@ DtFechaHora Mensaje::getFechaHoraEnvio() const {
     return fechaHoraEnvio;
 }
 
+Usuario* Mensaje::getUsuario() const {
+    return usuario;
+}
+
+Clase* Mensaje::getClase() const {
+    return clase;
+}
+
 void Mensaje::setIdMensaje(int idMensaje) {
     this->idMensaje = idMensaje;
 }
@@ -34,4 +42,12 @@ void Mensaje::setMensaje(string mensaje) {
 
 void Mensaje::setFechaHoraEnvio(DtFechaHora fechaHoraEnvio) {
     this->fechaHoraEnvio = fechaHoraEnvio;
+}
+
+void Mensaje::setUsuario(Usuario* usuario) {
+    this->usuario = usuario;
+}
+
+void Mensaje::setClase(Clase* clase) {
+    this->clase = clase;
 }

@@ -20,8 +20,12 @@ public:
     Asistencia(Estudiante*, Clase*);
     Estudiante* getEstudiante() const;
     Clase* getClase() const;
+    ColFechaHora getFechaHoraInicio() const;
+    ColFechaHora getFechaHoraFin() const;
     void setEstudiante(Estudiante*);
     void setClase(Clase*);
+    void setFechaHoraInicio(ColFechaHora);
+    void setFechaHoraFin(ColFechaHora);
 };
 
 #endif
