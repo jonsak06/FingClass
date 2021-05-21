@@ -42,11 +42,11 @@ float Clase::getPromedioTiempoAsistencia() const {
     return promedioTiempoAsistencia;
 }
 
-ColDocentes Clase::getDocentes() const {
+vector<Docente> Clase::getDocentes() const {
     return docentes;
 }
 
-ColEstudiantes Clase::getEstudiantes() const {
+vector<Estudiante> Clase::getEstudiantes() const {
     return estudiantes;
 }
 
@@ -78,10 +78,10 @@ void Clase::setPromedioTiempoAsistencia(float promedioTiempoAsistencia) {
     this->promedioTiempoAsistencia = promedioTiempoAsistencia;
 }
 
-void Clase::setDocentes(ColDocentes docentes) {
+void Clase::setDocentes(vector<Docente> docentes) {
     this->docentes = docentes;
 }
 
-void Clase::setEstudiantes(ColEstudiantes estudiantes) {
+void Clase::setEstudiantes(vector<Estudiante> estudiantes) {
     this->estudiantes = estudiantes;
 }

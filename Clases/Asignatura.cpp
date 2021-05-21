@@ -35,15 +35,15 @@ float Asignatura::getTiempoTotalDictado() const {
     return tiempoTotalDictado;
 }
 
-ColDocentes Asignatura::getDocentesAsignados() const {
+vector<Docente> Asignatura::getDocentesAsignados() const {
     return docentesAsignados;
 }
 
-ColEstudiantes Asignatura::getEstudiantesInscriptos() const {
+vector<Estudiante> Asignatura::getEstudiantesInscriptos() const {
     return estudiantesInscriptos;
 }
 
-ColClases Asignatura::getClases() const {
+vector<Clase*> Asignatura::getClases() const {
     return clases;
 }
 
@@ -71,14 +71,14 @@ void Asignatura::setTiempoTotalDictado(float tiempoTotalDictado) {
     this->tiempoTotalDictado = tiempoTotalDictado;
 }
 
-void Asignatura::setDocentesAsignados(ColDocentes docentesAsignados) {
+void Asignatura::setDocentesAsignados(vector<Docente> docentesAsignados) {
     this->docentesAsignados = docentesAsignados;
 }
 
-void Asignatura::setEstudiantesInscriptos(ColEstudiantes estudiantesInscriptos) {
+void Asignatura::setEstudiantesInscriptos(vector<Estudiante> estudiantesInscriptos) {
     this->estudiantesInscriptos = estudiantesInscriptos;
 }
 
-void Asignatura::setClases(ColClases clases) {
+void Asignatura::setClases(vector<Clase*> clases) {
     this->clases = clases;
 }

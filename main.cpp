@@ -1,4 +1,4 @@
-#include "Clases/Sistema.h"
+#include "Otros/Sistema.h"
 
 int main() {
 }

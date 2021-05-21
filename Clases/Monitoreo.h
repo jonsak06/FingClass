@@ -6,12 +6,12 @@
 class Monitoreo : public Clase
 {
 private:
-    ColEstudiantes estudiantesHabilitados; //???
+    Estudiante estudiantesHabilitados[14]; //???
 public:
     Monitoreo();
     Monitoreo(string, int, DtFechaHora);
-    ColEstudiantes getEstudiantesHabilitados() const;
-    void setEstudiantesHabilitados(ColEstudiantes);
+    Estudiante* getEstudiantesHabilitados();
+    void setEstudiantesHabilitados(Estudiante*);
 };
 
 #endif

@@ -1,9 +1,10 @@
 #ifndef ASIGNATURA_H
 #define ASIGNATURA_H
 
-#include "../Colecciones/ColDocentes.h"
-#include "../Colecciones/ColEstudiantes.h"
-#include "../Colecciones/ColClases.h"
+#include "Docente.h"
+#include "Estudiante.h"
+#include "Clase.h"
+#include <vector>
 #include <string>
 
 using namespace std;
@@ -17,9 +18,9 @@ private:
     bool practico;
     bool monitoreo;
     float tiempoTotalDictado;
-    ColDocentes docentesAsignados;
-    ColEstudiantes estudiantesInscriptos;
-    ColClases clases;
+    vector<Docente> docentesAsignados;
+    vector<Estudiante> estudiantesInscriptos;
+    vector<Clase*> clases;
 public:
     Asignatura();
     ~Asignatura();
@@ -30,18 +31,18 @@ public:
     bool tienePractico() const;
     bool tieneMonitoreo() const;
     float getTiempoTotalDictado() const;
-    ColDocentes getDocentesAsignados() const;
-    ColEstudiantes getEstudiantesInscriptos() const;
-    ColClases getClases() const;
+    vector<Docente> getDocentesAsignados() const;
+    vector<Estudiante> getEstudiantesInscriptos() const;
+    vector<Clase*> getClases() const;
     void setCodigoAsignatura(string);
     void setNombreAsignatura(string);
     void setTeorico(bool);
     void setPractico(bool);
     void setMonitoreo(bool);
     void setTiempoTotalDictado(float);
-    void setDocentesAsignados(ColDocentes);
-    void setEstudiantesInscriptos(ColEstudiantes);
-    void setClases(ColClases);
+    void setDocentesAsignados(vector<Docente>);
+    void setEstudiantesInscriptos(vector<Estudiante>);
+    void setClases(vector<Clase*>);
 };
 
 #endif

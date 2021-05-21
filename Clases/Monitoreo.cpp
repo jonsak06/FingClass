@@ -6,10 +6,10 @@ Monitoreo::Monitoreo() {
 Monitoreo::Monitoreo(string nombre, int numero, DtFechaHora fechaHoraComienzo) : Clase(nombre, numero, fechaHoraComienzo) {
 }
 
-ColEstudiantes Monitoreo::getEstudiantesHabilitados() const {
+Estudiante* Monitoreo::getEstudiantesHabilitados() {
     return estudiantesHabilitados;
 }
 
-void Monitoreo::setEstudiantesHabilitados(ColEstudiantes estudiantesHabilitados) {
-    this->estudiantesHabilitados = estudiantesHabilitados;
+void Monitoreo::setEstudiantesHabilitados(Estudiante* estudiantesHabilitados) {
+    // hacer
 }

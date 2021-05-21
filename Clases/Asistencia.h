@@ -3,7 +3,7 @@
 
 #include "Clase.h"
 #include "Estudiante.h"
-#include "../Colecciones/ColFechaHora.h"
+#include <vector>
 
 using namespace std;
 
@@ -12,20 +12,20 @@ class Asistencia
 private:
     Estudiante* estudiante;
     Clase* clase;
-    ColFechaHora fechaHoraInicio;
-    ColFechaHora fechaHoraFin;
+    vector<DtFechaHora> fechaHoraInicio;
+    vector<DtFechaHora> fechaHoraFin;
 public:
     Asistencia();
     ~Asistencia();
     Asistencia(Estudiante*, Clase*);
     Estudiante* getEstudiante() const;
     Clase* getClase() const;
-    ColFechaHora getFechaHoraInicio() const;
-    ColFechaHora getFechaHoraFin() const;
+    vector<DtFechaHora> getFechaHoraInicio() const;
+    vector<DtFechaHora> getFechaHoraFin() const;
     void setEstudiante(Estudiante*);
     void setClase(Clase*);
-    void setFechaHoraInicio(ColFechaHora);
-    void setFechaHoraFin(ColFechaHora);
+    void setFechaHoraInicio(vector<DtFechaHora>);
+    void setFechaHoraFin(vector<DtFechaHora>);
 };
 
 #endif

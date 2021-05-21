@@ -1,8 +1,7 @@
 objetos = main.o Clases/Asignacion.o Clases/Asignatura.o Clases/Asistencia.o Clases/Clase.o Clases/Docente.o Clases/Estudiante.o \
-Clases/Mensaje.o Clases/Monitoreo.o Clases/Practico.o Clases/Sistema.o Clases/Teorico.o Clases/Usuario.o Colecciones/ColFechaHora.o \
-Colecciones/ColClases.o Colecciones/ColDocentes.o Colecciones/ColEstudiantes.o  \
+Clases/Mensaje.o Clases/Monitoreo.o Clases/Practico.o Clases/Teorico.o Clases/Usuario.o \
 Datatypes/DtAsignatura.o Datatypes/DtClase.o Datatypes/DtDocente.o Datatypes/DtEstudiante.o Datatypes/DtFechaHora.o \
-Datatypes/DtMensaje.o Datatypes/DtMonitoreo.o Datatypes/DtPractico.o Datatypes/DtTeorico.o Datatypes/DtUsuario.o 
+Datatypes/DtMensaje.o Datatypes/DtMonitoreo.o Datatypes/DtPractico.o Datatypes/DtTeorico.o Datatypes/DtUsuario.o Otros/Sistema.o \
 
 main: $(objetos)
 	g++ $(objetos)
@@ -37,26 +36,11 @@ Monitoreo.o: Monitoreo.cpp
 Practico.o: Practico.cpp
 	g++ -c Practico.cpp
 
-Sistema.o: Sistema.cpp
-	g++ -c Sistema.cpp
-
 Teorico.o: Teorico.cpp
 	g++ -c Teorico.cpp
 
 Usuario.o: Usuario.cpp
 	g++ -c Usuario.cpp
-
-ColClases.o: ColClases.cpp
-	g++ -c ColClases.cpp
-
-ColDocentes.o: ColDocentes.cpp
-	g++ -c ColDocentes.cpp
-
-ColEstudiantes.o: ColEstudiantes.cpp
-	g++ -c ColEstudiantes.cpp
-
-ColFechaHora.o: ColFechaHora.cpp
-	g++ -c ColFechaHora.cpp
 
 DtAsignatura.o: DtAsignatura.cpp
 	g++ -c DtAsignatura.cpp
@@ -87,6 +71,9 @@ DtTeorico.o: DtTeorico.cpp
 
 DtUsuario.o: DtUsuario.cpp
 	g++ -c DtUsuario.cpp
+
+Sistema.o: Sistema.cpp
+	g++ -c Sistema.cpp
 
 clean:
 	rm */*.o main.o a.out

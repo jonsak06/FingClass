@@ -19,11 +19,11 @@ Clase* Asistencia::getClase() const {
     return clase;
 }
 
-ColFechaHora Asistencia::getFechaHoraInicio() const {
+vector<DtFechaHora> Asistencia::getFechaHoraInicio() const {
     return fechaHoraInicio;
 }
 
-ColFechaHora Asistencia::getFechaHoraFin() const {
+vector<DtFechaHora> Asistencia::getFechaHoraFin() const {
     return fechaHoraFin;
 }
 
@@ -35,10 +35,10 @@ void Asistencia::setClase(Clase* clase) {
     this->clase = clase;
 }
 
-void Asistencia::setFechaHoraInicio(ColFechaHora fechaHoraInicio) {
+void Asistencia::setFechaHoraInicio(vector<DtFechaHora> fechaHoraInicio) {
     this->fechaHoraInicio = fechaHoraInicio;
 }
 
-void Asistencia::setFechaHoraFin(ColFechaHora fechaHoraFin) {
+void Asistencia::setFechaHoraFin(vector<DtFechaHora> fechaHoraFin) {
     this->fechaHoraFin = fechaHoraFin;
 }
