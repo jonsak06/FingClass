@@ -11,15 +11,13 @@ private:
     string nombre;
     string email;
     string urlImgPerfil;
-    string contrasenia;
 public:
     DtUsuario();
     virtual ~DtUsuario() = 0;
-    DtUsuario(string, string, string, string);
+    DtUsuario(string, string, string);
     string getNombre() const;
     string getEmail() const;
     string getUrlImgPerfil() const;
-    string getContrasenia() const;
 };
 
 #endif

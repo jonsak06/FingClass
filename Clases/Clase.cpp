@@ -7,22 +7,22 @@ Clase::Clase() {
 Clase::~Clase() {
 }
 
-Clase::Clase(string nombre, int numero, DtFechaHora fechaHoraComienzo) {
-    this->nombre = nombre;
-    this->numero = numero;
+Clase::Clase(string nombreClase, int numeroClase, FechaHora fechaHoraComienzo) {
+    this->nombreClase = nombreClase;
+    this->numeroClase = numeroClase;
     this->fechaHoraComienzo = fechaHoraComienzo;
     enVivo = true;
 }
 
-string Clase::getNombre() const {
-    return nombre;
+string Clase::getNombreClase() const {
+    return nombreClase;
 }
 
-int Clase::getNumero() const {
-    return numero;
+int Clase::getNumeroClase() const {
+    return numeroClase;
 }
 
-DtFechaHora Clase::getFechaHoraComienzo() const {
+FechaHora Clase::getFechaHoraComienzo() const {
     return fechaHoraComienzo;
 }
 
@@ -34,31 +34,39 @@ string Clase::getUrlGrabacion() const {
     return urlGrabacion;
 }
 
-DtFechaHora Clase::getFechaHoraFinalizacion() const {
+FechaHora Clase::getFechaHoraFinalizacion() const {
     return fechaHoraFinalizacion;
 }
 
-float Clase::getPromedioTiempoAsistencia() const {
-    return promedioTiempoAsistencia;
+float Clase::getPromedioTiempoAsistenciaEnDiferido() const {
+    return promedioTiempoAsistenciaEnDiferido;
 }
 
-vector<Docente> Clase::getDocentes() const {
-    return docentes;
+vector<AsistenciaEnDiferido> Clase::getAsistenciasEnDiferido() const {
+    return asistenciasEnDiferido;
 }
 
-vector<Estudiante> Clase::getEstudiantes() const {
-    return estudiantes;
+vector<AsistenciaEnVivo> Clase::getAsistenciasEnVivo() const {
+    return asistenciasEnVivo;
 }
 
-void Clase::setNombre(string nombre) {
-    this->nombre = nombre;
+vector<Mensaje> Clase::getMensajes() const {
+    return mensajes;
 }
 
-void Clase::setNumero(int numero) {
-    this->numero = numero;
+Asignatura* Clase::getAsignatura() const {
+    return asignatura;
 }
 
-void Clase::setFechaHoraComienzo(DtFechaHora fechaHoraComienzo) {
+void Clase::setNombreClase(string nombreClase) {
+    this->nombreClase = nombreClase;
+}
+
+void Clase::setNumeroClase(int numeroClase) {
+    this->numeroClase = numeroClase;
+}
+
+void Clase::setFechaHoraComienzo(FechaHora fechaHoraComienzo) {
     this->fechaHoraComienzo = fechaHoraComienzo;
 }
 
@@ -70,18 +78,33 @@ void Clase::setUrlGrabacion(string urlGrabacion) {
     this->urlGrabacion = urlGrabacion;
 }
 
-void Clase::setFechaHoraFinalizacion(DtFechaHora) {
+void Clase::setFechaHoraFinalizacion(FechaHora) {
     this->fechaHoraFinalizacion = fechaHoraFinalizacion;
 }
 
-void Clase::setPromedioTiempoAsistencia(float promedioTiempoAsistencia) {
-    this->promedioTiempoAsistencia = promedioTiempoAsistencia;
+void Clase::setPromedioTiempoAsistenciaEnDiferido(float promedioTiempoAsistenciaEnDiferido) {
+    this->promedioTiempoAsistenciaEnDiferido = promedioTiempoAsistenciaEnDiferido;
 }
 
-void Clase::setDocentes(vector<Docente> docentes) {
-    this->docentes = docentes;
+void Clase::setAsistenciasEnDiferido(vector<AsistenciaEnDiferido> asistenciasEnDiferido) {
+    this->asistenciasEnDiferido = asistenciasEnDiferido;
 }
 
-void Clase::setEstudiantes(vector<Estudiante> estudiantes) {
-    this->estudiantes = estudiantes;
+void Clase::setAsistenciasEnVivo(vector<AsistenciaEnVivo> asistenciasEnVivo) {
+    this->asistenciasEnVivo = asistenciasEnVivo;
 }
+
+void Clase::setMensajes(vector<Mensaje> mensajes) {
+    this->mensajes = mensajes;
+}
+
+void Clase::setAsignatura(Asignatura* asignatura) {
+    this->asignatura = asignatura;
+}
+
+void Clase::finalizarClase() {}
+void Clase::setInicioAsistenciaEnDiferido(Estudiante) {}
+vector<DtMensaje> Clase::getDatosMensajes() const {}
+string Clase::getCodigoAsignatura() const {}
+void Clase::eliminarAsistencias() {}
+void Clase::eliminarMensajes() {}

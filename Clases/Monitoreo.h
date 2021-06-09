@@ -2,16 +2,19 @@
 #define MONITOREO_H
 
 #include "Clase.h"
+#include "../Datatypes/DtMonitoreo.h"
 
 class Monitoreo : public Clase
 {
 private:
-    Estudiante estudiantesHabilitados[14]; //???
+    vector<Estudiante> estudiantesHabilitados;
 public:
     Monitoreo();
-    Monitoreo(string, int, DtFechaHora);
-    Estudiante* getEstudiantesHabilitados();
-    void setEstudiantesHabilitados(Estudiante*);
+    Monitoreo(string, int, FechaHora, vector<Estudiante>);
+    vector<Estudiante> getEstudiantesHabilitados();
+    void setEstudiantesHabilitados(vector<Estudiante>);
+    //operaciones DCD
+    DtMonitoreo* getDatosClase() const;
 };
 
 #endif

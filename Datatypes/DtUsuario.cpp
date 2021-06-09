@@ -6,11 +6,10 @@ DtUsuario::DtUsuario() {
 DtUsuario::~DtUsuario() {
 }
 
-DtUsuario::DtUsuario(string nombre, string email, string urlImgPerfil, string contrasenia) {
+DtUsuario::DtUsuario(string nombre, string email, string urlImgPerfil) {
     this->nombre = nombre;
     this->email = email;
     this->urlImgPerfil = urlImgPerfil;
-    this->contrasenia = contrasenia;
 }
 
 string DtUsuario::getNombre() const {
@@ -23,8 +22,4 @@ string DtUsuario::getEmail() const {
 
 string DtUsuario::getUrlImgPerfil() const {
     return urlImgPerfil;
-}
-
-string DtUsuario::getContrasenia() const {
-    return contrasenia;
 }

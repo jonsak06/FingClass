@@ -3,7 +3,7 @@
 DtEstudiante::DtEstudiante() {
 }
 
-DtEstudiante::DtEstudiante(string nombre, string email, string urlImgPerfil, string contrasenia, string cedula) : DtUsuario(nombre, email, urlImgPerfil, contrasenia) {
+DtEstudiante::DtEstudiante(string nombre, string email, string urlImgPerfil, string cedula) : DtUsuario(nombre, email, urlImgPerfil) {
     this->cedula = cedula;
 }
 

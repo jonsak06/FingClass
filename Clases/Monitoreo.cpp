@@ -3,13 +3,17 @@
 Monitoreo::Monitoreo() {
 }
 
-Monitoreo::Monitoreo(string nombre, int numero, DtFechaHora fechaHoraComienzo) : Clase(nombre, numero, fechaHoraComienzo) {
+Monitoreo::Monitoreo(string nombre, int numero, FechaHora fechaHoraComienzo, vector<Estudiante> habilitados) 
+                    : Clase(nombre, numero, fechaHoraComienzo) {
+    estudiantesHabilitados = habilitados;
 }
 
-Estudiante* Monitoreo::getEstudiantesHabilitados() {
+vector<Estudiante> Monitoreo::getEstudiantesHabilitados() {
     return estudiantesHabilitados;
 }
 
-void Monitoreo::setEstudiantesHabilitados(Estudiante* estudiantesHabilitados) {
-    // hacer
+void Monitoreo::setEstudiantesHabilitados(vector<Estudiante> habilitados) {
+    estudiantesHabilitados = habilitados;
 }
+
+DtMonitoreo* Monitoreo::getDatosClase() const {}

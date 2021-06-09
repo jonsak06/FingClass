@@ -6,7 +6,7 @@ DtMensaje::DtMensaje() {
 DtMensaje::~DtMensaje() {
 }
 
-DtMensaje::DtMensaje(int idMensaje, string mensaje, DtFechaHora fechaHoraEnvio) {
+DtMensaje::DtMensaje(int idMensaje, string mensaje, FechaHora fechaHoraEnvio) {
     this->idMensaje = idMensaje;
     this->mensaje = mensaje;
     this->fechaHoraEnvio = fechaHoraEnvio;
@@ -20,6 +20,6 @@ string DtMensaje::getMensaje() const{
     return mensaje;
 }
 
-DtFechaHora DtMensaje::getFechaHoraEnvio() const {
+FechaHora DtMensaje::getFechaHoraEnvio() const {
     return fechaHoraEnvio;
 }

@@ -2,5 +2,8 @@
 
 Practico::Practico() {
 }
-Practico::Practico(string nombre, int numero, DtFechaHora fechaHoraComienzo) : Clase(nombre, numero, fechaHoraComienzo) {
+
+Practico::Practico(string nombre, int numero, FechaHora fechaHoraComienzo) : Clase(nombre, numero, fechaHoraComienzo) {
 }
+
+DtPractico* Practico::getDatosClase() const {}

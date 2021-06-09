@@ -1,6 +1,7 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 
+#include "../Datatypes/DtUsuario.h"
 #include <string>
 
 using namespace std;
@@ -24,6 +25,8 @@ public:
     void setEmail(string);
     void setUrlImgPerfil(string);
     void setContrasenia(string);
+    //operaciones DCD
+    virtual DtUsuario* getDatosUsuario() const = 0;
 };
 
 #endif

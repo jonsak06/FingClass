@@ -35,13 +35,9 @@ float Asignatura::getTiempoTotalDictado() const {
     return tiempoTotalDictado;
 }
 
-vector<Docente> Asignatura::getDocentesAsignados() const {
-    return docentesAsignados;
-}
-
-vector<Estudiante> Asignatura::getEstudiantesInscriptos() const {
-    return estudiantesInscriptos;
-}
+// vector<Estudiante> Asignatura::getEstudiantesInscriptos() const {
+//     return estudiantesInscriptos;
+// }
 
 vector<Clase*> Asignatura::getClases() const {
     return clases;
@@ -71,14 +67,16 @@ void Asignatura::setTiempoTotalDictado(float tiempoTotalDictado) {
     this->tiempoTotalDictado = tiempoTotalDictado;
 }
 
-void Asignatura::setDocentesAsignados(vector<Docente> docentesAsignados) {
-    this->docentesAsignados = docentesAsignados;
-}
-
-void Asignatura::setEstudiantesInscriptos(vector<Estudiante> estudiantesInscriptos) {
-    this->estudiantesInscriptos = estudiantesInscriptos;
-}
+// void Asignatura::setEstudiantesInscriptos(vector<Estudiante> estudiantesInscriptos) {
+//     this->estudiantesInscriptos = estudiantesInscriptos;
+// }
 
 void Asignatura::setClases(vector<Clase*> clases) {
     this->clases = clases;
 }
+
+DtAsignatura Asignatura::getDatosAsignatura() const {}
+Clase* Asignatura::iniciarClase(DtClase*, vector<Estudiante>) const {} //ver si no da problema el const
+vector<DtClase> Asignatura::getDatosClasesDiferido() const {}
+vector<DtMensaje> Asignatura::reproducirClase(int, Estudiante) const {}
+void Asignatura::eliminarClases() {}

@@ -6,8 +6,7 @@ Asignacion::Asignacion() {
 Asignacion::~Asignacion() {
 }
 
-Asignacion::Asignacion(Docente* docente, Asignatura* asignatura, TipoClase rolDictado) {
-    this->docente = docente;
+Asignacion::Asignacion(Asignatura* asignatura, TipoClase rolDictado) {
     this->asignatura = asignatura;
     this->rolDictado = rolDictado;
 }
@@ -15,11 +14,6 @@ Asignacion::Asignacion(Docente* docente, Asignatura* asignatura, TipoClase rolDi
 TipoClase Asignacion::getRolDictado() const {
     return rolDictado;
 }
-
-Docente* Asignacion::getDocente() const {
-    return docente;
-}
-
 Asignatura* Asignacion::getAsignatura() const {
     return asignatura;
 }
@@ -28,10 +22,9 @@ void Asignacion::setRolDictado(TipoClase rolDictado) {
     this->rolDictado = rolDictado;
 }
 
-void Asignacion::setDocente(Docente* docente) {
-    this->docente = docente;
-}
-
 void Asignacion::setAsignatura(Asignatura* asignatura) {
     this->asignatura = asignatura;
 }
+
+string Asignacion::getCodigoAsignatura() {}
+DtAsignatura Asignacion::getDatosAsignatura() {}

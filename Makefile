@@ -1,8 +1,8 @@
-objetos = main.o Clases/Asignacion.o Clases/Asignatura.o Clases/Asistencia.o Clases/Clase.o Clases/Docente.o Clases/Estudiante.o \
-Clases/Mensaje.o Clases/Monitoreo.o Clases/Practico.o Clases/Teorico.o Clases/Usuario.o \
-Datatypes/DtAsignatura.o Datatypes/DtClase.o Datatypes/DtDocente.o Datatypes/DtEstudiante.o Datatypes/DtFechaHora.o \
-Datatypes/DtMensaje.o Datatypes/DtMonitoreo.o Datatypes/DtPractico.o Datatypes/DtTeorico.o Datatypes/DtUsuario.o Otros/Sistema.o \
-
+objetos = main.o Clases/Asignacion.o Clases/Asignatura.o Clases/AsistenciaEnDiferido.o Clases/Clase.o Clases/Docente.o Clases/Estudiante.o \
+Clases/Mensaje.o Clases/Monitoreo.o Clases/Practico.o Clases/Teorico.o Clases/Usuario.o Clases/AsistenciaEnVivo \
+Datatypes/DtAsignatura.o Datatypes/DtClase.o Datatypes/DtDocente.o Datatypes/DtEstudiante.o Datatypes/FechaHora.o \
+Datatypes/DtMensaje.o Datatypes/DtMonitoreo.o Datatypes/DtPractico.o Datatypes/DtTeorico.o Datatypes/DtUsuario.o Otros/ControllerClases.o \
+Otros/ControllerAsignaturasUsuarios.o
 main: $(objetos)
 	g++ $(objetos)
 
@@ -15,8 +15,11 @@ Asignacion.o: Asignacion.cpp
 Asignatura.o: Asignatura.cpp
 	g++ -c Asignatura.cpp
 
-Asistencia.o: Asistencia.cpp
-	g++ -c Asistencia.cpp
+AsistenciaEnDiferido.o: AsistenciaEnDiferido.cpp
+	g++ -c AsistenciaEnDiferido.cpp
+
+AsistenciaEnVivo.o: AsistenciaEnVivo.cpp
+	g++ -c AsistenciaEnVivo.cpp
 
 Clase.o: Clase.cpp
 	g++ -c Clase.cpp
@@ -54,8 +57,8 @@ DtDocente.o: DtDocente.cpp
 DtEstudiante.o: DtEstudiante.cpp
 	g++ -c DtEstudiante.cpp
 
-DtFechaHora.o: DtFechaHora.cpp
-	g++ -c DtFechaHora.cpp
+FechaHora.o: FechaHora.cpp
+	g++ -c FechaHora.cpp
 
 DtMensaje.o: DtMensaje.cpp
 	g++ -c DtMensaje.cpp
@@ -72,8 +75,11 @@ DtTeorico.o: DtTeorico.cpp
 DtUsuario.o: DtUsuario.cpp
 	g++ -c DtUsuario.cpp
 
-Sistema.o: Sistema.cpp
-	g++ -c Sistema.cpp
+ControllerClases.o: ControllerClases.cpp
+	g++ -c ControllerClases.cpp
+
+ControllerAsignaturasUsuarios.o: ControllerAsignaturasUsuarios.cpp
+	g++ -c ControllerAsignaturasUsuarios.cpp
 
 clean:
 	rm */*.o main.o a.out

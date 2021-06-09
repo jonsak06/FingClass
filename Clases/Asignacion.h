@@ -2,25 +2,25 @@
 #define ASIGNACION_H
 
 #include "../Otros/TipoClase.h"
-#include "Docente.h"
 #include "Asignatura.h"
+#include "../Datatypes/DtAsignatura.h"
 
 class Asignacion
 {
 private:
     TipoClase rolDictado;
-    Docente* docente;
     Asignatura* asignatura;
 public:
     Asignacion();
     ~Asignacion();
-    Asignacion(Docente*, Asignatura*, TipoClase);
+    Asignacion(Asignatura*, TipoClase);
     TipoClase getRolDictado() const;
-    Docente* getDocente() const;
     Asignatura* getAsignatura() const;
     void setRolDictado(TipoClase);
-    void setDocente(Docente*);
     void setAsignatura(Asignatura*);
+    //operaciones DCD
+    string getCodigoAsignatura();
+    DtAsignatura getDatosAsignatura();
 };
 
 #endif

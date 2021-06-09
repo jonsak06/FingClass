@@ -1,7 +1,7 @@
 #ifndef MENSAJE_H
 #define MENSAJE_H
 
-#include "../Datatypes/DtFechaHora.h"
+#include "../Datatypes/FechaHora.h"
 #include "Usuario.h"
 #include "Clase.h"
 #include <string>
@@ -13,23 +13,22 @@ class Mensaje
 private:
     int idMensaje;
     string mensaje;
-    DtFechaHora fechaHoraEnvio;
+    FechaHora fechaHoraEnvio;
     Usuario* usuario;
-    Clase* clase;
 public:
     Mensaje();
     ~Mensaje();
-    Mensaje(int, string, DtFechaHora);
+    Mensaje(int, string, FechaHora);
     int getIdMensaje() const;
     string getMensaje() const;
-    DtFechaHora getFechaHoraEnvio() const;
+    FechaHora getFechaHoraEnvio() const;
     Usuario* getUsuario() const;
-    Clase* getClase() const;
     void setIdMensaje(int);
     void setMensaje(string);
-    void setFechaHoraEnvio(DtFechaHora);
+    void setFechaHoraEnvio(FechaHora);
     void setUsuario(Usuario*);
-    void setClase(Clase*);
+    //operaciones DCD
+    DtMensaje getDatosMensaje() const;
 };
 
 #endif
