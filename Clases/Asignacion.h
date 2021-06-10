@@ -4,8 +4,9 @@
 #include "../Otros/TipoClase.h"
 #include "Asignatura.h"
 #include "../Datatypes/DtAsignatura.h"
+#include "../ICollection/interfaces/ICollectible.h"
 
-class Asignacion
+class Asignacion : public ICollectible
 {
 private:
     TipoClase rolDictado;

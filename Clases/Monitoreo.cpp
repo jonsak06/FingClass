@@ -3,16 +3,16 @@
 Monitoreo::Monitoreo() {
 }
 
-Monitoreo::Monitoreo(string nombre, int numero, FechaHora fechaHoraComienzo, vector<Estudiante> habilitados) 
+Monitoreo::Monitoreo(string nombre, int numero, FechaHora fechaHoraComienzo, IDictionary* habilitados) 
                     : Clase(nombre, numero, fechaHoraComienzo) {
     estudiantesHabilitados = habilitados;
 }
 
-vector<Estudiante> Monitoreo::getEstudiantesHabilitados() {
+IDictionary* Monitoreo::getEstudiantesHabilitados() {
     return estudiantesHabilitados;
 }
 
-void Monitoreo::setEstudiantesHabilitados(vector<Estudiante> habilitados) {
+void Monitoreo::setEstudiantesHabilitados(IDictionary* habilitados) {
     estudiantesHabilitados = habilitados;
 }
 

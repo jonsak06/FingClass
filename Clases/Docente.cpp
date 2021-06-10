@@ -11,11 +11,11 @@ string Docente::getNombreInstituto() const {
     return nombreInstituto;
 }
 
-vector<Clase*> Docente::getClasesIniciadas() const {
+IDictionary* Docente::getClasesIniciadas() const {
     return clasesIniciadas;
 }
 
-vector<Asignacion> Docente::getAsignaciones() const {
+ICollection* Docente::getAsignaciones() const {
     return asignaciones;
 }
 
@@ -23,22 +23,22 @@ void Docente::setNombreInstituto(string) {
     this->nombreInstituto = nombreInstituto;
 }
 
-void Docente::setClasesIniciadas(vector<Clase*> clasesIniciadas) {
+void Docente::setClasesIniciadas(IDictionary* clasesIniciadas) {
     this->clasesIniciadas = clasesIniciadas;
 }
 
-void Docente::setAsignaciones(vector<Asignacion> asignaciones) {
+void Docente::setAsignaciones(ICollection* asignaciones) {
     this->asignaciones = asignaciones;
 }
 
 DtDocente Docente::getDatosDocente() const {}
 bool Docente::comprobarAsignacion(string) const {}
 void Docente::asignarAsignatura(Asignatura, TipoClase) {}
-vector<DtAsignatura> Docente::getDatosAsignaturas() const {}
+ICollection* Docente::getDatosAsignaturas() const {}
 TipoClase Docente::getRolDictado(string) const {}
 void Docente::agregarClase(Clase*) {}
-vector<Clase*> Docente::getDatosClasesEnVivo(string) const {}
+IDictionary* Docente::getDatosClasesEnVivo(string) const {}
 DtClase* Docente::getDatosClase() const {}
 void Docente::finalizarClase(int) {}
-vector<DtClase*> Docente::getDatosClases(string) const {}
+ICollection* Docente::getDatosClases(string) const {}
 void Docente::removerClasesYAsignacion(string) {}

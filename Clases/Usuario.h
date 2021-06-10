@@ -2,11 +2,14 @@
 #define USUARIO_H
 
 #include "../Datatypes/DtUsuario.h"
+#include "../ICollection/interfaces/ICollectible.h"
+#include "../ICollection/interfaces/IDictionary.h"
+#include "../ICollection/interfaces/ICollection.h"
 #include <string>
 
 using namespace std;
 
-class Usuario
+class Usuario : public ICollectible
 {
 private:
     string nombre;

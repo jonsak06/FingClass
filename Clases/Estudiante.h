@@ -5,7 +5,6 @@
 #include "Asignatura.h"
 #include "../Datatypes/DtEstudiante.h"
 #include "../Datatypes/DtAsignatura.h"
-#include <vector>
 
 class Asignatura;
 
@@ -13,18 +12,18 @@ class Estudiante : public Usuario
 {
 private:
     string cedula;
-    vector<Asignatura> asignaturas;
+    IDictionary* asignaturas;
 public:
     Estudiante();
     Estudiante(string, string, string, string, string);
     string getCedula() const;
-    vector<Asignatura> getAsignaturas() const;
+    IDictionary* getAsignaturas() const;
     void setCedula(string);
-    void setAsignaturas(vector<Asignatura>);
+    void setAsignaturas(IDictionary*);
     //operaciones DCD
     DtEstudiante* getDatosUsuario() const;
     bool comprobarInscripcion(string);
-    vector<DtAsignatura> getDatosAsignaturas() const;
+    ICollection* getDatosAsignaturas() const;
     void removerAsignatura(string);
 };
 

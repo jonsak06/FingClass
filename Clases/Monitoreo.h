@@ -7,12 +7,12 @@
 class Monitoreo : public Clase
 {
 private:
-    vector<Estudiante> estudiantesHabilitados;
+    IDictionary* estudiantesHabilitados;
 public:
     Monitoreo();
-    Monitoreo(string, int, FechaHora, vector<Estudiante>);
-    vector<Estudiante> getEstudiantesHabilitados();
-    void setEstudiantesHabilitados(vector<Estudiante>);
+    Monitoreo(string, int, FechaHora, IDictionary*);
+    IDictionary* getEstudiantesHabilitados();
+    void setEstudiantesHabilitados(IDictionary*);
     //operaciones DCD
     DtMonitoreo* getDatosClase() const;
 };

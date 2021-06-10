@@ -1,7 +1,9 @@
 #ifndef FECHAHORA_H
 #define FECHAHORA_H
 
-class FechaHora
+#include "../ICollection/interfaces/ICollectible.h"
+
+class FechaHora : public ICollectible
 {
 private:
     int dia, mes, anio, hora, minuto, segundo;

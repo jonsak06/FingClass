@@ -17,46 +17,46 @@ private:
     ControllerClases& operator=(ControllerClases&&) = delete;
     Docente* docActual;
     Estudiante* estActual;
-    vector <Estudiante> habilitados;
+    IDictionary* habilitados;
     Asignatura* asigActual;
     Clase* clsActual;
 public:
     static ControllerClases& getInstance();
     //CU inicio de clase
-    vector <DtAsignatura> listarAsignaturasAsignadas(string email);
+    ICollection* listarAsignaturasAsignadas(string email);
     int crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo);
-    vector <DtEstudiante> listarEstudiantesInscriptos();
+    ICollection* listarEstudiantesInscriptos();
     void habilitarEstudiante(string cedula);
     DtClase* obtenerInfoClase();
     void confirmarInicioClase();
     void cancelarInicioClase();
     //CU finalizacion de clase
-    vector <DtClase> listarClasesEnVivo(string email);
+    ICollection* listarClasesEnVivo(string email);
     DtClase* seleccionarClase(int numeroClase);
     void confirmarFinalizacionClase();
     void cancelarFinalizacionClase();
     //CU envio de mensaje
-    vector <DtClase> listarClasesEnVivoParticipando(string email);
-    vector <DtMensaje> listarMensajes(int numeroClase);
+    ICollection* listarClasesEnVivoParticipando(string email);
+    ICollection* listarMensajes(int numeroClase);
     void responderMensaje(int idMensaje, string mensaje);
     void escribirMensaje(string mensaje);
     void enviarMensaje();
     void cancelarMensaje();
     //CU Asistencia en vivo
-    vector <DtAsignatura> listarAsignaturasCursando(string cedula);
-    vector <DtClase*> listarClasesEnVivoHabilitado(string codigoAsignatura);
+    ICollection* listarAsignaturasCursando(string cedula);
+    ICollection* listarClasesEnVivoHabilitado(string codigoAsignatura);
     void confirmarAsistenciaEnDiferido();
     void cancelarAsistenciaEnDiferido();
     //CU reproduccion en diferido
-    vector <DtClase*> listarClasesEnDiferido(string codigoAsignatura);
-    vector <DtMensaje> confirmarReproduccion();
+    ICollection* listarClasesEnDiferido(string codigoAsignatura);
+    ICollection* confirmarReproduccion();
     void cancelarReproduccion();
     //CU listado de clases
-    vector <DtClase*> listarClases(string codigoAsignatura);
+    ICollection* listarClases(string codigoAsignatura);
     //CU tiempo de dictado
-    vector <DtAsignatura> listarAsignaturas();
+    ICollection* listarAsignaturas();
     //CU tiempo AsistenciaEnDiferido 
-    vector <DtClase*> listarClasesDictadas(string codigoAsignatura);
+    ICollection* listarClasesDictadas(string codigoAsignatura);
 };
 
 

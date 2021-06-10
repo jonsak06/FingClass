@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class DtClase
+class DtClase : public ICollectible
 {
 private:
     string nombre;

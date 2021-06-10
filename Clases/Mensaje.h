@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Mensaje
+class Mensaje : public ICollectible
 {
 private:
     int idMensaje;

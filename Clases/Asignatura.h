@@ -6,7 +6,6 @@
 #include "../Datatypes/DtAsignatura.h"
 #include "../Datatypes/DtClase.h"
 #include "../Datatypes/DtMensaje.h"
-#include <vector>
 #include <string>
 
 using namespace std;
@@ -14,7 +13,7 @@ using namespace std;
 class Clase;
 class Estudiante;
 
-class Asignatura
+class Asignatura : public ICollectible
 {
 private:
     string codigoAsignatura;
@@ -23,8 +22,8 @@ private:
     bool practico;
     bool monitoreo;
     float tiempoTotalDictado;
-    // vector<Estudiante> estudiantesInscriptos;
-    vector<Clase*> clases;
+    IDictionary* estudiantesInscriptos;
+    IDictionary* clases;
 public:
     Asignatura();
     ~Asignatura();
@@ -35,21 +34,21 @@ public:
     bool tienePractico() const;
     bool tieneMonitoreo() const;
     float getTiempoTotalDictado() const;
-    // vector<Estudiante> getEstudiantesInscriptos() const;
-    vector<Clase*> getClases() const;
+    IDictionary* getEstudiantesInscriptos() const;
+    IDictionary* getClases() const;
     void setCodigoAsignatura(string);
     void setNombreAsignatura(string);
     void setTeorico(bool);
     void setPractico(bool);
     void setMonitoreo(bool);
     void setTiempoTotalDictado(float);
-    // void setEstudiantesInscriptos(vector<Estudiante>);
-    void setClases(vector<Clase*>);
+    void setEstudiantesInscriptos(IDictionary*);
+    void setClases(IDictionary*);
     //operaciones DCD
     DtAsignatura getDatosAsignatura() const;
-    Clase* iniciarClase(DtClase*, vector<Estudiante>) const;
-    vector<DtClase> getDatosClasesDiferido() const;
-    vector<DtMensaje> reproducirClase(int, Estudiante) const;
+    Clase* iniciarClase(DtClase*, IDictionary*) const;
+    ICollection* getDatosClasesDiferido() const;
+    ICollection* reproducirClase(int, Estudiante) const;
     void eliminarClases();
 };
 

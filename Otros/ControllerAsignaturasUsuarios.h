@@ -27,20 +27,19 @@ public:
     void confirmarAltaAsignatura();
     void cancelarAltaAsignatura();
     //CU asignacion docente a asignatura
-    vector <DtAsignatura> listarAsignaturas();
-    vector <DtDocente> listarDocentesSinAsignar(string codigoAsignatura);
+    ICollection* listarAsignaturas();
+    ICollection* listarDocentesSinAsignar(string codigoAsignatura);
     void seleccionarDocente(string email, TipoClase rolDictado);
     void confirmarAsignacion();
     void cancelarAsignacion();
     //CU inscripcion a asignaturas
-    vector <DtAsignatura> listarAsignaturasNoInscripto(string cedula);
+    ICollection* listarAsignaturasNoInscripto(string cedula);
     void seleccionarAsignatura(string codigoAsignatura);
     void confirmarInscripcion();
     void cancelarInscripcion();
     //CU eliminar asignatura
     void confirmarEliminacion();
     void cancelarEliminacion();
-
 };
 
 #endif

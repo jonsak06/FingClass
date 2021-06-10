@@ -6,7 +6,9 @@
 
 using namespace std;
 
-class AsistenciaEnVivo
+class Estudiante;
+
+class AsistenciaEnVivo : public ICollectible
 {
 private:
     Estudiante* estudiante;

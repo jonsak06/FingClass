@@ -1,11 +1,12 @@
 #ifndef DTASIGNATURA_H
 #define DTASIGNATURA_H
 
+#include "../ICollection/interfaces/ICollectible.h"
 #include <string>
 
 using namespace std;
 
-class DtAsignatura
+class DtAsignatura : public ICollectible
 {
 private:
     string codigoAsignatura;

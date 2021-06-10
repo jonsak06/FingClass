@@ -12,28 +12,28 @@ class Docente : public Usuario
 {
 private:
     string nombreInstituto;
-    vector<Clase*> clasesIniciadas;
-    vector<Asignacion> asignaciones;
+    IDictionary* clasesIniciadas;
+    ICollection* asignaciones;
 public:
     Docente();
     Docente(string, string, string, string, string);
     string getNombreInstituto() const;
-    vector<Clase*> getClasesIniciadas() const;
-    vector<Asignacion> getAsignaciones() const;
+    IDictionary* getClasesIniciadas() const;
+    ICollection* getAsignaciones() const;
     void setNombreInstituto(string);
-    void setClasesIniciadas(vector<Clase*>);
-    void setAsignaciones(vector<Asignacion>);
+    void setClasesIniciadas(IDictionary*);
+    void setAsignaciones(ICollection*);
     //operaciones DCD
     DtDocente getDatosDocente() const;
     bool comprobarAsignacion(string) const;
     void asignarAsignatura(Asignatura, TipoClase);
-    vector<DtAsignatura> getDatosAsignaturas() const;
+    ICollection* getDatosAsignaturas() const;
     TipoClase getRolDictado(string) const;
     void agregarClase(Clase*);
-    vector<Clase*> getDatosClasesEnVivo(string) const;
+    IDictionary* getDatosClasesEnVivo(string) const;
     DtClase* getDatosClase() const;
     void finalizarClase(int);
-    vector<DtClase*> getDatosClases(string) const;
+    ICollection* getDatosClases(string) const;
     void removerClasesYAsignacion(string);
 };
 

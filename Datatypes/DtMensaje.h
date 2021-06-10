@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class DtMensaje
+class DtMensaje : public ICollectible
 {
 private:
     int idMensaje;

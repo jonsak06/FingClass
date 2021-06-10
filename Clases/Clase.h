@@ -9,14 +9,16 @@
 #include "AsistenciaEnVivo.h"
 #include "Mensaje.h"
 #include "Asignatura.h"
-#include <vector>
 #include <string>
 
 using namespace std;
 
 class Asignatura;
+class AsistenciaEnVivo;
+class AsistenciaEnDiferido;
+class Mensaje;
 
-class Clase
+class Clase : public ICollectible
 {
 private:
     string nombreClase;
@@ -26,9 +28,9 @@ private:
     string urlGrabacion;
     FechaHora fechaHoraFinalizacion;
     float promedioTiempoAsistenciaEnDiferido;
-    vector<AsistenciaEnDiferido> asistenciasEnDiferido;
-    vector<AsistenciaEnVivo> asistenciasEnVivo;
-    vector<Mensaje> mensajes;
+    ICollection* asistenciasEnDiferido;
+    ICollection* asistenciasEnVivo;
+    IDictionary* mensajes;
     Asignatura* asignatura;
 public:
     Clase();
@@ -41,9 +43,9 @@ public:
     string getUrlGrabacion() const;
     FechaHora getFechaHoraFinalizacion() const;
     float getPromedioTiempoAsistenciaEnDiferido() const;
-    vector<AsistenciaEnDiferido> getAsistenciasEnDiferido() const;
-    vector<AsistenciaEnVivo> getAsistenciasEnVivo() const;
-    vector<Mensaje> getMensajes() const;
+    ICollection* getAsistenciasEnDiferido() const;
+    ICollection* getAsistenciasEnVivo() const;
+    IDictionary* getMensajes() const;
     Asignatura* getAsignatura() const;
     void setNombreClase(string);
     void setNumeroClase(int);
@@ -52,15 +54,15 @@ public:
     void setUrlGrabacion(string);
     void setFechaHoraFinalizacion(FechaHora);
     void setPromedioTiempoAsistenciaEnDiferido(float);
-    void setAsistenciasEnDiferido(vector<AsistenciaEnDiferido>);
-    void setAsistenciasEnVivo(vector<AsistenciaEnVivo>);
-    void setMensajes(vector<Mensaje>);
+    void setAsistenciasEnDiferido(ICollection*);
+    void setAsistenciasEnVivo(ICollection*);
+    void setMensajes(IDictionary*);
     void setAsignatura(Asignatura*);
     //operaciones DCD
     virtual DtClase* getDatosClase() const = 0;
     void finalizarClase();
     void setInicioAsistenciaEnDiferido(Estudiante);
-    vector<DtMensaje> getDatosMensajes() const;
+    ICollection* getDatosMensajes() const;
     string getCodigoAsignatura() const;
     void eliminarAsistencias();
     void eliminarMensajes();

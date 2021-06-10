@@ -42,15 +42,15 @@ float Clase::getPromedioTiempoAsistenciaEnDiferido() const {
     return promedioTiempoAsistenciaEnDiferido;
 }
 
-vector<AsistenciaEnDiferido> Clase::getAsistenciasEnDiferido() const {
+ICollection* Clase::getAsistenciasEnDiferido() const {
     return asistenciasEnDiferido;
 }
 
-vector<AsistenciaEnVivo> Clase::getAsistenciasEnVivo() const {
+ICollection* Clase::getAsistenciasEnVivo() const {
     return asistenciasEnVivo;
 }
 
-vector<Mensaje> Clase::getMensajes() const {
+IDictionary* Clase::getMensajes() const {
     return mensajes;
 }
 
@@ -86,15 +86,15 @@ void Clase::setPromedioTiempoAsistenciaEnDiferido(float promedioTiempoAsistencia
     this->promedioTiempoAsistenciaEnDiferido = promedioTiempoAsistenciaEnDiferido;
 }
 
-void Clase::setAsistenciasEnDiferido(vector<AsistenciaEnDiferido> asistenciasEnDiferido) {
+void Clase::setAsistenciasEnDiferido(ICollection* asistenciasEnDiferido) {
     this->asistenciasEnDiferido = asistenciasEnDiferido;
 }
 
-void Clase::setAsistenciasEnVivo(vector<AsistenciaEnVivo> asistenciasEnVivo) {
+void Clase::setAsistenciasEnVivo(ICollection* asistenciasEnVivo) {
     this->asistenciasEnVivo = asistenciasEnVivo;
 }
 
-void Clase::setMensajes(vector<Mensaje> mensajes) {
+void Clase::setMensajes(IDictionary* mensajes) {
     this->mensajes = mensajes;
 }
 
@@ -104,7 +104,7 @@ void Clase::setAsignatura(Asignatura* asignatura) {
 
 void Clase::finalizarClase() {}
 void Clase::setInicioAsistenciaEnDiferido(Estudiante) {}
-vector<DtMensaje> Clase::getDatosMensajes() const {}
+ICollection* Clase::getDatosMensajes() const {}
 string Clase::getCodigoAsignatura() const {}
 void Clase::eliminarAsistencias() {}
 void Clase::eliminarMensajes() {}

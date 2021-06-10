@@ -14,11 +14,11 @@ Estudiante* AsistenciaEnDiferido::getEstudiante() const {
     return estudiante;
 }
 
-vector<FechaHora> AsistenciaEnDiferido::getFechaHoraInicio() const {
+ICollection* AsistenciaEnDiferido::getFechaHoraInicio() const {
     return fechaHoraInicio;
 }
 
-vector<FechaHora> AsistenciaEnDiferido::getFechaHoraFin() const {
+ICollection* AsistenciaEnDiferido::getFechaHoraFin() const {
     return fechaHoraFin;
 }
 
@@ -26,11 +26,11 @@ void AsistenciaEnDiferido::setEstudiante(Estudiante* estudiante) {
     this->estudiante = estudiante;
 }
 
-void AsistenciaEnDiferido::setFechaHoraInicio(vector<FechaHora> fechaHoraInicio) {
+void AsistenciaEnDiferido::setFechaHoraInicio(ICollection* fechaHoraInicio) {
     this->fechaHoraInicio = fechaHoraInicio;
 }
 
-void AsistenciaEnDiferido::setFechaHoraFin(vector<FechaHora> fechaHoraFin) {
+void AsistenciaEnDiferido::setFechaHoraFin(ICollection* fechaHoraFin) {
     this->fechaHoraFin = fechaHoraFin;
 }
 
