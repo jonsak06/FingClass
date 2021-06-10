@@ -1,7 +1,10 @@
 #include "ControllerClases.h"
 
-ControllerClases::ControllerClases(/* args */) {}
-ControllerClases::~ControllerClases() {}
+ControllerClases& ControllerClases::getInstance() {
+    static ControllerClases* controller = new ControllerClases();
+    return *controller;
+}
+//CU inicio de clase
 vector <DtAsignatura> ControllerClases::listarAsignaturasAsignadas(string email) {}
 int ControllerClases::crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo) {}
 vector <DtEstudiante> ControllerClases::listarEstudiantesInscriptos() {}
@@ -32,6 +35,7 @@ vector <DtMensaje> ControllerClases::confirmarReproduccion() {}
 void ControllerClases::cancelarReproduccion() {}
 //CU listado de clases
 vector <DtClase*> ControllerClases::listarClases(string codigoAsignatura) {}
-//CU tiempo de dictado = listarAsignaturas()
+//CU tiempo de dictado
+vector <DtAsignatura> ControllerClases::listarAsignaturas() {}
 //CU tiempo AsistenciaEnDiferido 
 vector <DtClase*> ControllerClases::listarClasesDictadas(string codigoAsignatura) {}

@@ -1,5 +1,5 @@
-#ifndef CONTROLLERASIGNATURASUSUARIOS_H
-#define CONTROLLERASIGNATURASUSUARIOS_H
+#ifndef CONTROLLERCLASES_H
+#define CONTROLLERCLASES_H
 
 #include "../Clases/Docente.h"
 #include "../Clases/Estudiante.h"
@@ -10,14 +10,18 @@
 class ControllerClases : public IClases
 {
 private:
+    ControllerClases() = default;
+    ControllerClases(const ControllerClases&) = delete;
+    ControllerClases& operator=(const ControllerClases&) = delete;
+    ControllerClases(ControllerClases&&) = delete;
+    ControllerClases& operator=(ControllerClases&&) = delete;
     Docente* docActual;
     Estudiante* estActual;
     vector <Estudiante> habilitados;
     Asignatura* asigActual;
     Clase* clsActual;
 public:
-    ControllerClases(/* args */);
-    ~ControllerClases();
+    static ControllerClases& getInstance();
     //CU inicio de clase
     vector <DtAsignatura> listarAsignaturasAsignadas(string email);
     int crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo);
@@ -38,7 +42,7 @@ public:
     void escribirMensaje(string mensaje);
     void enviarMensaje();
     void cancelarMensaje();
-    //CU AsistenciaEnDiferido en vivo
+    //CU Asistencia en vivo
     vector <DtAsignatura> listarAsignaturasCursando(string cedula);
     vector <DtClase*> listarClasesEnVivoHabilitado(string codigoAsignatura);
     void confirmarAsistenciaEnDiferido();
@@ -49,7 +53,8 @@ public:
     void cancelarReproduccion();
     //CU listado de clases
     vector <DtClase*> listarClases(string codigoAsignatura);
-    //CU tiempo de dictado = listarAsignaturas()
+    //CU tiempo de dictado
+    vector <DtAsignatura> listarAsignaturas();
     //CU tiempo AsistenciaEnDiferido 
     vector <DtClase*> listarClasesDictadas(string codigoAsignatura);
 };

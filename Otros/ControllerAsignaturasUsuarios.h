@@ -8,11 +8,15 @@
 class ControllerAsignaturasUsuarios : public IAsignaturasUsuarios
 {
 private:
+    ControllerAsignaturasUsuarios() = default;
+    ControllerAsignaturasUsuarios(const ControllerAsignaturasUsuarios&) = delete;
+    ControllerAsignaturasUsuarios& operator=(const ControllerAsignaturasUsuarios&) = delete;
+    ControllerAsignaturasUsuarios(ControllerAsignaturasUsuarios&&) = delete;
+    ControllerAsignaturasUsuarios& operator=(ControllerAsignaturasUsuarios&&) = delete;
     Docente* docActual;
     Asignatura* asigActual;
 public:
-    ControllerAsignaturasUsuarios();
-    ~ControllerAsignaturasUsuarios();
+    static ControllerAsignaturasUsuarios& getInstance();
     //CU Alta usuario
     void agregarDocente(string nombre, string email, string contrasenia, string urlImgPerfil, string nombreInstituto);
     void agregarEstudiante(string nombre, string email, string contrasenia, string urlImgPerfil, string cedula);

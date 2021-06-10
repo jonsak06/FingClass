@@ -2,7 +2,7 @@ objetos = main.o Clases/Asignacion.o Clases/Asignatura.o Clases/AsistenciaEnDife
 Clases/Mensaje.o Clases/Monitoreo.o Clases/Practico.o Clases/Teorico.o Clases/Usuario.o Clases/AsistenciaEnVivo \
 Datatypes/DtAsignatura.o Datatypes/DtClase.o Datatypes/DtDocente.o Datatypes/DtEstudiante.o Datatypes/FechaHora.o \
 Datatypes/DtMensaje.o Datatypes/DtMonitoreo.o Datatypes/DtPractico.o Datatypes/DtTeorico.o Datatypes/DtUsuario.o Otros/ControllerClases.o \
-Otros/ControllerAsignaturasUsuarios.o
+Otros/ControllerAsignaturasUsuarios.o Otros/Factory.o
 main: $(objetos)
 	g++ $(objetos)
 
@@ -80,6 +80,9 @@ ControllerClases.o: ControllerClases.cpp
 
 ControllerAsignaturasUsuarios.o: ControllerAsignaturasUsuarios.cpp
 	g++ -c ControllerAsignaturasUsuarios.cpp
+
+Factory.o: Factory.cpp
+	g++ -c Factory.cpp
 
 clean:
 	rm */*.o main.o a.out

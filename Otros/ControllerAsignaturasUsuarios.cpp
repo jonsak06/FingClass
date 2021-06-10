@@ -1,7 +1,10 @@
 #include "ControllerAsignaturasUsuarios.h"
 
-ControllerAsignaturasUsuarios::ControllerAsignaturasUsuarios() {}
-ControllerAsignaturasUsuarios::~ControllerAsignaturasUsuarios() {}
+ControllerAsignaturasUsuarios& ControllerAsignaturasUsuarios::getInstance() {
+    static ControllerAsignaturasUsuarios* controller = new ControllerAsignaturasUsuarios();
+    return *controller;
+}
+
 //CU Alta usuario
 void ControllerAsignaturasUsuarios::agregarDocente(string nombre, string email, string contrasenia, string urlImgPerfil, string nombreInstituto) {}
 void ControllerAsignaturasUsuarios::agregarEstudiante(string nombre, string email, string contrasenia, string urlImgPerfil, string cedula) {}
