@@ -77,6 +77,13 @@ void Asignatura::setClases(IDictionary* clases) {
 
 DtAsignatura Asignatura::getDatosAsignatura() const {}
 Clase* Asignatura::iniciarClase(DtClase*, IDictionary*) const {} //ver si no da problema el const
-ICollection* Asignatura::getDatosClasesDiferido() const {}
+ICollection* Asignatura::getDatosClasesEnDiferido() const {}
 ICollection* Asignatura::reproducirClase(int, Estudiante) const {}
 void Asignatura::eliminarClases() {}
+Clase* Asignatura::getClase(int numeroClase) const {}
+bool Asignatura::comprobarInscripcionEstudiante(string cedula) const {}
+void Asignatura::inscribirEstudiante(Estudiante e) {}
+ICollection* Asignatura::getDatosEstudiantesInscriptos() const {}
+ICollection* Asignatura::getDatosClasesEnVivoHabilitado(string cedula) const {}
+DtClase* Asignatura::getDatosClase(int numeroClase) const {} 
+Clase* Asignatura::asistirClase(int numeroClase, Estudiante e) const {}

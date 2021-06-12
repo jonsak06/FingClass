@@ -24,6 +24,9 @@ public:
     void setEstudiante(Estudiante*);
     void setFechaHoraInicio(FechaHora);
     void setFechaHoraFin(FechaHora);
+
+    //operaciones DCD
+    bool comprobarAsistencia(string cedula);
 };
 
 #endif

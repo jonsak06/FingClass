@@ -6,12 +6,14 @@
 #include "../Datatypes/DtAsignatura.h"
 #include "../Datatypes/DtClase.h"
 #include "../Datatypes/DtMensaje.h"
+#include "../ICollection/interfaces/IDictionary.h"
+#include "../ICollection/interfaces/ICollection.h"
 #include <string>
 
 using namespace std;
 
 class Clase;
-class Estudiante;
+// class Estudiante;
 
 class Asignatura : public ICollectible
 {
@@ -44,12 +46,20 @@ public:
     void setTiempoTotalDictado(float);
     void setEstudiantesInscriptos(IDictionary*);
     void setClases(IDictionary*);
+
     //operaciones DCD
     DtAsignatura getDatosAsignatura() const;
-    Clase* iniciarClase(DtClase*, IDictionary*) const;
-    ICollection* getDatosClasesDiferido() const;
-    ICollection* reproducirClase(int, Estudiante) const;
+    Clase* iniciarClase(DtClase* dvCls, IDictionary* habilitados) const;
+    ICollection* getDatosClasesEnDiferido() const;
+    ICollection* reproducirClase(int numeroClase, Estudiante e) const;
     void eliminarClases();
+    Clase* getClase(int numeroClase) const;
+    bool comprobarInscripcionEstudiante(string cedula) const;
+    void inscribirEstudiante(Estudiante e);
+    ICollection* getDatosEstudiantesInscriptos() const;
+    ICollection* getDatosClasesEnVivoHabilitado(string cedula) const;
+    DtClase* getDatosClase(int numeroClase) const; 
+    Clase* asistirClase(int numeroClase, Estudiante e) const;
 };
 
 #endif

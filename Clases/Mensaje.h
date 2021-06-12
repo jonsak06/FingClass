@@ -8,6 +8,8 @@
 
 using namespace std;
 
+class Usuario;
+
 class Mensaje : public ICollectible
 {
 private:
@@ -27,6 +29,7 @@ public:
     void setMensaje(string);
     void setFechaHoraEnvio(FechaHora);
     void setUsuario(Usuario*);
+
     //operaciones DCD
     DtMensaje getDatosMensaje() const;
 };

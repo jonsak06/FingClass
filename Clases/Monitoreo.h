@@ -13,6 +13,7 @@ public:
     Monitoreo(string, int, FechaHora, IDictionary*);
     IDictionary* getEstudiantesHabilitados();
     void setEstudiantesHabilitados(IDictionary*);
+    
     //operaciones DCD
     DtMonitoreo* getDatosClase() const;
 };

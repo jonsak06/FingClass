@@ -14,7 +14,7 @@ void ControllerClases::confirmarInicioClase() {}
 void ControllerClases::cancelarInicioClase() {}
 //CU finalizacion de clase
 ICollection* ControllerClases::listarClasesEnVivo(string email) {}
-DtClase* ControllerClases::seleccionarClase(int numeroClase) {}
+DtClase* ControllerClases::seleccionarClaseDocente(int numeroClase) {}
 void ControllerClases::confirmarFinalizacionClase() {}
 void ControllerClases::cancelarFinalizacionClase() {}
 //CU envio de mensaje
@@ -27,8 +27,9 @@ void ControllerClases::cancelarMensaje() {}
 //CU AsistenciaEnDiferido en vivo
 ICollection* ControllerClases::listarAsignaturasCursando(string cedula) {}
 ICollection* ControllerClases::listarClasesEnVivoHabilitado(string codigoAsignatura) {}
-void ControllerClases::confirmarAsistenciaEnDiferido() {}
-void ControllerClases::cancelarAsistenciaEnDiferido() {}
+DtClase* ControllerClases::seleccionarClase(int numeroClase) {}
+void ControllerClases::confirmarAsistencia() {}
+void ControllerClases::cancelarAsistencia() {}
 //CU reproduccion en diferido
 ICollection* ControllerClases::listarClasesEnDiferido(string codigoAsignatura) {}
 ICollection* ControllerClases::confirmarReproduccion() {}
@@ -38,4 +39,5 @@ ICollection* ControllerClases::listarClases(string codigoAsignatura) {}
 //CU tiempo de dictado
 ICollection* ControllerClases::listarAsignaturas() {}
 //CU tiempo AsistenciaEnDiferido 
+//ICollection* ControllerClases::listarAsignaturasAsignadas(string email) {}
 ICollection* ControllerClases::listarClasesDictadas(string codigoAsignatura) {}

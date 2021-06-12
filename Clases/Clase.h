@@ -9,14 +9,18 @@
 #include "AsistenciaEnVivo.h"
 #include "Mensaje.h"
 #include "Asignatura.h"
+#include "../ICollection/interfaces/ICollection.h"
+#include "../ICollection/interfaces/IDictionary.h"
 #include <string>
 
 using namespace std;
 
 class Asignatura;
-class AsistenciaEnVivo;
-class AsistenciaEnDiferido;
-class Mensaje;
+// class AsistenciaEnVivo;
+// class AsistenciaEnDiferido;
+// class Mensaje;
+// class Estudiante;
+class Usuario;
 
 class Clase : public ICollectible
 {
@@ -58,14 +62,20 @@ public:
     void setAsistenciasEnVivo(ICollection*);
     void setMensajes(IDictionary*);
     void setAsignatura(Asignatura*);
+
     //operaciones DCD
     virtual DtClase* getDatosClase() const = 0;
     void finalizarClase();
-    void setInicioAsistenciaEnDiferido(Estudiante);
+    void setInicioAsistenciaEnDiferido(Estudiante e);
     ICollection* getDatosMensajes() const;
     string getCodigoAsignatura() const;
     void eliminarAsistencias();
     void eliminarMensajes();
+    Mensaje getMensaje(int idMensaje) const;
+    void enviarMensaje(Usuario* u, string mensaje);
+    void responderMensaje(Usuario* u, Mensaje m, string mensaje);
+    void marcarAsistenciaVivo(Estudiante e);
+    void marcarAsistenciaDif(Estudiante e);
 };
 
 #endif

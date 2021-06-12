@@ -29,6 +29,10 @@ string Usuario::getContrasenia() const {
     return contrasenia;
 }
 
+IDictionary* Usuario::getClases() const {
+    return clases;
+}
+
 void Usuario::setNombre(string nombre) {
     this->nombre = nombre;
 }
@@ -44,3 +48,16 @@ void Usuario::setUrlImgPerfil(string urlImgPerfil) {
 void Usuario::setContrasenia(string contrasenia) {
     this->contrasenia = contrasenia;
 }
+
+void Usuario::setClases(IDictionary* clases) {
+    this->clases = clases;
+}
+
+ICollection* Usuario::getDatosMensajes(int numeroClase) const {}
+void Usuario::agregarClase(Clase* c) {}
+ICollection* Usuario::getDatosClasesEnVivo() const {}
+Clase* Usuario::getClase(int numeroClase) const {}
+DtClase* Usuario::getDatosClase(int numeroClase) const {}
+ICollection* Usuario::getDatosClasesEnVivo(string email) const {}
+ICollection* Usuario::getDatosClases(string codigoAsignatura) const {}
+void Usuario::removerClases(string codigoAsignatura) {}

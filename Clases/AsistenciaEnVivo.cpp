@@ -33,3 +33,5 @@ void AsistenciaEnVivo::setFechaHoraInicio(FechaHora fechaHoraInicio) {
 void AsistenciaEnVivo::setFechaHoraFin(FechaHora fechaHoraFin) {
     this->fechaHoraFin = fechaHoraFin;
 }
+
+bool AsistenciaEnVivo::comprobarAsistencia(string cedula) {}

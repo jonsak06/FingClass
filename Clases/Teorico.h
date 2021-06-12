@@ -13,6 +13,7 @@ public:
     Teorico(string, int, FechaHora);
     int getCantAsistentes() const;
     void setCantAsistentes(int);
+    
     //operaciones DCD
     DtTeorico* getDatosClase() const;
 };

@@ -3,6 +3,7 @@
 
 #include "../Datatypes/FechaHora.h"
 #include "Estudiante.h"
+#include "../ICollection/interfaces/ICollection.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ public:
     void setEstudiante(Estudiante*);
     void setFechaHoraInicio(ICollection*);
     void setFechaHoraFin(ICollection*);
+
     //operaciones DCD
     bool comprobarAsistencia(string cedula);
 };

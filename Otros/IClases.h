@@ -21,7 +21,7 @@ public:
     virtual void cancelarInicioClase() = 0;
     //CU finalizacion de clase
     virtual ICollection* listarClasesEnVivo(string email) = 0;
-    virtual DtClase* seleccionarClase(int numeroClase) = 0;
+    virtual DtClase* seleccionarClaseDocente(int numeroClase) = 0;
     virtual void confirmarFinalizacionClase() = 0;
     virtual void cancelarFinalizacionClase() = 0;
     //CU envio de mensaje
@@ -34,8 +34,9 @@ public:
     //CU AsistenciaEnDiferido en vivo
     virtual ICollection* listarAsignaturasCursando(string cedula) = 0;
     virtual ICollection* listarClasesEnVivoHabilitado(string codigoAsignatura) = 0;
-    virtual void confirmarAsistenciaEnDiferido() = 0;
-    virtual void cancelarAsistenciaEnDiferido() = 0;
+    virtual DtClase* seleccionarClase(int numeroClase) = 0;
+    virtual void confirmarAsistencia() = 0;
+    virtual void cancelarAsistencia() = 0;
     //CU reproduccion en diferido
     virtual ICollection* listarClasesEnDiferido(string codigoAsignatura) = 0;
     virtual ICollection* confirmarReproduccion() = 0;

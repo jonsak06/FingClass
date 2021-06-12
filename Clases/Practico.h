@@ -11,6 +11,7 @@ private:
 public:
     Practico();
     Practico(string, int, FechaHora);
+    
     //operaciones DCD
     DtPractico* getDatosClase() const;
 };

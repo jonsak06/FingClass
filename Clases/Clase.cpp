@@ -103,8 +103,13 @@ void Clase::setAsignatura(Asignatura* asignatura) {
 }
 
 void Clase::finalizarClase() {}
-void Clase::setInicioAsistenciaEnDiferido(Estudiante) {}
+void Clase::setInicioAsistenciaEnDiferido(Estudiante e) {}
 ICollection* Clase::getDatosMensajes() const {}
 string Clase::getCodigoAsignatura() const {}
 void Clase::eliminarAsistencias() {}
 void Clase::eliminarMensajes() {}
+Mensaje Clase::getMensaje(int idMensaje) const {}
+void Clase::enviarMensaje(Usuario* u, string mensaje) {}
+void Clase::responderMensaje(Usuario* u, Mensaje m, string mensaje) {}
+void Clase::marcarAsistenciaVivo(Estudiante e) {}
+void Clase::marcarAsistenciaDif(Estudiante e) {}
