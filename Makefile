@@ -5,7 +5,8 @@ Datatypes/DtMensaje.o Datatypes/DtMonitoreo.o Datatypes/DtPractico.o Datatypes/D
 Otros/ControllerAsignaturasUsuarios.o Otros/Factory.o ICollection/Integer.o ICollection/String.o ICollection/collections/List.o \
 ICollection/collections/ListIterator.o ICollection/collections/ListNode.o ICollection/collections/OrderedDictionary.o \
 ICollection/collections/OrderedDictionaryEntry.o ICollection/interfaces/ICollectible.o ICollection/interfaces/ICollection.o \
-ICollection/interfaces/IDictionary.o ICollection/interfaces/IIterator.o ICollection/interfaces/IKey.o ICollection/interfaces/OrderedKey.o
+ICollection/interfaces/IDictionary.o ICollection/interfaces/IIterator.o ICollection/interfaces/IKey.o ICollection/interfaces/OrderedKey.o \
+Otros/HandlerAsignaturas.o Otros/HandlerUsuarios.o
 
 main: $(objetos)
 	g++ $(objetos)
@@ -126,6 +127,12 @@ IKey.o: IKey.cpp
 
 OrderedKey.o: OrderedKey.cpp
 	g++ -c OrderedKey.cpp
+
+HandlerAsignaturas.o: HandlerAsignaturas.cpp
+	g++ -c HandlerAsignaturas.cpp
+
+HandlerUsuarios.o: HandlerUsuarios.cpp
+	g++ -c HandlerUsuarios.cpp
 
 clean:
 	rm */*.o */*/*.o main.o a.out
