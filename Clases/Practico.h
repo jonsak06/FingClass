@@ -10,7 +10,7 @@ private:
     /* ... */
 public:
     Practico();
-    Practico(string, int, FechaHora);
+    Practico(int, string, FechaHora);
     
     //operaciones DCD
     DtPractico* getDatosClase() const;

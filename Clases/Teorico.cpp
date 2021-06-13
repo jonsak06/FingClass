@@ -4,7 +4,7 @@ Teorico::Teorico() {
     this->cantAsistentes = 0;
 }
 
-Teorico::Teorico(string nombre, int numero, FechaHora fechaHoraComienzo) : Clase(nombre, numero, fechaHoraComienzo) {
+Teorico::Teorico(int numero, string nombre, FechaHora fechaHoraComienzo) : Clase(numero, nombre, fechaHoraComienzo) {
     this->cantAsistentes = 0;
 }
 

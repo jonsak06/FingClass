@@ -3,8 +3,8 @@
 Monitoreo::Monitoreo() {
 }
 
-Monitoreo::Monitoreo(string nombre, int numero, FechaHora fechaHoraComienzo, IDictionary* habilitados) 
-                    : Clase(nombre, numero, fechaHoraComienzo) {
+Monitoreo::Monitoreo(int numero, string nombre, FechaHora fechaHoraComienzo, IDictionary* habilitados) 
+                    : Clase(numero, nombre, fechaHoraComienzo) {
     estudiantesHabilitados = habilitados;
 }
 

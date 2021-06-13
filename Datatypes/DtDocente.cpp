@@ -8,11 +8,6 @@ DtDocente::DtDocente(string nombre, string email, string contrasenia, string url
     this->nombreInstituto = nombreInstituto;
 }
 
-DtDocente::DtDocente(string nombre, string email, string contrasenia, string urlImgPerfil, string nombreInstituto) 
-                    : DtUsuario(nombre, email, contrasenia, urlImgPerfil) {
-    this->nombreInstituto = nombreInstituto;
-}
-
 DtDocente::DtDocente(string nombre, string email) : DtUsuario(nombre, email) {
     
 }

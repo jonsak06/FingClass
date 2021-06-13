@@ -2,7 +2,7 @@
 #define USUARIO_H
 
 #include "../Datatypes/DtUsuario.h"
-#include "Clase.h"
+#include "../Datatypes/DtClase.h"
 #include "../ICollection/interfaces/ICollectible.h"
 #include "../ICollection/interfaces/IDictionary.h"
 #include "../ICollection/interfaces/ICollection.h"

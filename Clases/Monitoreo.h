@@ -10,7 +10,7 @@ private:
     IDictionary* estudiantesHabilitados;
 public:
     Monitoreo();
-    Monitoreo(string, int, FechaHora, IDictionary*);
+    Monitoreo(int, string, FechaHora, IDictionary*);
     IDictionary* getEstudiantesHabilitados();
     void setEstudiantesHabilitados(IDictionary*);
     

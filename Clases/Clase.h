@@ -16,11 +16,7 @@
 using namespace std;
 
 class Asignatura;
-// class AsistenciaEnVivo;
-// class AsistenciaEnDiferido;
-// class Mensaje;
-// class Estudiante;
-class Usuario;
+class Mensaje;
 
 class Clase : public ICollectible
 {
