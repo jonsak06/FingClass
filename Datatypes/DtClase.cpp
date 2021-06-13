@@ -7,30 +7,36 @@ DtClase::DtClase() {
 DtClase::~DtClase() {
 }
 
-DtClase::DtClase(string nombre, int numero, FechaHora fechaHoraComienzo) {
-    this->nombre = nombre;
-    this->numero = numero;
+DtClase::DtClase(int numeroClase, string nombreClase) {
+    this->numeroClase = numeroClase;
+    this->nombreClase = nombreClase;
+}
+
+DtClase::DtClase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string codigoAsignatura) {
+    this->numeroClase = numeroClase;
+    this->nombreClase = nombreClase;
     this->fechaHoraComienzo = fechaHoraComienzo;
-    enVivo = true;
+    this->codigoAsignatura = codigoAsignatura;
 }
 
-DtClase::DtClase(string nombre, int numero, FechaHora fechaHoraComienzo, bool enVivo, string urlGrabacion,
-                FechaHora fechaHoraFinalizacion, float promedioTiempoAsistenciaEnDiferido) {
-    this->nombre = nombre;
-    this->numero = numero;
-    this->fechaHoraComienzo = fechaHoraComienzo;
-    this->enVivo = enVivo;
-    this->urlGrabacion = urlGrabacion;
-    this->fechaHoraFinalizacion = fechaHoraFinalizacion;
-    this->promedioTiempoAsistenciaEnDiferido = promedioTiempoAsistenciaEnDiferido;
+DtClase::DtClase(int numeroClase, string nombreClase, ICollection* docentes) {
+    this->numeroClase = numeroClase;
+    this->nombreClase = nombreClase;
+    this->docentes = docentes;
 }
 
-string DtClase::getNombre() const {
-    return nombre;
+DtClase::DtClase(int numeroClase, string nombreClase, float promedioTiempoAsistencia) {
+    this->numeroClase = numeroClase;
+    this->nombreClase = nombreClase;
+    this->promedioTiempoAsistencia = promedioTiempoAsistencia;
 }
 
-int DtClase::getNumero() const {
-    return numero;
+string DtClase::getNombreClase() const {
+    return nombreClase;
+}
+
+int DtClase::getNumeroClase() const {
+    return numeroClase;
 }
 
 FechaHora DtClase::getFechaHoraComienzo() const {
@@ -49,6 +55,14 @@ FechaHora DtClase::getFechaHoraFinalizacion() const {
     return fechaHoraFinalizacion;
 }
 
-float DtClase::getPromedioTiempoAsistenciaEnDiferido() const {
-    return promedioTiempoAsistenciaEnDiferido;
+float DtClase::getPromedioTiempoAsistencia() const {
+    return promedioTiempoAsistencia;
+}
+
+string DtClase::getCodigoAsignatura() const {
+    return codigoAsignatura;
+}
+
+ICollection* DtClase::getDocentes() const {
+    return docentes;
 }

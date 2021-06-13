@@ -29,7 +29,7 @@ private:
 public:
     Asignatura();
     ~Asignatura();
-    Asignatura(string, string);
+    Asignatura(string, string, bool, bool, bool);
     string getCodigoAsignatura() const;
     string getNombreAsignatura() const;
     bool tieneTeorico() const;

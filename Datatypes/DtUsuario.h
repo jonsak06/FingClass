@@ -11,13 +11,17 @@ class DtUsuario : public ICollectible
 private:
     string nombre;
     string email;
+    string contrasenia;
     string urlImgPerfil;
 public:
     DtUsuario();
     virtual ~DtUsuario() = 0;
-    DtUsuario(string, string, string);
+    DtUsuario(string, string, string, string);
+    DtUsuario(string, string);
+    DtUsuario(string);
     string getNombre() const;
     string getEmail() const;
+    string getContrasenia() const;
     string getUrlImgPerfil() const;
 };
 

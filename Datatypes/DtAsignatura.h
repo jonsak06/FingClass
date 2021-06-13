@@ -18,7 +18,9 @@ private:
 public:
     DtAsignatura();
     ~DtAsignatura();
-    DtAsignatura(string, string, bool teorico, bool practico, bool monitoreo, float tiempoTotalDictado);
+    DtAsignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo);
+    DtAsignatura(string codigoAsignatura, string nombreAsignatura);
+    DtAsignatura(string codigoAsignatura, string nombreAsignatura, float tiempoTotalDictado);
     string getCodigoAsignatura() const;
     string getNombreAsignatura() const;
     bool tieneTeorico() const;

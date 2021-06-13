@@ -3,15 +3,18 @@
 DtDocente::DtDocente() {
 }
 
-DtDocente::DtDocente(string nombre, string email, string urlImgPerfil, string nombreInstituto)
-                     : DtUsuario(nombre, email, urlImgPerfil) {
+DtDocente::DtDocente(string nombre, string email, string contrasenia, string urlImgPerfil, string nombreInstituto)
+                    : DtUsuario(nombre, email, contrasenia, urlImgPerfil) {
     this->nombreInstituto = nombreInstituto;
 }
 
-DtDocente::DtDocente(string nombre, string email, string urlImgPerfil, string nombreInstituto, 
-                    TipoClase rolDictado) : DtUsuario(nombre, email, urlImgPerfil) {
+DtDocente::DtDocente(string nombre, string email, string contrasenia, string urlImgPerfil, string nombreInstituto) 
+                    : DtUsuario(nombre, email, contrasenia, urlImgPerfil) {
     this->nombreInstituto = nombreInstituto;
-    this->rolDictado = rolDictado;
+}
+
+DtDocente::DtDocente(string nombre, string email) : DtUsuario(nombre, email) {
+    
 }
 
 string DtDocente::getNombreInstituto() const {

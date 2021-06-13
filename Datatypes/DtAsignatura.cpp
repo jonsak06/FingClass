@@ -6,13 +6,22 @@ DtAsignatura::DtAsignatura() {
 DtAsignatura::~DtAsignatura() {
 }
 
-DtAsignatura::DtAsignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo,
-                            float tiempoTotalDictado) {
+DtAsignatura::DtAsignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo) {
     this->codigoAsignatura = codigoAsignatura;
     this->nombreAsignatura = nombreAsignatura;
     this->teorico = teorico;
     this->practico = practico;
     this->monitoreo = monitoreo;
+}
+
+DtAsignatura::DtAsignatura(string codigoAsignatura, string nombreAsignatura) {
+    this->codigoAsignatura = codigoAsignatura;
+    this->nombreAsignatura = nombreAsignatura;
+}
+
+DtAsignatura::DtAsignatura(string codigoAsignatura, string nombreAsignatura, float tiempoTotalDictado) {
+    this->codigoAsignatura = codigoAsignatura;
+    this->nombreAsignatura = nombreAsignatura;
     this->tiempoTotalDictado = tiempoTotalDictado;
 }
 

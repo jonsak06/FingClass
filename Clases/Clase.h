@@ -39,7 +39,7 @@ private:
 public:
     Clase();
     virtual ~Clase() = 0;
-    Clase(string, int, FechaHora);
+    Clase(int, string, FechaHora);
     string getNombreClase() const;
     int getNumeroClase() const;
     FechaHora getFechaHoraComienzo() const;

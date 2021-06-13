@@ -7,9 +7,9 @@ Clase::Clase() {
 Clase::~Clase() {
 }
 
-Clase::Clase(string nombreClase, int numeroClase, FechaHora fechaHoraComienzo) {
-    this->nombreClase = nombreClase;
+Clase::Clase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo) {
     this->numeroClase = numeroClase;
+    this->nombreClase = nombreClase;
     this->fechaHoraComienzo = fechaHoraComienzo;
     enVivo = true;
 }

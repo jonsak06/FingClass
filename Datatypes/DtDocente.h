@@ -8,11 +8,10 @@ class DtDocente : public DtUsuario
 {
 private:
     string nombreInstituto;
-    TipoClase rolDictado;
 public:
     DtDocente();
-    DtDocente(string, string, string, string);
-    DtDocente(string, string, string, string, TipoClase);
+    DtDocente(string, string, string, string, string);
+    DtDocente(string, string);
     string getNombreInstituto() const;
 };
 

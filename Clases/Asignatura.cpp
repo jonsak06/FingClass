@@ -6,9 +6,12 @@ Asignatura::Asignatura() {
 Asignatura::~Asignatura() {
 }
 
-Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura) {
+Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo) {
     this->codigoAsignatura = codigoAsignatura;
     this->nombreAsignatura = nombreAsignatura;
+    this->teorico = teorico;
+    this->practico = practico;
+    this->monitoreo = monitoreo;
 }
 
 string Asignatura::getCodigoAsignatura() const {
