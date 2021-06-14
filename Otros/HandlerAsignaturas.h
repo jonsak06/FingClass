@@ -11,6 +11,7 @@ private:
     HandlerAsignaturas& operator=(const HandlerAsignaturas&) = delete;
     HandlerAsignaturas(HandlerAsignaturas&&) = delete;
     HandlerAsignaturas& operator=(HandlerAsignaturas&&) = delete;
+    IDictionary* asignaturas;
 public:
     static HandlerAsignaturas& getInstance();
 

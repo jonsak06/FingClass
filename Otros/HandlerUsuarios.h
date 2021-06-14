@@ -11,6 +11,7 @@ private:
     HandlerUsuarios& operator=(const HandlerUsuarios&) = delete;
     HandlerUsuarios(HandlerUsuarios&&) = delete;
     HandlerUsuarios& operator=(HandlerUsuarios&&) = delete;
+    IDictionary* usuarios;
 public:
     static HandlerUsuarios& getInstance();
 

@@ -6,7 +6,7 @@ Otros/ControllerAsignaturasUsuarios.o Otros/Factory.o ICollection/Integer.o ICol
 ICollection/collections/ListIterator.o ICollection/collections/ListNode.o ICollection/collections/OrderedDictionary.o \
 ICollection/collections/OrderedDictionaryEntry.o ICollection/interfaces/ICollectible.o ICollection/interfaces/ICollection.o \
 ICollection/interfaces/IDictionary.o ICollection/interfaces/IIterator.o ICollection/interfaces/IKey.o ICollection/interfaces/OrderedKey.o \
-Otros/HandlerAsignaturas.o Otros/HandlerUsuarios.o
+Otros/HandlerAsignaturas.o Otros/HandlerUsuarios.o Otros/Reloj.o
 
 main: $(objetos)
 	g++ $(objetos)
@@ -133,6 +133,9 @@ HandlerAsignaturas.o: HandlerAsignaturas.cpp
 
 HandlerUsuarios.o: HandlerUsuarios.cpp
 	g++ -c HandlerUsuarios.cpp
+
+Reloj.o: Reloj.cpp
+	g++ -c Reloj.cpp
 
 clean:
 	rm */*.o */*/*.o main.o a.out
