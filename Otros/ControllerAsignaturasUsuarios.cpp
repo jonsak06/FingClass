@@ -28,3 +28,5 @@ void ControllerAsignaturasUsuarios::cancelarInscripcion() {}
 //CU eliminar asignatura
 void ControllerAsignaturasUsuarios::confirmarEliminacion() {}
 void ControllerAsignaturasUsuarios::cancelarEliminacion() {}
+
+void ControllerAsignaturasUsuarios::cargarDatosAsigUsr() {}

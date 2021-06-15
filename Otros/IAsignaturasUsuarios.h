@@ -32,6 +32,8 @@ public:
     //CU eliminar asignatura
     virtual void confirmarEliminacion() = 0;
     virtual void cancelarEliminacion() = 0;
+
+    virtual void cargarDatosAsigUsr() = 0;
 };
 
 #endif

@@ -41,3 +41,5 @@ ICollection* ControllerClases::listarAsignaturas() {}
 //CU tiempo AsistenciaEnDiferido 
 //ICollection* ControllerClases::listarAsignaturasAsignadas(string email) {}
 ICollection* ControllerClases::listarClasesDictadas(string codigoAsignatura) {}
+
+void ControllerClases::cargarDatosClases() {}

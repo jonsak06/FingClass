@@ -46,6 +46,8 @@ public:
     //CU tiempo de dictado = listarAsignaturas()
     //CU tiempo AsistenciaEnDiferido 
     virtual ICollection* listarClasesDictadas(string codigoAsignatura) = 0;
+
+    virtual void cargarDatosClases() = 0;
 };
 
 #endif

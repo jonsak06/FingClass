@@ -70,6 +70,8 @@ public:
     //CU tiempo Asistencia
     //ICollection* listarAsignaturasAsignadas(string email);
     ICollection* listarClasesDictadas(string codigoAsignatura);
+
+    void cargarDatosClases();
 };
 
 

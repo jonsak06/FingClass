@@ -47,6 +47,8 @@ public:
     //void seleccionarAsignatura(string codigoAsignatura);
     void confirmarEliminacion();
     void cancelarEliminacion();
+
+    void cargarDatosAsigUsr();
 };
 
 #endif
