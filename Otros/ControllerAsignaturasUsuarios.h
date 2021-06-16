@@ -43,7 +43,7 @@ public:
     void cancelarInscripcion();
     
     //CU eliminar asignatura
-    //void seleccionarAsignatura(string codigoAsignatura);
+    //ICollection* listarAsignaturas();
     //void seleccionarAsignatura(string codigoAsignatura);
     void confirmarEliminacion();
     void cancelarEliminacion();

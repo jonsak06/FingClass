@@ -1,5 +1,6 @@
 #include "Otros/Factory.h"
 #include "Datatypes/DtAsignatura.h"
+#include "Otros/Reloj.h"
 #include <iostream>
 
 int menuUsuario();
@@ -13,8 +14,9 @@ int main()
     Factory &fabrica = Factory::getInstance();
     IClases &clases = fabrica.getCtrlClases();
     IAsignaturasUsuarios &asigUsr = fabrica.getCtrlAsigUsr();
-
+    Reloj& reloj = Reloj::getInstance();
     int opcion;
+
     do
     {
         opcion = menuUsuario();
@@ -73,7 +75,6 @@ int main()
                     {
                         asigUsr.cancelarAltaUsuario();
                     }
-                    system("clear");
                 }
                 break;
 
@@ -131,32 +132,138 @@ int main()
                     {
                         asigUsr.cancelarAltaAsignatura();
                     }
-                    system("clear");
                 }
                 break;
 
                 case 3:
                 {
+                    ICollection *datosAsignatura = asigUsr.listarAsignaturas();
+                    IIterator *it = datosAsignatura->getIterator();
+
+                    cout << "Datos de asignaturas:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
+                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                    }
+
+                    string codAsig;
+                    cout << "Codigo de la asignatura seleccionada: ";
+                    getline(cin >> ws, codAsig);
+                    ICollection *datosDocentes = asigUsr.listarDocentesSinAsignar(codAsig);
+                    it = datosDocentes->getIterator();
+
+                    cout << "Docentes sin asignar a la asignatura seleccionada:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtDocente *dvDoc = dynamic_cast<DtDocente *>(it->getCurrent());
+                        cout << dvDoc->getNombre(); //sobrecargar el cout en DtDocente
+                    }
+
+                    string email;
+                    int op;
+                    cout << "Email del docente seleccionado: ";
+                    getline(cin >> ws, email);
+                    cout << "Seleccione el rol de dictado del docente:\n1- Teorico\n2- Practico\n3- Monitoreo\n";
+                    cin >> op;
+                    TipoClase rolDictado;
+                    if (op == 1)
+                    {
+                        rolDictado = teroico;
+                    }
+                    else if (op == 2)
+                    {
+                        rolDictado = practico;
+                    }
+                    else
+                    {
+                        rolDictado = monitoreo;
+                    }
+                    asigUsr.seleccionarDocente(email, rolDictado);
+
+                    op = menuConfirmacion();
+                    if (op == 1)
+                    {
+                        asigUsr.confirmarAsignacion();
+                    }
+                    else
+                    {
+                        asigUsr.cancelarAsignacion();
+                    }
                 }
                 break;
 
                 case 4:
                 {
+                    ICollection* datosAsignaturas = clases.listarAsignaturas();
+                    IIterator* it = datosAsignaturas->getIterator();
+
+                    cout << "Tiempo de dictado de clases por asignatura:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
+                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                    }
+                    //falta pausar la consola
+                    system("clear");
                 }
                 break;
 
                 case 5:
                 {
+                    ICollection* datosAsignaturas = asigUsr.listarAsignaturas();
+                    IIterator* it = datosAsignaturas->getIterator();
+
+                    cout << "Listado de asignaturas:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
+                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                    }
+                    
+                    string codAsig;
+                    cout << "Codigo de la asignatura seleccionada: ";
+                    getline(cin >> ws, codAsig);
+                    asigUsr.seleccionarAsignatura(codAsig);
+
+                    int op = menuConfirmacion();
+                    if (op == 1)
+                    {
+                        asigUsr.confirmarEliminacion();
+                    }
+                    else
+                    {
+                        asigUsr.cancelarEliminacion();
+                    }
                 }
                 break;
 
                 case 6:
                 {
+                    cout << "Fecha y hora del sistema:\n";
+                    cout << reloj.getFechaHoraActual().getDia(); //sobrecargar el cout en FechaHora
                 }
                 break;
 
                 case 7:
                 {
+                    int dia, mes, anio, hora, min, seg;
+                    cout << "Ingrese la fecha:\n";
+                    cout << "Dia: ";
+                    cin >> dia;
+                    cout << "Mes: ";
+                    cin >> mes;
+                    cout << "Anio: ";
+                    cin >> anio;
+                    system("clear");
+                    cout << "Ingrese la hora:\n";
+                    cout << "Hora: ";
+                    cin >> hora;
+                    cout << "Minuto: ";
+                    cin >> min;
+                    cout << "Segundo: ";
+                    cin >> seg;
+                    reloj.setFechaHoraActual(FechaHora(dia, mes, anio, hora, min, seg));
                 }
                 break;
 
@@ -225,6 +332,7 @@ int menuUsuario()
             system("clear");
             return op;
         }
+        system("clear");
     }
 
     return -1;
@@ -252,6 +360,7 @@ int menuAdministrador()
             system("clear");
             return op;
         }
+        system("clear");
     }
     return -1;
 }
@@ -276,6 +385,7 @@ int menuDocente()
             system("clear");
             return op;
         }
+        system("clear");
     }
     return -1;
 }
@@ -299,6 +409,7 @@ int menuEstudiante()
             system("clear");
             return op;
         }
+        system("clear");
     }
     return -1;
 }
@@ -312,6 +423,7 @@ int menuConfirmacion()
         cin >> op;
         if (op == 1 || op == 2)
         {
+            system("clear");
             return op;
         }
         system("clear");

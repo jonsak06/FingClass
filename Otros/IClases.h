@@ -43,7 +43,8 @@ public:
     virtual void cancelarReproduccion() = 0;
     //CU listado de clases
     virtual ICollection* listarClases(string codigoAsignatura) = 0;
-    //CU tiempo de dictado = listarAsignaturas()
+    //CU tiempo de dictado
+    virtual ICollection* listarAsignaturas() = 0;
     //CU tiempo AsistenciaEnDiferido 
     virtual ICollection* listarClasesDictadas(string codigoAsignatura) = 0;
 
