@@ -524,10 +524,10 @@ int main()
                     string codAsig;
                     cout << "Codigo de la asignatura seleccionada: ";
                     getline(cin >> ws, codAsig);
-                    IDictionary *datosClases = clases.listarClases(codAsig);
+                    IDictionary *datosClases = clases.listarClasesDictadas(codAsig);
                     it = datosClases->getIterator();
 
-                    cout << "Tiempo de dictado de sus clases de la asignatura seleccionada:\n";
+                    cout << "Tiempo de asistencia a sus clases de la asignatura seleccionada:\n";
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
@@ -549,11 +549,210 @@ int main()
 
         case 3:
         {
-            int op;
+            int opt;
             do
             {
-                op = menuEstudiante();
-            } while (op != 5);
+                opt = menuEstudiante();
+                switch (opt)
+                {
+                case 1:
+                {
+                    string cedula;
+                    cout << "Ingrese su cedula: ";
+                    getline(cin >> ws, cedula);
+                    IDictionary* datosAsignaturas = asigUsr.listarAsignaturasNoInscripto(cedula);
+                    IIterator* it = datosAsignaturas->getIterator();
+
+                    cout << "Listado de asignaturas a las que no esta inscripto:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
+                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                    }
+
+                    string codAsig;
+                    cout << "Codigo de la asignatura seleccionada: ";
+                    getline(cin >> ws, codAsig);
+                    asigUsr.seleccionarAsignatura(codAsig);
+                    
+                    int op = menuConfirmacion();
+                    if (op == 1)
+                    {
+                        asigUsr.confirmarInscripcion();
+                    }
+                    else
+                    {
+                        asigUsr.cancelarInscripcion();
+                    }
+                    system("clear");
+                }
+                break;
+
+                case 2:
+                {
+                    string email;
+                    cout << "Ingrese su direccion de email: ";
+                    getline(cin >> ws, email);
+                    IDictionary *datosClases = clases.listarClasesEnVivoParticipando(email);
+                    IIterator *it = datosClases->getIterator();
+
+                    cout << "Listado de sus clases en vivo:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
+                        cout << dvCls->getNombreClase(); //sobrecargar el cout en DtClase
+                    }
+
+                    int nroCls;
+                    cout << "Numero de la clase seleccioanda: ";
+                    cin >> nroCls;
+                    IDictionary *datosMensajes = clases.listarMensajes(nroCls);
+                    it = datosMensajes->getIterator();
+                    cout << "Mensajes de la clase:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
+                        cout << dvMsj->getMensaje(); //sobrecargar el cout en DtMensaje
+                    }
+
+                    string mensaje;
+                    cout << "Ingrese su mensaje: ";
+                    getline(cin >> ws, mensaje);
+                    int op;
+                    cout << "Su mensaje es respuesta? 1- Si 2- No\n";
+                    cin >> op;
+                    int idMensaje;
+                    if (op == 1)
+                    {
+                        cout << "ID del mensaje al que responde: ";
+                        cin >> idMensaje;
+                        clases.responderMensaje(idMensaje, mensaje);
+                    }
+                    else
+                    {
+                        clases.escribirMensaje(mensaje);
+                    }
+
+                    op = menuConfirmacion();
+                    if (op == 1)
+                    {
+                        clases.enviarMensaje();
+                    }
+                    else
+                    {
+                        clases.cancelarMensaje();
+                    }
+                    system("clear");
+                }
+                break;
+
+                case 3:
+                {
+                    string cedula;
+                    cout << "Ingrese su cedula: ";
+                    getline(cin >> ws, cedula);
+                    IDictionary* datosAsignaturas = clases.listarAsignaturasCursando(cedula);
+                    IIterator* it = datosAsignaturas->getIterator();
+
+                    cout << "Listado de sus asignaturas:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
+                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                    }
+                    
+                    string codAsig;
+                    cout << "Codigo de la asignatura seleccionada: ";
+                    getline(cin >> ws, codAsig);
+                    IDictionary *datosClases = clases.listarClasesEnVivoHabilitado(codAsig);
+                    it = datosClases->getIterator();
+
+                    cout << "Listado de las clases en vivo habilitado a asistir:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
+                        cout << dvCls->getNombreClase(); //sobrecargar el cout en DtClase
+                    }
+                    
+                    int nroCls;
+                    cout << "Numero de la clase seleccionada: ";
+                    cin >> nroCls;
+                    DtClase* dvCls = clases.seleccionarClase(nroCls);
+                    
+                    int op = menuConfirmacion();
+                    if (op == 1)
+                    {
+                        clases.confirmarAsistencia();
+                    }
+                    else
+                    {
+                        clases.cancelarAsistencia();
+                    }
+                    system("clear");                   
+                }
+                break;
+
+                case 4:
+                {
+                    string cedula;
+                    cout << "Ingrese su cedula: ";
+                    getline(cin >> ws, cedula);
+                    IDictionary* datosAsignaturas = clases.listarAsignaturasCursando(cedula);
+                    IIterator* it = datosAsignaturas->getIterator();
+
+                    cout << "Listado de sus asignaturas:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
+                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                    }
+                    
+                    string codAsig;
+                    cout << "Codigo de la asignatura seleccionada: ";
+                    getline(cin >> ws, codAsig);
+                    IDictionary *datosClases = clases.listarClasesEnDiferido(codAsig);
+                    it = datosClases->getIterator();
+
+                    cout << "Listado de clases en diferido:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
+                        cout << dvCls->getNombreClase(); //sobrecargar el cout en DtClase
+                    }
+                    
+                    int nroCls;
+                    cout << "Numero de la clase seleccionada: ";
+                    cin >> nroCls;
+                    DtClase* dvCls = clases.seleccionarClase(nroCls);
+                    
+                    int op = menuConfirmacion();
+                    if (op == 1)
+                    {
+                        IDictionary* datosMensajes = clases.confirmarReproduccion();
+                        it = datosMensajes->getIterator();
+
+                        cout << "Mensajes de la clase:\n";
+                        for (it; it->hasCurrent(); it->next())
+                        {
+                            DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
+                            cout << dvMsj->getMensaje(); //sobrecargar el cout en DtMensaje
+                        }
+                    }
+                    else
+                    {
+                        clases.cancelarReproduccion();
+                    }
+                    system("clear");
+                }
+                break;
+
+                case 5:
+                    break;
+                
+                default:
+                    break;
+                }
+            } while (opt != 5);
         }
         break;
 
