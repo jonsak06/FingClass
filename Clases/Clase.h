@@ -63,7 +63,7 @@ public:
     virtual DtClase* getDatosClase() const = 0;
     void finalizarClase();
     void setInicioAsistenciaEnDiferido(Estudiante e);
-    ICollection* getDatosMensajes() const;
+    IDictionary* getDatosMensajes() const;
     string getCodigoAsignatura() const;
     void eliminarAsistencias();
     void eliminarMensajes();

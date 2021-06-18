@@ -19,7 +19,7 @@ DtClase::DtClase(int numeroClase, string nombreClase, FechaHora fechaHoraComienz
     this->codigoAsignatura = codigoAsignatura;
 }
 
-DtClase::DtClase(int numeroClase, string nombreClase, ICollection* docentes) {
+DtClase::DtClase(int numeroClase, string nombreClase, IDictionary* docentes) {
     this->numeroClase = numeroClase;
     this->nombreClase = nombreClase;
     this->docentes = docentes;
@@ -63,6 +63,6 @@ string DtClase::getCodigoAsignatura() const {
     return codigoAsignatura;
 }
 
-ICollection* DtClase::getDocentes() const {
+IDictionary* DtClase::getDocentes() const {
     return docentes;
 }

@@ -24,52 +24,52 @@ public:
     static ControllerClases& getInstance();
 
     //CU inicio de clase
-    ICollection* listarAsignaturasAsignadas(string email);
-    int crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo);
-    ICollection* listarEstudiantesInscriptos();
+    IDictionary* listarAsignaturasAsignadas(string email);
+    TipoClase crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo);
+    IDictionary* listarEstudiantesInscriptos();
     void habilitarEstudiante(string cedula);
     DtClase* obtenerInfoClase();
     void confirmarInicioClase();
     void cancelarInicioClase();
 
     //CU finalizacion de clase
-    ICollection* listarClasesEnVivo(string email);
+    IDictionary* listarClasesEnVivo(string email);
     DtClase* seleccionarClaseDocente(int numeroClase);
     void confirmarFinalizacionClase();
     void cancelarFinalizacionClase();
 
     //CU envio de mensaje
-    ICollection* listarClasesEnVivoParticipando(string email);
-    ICollection* listarMensajes(int numeroClase);
+    IDictionary* listarClasesEnVivoParticipando(string email);
+    IDictionary* listarMensajes(int numeroClase);
     void responderMensaje(int idMensaje, string mensaje);
     void escribirMensaje(string mensaje);
     void enviarMensaje();
     void cancelarMensaje();
 
     //CU Asistencia en vivo
-    ICollection* listarAsignaturasCursando(string cedula);
-    ICollection* listarClasesEnVivoHabilitado(string codigoAsignatura);
+    IDictionary* listarAsignaturasCursando(string cedula);
+    IDictionary* listarClasesEnVivoHabilitado(string codigoAsignatura);
     DtClase* seleccionarClase(int numeroClase);
     void confirmarAsistencia();
     void cancelarAsistencia();
 
     //CU reproduccion en diferido
-    //ICollection* listarAsignaturasCursando(string cedula);
-    ICollection* listarClasesEnDiferido(string codigoAsignatura);
+    //IDictionary* listarAsignaturasCursando(string cedula);
+    IDictionary* listarClasesEnDiferido(string codigoAsignatura);
     //DtClase* seleccionarClase(int numeroClase);
-    ICollection* confirmarReproduccion();
+    IDictionary* confirmarReproduccion();
     void cancelarReproduccion();
 
     //CU listado de clases
-    //ICollection* listarAsignaturasAsignadas(string email);
-    ICollection* listarClases(string codigoAsignatura);
+    //IDictionary* listarAsignaturasAsignadas(string email);
+    IDictionary* listarClases(string codigoAsignatura);
 
     //CU tiempo de dictado
-    ICollection* listarAsignaturas();
+    IDictionary* listarAsignaturas();
 
     //CU tiempo Asistencia
-    //ICollection* listarAsignaturasAsignadas(string email);
-    ICollection* listarClasesDictadas(string codigoAsignatura);
+    //IDictionary* listarAsignaturasAsignadas(string email);
+    IDictionary* listarClasesDictadas(string codigoAsignatura);
 
     void cargarDatosClases();
 };

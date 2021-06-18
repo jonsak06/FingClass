@@ -26,7 +26,7 @@ public:
     DtDocente* getDatosUsuario() const;
     bool comprobarAsignacion(string codigoAsignatura) const;
     void asignarAsignatura(Asignatura a, TipoClase rolDictado);
-    ICollection* getDatosAsignaturas() const;
+    IDictionary* getDatosAsignaturas() const;
     TipoClase getRolDictado(string codigoAsignatura) const;
     void finalizarClase(int numeroClase);
     void removerAsignacion(string codigoAsignatura);

@@ -19,13 +19,13 @@ public:
     virtual void confirmarAltaAsignatura() = 0;
     virtual void cancelarAltaAsignatura() = 0;
     //CU asignacion docente a asignatura
-    virtual ICollection* listarAsignaturas() = 0;
-    virtual ICollection* listarDocentesSinAsignar(string codigoAsignatura) = 0;
+    virtual IDictionary* listarAsignaturas() = 0;
+    virtual IDictionary* listarDocentesSinAsignar(string codigoAsignatura) = 0;
     virtual void seleccionarDocente(string email, TipoClase rolDictado) = 0;
     virtual void confirmarAsignacion() = 0;
     virtual void cancelarAsignacion() = 0;
     //CU inscripcion a asignaturas
-    virtual ICollection* listarAsignaturasNoInscripto(string cedula) = 0;
+    virtual IDictionary* listarAsignaturasNoInscripto(string cedula) = 0;
     virtual void seleccionarAsignatura(string codigoAsignatura) = 0;
     virtual void confirmarInscripcion() = 0;
     virtual void cancelarInscripcion() = 0;

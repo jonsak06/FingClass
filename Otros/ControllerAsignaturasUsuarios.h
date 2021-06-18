@@ -30,20 +30,20 @@ public:
     void cancelarAltaAsignatura();
 
     //CU asignacion docente a asignatura
-    ICollection* listarAsignaturas();
-    ICollection* listarDocentesSinAsignar(string codigoAsignatura);
+    IDictionary* listarAsignaturas();
+    IDictionary* listarDocentesSinAsignar(string codigoAsignatura);
     void seleccionarDocente(string email, TipoClase rolDictado);
     void confirmarAsignacion();
     void cancelarAsignacion();
 
     //CU inscripcion a asignaturas
-    ICollection* listarAsignaturasNoInscripto(string cedula);
+    IDictionary* listarAsignaturasNoInscripto(string cedula);
     void seleccionarAsignatura(string codigoAsignatura);
     void confirmarInscripcion();
     void cancelarInscripcion();
     
     //CU eliminar asignatura
-    //ICollection* listarAsignaturas();
+    //IDictionary* listarAsignaturas();
     //void seleccionarAsignatura(string codigoAsignatura);
     void confirmarEliminacion();
     void cancelarEliminacion();

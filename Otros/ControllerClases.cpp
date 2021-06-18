@@ -5,41 +5,41 @@ ControllerClases& ControllerClases::getInstance() {
     return *controller;
 }
 //CU inicio de clase
-ICollection* ControllerClases::listarAsignaturasAsignadas(string email) {}
-int ControllerClases::crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo) {}
-ICollection* ControllerClases::listarEstudiantesInscriptos() {}
+IDictionary* ControllerClases::listarAsignaturasAsignadas(string email) {}
+TipoClase ControllerClases::crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo) {}
+IDictionary* ControllerClases::listarEstudiantesInscriptos() {}
 void ControllerClases::habilitarEstudiante(string cedula) {}
 DtClase* ControllerClases::obtenerInfoClase() {}
 void ControllerClases::confirmarInicioClase() {}
 void ControllerClases::cancelarInicioClase() {}
 //CU finalizacion de clase
-ICollection* ControllerClases::listarClasesEnVivo(string email) {}
+IDictionary* ControllerClases::listarClasesEnVivo(string email) {}
 DtClase* ControllerClases::seleccionarClaseDocente(int numeroClase) {}
 void ControllerClases::confirmarFinalizacionClase() {}
 void ControllerClases::cancelarFinalizacionClase() {}
 //CU envio de mensaje
-ICollection* ControllerClases::listarClasesEnVivoParticipando(string email) {}
-ICollection* ControllerClases::listarMensajes(int numeroClase) {}
+IDictionary* ControllerClases::listarClasesEnVivoParticipando(string email) {}
+IDictionary* ControllerClases::listarMensajes(int numeroClase) {}
 void ControllerClases::responderMensaje(int idMensaje, string mensaje) {}
 void ControllerClases::escribirMensaje(string mensaje) {}
 void ControllerClases::enviarMensaje() {}
 void ControllerClases::cancelarMensaje() {}
 //CU AsistenciaEnDiferido en vivo
-ICollection* ControllerClases::listarAsignaturasCursando(string cedula) {}
-ICollection* ControllerClases::listarClasesEnVivoHabilitado(string codigoAsignatura) {}
+IDictionary* ControllerClases::listarAsignaturasCursando(string cedula) {}
+IDictionary* ControllerClases::listarClasesEnVivoHabilitado(string codigoAsignatura) {}
 DtClase* ControllerClases::seleccionarClase(int numeroClase) {}
 void ControllerClases::confirmarAsistencia() {}
 void ControllerClases::cancelarAsistencia() {}
 //CU reproduccion en diferido
-ICollection* ControllerClases::listarClasesEnDiferido(string codigoAsignatura) {}
-ICollection* ControllerClases::confirmarReproduccion() {}
+IDictionary* ControllerClases::listarClasesEnDiferido(string codigoAsignatura) {}
+IDictionary* ControllerClases::confirmarReproduccion() {}
 void ControllerClases::cancelarReproduccion() {}
 //CU listado de clases
-ICollection* ControllerClases::listarClases(string codigoAsignatura) {}
+IDictionary* ControllerClases::listarClases(string codigoAsignatura) {}
 //CU tiempo de dictado
-ICollection* ControllerClases::listarAsignaturas() {}
+IDictionary* ControllerClases::listarAsignaturas() {}
 //CU tiempo AsistenciaEnDiferido 
-//ICollection* ControllerClases::listarAsignaturasAsignadas(string email) {}
-ICollection* ControllerClases::listarClasesDictadas(string codigoAsignatura) {}
+//IDictionary* ControllerClases::listarAsignaturasAsignadas(string email) {}
+IDictionary* ControllerClases::listarClasesDictadas(string codigoAsignatura) {}
 
 void ControllerClases::cargarDatosClases() {}

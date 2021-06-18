@@ -13,7 +13,7 @@ DtPractico::DtPractico(int numeroClase, string nombreClase, FechaHora fechaHoraC
 
 }
 
-DtPractico::DtPractico(int numeroClase, string nombreClase, ICollection* docentes) : DtClase(numeroClase, nombreClase, docentes) {
+DtPractico::DtPractico(int numeroClase, string nombreClase, IDictionary* docentes) : DtClase(numeroClase, nombreClase, docentes) {
 
 }
 

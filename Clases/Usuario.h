@@ -37,13 +37,13 @@ public:
 
     //operaciones DCD
     virtual DtUsuario* getDatosUsuario() const = 0;
-    ICollection* getDatosMensajes(int numeroClase) const;
+    IDictionary* getDatosMensajes(int numeroClase) const;
     void agregarClase(Clase* c);
-    ICollection* getDatosClasesEnVivo() const;
+    IDictionary* getDatosClasesEnVivo() const;
     Clase* getClase(int numeroClase) const;
     DtClase* getDatosClase(int numeroClase) const;
-    ICollection* getDatosClasesEnVivo(string email) const;
-    ICollection* getDatosClases(string codigoAsignatura) const;
+    IDictionary* getDatosClasesEnVivo(string email) const;
+    IDictionary* getDatosClases(string codigoAsignatura) const;
     void removerClases(string codigoAsignatura);
 };
 

@@ -15,13 +15,13 @@ DtAsignatura ControllerAsignaturasUsuarios::agregarAsignatura(string nombreAsign
 void ControllerAsignaturasUsuarios::confirmarAltaAsignatura() {}
 void ControllerAsignaturasUsuarios::cancelarAltaAsignatura() {}
 //CU asignacion docente a asignatura
-ICollection* ControllerAsignaturasUsuarios::listarAsignaturas() {}
-ICollection* ControllerAsignaturasUsuarios::listarDocentesSinAsignar(string codigoAsignatura) {}
+IDictionary* ControllerAsignaturasUsuarios::listarAsignaturas() {}
+IDictionary* ControllerAsignaturasUsuarios::listarDocentesSinAsignar(string codigoAsignatura) {}
 void ControllerAsignaturasUsuarios::seleccionarDocente(string email, TipoClase rolDictado) {}
 void ControllerAsignaturasUsuarios::confirmarAsignacion() {}
 void ControllerAsignaturasUsuarios::cancelarAsignacion() {}
 //CU inscripcion a asignaturas
-ICollection* ControllerAsignaturasUsuarios::listarAsignaturasNoInscripto(string cedula) {}
+IDictionary* ControllerAsignaturasUsuarios::listarAsignaturasNoInscripto(string cedula) {}
 void ControllerAsignaturasUsuarios::seleccionarAsignatura(string codigoAsignatura) {}
 void ControllerAsignaturasUsuarios::confirmarInscripcion() {}
 void ControllerAsignaturasUsuarios::cancelarInscripcion() {}

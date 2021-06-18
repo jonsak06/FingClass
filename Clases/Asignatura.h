@@ -7,7 +7,6 @@
 #include "../Datatypes/DtClase.h"
 #include "../Datatypes/DtMensaje.h"
 #include "../ICollection/interfaces/IDictionary.h"
-#include "../ICollection/interfaces/ICollection.h"
 #include <string>
 
 using namespace std;
@@ -50,14 +49,14 @@ public:
     //operaciones DCD
     DtAsignatura getDatosAsignatura() const;
     Clase* iniciarClase(DtClase* dvCls, IDictionary* habilitados) const;
-    ICollection* getDatosClasesEnDiferido() const;
-    ICollection* reproducirClase(int numeroClase, Estudiante e) const;
+    IDictionary* getDatosClasesEnDiferido() const;
+    IDictionary* reproducirClase(int numeroClase, Estudiante e) const;
     void eliminarClases();
     Clase* getClase(int numeroClase) const;
     bool comprobarInscripcionEstudiante(string cedula) const;
     void inscribirEstudiante(Estudiante e);
-    ICollection* getDatosEstudiantesInscriptos() const;
-    ICollection* getDatosClasesEnVivoHabilitado(string cedula) const;
+    IDictionary* getDatosEstudiantesInscriptos() const;
+    IDictionary* getDatosClasesEnVivoHabilitado(string cedula) const;
     DtClase* getDatosClase(int numeroClase) const; 
     Clase* asistirClase(int numeroClase, Estudiante e) const;
 };

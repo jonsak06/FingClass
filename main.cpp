@@ -1,6 +1,7 @@
 #include "Otros/Factory.h"
 #include "Datatypes/DtAsignatura.h"
 #include "Otros/Reloj.h"
+#include "ICollection/String.h"
 #include <iostream>
 
 int menuUsuario();
@@ -14,7 +15,7 @@ int main()
     Factory &fabrica = Factory::getInstance();
     IClases &clases = fabrica.getCtrlClases();
     IAsignaturasUsuarios &asigUsr = fabrica.getCtrlAsigUsr();
-    Reloj& reloj = Reloj::getInstance();
+    Reloj &reloj = Reloj::getInstance();
     int opcion;
 
     do
@@ -137,7 +138,7 @@ int main()
 
                 case 3:
                 {
-                    ICollection *datosAsignatura = asigUsr.listarAsignaturas();
+                    IDictionary *datosAsignatura = asigUsr.listarAsignaturas();
                     IIterator *it = datosAsignatura->getIterator();
 
                     cout << "Datos de asignaturas:\n";
@@ -150,7 +151,7 @@ int main()
                     string codAsig;
                     cout << "Codigo de la asignatura seleccionada: ";
                     getline(cin >> ws, codAsig);
-                    ICollection *datosDocentes = asigUsr.listarDocentesSinAsignar(codAsig);
+                    IDictionary *datosDocentes = asigUsr.listarDocentesSinAsignar(codAsig);
                     it = datosDocentes->getIterator();
 
                     cout << "Docentes sin asignar a la asignatura seleccionada:\n";
@@ -195,8 +196,8 @@ int main()
 
                 case 4:
                 {
-                    ICollection* datosAsignaturas = clases.listarAsignaturas();
-                    IIterator* it = datosAsignaturas->getIterator();
+                    IDictionary *datosAsignaturas = clases.listarAsignaturas();
+                    IIterator *it = datosAsignaturas->getIterator();
 
                     cout << "Tiempo de dictado de clases por asignatura:\n";
                     for (it; it->hasCurrent(); it->next())
@@ -211,8 +212,8 @@ int main()
 
                 case 5:
                 {
-                    ICollection* datosAsignaturas = asigUsr.listarAsignaturas();
-                    IIterator* it = datosAsignaturas->getIterator();
+                    IDictionary *datosAsignaturas = asigUsr.listarAsignaturas();
+                    IIterator *it = datosAsignaturas->getIterator();
 
                     cout << "Listado de asignaturas:\n";
                     for (it; it->hasCurrent(); it->next())
@@ -220,7 +221,7 @@ int main()
                         DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
                         cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
                     }
-                    
+
                     string codAsig;
                     cout << "Codigo de la asignatura seleccionada: ";
                     getline(cin >> ws, codAsig);
@@ -279,11 +280,128 @@ int main()
 
         case 2:
         {
-            int op;
+            int opt;
             do
             {
-                op = menuDocente();
-            } while (op != 6);
+                opt = menuDocente();
+                switch (opt)
+                {
+                case 1:
+                {
+                    string email;
+                    cout << "Ingrese su direccion de email: ";
+                    getline(cin >> ws, email);
+                    IDictionary *datosAsignaturas = clases.listarAsignaturasAsignadas(email);
+                    IIterator *it = datosAsignaturas->getIterator();
+                    cout << "Listado de sus asignaturas:\n";
+                    for (it; it->hasCurrent(); it->next())
+                    {
+                        DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
+                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                    }
+
+                    string codAsig, nombreClase;
+                    cout << "Codigo de la asginatura seleccionada: ";
+                    getline(cin >> ws, codAsig);
+                    cout << "Ingrese el nombre de la clase: ";
+                    getline(cin >> ws, nombreClase);
+                    int dia, mes, anio, hora, min, seg;
+                    cout << "Ingrese la fecha de comienzo:\n";
+                    cout << "Dia: ";
+                    cin >> dia;
+                    cout << "Mes: ";
+                    cin >> mes;
+                    cout << "Anio: ";
+                    cin >> anio;
+                    system("clear");
+                    cout << "Ingrese la hora de comienzo:\n";
+                    cout << "Hora: ";
+                    cin >> hora;
+                    cout << "Minuto: ";
+                    cin >> min;
+                    cout << "Segundo: ";
+                    cin >> seg;
+                    TipoClase tipoClase = clases.crearDatosClase(codAsig, nombreClase, FechaHora(dia, mes, anio, hora, min, seg));
+
+                    if (tipoClase == monitoreo)
+                    {
+                        IDictionary *datosEstudiantes = clases.listarEstudiantesInscriptos();
+                        it = datosEstudiantes->getIterator();
+                        cout << "Listado de estudiantes inscriptos a la asignatura:\n";
+                        for (it; it->hasCurrent(); it->next())
+                        {
+                            DtEstudiante *dvEst = dynamic_cast<DtEstudiante *>(it->getCurrent());
+                            cout << dvEst->getNombre(); //sobrecargar el cout en DtEstudiante
+                        }
+
+                        char *cedula;
+                        bool seguirHabilitando = true;
+                        int i = 0;
+                        while (seguirHabilitando && i < 15)
+                        {
+                            cout << "Cedula del estudiante seleccionado: ";
+                            // getline(cin >> ws, cedula);
+                            cin >> cedula;
+                            IKey *key = new String(cedula);
+                            if (datosEstudiantes->find(key) != NULL)
+                            {
+                                clases.habilitarEstudiante(cedula);
+                            }
+                            else
+                            {
+                                cout << "El estudiante no existe o no cursa la asignatura\n";
+                                //pausar consola
+                                system("clear");
+                                continue;
+                            }
+                            i++;
+                            if (i < 15)
+                            {
+                                int op;
+                                cout << "Desea seguir habilitando estudiantes? 1- Si 2- No\n";
+                                cin >> op;
+                                if (op == 2)
+                                {
+                                    seguirHabilitando = false;
+                                }
+                            }
+                            system("clear");
+                        }
+                    }
+                }
+                break;
+
+                case 2:
+                {
+                }
+                break;
+
+                case 3:
+                {
+                }
+                break;
+
+                case 4:
+                {
+                }
+                break;
+
+                case 5:
+                {
+                }
+                break;
+
+                case 6:
+                    break;
+
+                default:
+                    break;
+                }
+            } while (opt != 6);
+
+            // DtClase* obtenerInfoClase();
+            // void confirmarInicioClase();
+            // void cancelarInicioClase();
         }
         break;
 

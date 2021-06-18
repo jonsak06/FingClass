@@ -104,7 +104,7 @@ void Clase::setAsignatura(Asignatura* asignatura) {
 
 void Clase::finalizarClase() {}
 void Clase::setInicioAsistenciaEnDiferido(Estudiante e) {}
-ICollection* Clase::getDatosMensajes() const {}
+IDictionary* Clase::getDatosMensajes() const {}
 string Clase::getCodigoAsignatura() const {}
 void Clase::eliminarAsistencias() {}
 void Clase::eliminarMensajes() {}

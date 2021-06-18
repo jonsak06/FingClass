@@ -26,7 +26,7 @@ void Docente::setAsignaciones(ICollection* asignaciones) {
 DtDocente* Docente::getDatosUsuario() const {}
 bool Docente::comprobarAsignacion(string codigoAsignatura) const {}
 void Docente::asignarAsignatura(Asignatura a, TipoClase rolDictado) {}
-ICollection* Docente::getDatosAsignaturas() const {}
+IDictionary* Docente::getDatosAsignaturas() const {}
 TipoClase Docente::getRolDictado(string codigoAsignatura) const {}
 void Docente::finalizarClase(int numeroClase) {}
 void Docente::removerAsignacion(string codigoAsignatura) {}

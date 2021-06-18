@@ -16,12 +16,12 @@ public:
     static HandlerAsignaturas& getInstance();
 
     //operaciones DCD
-    ICollection* getDatosAsignaturas() const;
+    IDictionary* getDatosAsignaturas() const;
     Asignatura getAsignatura(string codigoAsignatura);
-    ICollection* getDatosAsignaturasNoInscripto() const;
+    IDictionary* getDatosAsignaturasNoInscripto() const;
     void agregarAsignatura(DtAsignatura dvAsig);
-    ICollection* getDatosAsignaturasCursando(string cedula) const;
-    ICollection* listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura) const;
+    IDictionary* getDatosAsignaturasCursando(string cedula) const;
+    IDictionary* listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura) const;
     void removerAsignatura(Asignatura a);
     void eliminarAsignatura(Asignatura a);
 };

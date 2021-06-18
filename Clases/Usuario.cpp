@@ -53,11 +53,11 @@ void Usuario::setClases(IDictionary* clases) {
     this->clases = clases;
 }
 
-ICollection* Usuario::getDatosMensajes(int numeroClase) const {}
+IDictionary* Usuario::getDatosMensajes(int numeroClase) const {}
 void Usuario::agregarClase(Clase* c) {}
-ICollection* Usuario::getDatosClasesEnVivo() const {}
+IDictionary* Usuario::getDatosClasesEnVivo() const {}
 Clase* Usuario::getClase(int numeroClase) const {}
 DtClase* Usuario::getDatosClase(int numeroClase) const {}
-ICollection* Usuario::getDatosClasesEnVivo(string email) const {}
-ICollection* Usuario::getDatosClases(string codigoAsignatura) const {}
+IDictionary* Usuario::getDatosClasesEnVivo(string email) const {}
+IDictionary* Usuario::getDatosClases(string codigoAsignatura) const {}
 void Usuario::removerClases(string codigoAsignatura) {}

@@ -13,7 +13,7 @@ DtTeorico::DtTeorico(int numeroClase, string nombreClase, FechaHora fechaHoraCom
 
 }
 
-DtTeorico::DtTeorico(int numeroClase, string nombreClase, ICollection* docentes, int cantAsistentes) 
+DtTeorico::DtTeorico(int numeroClase, string nombreClase, IDictionary* docentes, int cantAsistentes) 
                     : DtClase(numeroClase, nombreClase, docentes) {
     this->cantAsistentes = cantAsistentes;
 }

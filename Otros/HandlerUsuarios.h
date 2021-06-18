@@ -16,7 +16,7 @@ public:
     static HandlerUsuarios& getInstance();
 
     //operaciones DCD
-    ICollection* getDatosDocentesSinAsignar(string codigoAsignatura) const;
+    IDictionary* getDatosDocentesSinAsignar(string codigoAsignatura) const;
     Docente getDocente(string email) const; 
     Estudiante getEstudiante(string cedula) const;
     Usuario* getUsuario(string email) const;

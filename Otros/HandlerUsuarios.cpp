@@ -5,7 +5,7 @@ HandlerUsuarios& HandlerUsuarios::getInstance() {
     return *hndlrUsr;
 }
 
-ICollection* HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura) const {}
+IDictionary* HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura) const {}
 Docente HandlerUsuarios::getDocente(string email) const {} 
 Estudiante HandlerUsuarios::getEstudiante(string cedula) const {}
 Usuario* HandlerUsuarios::getUsuario(string email) const {}

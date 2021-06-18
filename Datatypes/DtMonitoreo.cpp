@@ -13,7 +13,7 @@ DtMonitoreo::DtMonitoreo(int numeroClase, string nombreClase, FechaHora fechaHor
 
 }
 
-DtMonitoreo::DtMonitoreo(int numeroClase, string nombreClase, ICollection* docentes, ICollection* estudiantes) 
+DtMonitoreo::DtMonitoreo(int numeroClase, string nombreClase, IDictionary* docentes, IDictionary* estudiantes) 
                         : DtClase(numeroClase, nombreClase, docentes) {
     this->estudiantes = estudiantes;
 }
@@ -23,7 +23,7 @@ DtMonitoreo::DtMonitoreo(int numeroClase, string nombreClase, float promedioTiem
 
 }
 
-ICollection* DtMonitoreo::getEstudiantes() const {
+IDictionary* DtMonitoreo::getEstudiantes() const {
     return estudiantes;
 }
 
