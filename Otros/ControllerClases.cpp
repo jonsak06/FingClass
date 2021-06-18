@@ -38,7 +38,7 @@ void ControllerClases::cancelarReproduccion() {}
 IDictionary* ControllerClases::listarClases(string codigoAsignatura) {}
 //CU tiempo de dictado
 IDictionary* ControllerClases::listarAsignaturas() {}
-//CU tiempo AsistenciaEnDiferido 
+//CU tiempo Asistencia 
 //IDictionary* ControllerClases::listarAsignaturasAsignadas(string email) {}
 IDictionary* ControllerClases::listarClasesDictadas(string codigoAsignatura) {}
 
