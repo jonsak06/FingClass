@@ -334,14 +334,13 @@ int main()
                             cout << dvEst->getNombre(); //sobrecargar el cout en DtEstudiante
                         }
 
-                        char *cedula;
+                        string cedula;
                         bool seguirHabilitando = true;
                         int i = 0;
                         while (seguirHabilitando && i < 15)
                         {
                             cout << "Cedula del estudiante seleccionado: ";
-                            // getline(cin >> ws, cedula);
-                            cin >> cedula;
+                            getline(cin >> ws, cedula);
                             IKey *key = new String(cedula);
                             if (datosEstudiantes->find(key) != NULL)
                             {

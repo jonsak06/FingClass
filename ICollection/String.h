@@ -10,6 +10,9 @@
 
 #include "interfaces/ICollectible.h"
 #include "interfaces/OrderedKey.h"
+#include <string>
+
+using namespace std;
 
 /**
  *  Implementación simple del datatype String que hereda tanto de ICollectible
@@ -18,17 +21,15 @@
 class String: public ICollectible, public OrderedKey
 {
 private:
-    char *s;
+    string s;
 public:
     // construye el Datatype a partir de un puntero a caracter
-    String(const char *s = "");
+    String(string s);
     
     // da el valor del string
-    const char *getValue() const;
+    const string getValue() const;
     
     ComparisonRes compare(OrderedKey *k) const;
-    
-    virtual ~String();
     
 };
 
