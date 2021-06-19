@@ -22,7 +22,7 @@ public:
     Docente getDocente(string email) const; 
     Estudiante getEstudiante(string cedula) const;
     Usuario* getUsuario(string email) const;
-    void crearUsuario(DtUsuario* dvUsr);
+    void agregarUsuario(DtUsuario* dvUsr);
     void removerClasesYAsignacionDocentes(string codigoAsignatura);
     void removerClasesEstudiantes(string codigoAsignatura);
 };

@@ -10,7 +10,7 @@ Docente HandlerUsuarios::getDocente(string email) const {}
 Estudiante HandlerUsuarios::getEstudiante(string cedula) const {}
 Usuario* HandlerUsuarios::getUsuario(string email) const {}
 
-void HandlerUsuarios::crearUsuario(DtUsuario* dvUsr) {
+void HandlerUsuarios::agregarUsuario(DtUsuario* dvUsr) {
     Usuario* u;
     IKey* k;
     if (dynamic_cast<DtEstudiante*>(dvUsr) == nullptr)

@@ -31,7 +31,7 @@ int main()
                 opt = menuAdministrador();
                 switch (opt)
                 {
-                case 1:
+                case 1: //listo
                 {
                     int op;
                     string nombre, email, contrasenia, urlImgPerfil, nombreInstituto, cedula;
@@ -41,8 +41,10 @@ int main()
                         cin >> op;
                         if (op == 1 || op == 2)
                         {
+                            system("clear");
                             break;
                         }
+                        system("clear");
                     }
 
                     cout << "Ingrese el nombre: ";
@@ -121,8 +123,9 @@ int main()
                     {
                         monitoreo = false;
                     }
-                    // agregarAsignatura devuelve un DtAsignatura, sobrecargar el cout para mostrar la info
-                    asigUsr.agregarAsignatura(nombreAsignatura, codigoAsignatura, teorico, practico, monitoreo);
+                    system("clear");
+                    cout << "Datos de la asignatura:\n";
+                    cout << asigUsr.agregarAsignatura(nombreAsignatura, codigoAsignatura, teorico, practico, monitoreo) << endl;
 
                     op = menuConfirmacion();
                     if (op == 1)

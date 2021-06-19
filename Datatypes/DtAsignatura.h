@@ -3,6 +3,7 @@
 
 #include "../ICollection/interfaces/ICollectible.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -27,6 +28,8 @@ public:
     bool tienePractico() const;
     bool tieneMonitoreo() const;
     float getTiempoTotalDictado() const;
+    void mostrarInfo(ostream&);
+    friend ostream& operator<<(ostream&, DtAsignatura*);
 };
 
 #endif

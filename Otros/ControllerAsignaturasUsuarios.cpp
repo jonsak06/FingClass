@@ -16,7 +16,8 @@ void ControllerAsignaturasUsuarios::agregarEstudiante(string nombre, string emai
 
 void ControllerAsignaturasUsuarios::confirmarAltaUsuario() {
     HandlerUsuarios& hndlrUsr = HandlerUsuarios::getInstance();
-    hndlrUsr.crearUsuario(dvUsr);
+    hndlrUsr.agregarUsuario(dvUsr);
+    delete dvUsr;
 }
 
 void ControllerAsignaturasUsuarios::cancelarAltaUsuario() {
@@ -24,9 +25,19 @@ void ControllerAsignaturasUsuarios::cancelarAltaUsuario() {
 }
 
 //CU Alta asignatura
-DtAsignatura ControllerAsignaturasUsuarios::agregarAsignatura(string nombreAsignatura, string codigoAsignatura, bool teorico, bool practico, bool monitoreo) {}
-void ControllerAsignaturasUsuarios::confirmarAltaAsignatura() {}
-void ControllerAsignaturasUsuarios::cancelarAltaAsignatura() {}
+DtAsignatura* ControllerAsignaturasUsuarios::agregarAsignatura(string nombreAsignatura, string codigoAsignatura, bool teorico, bool practico, bool monitoreo) {
+    dvAsig = new DtAsignatura(nombreAsignatura, codigoAsignatura, teorico, practico, monitoreo);
+    return dvAsig;
+}
+void ControllerAsignaturasUsuarios::confirmarAltaAsignatura() {
+    HandlerAsignaturas& hndlrAsig = HandlerAsignaturas::getInstance();
+    hndlrAsig.agregarAsignatura(dvAsig);
+    delete dvAsig;
+}
+void ControllerAsignaturasUsuarios::cancelarAltaAsignatura() {
+    delete dvAsig;
+}
+
 //CU asignacion docente a asignatura
 IDictionary* ControllerAsignaturasUsuarios::listarAsignaturas() {}
 IDictionary* ControllerAsignaturasUsuarios::listarDocentesSinAsignar(string codigoAsignatura) {}

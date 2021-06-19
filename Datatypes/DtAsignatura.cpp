@@ -48,3 +48,20 @@ bool DtAsignatura::tieneMonitoreo() const {
 float DtAsignatura::getTiempoTotalDictado() const {
     return tiempoTotalDictado;
 }
+
+void DtAsignatura::mostrarInfo(ostream&) {
+    string teo = this->tieneTeorico() ? "tiene" : "no tiene";
+    string pra = this->tienePractico() ? "tiene" : "no tiene";
+    string mon = this->tieneMonitoreo() ? "tiene" : "no tiene";
+    cout << endl;
+    cout << "Codigo: " << this->getCodigoAsignatura() << endl;
+    cout << "Nombre: " << this->getNombreAsignatura() << endl;
+    cout << "Teorico: " << teo << endl;
+    cout << "Practico: " << pra << endl;
+    cout << "Monitoreo: " << mon << endl;
+}
+
+ostream& operator<<(ostream& salida, DtAsignatura* a) {
+    a->mostrarInfo(salida);
+    return salida;
+}

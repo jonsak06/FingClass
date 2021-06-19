@@ -5,6 +5,7 @@
 #include "../Clases/Docente.h"
 #include "IAsignaturasUsuarios.h"
 #include "HandlerUsuarios.h"
+#include "HandlerAsignaturas.h"
 
 class ControllerAsignaturasUsuarios : public IAsignaturasUsuarios
 {
@@ -17,6 +18,7 @@ private:
     Docente* docActual;
     Asignatura* asigActual;
     DtUsuario* dvUsr;
+    DtAsignatura* dvAsig;
 public:
     static ControllerAsignaturasUsuarios& getInstance();
 
@@ -27,7 +29,7 @@ public:
     void cancelarAltaUsuario();
 
     //CU Alta asignatura
-    DtAsignatura agregarAsignatura(string nombreAsignatura, string codigoAsignatura, bool teorico, bool practico, bool monitoreo);
+    DtAsignatura* agregarAsignatura(string nombreAsignatura, string codigoAsignatura, bool teorico, bool practico, bool monitoreo);
     void confirmarAltaAsignatura();
     void cancelarAltaAsignatura();
 

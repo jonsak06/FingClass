@@ -15,7 +15,7 @@ public:
     virtual void confirmarAltaUsuario() = 0;
     virtual void cancelarAltaUsuario() = 0;
     //CU Alta asignatura
-    virtual DtAsignatura agregarAsignatura(string nombreAsignatura, string codigoAsignatura, bool teorico, bool practico, bool monitoreo) = 0;
+    virtual DtAsignatura* agregarAsignatura(string nombreAsignatura, string codigoAsignatura, bool teorico, bool practico, bool monitoreo) = 0;
     virtual void confirmarAltaAsignatura() = 0;
     virtual void cancelarAltaAsignatura() = 0;
     //CU asignacion docente a asignatura
