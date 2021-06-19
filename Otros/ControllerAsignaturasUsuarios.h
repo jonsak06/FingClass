@@ -4,6 +4,7 @@
 #include "../Clases/Asignatura.h"
 #include "../Clases/Docente.h"
 #include "IAsignaturasUsuarios.h"
+#include "HandlerUsuarios.h"
 
 class ControllerAsignaturasUsuarios : public IAsignaturasUsuarios
 {
@@ -15,6 +16,7 @@ private:
     ControllerAsignaturasUsuarios& operator=(ControllerAsignaturasUsuarios&&) = delete;
     Docente* docActual;
     Asignatura* asigActual;
+    DtUsuario* dvUsr;
 public:
     static ControllerAsignaturasUsuarios& getInstance();
 

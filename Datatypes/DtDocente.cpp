@@ -15,3 +15,7 @@ DtDocente::DtDocente(string nombre, string email) : DtUsuario(nombre, email) {
 string DtDocente::getNombreInstituto() const {
     return nombreInstituto;
 }
+
+string DtDocente::getCedula() const {
+    
+}

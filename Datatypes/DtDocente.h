@@ -13,6 +13,7 @@ public:
     DtDocente(string, string, string, string, string);
     DtDocente(string, string);
     string getNombreInstituto() const;
+    string getCedula() const;
 };
 
 #endif

@@ -3,7 +3,7 @@
 Docente::Docente() {
 }
 
-Docente::Docente(string nombre, string email, string urlImgPerfil, string contrasenia, string nombreInstituto) : Usuario(nombre, email, urlImgPerfil, contrasenia) {
+Docente::Docente(string nombre, string email, string contrasenia, string urlImgPerfil, string nombreInstituto) : Usuario(nombre, email, contrasenia, urlImgPerfil) {
     this->nombreInstituto = nombreInstituto;
 }
 

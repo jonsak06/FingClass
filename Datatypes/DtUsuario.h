@@ -23,6 +23,8 @@ public:
     string getEmail() const;
     string getContrasenia() const;
     string getUrlImgPerfil() const;
+    virtual string getNombreInstituto() const = 0;
+    virtual string getCedula() const = 0;
 };
 
 #endif

@@ -12,6 +12,7 @@ public:
     DtEstudiante(string, string, string, string, string);
     DtEstudiante(string, string);
     string getCedula() const;
+    string getNombreInstituto() const;
 };
 
 #endif

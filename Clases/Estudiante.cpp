@@ -3,7 +3,7 @@
 Estudiante::Estudiante() {
 }
 
-Estudiante::Estudiante(string nombre, string email, string urlImgPerfil, string contrasenia, string cedula) : Usuario(nombre, email, urlImgPerfil, contrasenia) {
+Estudiante::Estudiante(string nombre, string email, string contrasenia, string urlImgPerfil, string cedula) : Usuario(nombre, email, contrasenia, urlImgPerfil) {
     this->cedula = cedula;
 }
 

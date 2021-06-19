@@ -6,10 +6,23 @@ ControllerAsignaturasUsuarios& ControllerAsignaturasUsuarios::getInstance() {
 }
 
 //CU Alta usuario
-void ControllerAsignaturasUsuarios::agregarDocente(string nombre, string email, string contrasenia, string urlImgPerfil, string nombreInstituto) {}
-void ControllerAsignaturasUsuarios::agregarEstudiante(string nombre, string email, string contrasenia, string urlImgPerfil, string cedula) {}
-void ControllerAsignaturasUsuarios::confirmarAltaUsuario() {}
-void ControllerAsignaturasUsuarios::cancelarAltaUsuario() {}
+void ControllerAsignaturasUsuarios::agregarDocente(string nombre, string email, string contrasenia, string urlImgPerfil, string nombreInstituto) {
+    dvUsr = new DtDocente(nombre, email, contrasenia, urlImgPerfil, nombreInstituto);
+}
+
+void ControllerAsignaturasUsuarios::agregarEstudiante(string nombre, string email, string contrasenia, string urlImgPerfil, string cedula) {
+    dvUsr = new DtEstudiante(nombre, email, contrasenia, urlImgPerfil, cedula);
+}
+
+void ControllerAsignaturasUsuarios::confirmarAltaUsuario() {
+    HandlerUsuarios& hndlrUsr = HandlerUsuarios::getInstance();
+    hndlrUsr.crearUsuario(dvUsr);
+}
+
+void ControllerAsignaturasUsuarios::cancelarAltaUsuario() {
+    delete dvUsr;
+}
+
 //CU Alta asignatura
 DtAsignatura ControllerAsignaturasUsuarios::agregarAsignatura(string nombreAsignatura, string codigoAsignatura, bool teorico, bool practico, bool monitoreo) {}
 void ControllerAsignaturasUsuarios::confirmarAltaAsignatura() {}

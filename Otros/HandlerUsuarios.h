@@ -2,6 +2,8 @@
 #define HANDLERUSUARIOS_H
 
 #include "../Clases/Docente.h"
+#include "../ICollection/String.h"
+#include "../ICollection/collections/OrderedDictionary.h"
 
 class HandlerUsuarios
 {
@@ -11,7 +13,7 @@ private:
     HandlerUsuarios& operator=(const HandlerUsuarios&) = delete;
     HandlerUsuarios(HandlerUsuarios&&) = delete;
     HandlerUsuarios& operator=(HandlerUsuarios&&) = delete;
-    IDictionary* usuarios;
+    IDictionary* usuarios = new OrderedDictionary;
 public:
     static HandlerUsuarios& getInstance();
 
