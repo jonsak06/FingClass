@@ -12,7 +12,6 @@
 using namespace std;
 
 class Clase;
-// class Estudiante;
 
 class Asignatura : public ICollectible
 {
@@ -47,7 +46,7 @@ public:
     void setClases(IDictionary*);
 
     //operaciones DCD
-    DtAsignatura getDatosAsignatura() const;
+    DtAsignatura* getDatosAsignatura() const;
     Clase* iniciarClase(DtClase* dvCls, IDictionary* habilitados) const;
     IDictionary* getDatosClasesEnDiferido() const;
     IDictionary* reproducirClase(int numeroClase, Estudiante e) const;

@@ -3,6 +3,7 @@
 
 #include "DtUsuario.h"
 #include "../Otros/TipoClase.h"
+#include <iostream>
 
 class DtDocente : public DtUsuario
 {
@@ -14,6 +15,7 @@ public:
     DtDocente(string, string);
     string getNombreInstituto() const;
     string getCedula() const;
+    void mostrarInfo(ostream&);
 };
 
 #endif

@@ -18,3 +18,5 @@ string DtEstudiante::getCedula() const {
 string DtEstudiante::getNombreInstituto() const {
     
 }
+
+void DtEstudiante::mostrarInfo(ostream&) {}

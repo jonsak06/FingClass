@@ -24,6 +24,7 @@ public:
     virtual void seleccionarDocente(string email, TipoClase rolDictado) = 0;
     virtual void confirmarAsignacion() = 0;
     virtual void cancelarAsignacion() = 0;
+    virtual void dejarDeAsignarDocentes() = 0;
     //CU inscripcion a asignaturas
     virtual IDictionary* listarAsignaturasNoInscripto(string cedula) = 0;
     virtual void seleccionarAsignatura(string codigoAsignatura) = 0;

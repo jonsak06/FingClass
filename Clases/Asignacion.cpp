@@ -26,5 +26,8 @@ void Asignacion::setAsignatura(Asignatura* asignatura) {
     this->asignatura = asignatura;
 }
 
-string Asignacion::getCodigoAsignatura() {}
+string Asignacion::getCodigoAsignatura() {
+    return asignatura->getCodigoAsignatura();
+}
+
 DtAsignatura Asignacion::getDatosAsignatura() {}

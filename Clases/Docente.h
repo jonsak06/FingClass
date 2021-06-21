@@ -6,6 +6,7 @@
 #include "Asignacion.h"
 #include "../Datatypes/DtDocente.h"
 #include "../Otros/TipoClase.h"
+#include "../ICollection/collections/List.h"
 
 // class Asignatura;
 
@@ -25,7 +26,7 @@ public:
     //operaciones DCD
     DtDocente* getDatosUsuario() const;
     bool comprobarAsignacion(string codigoAsignatura) const;
-    void asignarAsignatura(Asignatura a, TipoClase rolDictado);
+    void asignarAsignatura(Asignatura* a, TipoClase rolDictado);
     IDictionary* getDatosAsignaturas() const;
     TipoClase getRolDictado(string codigoAsignatura) const;
     void finalizarClase(int numeroClase);

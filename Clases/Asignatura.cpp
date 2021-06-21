@@ -78,7 +78,10 @@ void Asignatura::setClases(IDictionary* clases) {
     this->clases = clases;
 }
 
-DtAsignatura Asignatura::getDatosAsignatura() const {}
+DtAsignatura* Asignatura::getDatosAsignatura() const {
+    return new DtAsignatura(codigoAsignatura, nombreAsignatura, teorico, practico, monitoreo);
+}
+
 Clase* Asignatura::iniciarClase(DtClase*, IDictionary*) const {} //ver si no da problema el const
 IDictionary* Asignatura::getDatosClasesEnDiferido() const {}
 IDictionary* Asignatura::reproducirClase(int, Estudiante) const {}

@@ -8,17 +8,17 @@
 class HandlerAsignaturas
 {
 private:
-    HandlerAsignaturas() = default;
+    HandlerAsignaturas();
     HandlerAsignaturas(const HandlerAsignaturas&) = delete;
     HandlerAsignaturas& operator=(const HandlerAsignaturas&) = delete;
     HandlerAsignaturas(HandlerAsignaturas&&) = delete;
     HandlerAsignaturas& operator=(HandlerAsignaturas&&) = delete;
-    IDictionary* asignaturas = new OrderedDictionary;
+    IDictionary* asignaturas;
 public:
     static HandlerAsignaturas& getInstance();
 
     //operaciones DCD
-    IDictionary* getDatosAsignaturas() const;
+    IDictionary* getDatosAsignaturas();
     Asignatura getAsignatura(string codigoAsignatura);
     IDictionary* getDatosAsignaturasNoInscripto() const;
     void agregarAsignatura(DtAsignatura* dvAsig);

@@ -19,6 +19,9 @@ private:
     Asignatura* asigActual;
     DtUsuario* dvUsr;
     DtAsignatura* dvAsig;
+    string* codigoAsignatura;
+    string* email;
+    TipoClase* rolDictado;
 public:
     static ControllerAsignaturasUsuarios& getInstance();
 
@@ -39,6 +42,7 @@ public:
     void seleccionarDocente(string email, TipoClase rolDictado);
     void confirmarAsignacion();
     void cancelarAsignacion();
+    void dejarDeAsignarDocentes();
 
     //CU inscripcion a asignaturas
     IDictionary* listarAsignaturasNoInscripto(string cedula);

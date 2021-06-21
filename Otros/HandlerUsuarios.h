@@ -8,21 +8,22 @@
 class HandlerUsuarios
 {
 private:
-    HandlerUsuarios() = default;
-    HandlerUsuarios(const HandlerUsuarios&) = delete;
-    HandlerUsuarios& operator=(const HandlerUsuarios&) = delete;
-    HandlerUsuarios(HandlerUsuarios&&) = delete;
-    HandlerUsuarios& operator=(HandlerUsuarios&&) = delete;
-    IDictionary* usuarios = new OrderedDictionary;
+    HandlerUsuarios();
+    HandlerUsuarios(const HandlerUsuarios &) = delete;
+    HandlerUsuarios &operator=(const HandlerUsuarios &) = delete;
+    HandlerUsuarios(HandlerUsuarios &&) = delete;
+    HandlerUsuarios &operator=(HandlerUsuarios &&) = delete;
+    IDictionary *usuarios;
+
 public:
-    static HandlerUsuarios& getInstance();
+    static HandlerUsuarios &getInstance();
 
     //operaciones DCD
-    IDictionary* getDatosDocentesSinAsignar(string codigoAsignatura) const;
-    Docente getDocente(string email) const; 
+    IDictionary *getDatosDocentesSinAsignar(string codigoAsignatura) const;
+    Docente getDocente(string email) const;
     Estudiante getEstudiante(string cedula) const;
-    Usuario* getUsuario(string email) const;
-    void agregarUsuario(DtUsuario* dvUsr);
+    Usuario *getUsuario(string email) const;
+    void agregarUsuario(DtUsuario *dvUsr);
     void removerClasesYAsignacionDocentes(string codigoAsignatura);
     void removerClasesEstudiantes(string codigoAsignatura);
 };

@@ -37,3 +37,8 @@ string DtUsuario::getContrasenia() const {
 string DtUsuario::getUrlImgPerfil() const {
     return urlImgPerfil;
 }
+
+ostream& operator<<(ostream& salida, DtUsuario* u) {
+    u->mostrarInfo(salida);
+    return salida;
+}
