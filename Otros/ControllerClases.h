@@ -6,6 +6,7 @@
 #include "../Clases/Asignatura.h"
 #include "../Clases/Clase.h"
 #include "IClases.h"
+#include "HandlerAsignaturas.h"
 
 class ControllerClases : public IClases
 {
@@ -65,7 +66,7 @@ public:
     IDictionary* listarClases(string codigoAsignatura);
 
     //CU tiempo de dictado
-    IDictionary* listarAsignaturas();
+    IDictionary* listarAsignaturasConTiempoDictado();
 
     //CU tiempo Asistencia
     //IDictionary* listarAsignaturasAsignadas(string email);

@@ -44,7 +44,7 @@ public:
     //CU listado de clases
     virtual IDictionary* listarClases(string codigoAsignatura) = 0;
     //CU tiempo de dictado
-    virtual IDictionary* listarAsignaturas() = 0;
+    virtual IDictionary* listarAsignaturasConTiempoDictado() = 0;
     //CU tiempo AsistenciaEnDiferido 
     virtual IDictionary* listarClasesDictadas(string codigoAsignatura) = 0;
 

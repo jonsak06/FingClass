@@ -26,12 +26,13 @@ IDictionary *HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura
             estaAsignado = d->comprobarAsignacion(codigoAsignatura);
             if (!estaAsignado)
             {
+                DtDocente *dvDoc = d->getDatosUsuario();
                 k = new String(d->getEmail());
-                datosDocentes->add(k, d->getDatosUsuario());
+                datosDocentes->add(k, dvDoc);
             }
         }
     }
-    delete it;
+    delete it, k;
     return datosDocentes;
 }
 

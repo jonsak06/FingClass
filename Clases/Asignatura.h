@@ -26,6 +26,7 @@ private:
 public:
     Asignatura();
     ~Asignatura();
+    Asignatura(string, string, bool, bool, bool, float);
     Asignatura(string, string, bool, bool, bool);
     string getCodigoAsignatura() const;
     string getNombreAsignatura() const;
@@ -46,6 +47,7 @@ public:
 
     //operaciones DCD
     DtAsignatura* getDatosAsignatura() const;
+    DtAsignatura* getDatosConTiempoDictado() const;
     Clase* iniciarClase(DtClase* dvCls, IDictionary* habilitados) const;
     IDictionary* getDatosClasesEnDiferido() const;
     IDictionary* reproducirClase(int numeroClase, Estudiante e) const;

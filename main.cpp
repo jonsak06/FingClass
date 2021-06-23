@@ -247,7 +247,7 @@ int main()
                             {
                                 rolDictado = monitoreo;
                             }
-                            
+
                             if (asigUsr.tieneClaseDe(codAsig, rolDictado))
                             {
                                 break;
@@ -283,19 +283,20 @@ int main()
                 }
                 break;
 
-                case 4:
+                case 4: //listo
                 {
-                    IDictionary *datosAsignaturas = clases.listarAsignaturas();
+                    IDictionary *datosAsignaturas = clases.listarAsignaturasConTiempoDictado();
                     IIterator *it = datosAsignaturas->getIterator();
 
                     cout << "Tiempo de dictado de clases por asignatura:\n";
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
-                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                        cout << endl
+                             << "Nombre: " << dvAsig->getNombreAsignatura() << endl;
+                        cout << "Tiempo de dictado: " << dvAsig->getTiempoTotalDictado() << endl;
                     }
-                    //falta pausar la consola
-                    system("clear");
+                    pausarConsola();
                 }
                 break;
 

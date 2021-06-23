@@ -36,8 +36,13 @@ IDictionary* ControllerClases::confirmarReproduccion() {}
 void ControllerClases::cancelarReproduccion() {}
 //CU listado de clases
 IDictionary* ControllerClases::listarClases(string codigoAsignatura) {}
+
 //CU tiempo de dictado
-IDictionary* ControllerClases::listarAsignaturas() {}
+IDictionary* ControllerClases::listarAsignaturasConTiempoDictado() {
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    return hndlrAsig.getDatosAsignaturasConTiempoDictado();
+}
+
 //CU tiempo Asistencia 
 //IDictionary* ControllerClases::listarAsignaturasAsignadas(string email) {}
 IDictionary* ControllerClases::listarClasesDictadas(string codigoAsignatura) {}

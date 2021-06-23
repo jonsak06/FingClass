@@ -28,6 +28,22 @@ IDictionary *HandlerAsignaturas::getDatosAsignaturas()
     return datosAsignaturas;
 }
 
+IDictionary* HandlerAsignaturas::getDatosAsignaturasConTiempoDictado() {
+    IDictionary *datosTiempoDictado = new OrderedDictionary;
+    IIterator *it = asignaturas->getIterator();
+    IKey *k;
+    Asignatura *a;
+    for (it; it->hasCurrent(); it->next())
+    {
+        a = dynamic_cast<Asignatura *>(it->getCurrent());
+        DtAsignatura *dvAsig = a->getDatosConTiempoDictado();
+        k = new String(a->getCodigoAsignatura());
+        datosTiempoDictado->add(k, dvAsig);
+    }
+    delete it, k;
+    return datosTiempoDictado;
+}
+
 Asignatura HandlerAsignaturas::getAsignatura(string codigoAsignatura)
 {
     IKey *k = new String(codigoAsignatura);
