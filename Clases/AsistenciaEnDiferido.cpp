@@ -6,11 +6,11 @@ AsistenciaEnDiferido::AsistenciaEnDiferido() {
 AsistenciaEnDiferido::~AsistenciaEnDiferido() {
 }
 
-AsistenciaEnDiferido::AsistenciaEnDiferido(Estudiante* estudiante) {
+AsistenciaEnDiferido::AsistenciaEnDiferido(Estudiante estudiante) {
     this->estudiante = estudiante;
 }
 
-Estudiante* AsistenciaEnDiferido::getEstudiante() const {
+Estudiante AsistenciaEnDiferido::getEstudiante() const {
     return estudiante;
 }
 
@@ -22,7 +22,7 @@ ICollection* AsistenciaEnDiferido::getFechaHoraFin() const {
     return fechaHoraFin;
 }
 
-void AsistenciaEnDiferido::setEstudiante(Estudiante* estudiante) {
+void AsistenciaEnDiferido::setEstudiante(Estudiante estudiante) {
     this->estudiante = estudiante;
 }
 
@@ -34,4 +34,4 @@ void AsistenciaEnDiferido::setFechaHoraFin(ICollection* fechaHoraFin) {
     this->fechaHoraFin = fechaHoraFin;
 }
 
-bool AsistenciaEnDiferido::comprobarAsistencia(string cedula) {}
+bool AsistenciaEnDiferido::comprobarAsistencia(string cedula) const {}

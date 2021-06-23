@@ -82,7 +82,7 @@ DtAsignatura* Asignatura::getDatosAsignatura() const {
     return new DtAsignatura(codigoAsignatura, nombreAsignatura, teorico, practico, monitoreo);
 }
 
-Clase* Asignatura::iniciarClase(DtClase*, IDictionary*) const {} //ver si no da problema el const
+Clase* Asignatura::iniciarClase(DtClase*, IDictionary*) const {}
 IDictionary* Asignatura::getDatosClasesEnDiferido() const {}
 IDictionary* Asignatura::reproducirClase(int, Estudiante) const {}
 void Asignatura::eliminarClases() {}

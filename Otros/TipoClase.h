@@ -2,7 +2,7 @@
 #define TIPOCLASE_H
 
 enum TipoClase {
-    teroico,
+    teorico,
     practico,
     monitoreo
 };

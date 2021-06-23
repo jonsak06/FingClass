@@ -19,10 +19,10 @@ public:
     static HandlerUsuarios &getInstance();
 
     //operaciones DCD
-    IDictionary *getDatosDocentesSinAsignar(string codigoAsignatura) const;
-    Docente getDocente(string email) const;
-    Estudiante getEstudiante(string cedula) const;
-    Usuario *getUsuario(string email) const;
+    IDictionary *getDatosDocentesSinAsignar(string codigoAsignatura);
+    Docente getDocente(string email);
+    Estudiante getEstudiante(string cedula);
+    Usuario *getUsuario(string email);
     void agregarUsuario(DtUsuario *dvUsr);
     void removerClasesYAsignacionDocentes(string codigoAsignatura);
     void removerClasesEstudiantes(string codigoAsignatura);

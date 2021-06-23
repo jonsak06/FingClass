@@ -12,22 +12,22 @@ class Estudiante;
 class AsistenciaEnDiferido : public ICollectible
 {
 private:
-    Estudiante* estudiante;
+    Estudiante estudiante;
     ICollection* fechaHoraInicio;
     ICollection* fechaHoraFin;
 public:
     AsistenciaEnDiferido();
     ~AsistenciaEnDiferido();
-    AsistenciaEnDiferido(Estudiante*);
-    Estudiante* getEstudiante() const;
+    AsistenciaEnDiferido(Estudiante);
+    Estudiante getEstudiante() const;
     ICollection* getFechaHoraInicio() const;
     ICollection* getFechaHoraFin() const;
-    void setEstudiante(Estudiante*);
+    void setEstudiante(Estudiante);
     void setFechaHoraInicio(ICollection*);
     void setFechaHoraFin(ICollection*);
 
     //operaciones DCD
-    bool comprobarAsistencia(string cedula);
+    bool comprobarAsistencia(string cedula) const;
 };
 
 #endif

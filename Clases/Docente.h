@@ -7,8 +7,7 @@
 #include "../Datatypes/DtDocente.h"
 #include "../Otros/TipoClase.h"
 #include "../ICollection/collections/List.h"
-
-// class Asignatura;
+#include <cstring>
 
 class Docente : public Usuario
 {

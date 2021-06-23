@@ -11,7 +11,6 @@
 
 using namespace std;
 
-class Clase;
 
 class Asignatura : public ICollectible
 {

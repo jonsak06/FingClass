@@ -1,6 +1,7 @@
 #include "HandlerAsignaturas.h"
 
-HandlerAsignaturas::HandlerAsignaturas() {
+HandlerAsignaturas::HandlerAsignaturas()
+{
     asignaturas = new OrderedDictionary;
 }
 
@@ -16,25 +17,26 @@ IDictionary *HandlerAsignaturas::getDatosAsignaturas()
     IIterator *it = asignaturas->getIterator();
     IKey *k;
     Asignatura *a;
-    for(it; it->hasCurrent(); it->next())
+    for (it; it->hasCurrent(); it->next())
     {
         a = dynamic_cast<Asignatura *>(it->getCurrent());
         DtAsignatura *dvAsig = a->getDatosAsignatura();
         k = new String(a->getCodigoAsignatura());
         datosAsignaturas->add(k, dvAsig);
     }
-    delete it;
+    delete it, k;
     return datosAsignaturas;
 }
 
-Asignatura HandlerAsignaturas::getAsignatura(string codigoAsignatura) { // probar agregar delete k
-    IKey* k = new String(codigoAsignatura);
-    Asignatura* a = dynamic_cast<Asignatura*>(asignaturas->find(k));
+Asignatura HandlerAsignaturas::getAsignatura(string codigoAsignatura)
+{
+    IKey *k = new String(codigoAsignatura);
+    Asignatura *a = dynamic_cast<Asignatura *>(asignaturas->find(k));
     delete k;
     return *a;
 }
 
-IDictionary *HandlerAsignaturas::getDatosAsignaturasNoInscripto() const {}
+IDictionary *HandlerAsignaturas::getDatosAsignaturasNoInscripto() {}
 
 void HandlerAsignaturas::agregarAsignatura(DtAsignatura *dvAsig)
 {
@@ -45,7 +47,26 @@ void HandlerAsignaturas::agregarAsignatura(DtAsignatura *dvAsig)
     asignaturas->add(k, a);
 }
 
-IDictionary *HandlerAsignaturas::getDatosAsignaturasCursando(string cedula) const {}
-IDictionary *HandlerAsignaturas::listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura) const {}
+IDictionary *HandlerAsignaturas::getDatosAsignaturasCursando(string cedula) {}
+IDictionary *HandlerAsignaturas::listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura) {}
 void HandlerAsignaturas::removerAsignatura(Asignatura a) {}
 void HandlerAsignaturas::eliminarAsignatura(Asignatura a) {}
+
+bool HandlerAsignaturas::tieneClaseDe(string codigoAsignatura, TipoClase tipoClase)
+{
+    IKey *k = new String(codigoAsignatura);
+    Asignatura *a = dynamic_cast<Asignatura *>(asignaturas->find(k));
+    delete k;
+    if (tipoClase == teorico)
+    {
+        return a->tieneTeorico();
+    }
+    else if (tipoClase == practico)
+    {
+        return a->tienePractico();
+    }
+    else
+    {
+        return a->tieneMonitoreo();
+    }
+}

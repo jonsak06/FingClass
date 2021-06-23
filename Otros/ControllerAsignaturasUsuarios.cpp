@@ -97,4 +97,8 @@ void ControllerAsignaturasUsuarios::cancelarInscripcion() {}
 void ControllerAsignaturasUsuarios::confirmarEliminacion() {}
 void ControllerAsignaturasUsuarios::cancelarEliminacion() {}
 
+bool ControllerAsignaturasUsuarios::tieneClaseDe(string codigoAsignatura, TipoClase tipoClase) {
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    return hndlrAsig.tieneClaseDe(codigoAsignatura, tipoClase);
+}
 void ControllerAsignaturasUsuarios::cargarDatosAsigUsr() {}

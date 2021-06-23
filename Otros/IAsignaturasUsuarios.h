@@ -34,6 +34,7 @@ public:
     virtual void confirmarEliminacion() = 0;
     virtual void cancelarEliminacion() = 0;
 
+    virtual bool tieneClaseDe(string, TipoClase) = 0;
     virtual void cargarDatosAsigUsr() = 0;
 };
 

@@ -73,7 +73,7 @@ int main()
                     {
                         cout << "Ingrese la cedula: ";
                         getline(cin >> ws, cedula);
-                        asigUsr.agregarDocente(nombre, email, contrasenia, urlImgPerfil, cedula);
+                        asigUsr.agregarEstudiante(nombre, email, contrasenia, urlImgPerfil, cedula);
                     }
 
                     op = menuConfirmacion();
@@ -94,10 +94,10 @@ int main()
                     bool teorico, practico, monitoreo;
                     string opc;
                     int op;
-                    cout << "Ingrese el nombre de la asignatura: ";
-                    getline(cin >> ws, nombreAsignatura);
                     cout << "Ingrese el codigo de la asignatura: ";
                     getline(cin >> ws, codigoAsignatura);
+                    cout << "Ingrese el nombre de la asignatura: ";
+                    getline(cin >> ws, nombreAsignatura);
 
                     cout << "\nTiene teorico?\n1- Si\n2- No\n";
                     getline(cin, opc);
@@ -136,7 +136,7 @@ int main()
                     }
                     system("clear");
                     cout << "Datos de la asignatura:\n";
-                    cout << asigUsr.agregarAsignatura(nombreAsignatura, codigoAsignatura, teorico, practico, monitoreo);
+                    cout << asigUsr.agregarAsignatura(codigoAsignatura, nombreAsignatura, teorico, practico, monitoreo);
 
                     op = menuConfirmacion();
                     if (op == 1)
@@ -150,7 +150,7 @@ int main()
                 }
                 break;
 
-                case 3: //segmentation fault al volver a la opcion desde el menu
+                case 3: //listo
                 {
                     IDictionary *datosAsignaturas = asigUsr.listarAsignaturas();
                     IIterator *it = datosAsignaturas->getIterator();
@@ -159,6 +159,7 @@ int main()
                     {
                         cout << "No existen asignaturas en el sistema\n";
                         pausarConsola();
+                        delete it;
                         break;
                     }
 
@@ -186,20 +187,20 @@ int main()
                         }
                         delete k;
                     } while (!existeAsignatura);
-
+                    delete datosAsignaturas;
                     system("clear");
 
                     string email, opc;
                     int op, o;
-                    bool seguirAsignando = true;
+                    bool seguirAsignando = true, existeDocente;
                     IDictionary *datosDocentes = asigUsr.listarDocentesSinAsignar(codAsig);
 
                     do
                     {
-                        cout << "\nes aca\n";//testeando lugar del segmentation fault
                         if (datosDocentes->isEmpty())
                         {
-                            cout << "No existen docentes sin asignar\n";
+                            cout << "\nNo existen docentes sin asignar\n";
+                            asigUsr.dejarDeAsignarDocentes();
                             pausarConsola();
                             break;
                         }
@@ -212,25 +213,48 @@ int main()
                             cout << dvDoc;
                         }
                         delete it;
-                        cout << "\nEmail del docente seleccionado: ";
-                        getline(cin >> ws, email);
 
-                        cout << "\nSeleccione el rol de dictado del docente:\n1- Teorico\n2- Practico\n3- Monitoreo\n";
-                        getline(cin, opc);
-                        op = stringToInt(opc);
+                        do
+                        {
+                            cout << "\nEmail del docente seleccionado: ";
+                            getline(cin >> ws, email);
+                            k = new String(email);
+                            existeDocente = datosDocentes->find(k) != NULL;
+                            if (!existeDocente)
+                            {
+                                cout << "\nEl docente no existe o ya esta asignado\n";
+                            }
+                            delete k;
+                        } while (!existeDocente);
+
                         TipoClase rolDictado;
+                        while (true)
+                        {
 
-                        if (op == 1)
-                        {
-                            rolDictado = teroico;
-                        }
-                        else if (op == 2)
-                        {
-                            rolDictado = practico;
-                        }
-                        else
-                        {
-                            rolDictado = monitoreo;
+                            cout << "\nSeleccione el rol de dictado del docente:\n1- Teorico\n2- Practico\n3- Monitoreo\n";
+                            getline(cin, opc);
+                            op = stringToInt(opc);
+
+                            if (op == 1)
+                            {
+                                rolDictado = teorico;
+                            }
+                            else if (op == 2)
+                            {
+                                rolDictado = practico;
+                            }
+                            else
+                            {
+                                rolDictado = monitoreo;
+                            }
+                            
+                            if (asigUsr.tieneClaseDe(codAsig, rolDictado))
+                            {
+                                break;
+                            }
+                            cout << "\nLa asignatura no tiene ese tipo de clase\n";
+                            pausarConsola();
+                            system("clear");
                         }
                         asigUsr.seleccionarDocente(email, rolDictado);
 
@@ -256,9 +280,6 @@ int main()
                             asigUsr.dejarDeAsignarDocentes();
                         }
                     } while (seguirAsignando);
-
-                    delete datosAsignaturas, datosDocentes;
-                    system("clear");
                 }
                 break;
 

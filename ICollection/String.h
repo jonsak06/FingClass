@@ -23,7 +23,7 @@ class String: public ICollectible, public OrderedKey
 private:
     string s;
 public:
-    // construye el Datatype a partir de un puntero a caracter
+    // construye el Datatype a partir de un string
     String(string s);
     
     // da el valor del string

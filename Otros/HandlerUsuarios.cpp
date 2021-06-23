@@ -11,7 +11,7 @@ HandlerUsuarios &HandlerUsuarios::getInstance()
     return *hndlrUsr;
 }
 
-IDictionary *HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura) const
+IDictionary *HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura)
 {
     IDictionary *datosDocentes = new OrderedDictionary;
     IIterator *it = usuarios->getIterator();
@@ -35,15 +35,15 @@ IDictionary *HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura
     return datosDocentes;
 }
 
-Docente HandlerUsuarios::getDocente(string email) const {
+Docente HandlerUsuarios::getDocente(string email) {
     IKey* k = new String(email);
     Docente* d = dynamic_cast<Docente*>(usuarios->find(k));
     delete k;
     return *d;
 }
 
-Estudiante HandlerUsuarios::getEstudiante(string cedula) const {}
-Usuario *HandlerUsuarios::getUsuario(string email) const {}
+Estudiante HandlerUsuarios::getEstudiante(string cedula) {}
+Usuario *HandlerUsuarios::getUsuario(string email) {}
 
 void HandlerUsuarios::agregarUsuario(DtUsuario *dvUsr)
 {

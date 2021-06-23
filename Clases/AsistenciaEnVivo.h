@@ -11,22 +11,22 @@ class Estudiante;
 class AsistenciaEnVivo : public ICollectible
 {
 private:
-    Estudiante* estudiante;
+    Estudiante estudiante;
     FechaHora fechaHoraInicio;
     FechaHora fechaHoraFin;
 public:
     AsistenciaEnVivo();
     ~AsistenciaEnVivo();
-    AsistenciaEnVivo(Estudiante*);
-    Estudiante* getEstudiante() const;
+    AsistenciaEnVivo(Estudiante);
+    Estudiante getEstudiante() const;
     FechaHora getFechaHoraInicio() const;
     FechaHora getFechaHoraFin() const;
-    void setEstudiante(Estudiante*);
+    void setEstudiante(Estudiante);
     void setFechaHoraInicio(FechaHora);
     void setFechaHoraFin(FechaHora);
 
     //operaciones DCD
-    bool comprobarAsistencia(string cedula);
+    bool comprobarAsistencia(string cedula) const;
 };
 
 #endif

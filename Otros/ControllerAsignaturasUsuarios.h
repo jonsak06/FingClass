@@ -56,6 +56,7 @@ public:
     void confirmarEliminacion();
     void cancelarEliminacion();
 
+    bool tieneClaseDe(string, TipoClase);
     void cargarDatosAsigUsr();
 };
 

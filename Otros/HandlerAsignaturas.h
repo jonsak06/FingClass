@@ -4,6 +4,7 @@
 #include "../Clases/Asignatura.h"
 #include "../ICollection/collections/OrderedDictionary.h"
 #include "../ICollection/String.h"
+#include "../Otros/TipoClase.h"
 
 class HandlerAsignaturas
 {
@@ -20,12 +21,13 @@ public:
     //operaciones DCD
     IDictionary* getDatosAsignaturas();
     Asignatura getAsignatura(string codigoAsignatura);
-    IDictionary* getDatosAsignaturasNoInscripto() const;
+    IDictionary* getDatosAsignaturasNoInscripto();
     void agregarAsignatura(DtAsignatura* dvAsig);
-    IDictionary* getDatosAsignaturasCursando(string cedula) const;
-    IDictionary* listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura) const;
+    IDictionary* getDatosAsignaturasCursando(string cedula);
+    IDictionary* listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura);
     void removerAsignatura(Asignatura a);
     void eliminarAsignatura(Asignatura a);
+    bool tieneClaseDe(string codigoAsignatura, TipoClase tipoClase);
 };
 
 #endif
