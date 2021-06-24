@@ -2,8 +2,7 @@
 #define MENSAJE_H
 
 #include "../Datatypes/FechaHora.h"
-#include "Usuario.h"
-#include "Clase.h"
+#include "../Datatypes/DtMensaje.h"
 #include <string>
 
 using namespace std;

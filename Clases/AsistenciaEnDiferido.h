@@ -2,27 +2,27 @@
 #define ASISTENCIAENDIFERIDO_H
 
 #include "../Datatypes/FechaHora.h"
-#include "Estudiante.h"
 #include "../ICollection/interfaces/ICollection.h"
-
-using namespace std;
+#include <string>
 
 class Estudiante;
+
+using namespace std;
 
 class AsistenciaEnDiferido : public ICollectible
 {
 private:
-    Estudiante estudiante;
+    Estudiante* estudiante;
     ICollection* fechaHoraInicio;
     ICollection* fechaHoraFin;
 public:
     AsistenciaEnDiferido();
     ~AsistenciaEnDiferido();
-    AsistenciaEnDiferido(Estudiante);
-    Estudiante getEstudiante() const;
+    AsistenciaEnDiferido(Estudiante*);
+    Estudiante* getEstudiante() const;
     ICollection* getFechaHoraInicio() const;
     ICollection* getFechaHoraFin() const;
-    void setEstudiante(Estudiante);
+    void setEstudiante(Estudiante*);
     void setFechaHoraInicio(ICollection*);
     void setFechaHoraFin(ICollection*);
 

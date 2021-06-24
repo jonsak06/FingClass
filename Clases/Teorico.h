@@ -15,7 +15,7 @@ public:
     void setCantAsistentes(int);
     
     //operaciones DCD
-    DtTeorico* getDatosClase() const;
+    DtClase* getDatosClase() const;
 };
 
 #endif

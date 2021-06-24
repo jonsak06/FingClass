@@ -59,4 +59,19 @@ void Docente::asignarAsignatura(Asignatura *a, TipoClase rolDictado)
 IDictionary *Docente::getDatosAsignaturas() const {}
 TipoClase Docente::getRolDictado(string codigoAsignatura) const {}
 void Docente::finalizarClase(int numeroClase) {}
-void Docente::removerAsignacion(string codigoAsignatura) {}
+
+void Docente::removerAsignacion(string codigoAsignatura)
+{
+    IIterator *it = asignaciones->getIterator();
+    Asignacion *agn;
+    for (it; it->hasCurrent(); it->next())
+    {
+        if (dynamic_cast<Asignacion *>(it->getCurrent())->getCodigoAsignatura() == codigoAsignatura)
+        {
+            agn = dynamic_cast<Asignacion *>(it->getCurrent());
+            break;
+        }
+    }
+    asignaciones->remove(agn);
+    delete it, agn;
+}

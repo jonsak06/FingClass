@@ -1,22 +1,21 @@
 #ifndef CLASE_H
 #define CLASE_H
 
+#include "AsistenciaEnVivo.h"
+#include "AsistenciaEnDiferido.h"
+#include "Mensaje.h"
 #include "../Datatypes/FechaHora.h"
 #include "../Datatypes/DtClase.h"
 #include "../Datatypes/DtMensaje.h"
-#include "Estudiante.h"
-#include "AsistenciaEnDiferido.h"
-#include "AsistenciaEnVivo.h"
-#include "Mensaje.h"
-#include "Asignatura.h"
 #include "../ICollection/interfaces/ICollection.h"
 #include "../ICollection/interfaces/IDictionary.h"
+#include "../ICollection/Integer.h"
 #include <string>
 
 using namespace std;
 
+class Estudiante;
 class Asignatura;
-class Mensaje;
 
 class Clase : public ICollectible
 {
@@ -62,7 +61,7 @@ public:
     //operaciones DCD
     virtual DtClase* getDatosClase() const = 0;
     void finalizarClase();
-    void setInicioAsistenciaEnDiferido(Estudiante e);
+    void setInicioAsistenciaEnDiferido(Estudiante* e);
     IDictionary* getDatosMensajes() const;
     string getCodigoAsignatura() const;
     void eliminarAsistencias();
@@ -70,8 +69,8 @@ public:
     Mensaje getMensaje(int idMensaje) const;
     void enviarMensaje(Usuario* u, string mensaje);
     void responderMensaje(Usuario* u, Mensaje m, string mensaje);
-    void marcarAsistenciaVivo(Estudiante e);
-    void marcarAsistenciaDif(Estudiante e);
+    void marcarAsistenciaVivo(Estudiante* e);
+    void marcarAsistenciaDif(Estudiante* e);
 };
 
 #endif

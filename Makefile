@@ -1,4 +1,4 @@
-objetos = main.o Clases/Asignacion.o Clases/Asignatura.o Clases/AsistenciaEnDiferido.o Clases/Clase.o Clases/Docente.o Clases/Estudiante.o \
+objetos = main.o Clases/Asignacion.o Clases/Asignatura.o Clases/Estudiante.o Clases/AsistenciaEnDiferido.o Clases/Clase.o Clases/Docente.o \
 Clases/Mensaje.o Clases/Monitoreo.o Clases/Practico.o Clases/Teorico.o Clases/Usuario.o Clases/AsistenciaEnVivo.o \
 Datatypes/DtAsignatura.o Datatypes/DtClase.o Datatypes/DtDocente.o Datatypes/DtEstudiante.o Datatypes/FechaHora.o \
 Datatypes/DtMensaje.o Datatypes/DtMonitoreo.o Datatypes/DtPractico.o Datatypes/DtTeorico.o Datatypes/DtUsuario.o Otros/ControllerClases.o \
@@ -14,29 +14,20 @@ main: $(objetos)
 main.o: main.cpp
 	g++ -c main.cpp
 
-Asignacion.o: Asignacion.cpp
-	g++ -c Asignacion.cpp
-
-Asignatura.o: Asignatura.cpp
-	g++ -c Asignatura.cpp
-
 AsistenciaEnDiferido.o: AsistenciaEnDiferido.cpp
 	g++ -c AsistenciaEnDiferido.cpp
 
 AsistenciaEnVivo.o: AsistenciaEnVivo.cpp
 	g++ -c AsistenciaEnVivo.cpp
 
-Clase.o: Clase.cpp
-	g++ -c Clase.cpp
-
-Docente.o: Docente.cpp
-	g++ -c Docente.cpp
-
-Estudiante.o: Estudiante.cpp
-	g++ -c Estudiante.cpp
+Asignacion.o: Asignacion.cpp
+	g++ -c Asignacion.cpp
 
 Mensaje.o: Mensaje.cpp
 	g++ -c Mensaje.cpp
+
+Clase.o: Clase.cpp
+	g++ -c Clase.cpp
 
 Monitoreo.o: Monitoreo.cpp
 	g++ -c Monitoreo.cpp
@@ -49,6 +40,15 @@ Teorico.o: Teorico.cpp
 
 Usuario.o: Usuario.cpp
 	g++ -c Usuario.cpp
+
+Docente.o: Docente.cpp
+	g++ -c Docente.cpp
+
+Estudiante.o: Estudiante.cpp
+	g++ -c Estudiante.cpp
+
+Asignatura.o: Asignatura.cpp
+	g++ -c Asignatura.cpp
 
 DtAsignatura.o: DtAsignatura.cpp
 	g++ -c DtAsignatura.cpp

@@ -16,4 +16,4 @@ void Teorico::setCantAsistentes(int cantAsistentes) {
     this->cantAsistentes = cantAsistentes;
 }
 
-DtTeorico* Teorico::getDatosClase() const {}
+DtClase* Teorico::getDatosClase() const {}

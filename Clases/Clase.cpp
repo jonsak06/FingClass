@@ -103,13 +103,43 @@ void Clase::setAsignatura(Asignatura* asignatura) {
 }
 
 void Clase::finalizarClase() {}
-void Clase::setInicioAsistenciaEnDiferido(Estudiante e) {}
+void Clase::setInicioAsistenciaEnDiferido(Estudiante* e) {}
 IDictionary* Clase::getDatosMensajes() const {}
 string Clase::getCodigoAsignatura() const {}
-void Clase::eliminarAsistencias() {}
-void Clase::eliminarMensajes() {}
+
+void Clase::eliminarAsistencias() {
+    IIterator* it = asistenciasEnVivo->getIterator();
+    AsistenciaEnVivo* asVivo;
+    while(!asistenciasEnVivo->isEmpty()) {
+        asVivo = dynamic_cast<AsistenciaEnVivo*>(it->getCurrent());
+        asistenciasEnVivo->remove(asVivo);
+        delete asVivo;
+        it->next();
+    }
+    AsistenciaEnDiferido* asDif;
+    while(!asistenciasEnDiferido->isEmpty()) {
+        asDif = dynamic_cast<AsistenciaEnDiferido*>(it->getCurrent());
+        asistenciasEnDiferido->remove(asDif);
+        delete asDif;
+        it->next();
+    }
+    delete it;
+}
+
+void Clase::eliminarMensajes() {
+    IIterator* it = mensajes->getIterator();
+    Mensaje *m;
+    IKey* k;
+    while(!mensajes->isEmpty()) {
+        m = dynamic_cast<Mensaje*>(it->getCurrent());
+        k = new Integer(m->getIdMensaje());
+        mensajes->remove(k);
+        delete m, k;
+    }
+}
+
 Mensaje Clase::getMensaje(int idMensaje) const {}
 void Clase::enviarMensaje(Usuario* u, string mensaje) {}
 void Clase::responderMensaje(Usuario* u, Mensaje m, string mensaje) {}
-void Clase::marcarAsistenciaVivo(Estudiante e) {}
-void Clase::marcarAsistenciaDif(Estudiante e) {}
+void Clase::marcarAsistenciaVivo(Estudiante* e) {}
+void Clase::marcarAsistenciaDif(Estudiante* e) {}

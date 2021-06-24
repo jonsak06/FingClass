@@ -13,7 +13,7 @@ public:
     Practico(int, string, FechaHora);
     
     //operaciones DCD
-    DtPractico* getDatosClase() const;
+    DtClase* getDatosClase() const;
 };
 
 #endif

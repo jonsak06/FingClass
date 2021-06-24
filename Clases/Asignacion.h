@@ -1,10 +1,12 @@
 #ifndef ASIGNACION_H
 #define ASIGNACION_H
 
-#include "../Otros/TipoClase.h"
 #include "Asignatura.h"
+#include "../Otros/TipoClase.h"
 #include "../Datatypes/DtAsignatura.h"
 #include "../ICollection/interfaces/ICollectible.h"
+
+// class Asignatura;
 
 class Asignacion : public ICollectible
 {
@@ -20,7 +22,7 @@ public:
     void setRolDictado(TipoClase);
     void setAsignatura(Asignatura);
     //operaciones DCD
-    string getCodigoAsignatura() const;
+    string getCodigoAsignatura();
     DtAsignatura getDatosAsignatura() const;
 };
 

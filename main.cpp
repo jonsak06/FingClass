@@ -206,7 +206,7 @@ int main()
                         }
 
                         it = datosDocentes->getIterator();
-                        cout << "\nListado de docentes sin asignar:\n";
+                        cout << "Listado de docentes sin asignar:\n";
                         for (it; it->hasCurrent(); it->next())
                         {
                             DtDocente *dvDoc = dynamic_cast<DtDocente *>(it->getCurrent());
@@ -265,13 +265,15 @@ int main()
                             k = new String(email);
                             datosDocentes->remove(k);
                             delete k;
+                            cout << "\nDocente asignado\n";
+                            // pausarConsola();
                         }
                         else
                         {
                             asigUsr.cancelarAsignacion();
                         }
 
-                        cout << "Desea seguir asignando docentes? 1- Si 2- No\n";
+                        cout << "\nDesea seguir asignando docentes? 1- Si 2- No\n";
                         getline(cin, opc);
                         o = stringToInt(opc);
                         if (o == 2)
@@ -287,6 +289,14 @@ int main()
                 {
                     IDictionary *datosAsignaturas = clases.listarAsignaturasConTiempoDictado();
                     IIterator *it = datosAsignaturas->getIterator();
+
+                    if (datosAsignaturas->isEmpty())
+                    {
+                        cout << "No existen asignaturas en el sistema\n";
+                        pausarConsola();
+                        delete it;
+                        break;
+                    }
 
                     cout << "Tiempo de dictado de clases por asignatura:\n";
                     for (it; it->hasCurrent(); it->next())
@@ -305,16 +315,38 @@ int main()
                     IDictionary *datosAsignaturas = asigUsr.listarAsignaturas();
                     IIterator *it = datosAsignaturas->getIterator();
 
+                    if (datosAsignaturas->isEmpty())
+                    {
+                        cout << "No existen asignaturas en el sistema\n";
+                        pausarConsola();
+                        delete it;
+                        break;
+                    }
+
                     cout << "Listado de asignaturas:\n";
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
-                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                        cout << dvAsig;
                     }
 
                     string codAsig;
-                    cout << "Codigo de la asignatura seleccionada: ";
-                    getline(cin >> ws, codAsig);
+                    bool existeAsignatura;
+                    IKey* k;
+                    do
+                    {
+                        cout << "\nCodigo de la asignatura seleccionada: ";
+                        getline(cin >> ws, codAsig);
+                        k = new String(codAsig);
+                        existeAsignatura = datosAsignaturas->find(k) != NULL;
+                        if (!existeAsignatura)
+                        {
+                            cout << "\nLa asignatura no existe\n";
+                        }
+                        delete k;
+                    } while (!existeAsignatura);
+                    delete datosAsignaturas;
+                    
                     asigUsr.seleccionarAsignatura(codAsig);
 
                     int op = menuConfirmacion();
@@ -326,6 +358,8 @@ int main()
                     {
                         asigUsr.cancelarEliminacion();
                     }
+                    cout << "\nAsignatura eliminada\n";
+                    pausarConsola();
                 }
                 break;
 

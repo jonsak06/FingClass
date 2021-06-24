@@ -16,4 +16,4 @@ void Monitoreo::setEstudiantesHabilitados(IDictionary* habilitados) {
     estudiantesHabilitados = habilitados;
 }
 
-DtMonitoreo* Monitoreo::getDatosClase() const {}
+DtClase* Monitoreo::getDatosClase() const {}

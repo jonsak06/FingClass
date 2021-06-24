@@ -2,12 +2,12 @@
 #define DOCENTE_H
 
 #include "Usuario.h"
-#include "Asignatura.h"
 #include "Asignacion.h"
 #include "../Datatypes/DtDocente.h"
 #include "../Otros/TipoClase.h"
 #include "../ICollection/collections/List.h"
-#include <cstring>
+
+class Asignatura;
 
 class Docente : public Usuario
 {

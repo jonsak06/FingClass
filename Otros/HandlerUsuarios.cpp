@@ -36,9 +36,10 @@ IDictionary *HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura
     return datosDocentes;
 }
 
-Docente HandlerUsuarios::getDocente(string email) {
-    IKey* k = new String(email);
-    Docente* d = dynamic_cast<Docente*>(usuarios->find(k));
+Docente HandlerUsuarios::getDocente(string email)
+{
+    IKey *k = new String(email);
+    Docente *d = dynamic_cast<Docente *>(usuarios->find(k));
     delete k;
     return *d;
 }
@@ -63,5 +64,33 @@ void HandlerUsuarios::agregarUsuario(DtUsuario *dvUsr)
     usuarios->add(k, u);
 }
 
-void HandlerUsuarios::removerClasesYAsignacionDocentes(string codigoAsignatura) {}
-void HandlerUsuarios::removerClasesEstudiantes(string codigoAsignatura) {}
+void HandlerUsuarios::removerClasesYAsignacionDocentes(string codigoAsignatura)
+{
+    IIterator *it = usuarios->getIterator();
+    Docente *d;
+    for (it; it->hasCurrent(); it->next())
+    {
+        d = dynamic_cast<Docente *>(it->getCurrent());
+        if (d != nullptr)
+        {
+            d->removerClases(codigoAsignatura);
+            d->removerAsignacion(codigoAsignatura);
+        }
+    }
+    delete it;
+}
+
+void HandlerUsuarios::removerClasesEstudiantes(string codigoAsignatura)
+{
+    IIterator *it = usuarios->getIterator();
+    Estudiante *e;
+    for (it; it->hasCurrent(); it->next())
+    {
+        e = dynamic_cast<Estudiante *>(it->getCurrent());
+        if (e != nullptr)
+        {
+            e->removerClases(codigoAsignatura);
+        }
+    }
+    delete it;
+}

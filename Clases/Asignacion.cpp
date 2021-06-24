@@ -1,5 +1,6 @@
 #include "Asignacion.h"
 
+
 Asignacion::Asignacion() {
 }
 
@@ -26,7 +27,7 @@ void Asignacion::setAsignatura(Asignatura asignatura) {
     this->asignatura = asignatura;
 }
 
-string Asignacion::getCodigoAsignatura() const {
+string Asignacion::getCodigoAsignatura() {
     return asignatura.getCodigoAsignatura();
 }
 

@@ -2,6 +2,7 @@
 
 Asignatura::Asignatura()
 {
+    clases = new OrderedDictionary;
     tiempoTotalDictado = 0;
 }
 
@@ -11,6 +12,7 @@ Asignatura::~Asignatura()
 
 Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo, float tiempoTotalDictado)
 {
+    clases = new OrderedDictionary;
     this->codigoAsignatura = codigoAsignatura;
     this->nombreAsignatura = nombreAsignatura;
     this->teorico = teorico;
@@ -21,6 +23,7 @@ Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool te
 
 Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo)
 {
+    clases = new OrderedDictionary;
     this->codigoAsignatura = codigoAsignatura;
     this->nombreAsignatura = nombreAsignatura;
     this->teorico = teorico;
@@ -114,14 +117,39 @@ DtAsignatura *Asignatura::getDatosAsignatura() const
     return new DtAsignatura(codigoAsignatura, nombreAsignatura, teorico, practico, monitoreo, tiempoTotalDictado);
 }
 
-DtAsignatura* Asignatura::getDatosConTiempoDictado() const {
+DtAsignatura *Asignatura::getDatosConTiempoDictado() const
+{
     return new DtAsignatura(nombreAsignatura, tiempoTotalDictado);
 }
 
 Clase *Asignatura::iniciarClase(DtClase *, IDictionary *) const {}
 IDictionary *Asignatura::getDatosClasesEnDiferido() const {}
 IDictionary *Asignatura::reproducirClase(int, Estudiante) const {}
-void Asignatura::eliminarClases() {}
+
+void Asignatura::eliminarClases()
+{
+    IIterator *it = clases->getIterator();
+    Clase *c;
+    for (it; it->hasCurrent(); it->next())
+    {
+        c = dynamic_cast<Clase *>(it->getCurrent());
+        c->eliminarAsistencias();
+        c->eliminarMensajes();
+    }
+    delete it;
+
+    it = clases->getIterator();
+    IKey *k;
+    while (!clases->isEmpty())
+    {
+        c = dynamic_cast<Clase *>(it->getCurrent());
+        k = new Integer(c->getNumeroClase());
+        clases->remove(k);
+        delete c, k;
+        it->next();
+    }
+}
+
 Clase *Asignatura::getClase(int numeroClase) const {}
 bool Asignatura::comprobarInscripcionEstudiante(string cedula) const {}
 void Asignatura::inscribirEstudiante(Estudiante e) {}

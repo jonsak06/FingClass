@@ -26,8 +26,7 @@ public:
     void agregarAsignatura(DtAsignatura* dvAsig);
     IDictionary* getDatosAsignaturasCursando(string cedula);
     IDictionary* listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura);
-    void removerAsignatura(Asignatura a);
-    void eliminarAsignatura(Asignatura a);
+    void eliminarAsignatura(string codigoAsignatura);
     bool tieneClaseDe(string codigoAsignatura, TipoClase tipoClase);
 };
 

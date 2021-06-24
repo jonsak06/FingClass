@@ -65,8 +65,11 @@ void HandlerAsignaturas::agregarAsignatura(DtAsignatura *dvAsig)
 
 IDictionary *HandlerAsignaturas::getDatosAsignaturasCursando(string cedula) {}
 IDictionary *HandlerAsignaturas::listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura) {}
-void HandlerAsignaturas::removerAsignatura(Asignatura a) {}
-void HandlerAsignaturas::eliminarAsignatura(Asignatura a) {}
+
+void HandlerAsignaturas::eliminarAsignatura(string codigoAsignatura) {
+    IKey* k = new String(codigoAsignatura);
+    asignaturas->remove(k);
+}
 
 bool HandlerAsignaturas::tieneClaseDe(string codigoAsignatura, TipoClase tipoClase)
 {

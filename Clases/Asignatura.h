@@ -1,16 +1,19 @@
 #ifndef ASIGNATURA_H
 #define ASIGNATURA_H
 
-#include "Estudiante.h"
 #include "Clase.h"
+#include "Estudiante.h"
 #include "../Datatypes/DtAsignatura.h"
 #include "../Datatypes/DtClase.h"
 #include "../Datatypes/DtMensaje.h"
 #include "../ICollection/interfaces/IDictionary.h"
+#include "../ICollection/collections/OrderedDictionary.h"
+#include "../ICollection/Integer.h"
 #include <string>
 
 using namespace std;
 
+class Clase;
 
 class Asignatura : public ICollectible
 {

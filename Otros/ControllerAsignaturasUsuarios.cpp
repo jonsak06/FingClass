@@ -90,14 +90,35 @@ void ControllerAsignaturasUsuarios::dejarDeAsignarDocentes()
 
 //CU inscripcion a asignaturas
 IDictionary *ControllerAsignaturasUsuarios::listarAsignaturasNoInscripto(string cedula) {}
-void ControllerAsignaturasUsuarios::seleccionarAsignatura(string codigoAsignatura) {}
+
+void ControllerAsignaturasUsuarios::seleccionarAsignatura(string codigoAsignatura)
+{
+    this->codigoAsignatura = new string(codigoAsignatura);
+}
+
 void ControllerAsignaturasUsuarios::confirmarInscripcion() {}
 void ControllerAsignaturasUsuarios::cancelarInscripcion() {}
-//CU eliminar asignatura
-void ControllerAsignaturasUsuarios::confirmarEliminacion() {}
-void ControllerAsignaturasUsuarios::cancelarEliminacion() {}
 
-bool ControllerAsignaturasUsuarios::tieneClaseDe(string codigoAsignatura, TipoClase tipoClase) {
+//CU eliminar asignatura
+void ControllerAsignaturasUsuarios::confirmarEliminacion()
+{
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    hndlrUsr.removerClasesYAsignacionDocentes(*codigoAsignatura);
+    hndlrUsr.removerClasesEstudiantes(*codigoAsignatura);
+    Asignatura a = hndlrAsig.getAsignatura(*codigoAsignatura);
+    a.eliminarClases();
+    hndlrAsig.eliminarAsignatura(*codigoAsignatura);
+    delete codigoAsignatura;
+}
+
+void ControllerAsignaturasUsuarios::cancelarEliminacion()
+{
+    delete codigoAsignatura;
+}
+
+bool ControllerAsignaturasUsuarios::tieneClaseDe(string codigoAsignatura, TipoClase tipoClase)
+{
     HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
     return hndlrAsig.tieneClaseDe(codigoAsignatura, tipoClase);
 }

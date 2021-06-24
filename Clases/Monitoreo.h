@@ -15,7 +15,7 @@ public:
     void setEstudiantesHabilitados(IDictionary*);
     
     //operaciones DCD
-    DtMonitoreo* getDatosClase() const;
+    DtClase* getDatosClase() const;
 };
 
 #endif

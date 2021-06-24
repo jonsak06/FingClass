@@ -1,16 +1,19 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 
+#include "Clase.h"
 #include "../Datatypes/DtUsuario.h"
 #include "../Datatypes/DtClase.h"
 #include "../ICollection/interfaces/ICollectible.h"
 #include "../ICollection/interfaces/IDictionary.h"
 #include "../ICollection/interfaces/ICollection.h"
+#include "../ICollection/collections/OrderedDictionary.h"
+#include "../ICollection/collections/List.h"
+#include "../ICollection/Integer.h"
+#include <iostream>
 #include <string>
 
 using namespace std;
-
-class Clase;
 
 class Usuario : public ICollectible
 {
