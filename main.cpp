@@ -365,30 +365,49 @@ int main()
 
                 case 6:
                 {
-                    cout << "Fecha y hora del sistema:\n";
-                    cout << reloj.getFechaHoraActual().getDia(); //sobrecargar el cout en FechaHora
+                    FechaHora* fh = reloj.getFechaHoraActual();
+                    if (fh != NULL)
+                    {
+                        cout << "Fecha y hora del sistema:\n";
+                        cout << reloj.getFechaHoraActual();
+                        pausarConsola();
+                    } else {
+                        cout << "No hay fecha ni hora registrada en el reloj del sistema\n";
+                        pausarConsola();
+                    }
+                    
+                    
                 }
                 break;
 
                 case 7:
                 {
+                    string num;
                     int dia, mes, anio, hora, min, seg;
                     cout << "Ingrese la fecha:\n";
                     cout << "Dia: ";
-                    cin >> dia;
+                    getline(cin, num);
+                    dia = stringToInt(num);
                     cout << "Mes: ";
-                    cin >> mes;
+                    getline(cin, num);
+                    mes = stringToInt(num);
                     cout << "Anio: ";
-                    cin >> anio;
+                    getline(cin, num);
+                    anio = stringToInt(num);
                     system("clear");
                     cout << "Ingrese la hora:\n";
                     cout << "Hora: ";
-                    cin >> hora;
+                    getline(cin, num);
+                    hora = stringToInt(num);
                     cout << "Minuto: ";
-                    cin >> min;
+                    getline(cin, num);
+                    min = stringToInt(num);
                     cout << "Segundo: ";
-                    cin >> seg;
-                    reloj.setFechaHoraActual(FechaHora(dia, mes, anio, hora, min, seg));
+                    getline(cin, num);
+                    seg = stringToInt(num);
+                    reloj.setFechaHoraActual(new FechaHora(dia, mes, anio, hora, min, seg));
+                    cout << "\nFecha y hora registrada\n";
+                    pausarConsola();
                 }
                 break;
 

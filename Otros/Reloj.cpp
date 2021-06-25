@@ -5,10 +5,10 @@ Reloj& Reloj::getInstance() {
     return *reloj;
 }
 
-FechaHora Reloj::getFechaHoraActual() const {
+FechaHora* Reloj::getFechaHoraActual() const {
     return fechaHoraActual;
 }
 
-void Reloj::setFechaHoraActual(FechaHora fechaHoraActual) {
+void Reloj::setFechaHoraActual(FechaHora* fechaHoraActual) {
     this->fechaHoraActual = fechaHoraActual;
 }

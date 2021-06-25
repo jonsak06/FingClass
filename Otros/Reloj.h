@@ -11,11 +11,11 @@ private:
     Reloj& operator=(const Reloj&) = delete;
     Reloj(Reloj&&) = delete;
     Reloj& operator=(Reloj&&) = delete;
-    FechaHora fechaHoraActual;
+    FechaHora *fechaHoraActual;
 public:
     static Reloj& getInstance();
-    FechaHora getFechaHoraActual() const;
-    void setFechaHoraActual(FechaHora);
+    FechaHora* getFechaHoraActual() const;
+    void setFechaHoraActual(FechaHora*);
 };
 
 

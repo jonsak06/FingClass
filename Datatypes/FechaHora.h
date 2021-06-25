@@ -2,6 +2,9 @@
 #define FECHAHORA_H
 
 #include "../ICollection/interfaces/ICollectible.h"
+#include <iostream>
+
+using namespace std;
 
 class FechaHora : public ICollectible
 {
@@ -17,6 +20,8 @@ public:
     int getHora() const;
     int getMinuto() const;
     int getSegundo() const;
+    void mostrarInfo(ostream&);
+    friend ostream& operator<<(ostream&, FechaHora*);
 };
 
 #endif
