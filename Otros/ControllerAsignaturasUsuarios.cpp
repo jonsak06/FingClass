@@ -89,15 +89,29 @@ void ControllerAsignaturasUsuarios::dejarDeAsignarDocentes()
 }
 
 //CU inscripcion a asignaturas
-IDictionary *ControllerAsignaturasUsuarios::listarAsignaturasNoInscripto(string cedula) {}
+IDictionary *ControllerAsignaturasUsuarios::listarAsignaturasNoInscripto(string cedula) {
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    this->cedula = new string(cedula);
+    return hndlrAsig.getDatosAsignaturasNoInscripto(cedula);
+}
 
 void ControllerAsignaturasUsuarios::seleccionarAsignatura(string codigoAsignatura)
 {
     this->codigoAsignatura = new string(codigoAsignatura);
 }
 
-void ControllerAsignaturasUsuarios::confirmarInscripcion() {}
-void ControllerAsignaturasUsuarios::cancelarInscripcion() {}
+void ControllerAsignaturasUsuarios::confirmarInscripcion() {
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    Asignatura a = hndlrAsig.getAsignatura(*codigoAsignatura);
+    Estudiante* e = hndlrUsr.getEstudiante(*cedula);
+    a.inscribirEstudiante(e);
+    delete cedula, codigoAsignatura;
+}
+
+void ControllerAsignaturasUsuarios::cancelarInscripcion() {
+    delete cedula, codigoAsignatura;
+}
 
 //CU eliminar asignatura
 void ControllerAsignaturasUsuarios::confirmarEliminacion()

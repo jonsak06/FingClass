@@ -3,6 +3,7 @@
 Asignatura::Asignatura()
 {
     clases = new OrderedDictionary;
+    estudiantesInscriptos = new OrderedDictionary;
     tiempoTotalDictado = 0;
 }
 
@@ -13,6 +14,7 @@ Asignatura::~Asignatura()
 Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo, float tiempoTotalDictado)
 {
     clases = new OrderedDictionary;
+    estudiantesInscriptos = new OrderedDictionary;
     this->codigoAsignatura = codigoAsignatura;
     this->nombreAsignatura = nombreAsignatura;
     this->teorico = teorico;
@@ -24,6 +26,7 @@ Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool te
 Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo)
 {
     clases = new OrderedDictionary;
+    estudiantesInscriptos = new OrderedDictionary;
     this->codigoAsignatura = codigoAsignatura;
     this->nombreAsignatura = nombreAsignatura;
     this->teorico = teorico;
@@ -152,7 +155,12 @@ void Asignatura::eliminarClases()
 
 Clase *Asignatura::getClase(int numeroClase) const {}
 bool Asignatura::comprobarInscripcionEstudiante(string cedula) const {}
-void Asignatura::inscribirEstudiante(Estudiante e) {}
+
+void Asignatura::inscribirEstudiante(Estudiante* e) {
+    IKey* k = new String(e->getCedula());
+    estudiantesInscriptos->add(k,e);
+}
+
 IDictionary *Asignatura::getDatosEstudiantesInscriptos() const {}
 IDictionary *Asignatura::getDatosClasesEnVivoHabilitado(string cedula) const {}
 DtClase *Asignatura::getDatosClase(int numeroClase) const {}

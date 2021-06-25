@@ -52,7 +52,21 @@ Asignatura HandlerAsignaturas::getAsignatura(string codigoAsignatura)
     return *a;
 }
 
-IDictionary *HandlerAsignaturas::getDatosAsignaturasNoInscripto() {}
+IDictionary *HandlerAsignaturas::getDatosAsignaturasNoInscripto(string cedula) {
+    IDictionary *datosAsignaturas = new OrderedDictionary;
+    IIterator *it = asignaturas->getIterator();
+    IKey *k;
+    Asignatura *a;
+    for (it; it->hasCurrent(); it->next())
+    {
+        a = dynamic_cast<Asignatura *>(it->getCurrent());
+        DtAsignatura *dvAsig = a->getDatosAsignatura();
+        k = new String(a->getCodigoAsignatura());
+        datosAsignaturas->add(k, dvAsig);
+    }
+    delete it, k;
+    return datosAsignaturas;
+}
 
 void HandlerAsignaturas::agregarAsignatura(DtAsignatura *dvAsig)
 {

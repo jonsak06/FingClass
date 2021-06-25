@@ -704,11 +704,19 @@ int main()
                     IDictionary *datosAsignaturas = asigUsr.listarAsignaturasNoInscripto(cedula);
                     IIterator *it = datosAsignaturas->getIterator();
 
+                    if (datosAsignaturas->isEmpty())
+                    {
+                        cout << "No existen asignaturas a las que no este inscripto\n";
+                        pausarConsola();
+                        delete it;
+                        break;
+                    }
+
                     cout << "Listado de asignaturas a las que no esta inscripto:\n";
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
-                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                        cout << dvAsig;
                     }
 
                     string codAsig;
@@ -725,7 +733,8 @@ int main()
                     {
                         asigUsr.cancelarInscripcion();
                     }
-                    system("clear");
+                    cout << "\nInscripcion realizada\n";
+                    pausarConsola();
                 }
                 break;
 

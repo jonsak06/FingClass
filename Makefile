@@ -139,3 +139,6 @@ Reloj.o: Reloj.cpp
 
 clean:
 	rm */*.o */*/*.o main.o a.out
+
+cleanW:
+	del /Q /S .\Clases\*.o .\Datatypes\*.o .\Otros\*.o .\ICollection\*.o .\ICollection\collections\*.o main.o .\ICollection\interfaces\*.o main.o a.exe

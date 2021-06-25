@@ -22,6 +22,7 @@ private:
     string* codigoAsignatura;
     string* email;
     TipoClase* rolDictado;
+    string* cedula;
 public:
     static ControllerAsignaturasUsuarios& getInstance();
 

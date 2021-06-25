@@ -22,7 +22,7 @@ public:
     IDictionary* getDatosAsignaturas();
     IDictionary* getDatosAsignaturasConTiempoDictado();
     Asignatura getAsignatura(string codigoAsignatura);
-    IDictionary* getDatosAsignaturasNoInscripto();
+    IDictionary* getDatosAsignaturasNoInscripto(string cedula);
     void agregarAsignatura(DtAsignatura* dvAsig);
     IDictionary* getDatosAsignaturasCursando(string cedula);
     IDictionary* listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura);

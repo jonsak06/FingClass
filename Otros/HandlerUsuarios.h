@@ -21,7 +21,7 @@ public:
     //operaciones DCD
     IDictionary *getDatosDocentesSinAsignar(string codigoAsignatura);
     Docente getDocente(string email);
-    Estudiante getEstudiante(string cedula);
+    Estudiante* getEstudiante(string cedula);
     Usuario *getUsuario(string email);
     void agregarUsuario(DtUsuario *dvUsr);
     void removerClasesYAsignacionDocentes(string codigoAsignatura);

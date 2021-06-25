@@ -9,6 +9,7 @@
 #include "../ICollection/interfaces/IDictionary.h"
 #include "../ICollection/collections/OrderedDictionary.h"
 #include "../ICollection/Integer.h"
+#include "../ICollection/String.h"
 #include <string>
 
 using namespace std;
@@ -57,7 +58,7 @@ public:
     void eliminarClases();
     Clase* getClase(int numeroClase) const;
     bool comprobarInscripcionEstudiante(string cedula) const;
-    void inscribirEstudiante(Estudiante e);
+    void inscribirEstudiante(Estudiante* e);
     IDictionary* getDatosEstudiantesInscriptos() const;
     IDictionary* getDatosClasesEnVivoHabilitado(string cedula) const;
     DtClase* getDatosClase(int numeroClase) const; 

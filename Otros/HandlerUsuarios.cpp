@@ -44,7 +44,13 @@ Docente HandlerUsuarios::getDocente(string email)
     return *d;
 }
 
-Estudiante HandlerUsuarios::getEstudiante(string cedula) {}
+Estudiante* HandlerUsuarios::getEstudiante(string cedula) {
+    IKey *k = new String(cedula);
+    Estudiante *e = dynamic_cast<Estudiante *>(usuarios->find(k));
+    delete k;
+    return e;
+}
+
 Usuario *HandlerUsuarios::getUsuario(string email) {}
 
 void HandlerUsuarios::agregarUsuario(DtUsuario *dvUsr)
