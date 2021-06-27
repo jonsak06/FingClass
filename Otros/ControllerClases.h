@@ -11,6 +11,7 @@
 #include "IClases.h"
 #include "HandlerAsignaturas.h"
 #include "HandlerUsuarios.h"
+#include "Reloj.h"
 
 class ControllerClases : public IClases
 {

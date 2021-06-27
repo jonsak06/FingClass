@@ -84,7 +84,7 @@ void Clase::setUrlGrabacion(string urlGrabacion) {
     this->urlGrabacion = urlGrabacion;
 }
 
-void Clase::setFechaHoraFinalizacion(FechaHora) {
+void Clase::setFechaHoraFinalizacion(FechaHora fechaHoraFinalizacion) {
     this->fechaHoraFinalizacion = fechaHoraFinalizacion;
 }
 
@@ -121,6 +121,7 @@ void Clase::finalizarClase() {
     }
     enVivo = false;
     urlGrabacion = generarUrlGrabacion();
+    fechaHoraFinalizacion = *reloj.getFechaHoraActual();
     delete it;
 }
 

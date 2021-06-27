@@ -595,7 +595,7 @@ int main()
                 }
                 break;
 
-                case 2:
+                case 2: //agregar controles de existencia
                 {
                     string email;
                     cout << "Ingrese su direccion de email: ";

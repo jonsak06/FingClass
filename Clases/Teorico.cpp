@@ -39,5 +39,6 @@ void Teorico::finalizarClase() {
     }
     setEnVivo(false);
     setUrlGrabacion(generarUrlGrabacion());
+    setFechaHoraFinalizacion(*reloj.getFechaHoraActual());
     delete it;
 }

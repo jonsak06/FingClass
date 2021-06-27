@@ -145,6 +145,7 @@ IDictionary *ControllerClases::listarClasesDictadas(string codigoAsignatura) {}
 
 void ControllerClases::cargarDatosClases()
 {
+    Reloj &reloj = Reloj::getInstance();
     listarAsignaturasAsignadas("juan@mail.com");
     crearDatosClase("P1", "Intro", FechaHora(1, 5, 20, 9, 0, 0));
     confirmarInicioClase();
@@ -166,4 +167,29 @@ void ControllerClases::cargarDatosClases()
     habilitarEstudiante("23456789");
     habilitarEstudiante("34567890");
     confirmarInicioClase();
+
+    reloj.setFechaHoraActual(new FechaHora(1,5,20,10,0,0));
+    listarClasesEnVivo("juan@mail.com");
+    seleccionarClaseDocente(1);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(3,5,20,10,0,0));
+    listarClasesEnVivo("juan@mail.com");
+    seleccionarClaseDocente(2);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(8,5,20,10,0,0));
+    listarClasesEnVivo("juan@mail.com");
+    seleccionarClaseDocente(3);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(2,5,20,17,0,0));
+    listarClasesEnVivo("maria@mail.com");
+    seleccionarClaseDocente(4);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(3,5,20,17,0,0));
+    listarClasesEnVivo("maria@mail.com");
+    seleccionarClaseDocente(5);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(4,5,20,17,0,0));
+    listarClasesEnVivo("jorge@mail.com");
+    seleccionarClaseDocente(6);
+    confirmarFinalizacionClase();
 }
