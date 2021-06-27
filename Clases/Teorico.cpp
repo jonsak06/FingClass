@@ -1,19 +1,43 @@
 #include "Teorico.h"
 
-Teorico::Teorico() {
+Teorico::Teorico()
+{
     this->cantAsistentes = 0;
 }
 
-Teorico::Teorico(int numero, string nombre, FechaHora fechaHoraComienzo) : Clase(numero, nombre, fechaHoraComienzo) {
+Teorico::Teorico(int numero, string nombre, FechaHora fechaHoraComienzo) : Clase(numero, nombre, fechaHoraComienzo)
+{
     this->cantAsistentes = 0;
 }
 
-int Teorico::getCantAsistentes() const {
+int Teorico::getCantAsistentes() const
+{
     return cantAsistentes;
 }
 
-void Teorico::setCantAsistentes(int cantAsistentes) {
+void Teorico::setCantAsistentes(int cantAsistentes)
+{
     this->cantAsistentes = cantAsistentes;
 }
 
-DtClase* Teorico::getDatosClase() const {}
+DtClase *Teorico::getDatosClase() const
+{
+    return new DtTeorico(getNumeroClase(), getNombreClase(), getFechaHoraComienzo(), getCodigoAsignatura());
+}
+
+void Teorico::finalizarClase() {
+    Reloj &reloj = Reloj::getInstance();
+    IIterator* it = getAsistenciasEnVivo()->getIterator();
+    AsistenciaEnVivo *asisVivo;
+    for(it; it->hasCurrent(); it->next()) {
+        asisVivo = dynamic_cast<AsistenciaEnVivo*>(it->getCurrent());
+        if (asisVivo->getFechaHoraFin() == nullptr)
+        {
+            asisVivo->setFechaHoraFin(reloj.getFechaHoraActual());
+        }
+        cantAsistentes++;
+    }
+    setEnVivo(false);
+    setUrlGrabacion(generarUrlGrabacion());
+    delete it;
+}

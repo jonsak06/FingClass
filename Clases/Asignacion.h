@@ -23,7 +23,7 @@ public:
     void setAsignatura(Asignatura);
     //operaciones DCD
     string getCodigoAsignatura();
-    DtAsignatura getDatosAsignatura() const;
+    DtAsignatura* getDatosAsignatura() const;
 };
 
 #endif

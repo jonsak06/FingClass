@@ -16,6 +16,7 @@ public:
     
     //operaciones DCD
     DtClase* getDatosClase() const;
+    virtual void finalizarClase();
 };
 
 #endif

@@ -2,6 +2,7 @@
 #define DTESTUDIANTE_H
 
 #include "DtUsuario.h"
+#include <iostream>
 
 class DtEstudiante : public DtUsuario
 {

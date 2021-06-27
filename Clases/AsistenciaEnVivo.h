@@ -13,17 +13,17 @@ class AsistenciaEnVivo : public ICollectible
 private:
     Estudiante* estudiante;
     FechaHora fechaHoraInicio;
-    FechaHora fechaHoraFin;
+    FechaHora* fechaHoraFin;
 public:
     AsistenciaEnVivo();
     ~AsistenciaEnVivo();
     AsistenciaEnVivo(Estudiante*);
     Estudiante* getEstudiante() const;
     FechaHora getFechaHoraInicio() const;
-    FechaHora getFechaHoraFin() const;
+    FechaHora* getFechaHoraFin() const;
     void setEstudiante(Estudiante*);
     void setFechaHoraInicio(FechaHora);
-    void setFechaHoraFin(FechaHora);
+    void setFechaHoraFin(FechaHora*);
 
     //operaciones DCD
     bool comprobarAsistencia(string cedula) const;

@@ -36,12 +36,12 @@ IDictionary *HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura
     return datosDocentes;
 }
 
-Docente HandlerUsuarios::getDocente(string email)
+Docente* HandlerUsuarios::getDocente(string email)
 {
     IKey *k = new String(email);
     Docente *d = dynamic_cast<Docente *>(usuarios->find(k));
     delete k;
-    return *d;
+    return d;
 }
 
 Estudiante* HandlerUsuarios::getEstudiante(string cedula) {
@@ -59,12 +59,12 @@ void HandlerUsuarios::agregarUsuario(DtUsuario *dvUsr)
     IKey *k;
     if (dynamic_cast<DtDocente *>(dvUsr) != nullptr)
     {
-        u = new Docente(dvUsr->getNombre(), dvUsr->getEmail(), dvUsr->getUrlImgPerfil(), dvUsr->getContrasenia(), dvUsr->getNombreInstituto());
+        u = new Docente(dvUsr->getNombre(), dvUsr->getEmail(), dvUsr->getContrasenia(), dvUsr->getUrlImgPerfil(), dvUsr->getNombreInstituto());
         k = new String(dvUsr->getEmail());
     }
     else
     {
-        u = new Estudiante(dvUsr->getNombre(), dvUsr->getEmail(), dvUsr->getUrlImgPerfil(), dvUsr->getContrasenia(), dvUsr->getCedula());
+        u = new Estudiante(dvUsr->getNombre(), dvUsr->getEmail(), dvUsr->getContrasenia(), dvUsr->getUrlImgPerfil(), dvUsr->getCedula());
         k = new String(dvUsr->getCedula());
     }
     usuarios->add(k, u);

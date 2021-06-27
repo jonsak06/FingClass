@@ -19,4 +19,11 @@ string DtEstudiante::getNombreInstituto() const {
     
 }
 
-void DtEstudiante::mostrarInfo(ostream&) {}
+void DtEstudiante::mostrarInfo(ostream&) {
+    cout << endl;
+    cout << "Nombre: " << getNombre() << endl;
+    cout << "Email: " << getEmail() << endl;
+    cout << "URL Imagen de perfil: " << getUrlImgPerfil() << endl;
+    cout << "Cedula: " << cedula << endl
+         << endl;
+}

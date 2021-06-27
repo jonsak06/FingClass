@@ -30,9 +30,9 @@ void ControllerAsignaturasUsuarios::cancelarAltaUsuario()
 }
 
 //CU Alta asignatura
-DtAsignatura *ControllerAsignaturasUsuarios::agregarAsignatura(string nombreAsignatura, string codigoAsignatura, bool teorico, bool practico, bool monitoreo)
+DtAsignatura *ControllerAsignaturasUsuarios::agregarAsignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo)
 {
-    dvAsig = new DtAsignatura(nombreAsignatura, codigoAsignatura, teorico, practico, monitoreo);
+    dvAsig = new DtAsignatura(codigoAsignatura, nombreAsignatura, teorico, practico, monitoreo);
     return dvAsig;
 }
 void ControllerAsignaturasUsuarios::confirmarAltaAsignatura()
@@ -70,9 +70,9 @@ void ControllerAsignaturasUsuarios::confirmarAsignacion()
 {
     HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
     HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
-    Asignatura a = hndlrAsig.getAsignatura(*codigoAsignatura);
-    Docente d = hndlrUsr.getDocente(*email);
-    d.asignarAsignatura(&a, *rolDictado);
+    Asignatura *a = hndlrAsig.getAsignatura(*codigoAsignatura);
+    Docente *d = hndlrUsr.getDocente(*email);
+    d->asignarAsignatura(a, *rolDictado);
     delete email;
     delete rolDictado;
 }
@@ -89,7 +89,8 @@ void ControllerAsignaturasUsuarios::dejarDeAsignarDocentes()
 }
 
 //CU inscripcion a asignaturas
-IDictionary *ControllerAsignaturasUsuarios::listarAsignaturasNoInscripto(string cedula) {
+IDictionary *ControllerAsignaturasUsuarios::listarAsignaturasNoInscripto(string cedula)
+{
     HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
     this->cedula = new string(cedula);
     return hndlrAsig.getDatosAsignaturasNoInscripto(cedula);
@@ -100,16 +101,18 @@ void ControllerAsignaturasUsuarios::seleccionarAsignatura(string codigoAsignatur
     this->codigoAsignatura = new string(codigoAsignatura);
 }
 
-void ControllerAsignaturasUsuarios::confirmarInscripcion() {
+void ControllerAsignaturasUsuarios::confirmarInscripcion()
+{
     HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
     HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
-    Asignatura a = hndlrAsig.getAsignatura(*codigoAsignatura);
-    Estudiante* e = hndlrUsr.getEstudiante(*cedula);
-    a.inscribirEstudiante(e);
+    Asignatura *a = hndlrAsig.getAsignatura(*codigoAsignatura);
+    Estudiante *e = hndlrUsr.getEstudiante(*cedula);
+    a->inscribirEstudiante(e);
     delete cedula, codigoAsignatura;
 }
 
-void ControllerAsignaturasUsuarios::cancelarInscripcion() {
+void ControllerAsignaturasUsuarios::cancelarInscripcion()
+{
     delete cedula, codigoAsignatura;
 }
 
@@ -120,8 +123,8 @@ void ControllerAsignaturasUsuarios::confirmarEliminacion()
     HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
     hndlrUsr.removerClasesYAsignacionDocentes(*codigoAsignatura);
     hndlrUsr.removerClasesEstudiantes(*codigoAsignatura);
-    Asignatura a = hndlrAsig.getAsignatura(*codigoAsignatura);
-    a.eliminarClases();
+    Asignatura *a = hndlrAsig.getAsignatura(*codigoAsignatura);
+    a->eliminarClases();
     hndlrAsig.eliminarAsignatura(*codigoAsignatura);
     delete codigoAsignatura;
 }
@@ -136,4 +139,48 @@ bool ControllerAsignaturasUsuarios::tieneClaseDe(string codigoAsignatura, TipoCl
     HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
     return hndlrAsig.tieneClaseDe(codigoAsignatura, tipoClase);
 }
-void ControllerAsignaturasUsuarios::cargarDatosAsigUsr() {}
+void ControllerAsignaturasUsuarios::cargarDatosAsigUsr()
+{
+    agregarDocente("Juan Perez", "juan@mail.com", "1234", "http://fingclass.edu.uy/imagenes/juanp.jpg", "INCO");
+    confirmarAltaUsuario();
+    agregarDocente("Maria Pires", "maria@mail.com", "1234", "http://fingclass.edu.uy/imagenes/mariap.jpg", "INCO");
+    confirmarAltaUsuario();
+    agregarDocente("Jorge Chacho", "jorge@mail.com", "1234", "http://fingclass.edu.uy/imagenes/jorgec.jpg", "INCO");
+    confirmarAltaUsuario();
+
+    agregarEstudiante("Roberto Parra", "roberto@mail.com", "1234", "http://fingclass.edu.uy/imagenes/robertop.jpg", "12345678");
+    confirmarAltaUsuario();
+    agregarEstudiante("Ana Rodriguez", "ana@mail.com", "1234", "http://fingclass.edu.uy/imagenes/anar.jpg", "23456789");
+    confirmarAltaUsuario();
+    agregarEstudiante("Ramon Valdez", "ramon@mail.com", "1234", "http://fingclass.edu.uy/imagenes/ramonv.jpg", "34567890");
+    confirmarAltaUsuario();
+    
+    agregarAsignatura("P1", "Programacion 1", true, true, true);
+    confirmarAltaAsignatura();
+    agregarAsignatura("P2", "Programacion 2", true, true, true);
+    confirmarAltaAsignatura();
+    agregarAsignatura("P3", "Programacion 3", true, true, false);
+    confirmarAltaAsignatura();
+    
+    seleccionarAsignatura("P1");
+    seleccionarDocente("juan@mail.com", teorico);
+    confirmarAsignacion();
+    seleccionarDocente("maria@mail.com", practico);
+    confirmarAsignacion();
+    seleccionarDocente("jorge@mail.com", monitoreo);
+    confirmarAsignacion();
+    dejarDeAsignarDocentes();
+    
+    cedula = new string("12345678");
+    seleccionarAsignatura("P1");
+    confirmarInscripcion();
+    cedula = new string("23456789");
+    seleccionarAsignatura("P1");
+    confirmarInscripcion();
+    cedula = new string("23456789");
+    seleccionarAsignatura("P2");
+    confirmarInscripcion();
+    cedula = new string("34567890");
+    seleccionarAsignatura("P1");
+    confirmarInscripcion();
+}

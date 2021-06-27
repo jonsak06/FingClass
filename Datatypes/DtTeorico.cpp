@@ -13,7 +13,7 @@ DtTeorico::DtTeorico(int numeroClase, string nombreClase, FechaHora fechaHoraCom
 
 }
 
-DtTeorico::DtTeorico(int numeroClase, string nombreClase, IDictionary* docentes, int cantAsistentes) 
+DtTeorico::DtTeorico(int numeroClase, string nombreClase, ICollection* docentes, int cantAsistentes) 
                     : DtClase(numeroClase, nombreClase, docentes) {
     this->cantAsistentes = cantAsistentes;
 }
@@ -29,4 +29,14 @@ int DtTeorico::getCantAsistentes() const {
 
 string DtTeorico::getTipoClase() const {
     return tipoClase;
+}
+
+void DtTeorico::mostrarInfo(ostream&) {
+    FechaHora *fh = new FechaHora(getFechaHoraComienzo());
+    cout << endl;
+    cout << "Numero: " << getNumeroClase() << endl;
+    cout << "Nombre: " << getNombreClase() << endl;
+    cout << "Codigo de asignatura: " << getCodigoAsignatura() << endl;
+    cout << "Fecha y hora de comienzo: " << fh << endl;
+    delete fh;
 }

@@ -19,7 +19,7 @@ DtClase::DtClase(int numeroClase, string nombreClase, FechaHora fechaHoraComienz
     this->codigoAsignatura = codigoAsignatura;
 }
 
-DtClase::DtClase(int numeroClase, string nombreClase, IDictionary* docentes) {
+DtClase::DtClase(int numeroClase, string nombreClase, ICollection* docentes) {
     this->numeroClase = numeroClase;
     this->nombreClase = nombreClase;
     this->docentes = docentes;
@@ -63,6 +63,11 @@ string DtClase::getCodigoAsignatura() const {
     return codigoAsignatura;
 }
 
-IDictionary* DtClase::getDocentes() const {
+ICollection* DtClase::getDocentes() const {
     return docentes;
+}
+
+ostream& operator<<(ostream& salida, DtClase* u) {
+    u->mostrarInfo(salida);
+    return salida;
 }
