@@ -52,9 +52,9 @@ Estudiante *HandlerUsuarios::getEstudiante(string cedula)
     return e;
 }
 
-Usuario *HandlerUsuarios::getUsuario(string email)
+Usuario *HandlerUsuarios::getUsuario(string emailOCedula)
 {
-    IKey *k = new String(email);
+    IKey *k = new String(emailOCedula);
     Usuario *u = dynamic_cast<Usuario *>(usuarios->find(k));
     delete k;
     return u;

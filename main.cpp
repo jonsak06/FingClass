@@ -819,10 +819,10 @@ int main()
 
                 case 2:
                 {
-                    string email;
-                    cout << "Ingrese su direccion de email: ";
-                    getline(cin >> ws, email);
-                    IDictionary *datosClases = clases.listarClasesEnVivoParticipando(email);
+                    string cedula;
+                    cout << "Ingrese su cedula: ";
+                    getline(cin >> ws, cedula);
+                    IDictionary *datosClases = clases.listarClasesEnVivoParticipando(cedula);
                     IIterator *it = datosClases->getIterator();
 
                     cout << "Listado de sus clases en vivo:\n";
@@ -833,7 +833,7 @@ int main()
                     }
 
                     int nroCls;
-                    cout << "Numero de la clase seleccioanda: ";
+                    cout << "Numero de la clase seleccionada: ";
                     cin >> nroCls;
                     IDictionary *datosMensajes = clases.listarMensajes(nroCls);
                     it = datosMensajes->getIterator();

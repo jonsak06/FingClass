@@ -114,10 +114,10 @@ void ControllerClases::cancelarFinalizacionClase()
 }
 
 //CU envio de mensaje
-IDictionary *ControllerClases::listarClasesEnVivoParticipando(string email)
+IDictionary *ControllerClases::listarClasesEnVivoParticipando(string emailOCedula)
 {
     HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
-    usrActual = hndlrUsr.getUsuario(email);
+    usrActual = hndlrUsr.getUsuario(emailOCedula);
     return usrActual->getDatosClasesEnVivo();
 }
 
@@ -213,6 +213,37 @@ void ControllerClases::cargarDatosClases()
     habilitarEstudiante("23456789");
     habilitarEstudiante("34567890");
     confirmarInicioClase();
+
+    listarClasesEnVivoParticipando("juan@mail.com");
+    listarMensajes(1);
+    escribirMensaje("Bienvenidos!");
+    enviarMensaje();
+    listarClasesEnVivoParticipando("juan@mail.com");
+    listarMensajes(1);
+    escribirMensaje("Confirmen materiales por favor.");
+    enviarMensaje();
+    listarClasesEnVivoParticipando("jorge@mail.com");
+    listarMensajes(6);
+    escribirMensaje("Comparto pantalla");
+    enviarMensaje();
+
+    //falta asistir en vivo
+    // listarClasesEnVivoParticipando("12345678");
+    // listarMensajes(1);
+    // responderMensaje(1, "Listo para aprender");
+    // enviarMensaje();
+    // listarClasesEnVivoParticipando("juan@mail.com");
+    // listarMensajes(1);
+    // responderMensaje(4, "Me alegro");
+    // enviarMensaje();
+    // listarClasesEnVivoParticipando("23456789");
+    // listarMensajes(1);
+    // responderMensaje(2, "Todo listo");
+    // enviarMensaje();
+    // listarClasesEnVivoParticipando("34567890");
+    // listarMensajes(6);
+    // responderMensaje(3, "Ya la vemos");
+    // enviarMensaje();
 
     // reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 10, 0, 0));
     // listarClasesEnVivo("juan@mail.com");
