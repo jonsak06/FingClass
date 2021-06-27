@@ -12,10 +12,11 @@ public:
     DtTeorico();
     DtTeorico(int numeroClase, string nombreClase);
     DtTeorico(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string codigoAsignatura);
-    DtTeorico(int numeroClase, string nombreClase, IDictionary* docentes, int cantAsistentes);
+    DtTeorico(int numeroClase, string nombreClase, ICollection* docentes, int cantAsistentes);
     DtTeorico(int numeroClase, string nombreClase, float promedioTiempoAsistencia);
     int getCantAsistentes() const;
     string getTipoClase() const;
+    void mostrarInfo(ostream&);
 };
 
 #endif

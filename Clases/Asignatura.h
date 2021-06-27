@@ -2,9 +2,15 @@
 #define ASIGNATURA_H
 
 #include "Clase.h"
+#include "Teorico.h"
+#include "Practico.h"
+#include "Monitoreo.h"
 #include "Estudiante.h"
 #include "../Datatypes/DtAsignatura.h"
 #include "../Datatypes/DtClase.h"
+#include "../Datatypes/DtTeorico.h"
+#include "../Datatypes/DtPractico.h"
+#include "../Datatypes/DtMonitoreo.h"
 #include "../Datatypes/DtMensaje.h"
 #include "../ICollection/interfaces/IDictionary.h"
 #include "../ICollection/collections/OrderedDictionary.h"
@@ -25,8 +31,9 @@ private:
     bool practico;
     bool monitoreo;
     float tiempoTotalDictado;
-    IDictionary* estudiantesInscriptos;
-    IDictionary* clases;
+    IDictionary *estudiantesInscriptos;
+    IDictionary *clases;
+
 public:
     Asignatura();
     ~Asignatura();
@@ -38,31 +45,32 @@ public:
     bool tienePractico() const;
     bool tieneMonitoreo() const;
     float getTiempoTotalDictado() const;
-    IDictionary* getEstudiantesInscriptos() const;
-    IDictionary* getClases() const;
+    IDictionary *getEstudiantesInscriptos() const;
+    IDictionary *getClases() const;
     void setCodigoAsignatura(string);
     void setNombreAsignatura(string);
     void setTeorico(bool);
     void setPractico(bool);
     void setMonitoreo(bool);
     void setTiempoTotalDictado(float);
-    void setEstudiantesInscriptos(IDictionary*);
-    void setClases(IDictionary*);
+    void setEstudiantesInscriptos(IDictionary *);
+    void setClases(IDictionary *);
 
     //operaciones DCD
-    DtAsignatura* getDatosAsignatura() const;
-    DtAsignatura* getDatosConTiempoDictado() const;
-    Clase* iniciarClase(DtClase* dvCls, IDictionary* habilitados) const;
-    IDictionary* getDatosClasesEnDiferido() const;
-    IDictionary* reproducirClase(int numeroClase, Estudiante e) const;
+    DtAsignatura *getDatosAsignatura() const;
+    DtAsignatura *getDatosConTiempoDictado() const;
+    Clase * iniciarClase(DtClase *dvCls) const;
+    Clase *iniciarClase(DtClase *dvCls, IDictionary *habilitados) const;
+    IDictionary *getDatosClasesEnDiferido() const;
+    IDictionary *reproducirClase(int numeroClase, Estudiante e) const;
     void eliminarClases();
-    Clase* getClase(int numeroClase) const;
+    Clase *getClase(int numeroClase) const;
     bool comprobarInscripcionEstudiante(string cedula) const;
-    void inscribirEstudiante(Estudiante* e);
-    IDictionary* getDatosEstudiantesInscriptos() const;
-    IDictionary* getDatosClasesEnVivoHabilitado(string cedula) const;
-    DtClase* getDatosClase(int numeroClase) const; 
-    Clase* asistirClase(int numeroClase, Estudiante e) const;
+    void inscribirEstudiante(Estudiante *e);
+    IDictionary *getDatosEstudiantesInscriptos() const;
+    IDictionary *getDatosClasesEnVivoHabilitado(string cedula) const;
+    DtClase *getDatosClase(int numeroClase) const;
+    Clase *asistirClase(int numeroClase, Estudiante e) const;
 };
 
 #endif

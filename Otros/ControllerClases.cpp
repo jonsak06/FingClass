@@ -1,50 +1,169 @@
 #include "ControllerClases.h"
 
-ControllerClases& ControllerClases::getInstance() {
-    static ControllerClases* controller = new ControllerClases();
+ControllerClases::ControllerClases()
+{
+    numeroClase = 1;
+    habilitados = new OrderedDictionary;
+}
+
+ControllerClases &ControllerClases::getInstance()
+{
+    static ControllerClases *controller = new ControllerClases();
     return *controller;
 }
+
 //CU inicio de clase
-IDictionary* ControllerClases::listarAsignaturasAsignadas(string email) {}
-TipoClase ControllerClases::crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo) {}
-IDictionary* ControllerClases::listarEstudiantesInscriptos() {}
-void ControllerClases::habilitarEstudiante(string cedula) {}
-DtClase* ControllerClases::obtenerInfoClase() {}
-void ControllerClases::confirmarInicioClase() {}
-void ControllerClases::cancelarInicioClase() {}
+IDictionary *ControllerClases::listarAsignaturasAsignadas(string email)
+{
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    Docente *d = hndlrUsr.getDocente(email);
+    docActual = d;
+    return d->getDatosAsignaturas();
+}
+
+TipoClase ControllerClases::crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo)
+{
+    TipoClase rol = docActual->getRolDictado(codigoAsignatura);
+    if (rol == teorico)
+    {
+        claseNueva = new DtTeorico(numeroClase, nombreClase, fechaHoraComienzo, codigoAsignatura);
+    }
+    else if (rol == practico)
+    {
+        claseNueva = new DtPractico(numeroClase, nombreClase, fechaHoraComienzo, codigoAsignatura);
+    }
+    else
+    {
+        claseNueva = new DtMonitoreo(numeroClase, nombreClase, fechaHoraComienzo, codigoAsignatura);
+    }
+    return rol;
+}
+
+IDictionary *ControllerClases::listarEstudiantesInscriptos()
+{
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    Asignatura *a = hndlrAsig.getAsignatura(claseNueva->getCodigoAsignatura());
+    asigActual = a;
+    return a->getDatosEstudiantesInscriptos();
+}
+
+void ControllerClases::habilitarEstudiante(string cedula)
+{
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    Estudiante *e = hndlrUsr.getEstudiante(cedula);
+    IKey *k = new String(e->getCedula());
+    habilitados->add(k, e);
+}
+
+DtClase *ControllerClases::obtenerInfoClase()
+{
+    return claseNueva;
+}
+
+void ControllerClases::confirmarInicioClase()
+{
+    Clase *c;
+    if (dynamic_cast<DtMonitoreo *>(claseNueva) != nullptr)
+    {
+        c = asigActual->iniciarClase(claseNueva, habilitados);
+    }
+    else
+    {
+        c = asigActual->iniciarClase(claseNueva);
+    }
+    docActual->agregarClase(c);
+    asigActual = nullptr;
+    docActual = nullptr;
+    numeroClase++;
+    delete claseNueva;
+}
+
+void ControllerClases::cancelarInicioClase()
+{
+    asigActual = nullptr;
+    docActual = nullptr;
+    delete claseNueva, habilitados;
+}
+
 //CU finalizacion de clase
-IDictionary* ControllerClases::listarClasesEnVivo(string email) {}
-DtClase* ControllerClases::seleccionarClaseDocente(int numeroClase) {}
-void ControllerClases::confirmarFinalizacionClase() {}
-void ControllerClases::cancelarFinalizacionClase() {}
+IDictionary *ControllerClases::listarClasesEnVivo(string email)
+{
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    docActual = hndlrUsr.getDocente(email);
+    return docActual->getDatosClasesEnVivo();
+}
+
+DtClase *ControllerClases::seleccionarClaseDocente(int numeroClase)
+{
+    numeroClaseActual = new int(numeroClase);
+    return docActual->getDatosClase(numeroClase);
+}
+
+void ControllerClases::confirmarFinalizacionClase()
+{
+    docActual->finalizarClase(*numeroClaseActual);
+    docActual = nullptr;
+    delete numeroClaseActual;
+}
+
+void ControllerClases::cancelarFinalizacionClase()
+{
+    docActual = nullptr;
+    delete numeroClaseActual;
+}
+
 //CU envio de mensaje
-IDictionary* ControllerClases::listarClasesEnVivoParticipando(string email) {}
-IDictionary* ControllerClases::listarMensajes(int numeroClase) {}
+IDictionary *ControllerClases::listarClasesEnVivoParticipando(string email) {}
+IDictionary *ControllerClases::listarMensajes(int numeroClase) {}
 void ControllerClases::responderMensaje(int idMensaje, string mensaje) {}
 void ControllerClases::escribirMensaje(string mensaje) {}
 void ControllerClases::enviarMensaje() {}
 void ControllerClases::cancelarMensaje() {}
 //CU AsistenciaEnDiferido en vivo
-IDictionary* ControllerClases::listarAsignaturasCursando(string cedula) {}
-IDictionary* ControllerClases::listarClasesEnVivoHabilitado(string codigoAsignatura) {}
-DtClase* ControllerClases::seleccionarClase(int numeroClase) {}
+IDictionary *ControllerClases::listarAsignaturasCursando(string cedula) {}
+IDictionary *ControllerClases::listarClasesEnVivoHabilitado(string codigoAsignatura) {}
+DtClase *ControllerClases::seleccionarClase(int numeroClase) {}
 void ControllerClases::confirmarAsistencia() {}
 void ControllerClases::cancelarAsistencia() {}
 //CU reproduccion en diferido
-IDictionary* ControllerClases::listarClasesEnDiferido(string codigoAsignatura) {}
-IDictionary* ControllerClases::confirmarReproduccion() {}
+IDictionary *ControllerClases::listarClasesEnDiferido(string codigoAsignatura) {}
+IDictionary *ControllerClases::confirmarReproduccion() {}
 void ControllerClases::cancelarReproduccion() {}
 //CU listado de clases
-IDictionary* ControllerClases::listarClases(string codigoAsignatura) {}
+IDictionary *ControllerClases::listarClases(string codigoAsignatura) {}
 
 //CU tiempo de dictado
-IDictionary* ControllerClases::listarAsignaturasConTiempoDictado() {
+IDictionary *ControllerClases::listarAsignaturasConTiempoDictado()
+{
     HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
     return hndlrAsig.getDatosAsignaturasConTiempoDictado();
 }
 
-//CU tiempo Asistencia 
+//CU tiempo Asistencia
 //IDictionary* ControllerClases::listarAsignaturasAsignadas(string email) {}
-IDictionary* ControllerClases::listarClasesDictadas(string codigoAsignatura) {}
+IDictionary *ControllerClases::listarClasesDictadas(string codigoAsignatura) {}
 
-void ControllerClases::cargarDatosClases() {}
+void ControllerClases::cargarDatosClases()
+{
+    listarAsignaturasAsignadas("juan@mail.com");
+    crearDatosClase("P1", "Intro", FechaHora(1, 5, 20, 9, 0, 0));
+    confirmarInicioClase();
+    listarAsignaturasAsignadas("juan@mail.com");
+    crearDatosClase("P1", "Tema 1", FechaHora(3, 5, 20, 9, 0, 0));
+    confirmarInicioClase();
+    listarAsignaturasAsignadas("juan@mail.com");
+    crearDatosClase("P1", "Tema 2", FechaHora(8, 5, 20, 9, 0, 0));
+    confirmarInicioClase();
+    listarAsignaturasAsignadas("maria@mail.com");
+    crearDatosClase("P1", "Pra 1", FechaHora(2, 5, 20, 16, 0, 0));
+    confirmarInicioClase();
+    listarAsignaturasAsignadas("maria@mail.com");
+    crearDatosClase("P1", "Pra 2", FechaHora(3, 5, 20, 16, 0, 0));
+    confirmarInicioClase();
+    listarAsignaturasAsignadas("jorge@mail.com");
+    crearDatosClase("P1", "01/06/20", FechaHora(4, 5, 20, 16, 0, 0));
+    listarEstudiantesInscriptos();
+    habilitarEstudiante("23456789");
+    habilitarEstudiante("34567890");
+    confirmarInicioClase();
+}

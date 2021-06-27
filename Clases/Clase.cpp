@@ -1,6 +1,9 @@
 #include "Clase.h"
 
 Clase::Clase() {
+    asistenciasEnDiferido = new List;
+    asistenciasEnVivo = new List;
+    mensajes = new OrderedDictionary;
     enVivo = true;
 }
 
@@ -11,6 +14,9 @@ Clase::Clase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo) {
     this->numeroClase = numeroClase;
     this->nombreClase = nombreClase;
     this->fechaHoraComienzo = fechaHoraComienzo;
+    asistenciasEnDiferido = new List;
+    asistenciasEnVivo = new List;
+    mensajes = new OrderedDictionary;
     enVivo = true;
 }
 
@@ -54,8 +60,8 @@ IDictionary* Clase::getMensajes() const {
     return mensajes;
 }
 
-Asignatura* Clase::getAsignatura() const {
-    return asignatura;
+string Clase::getCodigoAsignatura() const {
+    return codigoAsignatura;
 }
 
 void Clase::setNombreClase(string nombreClase) {
@@ -98,14 +104,28 @@ void Clase::setMensajes(IDictionary* mensajes) {
     this->mensajes = mensajes;
 }
 
-void Clase::setAsignatura(Asignatura* asignatura) {
-    this->asignatura = asignatura;
+void Clase::setCodigoAsignatura(string codigoAsignatura) {
+    this->codigoAsignatura = codigoAsignatura;
 }
 
-void Clase::finalizarClase() {}
+void Clase::finalizarClase() {
+    Reloj &reloj = Reloj::getInstance();
+    IIterator* it = asistenciasEnVivo->getIterator();
+    AsistenciaEnVivo *asisVivo;
+    for(it; it->hasCurrent(); it->next()) {
+        asisVivo = dynamic_cast<AsistenciaEnVivo*>(it->getCurrent());
+        if (asisVivo->getFechaHoraFin() == nullptr)
+        {
+            asisVivo->setFechaHoraFin(reloj.getFechaHoraActual());
+        }
+    }
+    enVivo = false;
+    urlGrabacion = generarUrlGrabacion();
+    delete it;
+}
+
 void Clase::setInicioAsistenciaEnDiferido(Estudiante* e) {}
 IDictionary* Clase::getDatosMensajes() const {}
-string Clase::getCodigoAsignatura() const {}
 
 void Clase::eliminarAsistencias() {
     IIterator* it = asistenciasEnVivo->getIterator();
@@ -143,3 +163,9 @@ void Clase::enviarMensaje(Usuario* u, string mensaje) {}
 void Clase::responderMensaje(Usuario* u, Mensaje m, string mensaje) {}
 void Clase::marcarAsistenciaVivo(Estudiante* e) {}
 void Clase::marcarAsistenciaDif(Estudiante* e) {}
+
+string Clase::generarUrlGrabacion() const {
+    string direccion = "http://fingclass.edu.uy/clases/videos/";
+    string extension = ".mp4";
+    return direccion + nombreClase + extension;
+}

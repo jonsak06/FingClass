@@ -13,7 +13,7 @@ DtPractico::DtPractico(int numeroClase, string nombreClase, FechaHora fechaHoraC
 
 }
 
-DtPractico::DtPractico(int numeroClase, string nombreClase, IDictionary* docentes) : DtClase(numeroClase, nombreClase, docentes) {
+DtPractico::DtPractico(int numeroClase, string nombreClase, ICollection* docentes) : DtClase(numeroClase, nombreClase, docentes) {
 
 }
 
@@ -24,4 +24,14 @@ DtPractico::DtPractico(int numeroClase, string nombreClase, float promedioTiempo
 
 string DtPractico::getTipoClase() const {
     return tipoClase;
+}
+
+void DtPractico::mostrarInfo(ostream&) {
+    FechaHora *fh = new FechaHora(getFechaHoraComienzo());
+    cout << endl;
+    cout << "Numero: " << getNumeroClase() << endl;
+    cout << "Nombre: " << getNombreClase() << endl;
+    cout << "Codigo de asignatura: " << getCodigoAsignatura() << endl;
+    cout << "Fecha y hora de comienzo: " << fh << endl;
+    delete fh;
 }

@@ -6,7 +6,7 @@
 class Reloj
 {
 private:
-    Reloj() = default;
+    Reloj();
     Reloj(const Reloj&) = delete;
     Reloj& operator=(const Reloj&) = delete;
     Reloj(Reloj&&) = delete;

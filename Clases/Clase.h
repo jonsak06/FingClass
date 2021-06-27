@@ -9,13 +9,15 @@
 #include "../Datatypes/DtMensaje.h"
 #include "../ICollection/interfaces/ICollection.h"
 #include "../ICollection/interfaces/IDictionary.h"
+#include "../ICollection/collections/List.h"
+#include "../ICollection/collections/OrderedDictionary.h"
 #include "../ICollection/Integer.h"
+#include "../Otros/Reloj.h"
 #include <string>
 
 using namespace std;
 
 class Estudiante;
-class Asignatura;
 
 class Clase : public ICollectible
 {
@@ -30,7 +32,7 @@ private:
     ICollection* asistenciasEnDiferido;
     ICollection* asistenciasEnVivo;
     IDictionary* mensajes;
-    Asignatura* asignatura;
+    string codigoAsignatura;
 public:
     Clase();
     virtual ~Clase() = 0;
@@ -45,7 +47,7 @@ public:
     ICollection* getAsistenciasEnDiferido() const;
     ICollection* getAsistenciasEnVivo() const;
     IDictionary* getMensajes() const;
-    Asignatura* getAsignatura() const;
+    string getCodigoAsignatura() const;
     void setNombreClase(string);
     void setNumeroClase(int);
     void setFechaHoraComienzo(FechaHora);
@@ -56,14 +58,13 @@ public:
     void setAsistenciasEnDiferido(ICollection*);
     void setAsistenciasEnVivo(ICollection*);
     void setMensajes(IDictionary*);
-    void setAsignatura(Asignatura*);
+    void setCodigoAsignatura(string);
 
     //operaciones DCD
     virtual DtClase* getDatosClase() const = 0;
-    void finalizarClase();
+    virtual void finalizarClase();
     void setInicioAsistenciaEnDiferido(Estudiante* e);
     IDictionary* getDatosMensajes() const;
-    string getCodigoAsignatura() const;
     void eliminarAsistencias();
     void eliminarMensajes();
     Mensaje getMensaje(int idMensaje) const;
@@ -71,6 +72,7 @@ public:
     void responderMensaje(Usuario* u, Mensaje m, string mensaje);
     void marcarAsistenciaVivo(Estudiante* e);
     void marcarAsistenciaDif(Estudiante* e);
+    string generarUrlGrabacion() const;
 };
 
 #endif

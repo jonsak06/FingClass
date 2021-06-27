@@ -20,7 +20,7 @@ public:
 
     //operaciones DCD
     IDictionary *getDatosDocentesSinAsignar(string codigoAsignatura);
-    Docente getDocente(string email);
+    Docente* getDocente(string email);
     Estudiante* getEstudiante(string cedula);
     Usuario *getUsuario(string email);
     void agregarUsuario(DtUsuario *dvUsr);

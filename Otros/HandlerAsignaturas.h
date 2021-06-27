@@ -21,7 +21,7 @@ public:
     //operaciones DCD
     IDictionary* getDatosAsignaturas();
     IDictionary* getDatosAsignaturasConTiempoDictado();
-    Asignatura getAsignatura(string codigoAsignatura);
+    Asignatura* getAsignatura(string codigoAsignatura);
     IDictionary* getDatosAsignaturasNoInscripto(string cedula);
     void agregarAsignatura(DtAsignatura* dvAsig);
     IDictionary* getDatosAsignaturasCursando(string cedula);

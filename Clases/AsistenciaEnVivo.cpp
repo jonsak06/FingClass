@@ -18,7 +18,7 @@ FechaHora AsistenciaEnVivo::getFechaHoraInicio() const {
     return fechaHoraInicio;
 }
 
-FechaHora AsistenciaEnVivo::getFechaHoraFin() const {
+FechaHora* AsistenciaEnVivo::getFechaHoraFin() const {
     return fechaHoraFin;
 }
 
@@ -30,7 +30,7 @@ void AsistenciaEnVivo::setFechaHoraInicio(FechaHora fechaHoraInicio) {
     this->fechaHoraInicio = fechaHoraInicio;
 }
 
-void AsistenciaEnVivo::setFechaHoraFin(FechaHora fechaHoraFin) {
+void AsistenciaEnVivo::setFechaHoraFin(FechaHora* fechaHoraFin) {
     this->fechaHoraFin = fechaHoraFin;
 }
 

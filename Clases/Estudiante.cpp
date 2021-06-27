@@ -15,4 +15,6 @@ void Estudiante::setCedula(string) {
     this->cedula = cedula;
 }
 
-DtEstudiante* Estudiante::getDatosUsuario() const {}
+DtEstudiante* Estudiante::getDatosUsuario() const {
+    return new DtEstudiante(getNombre(), getEmail(), getContrasenia(), getUrlImgPerfil(), cedula);
+}

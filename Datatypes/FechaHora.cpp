@@ -51,8 +51,8 @@ int FechaHora::getSegundo() const
 void FechaHora::mostrarInfo(ostream &)
 {
     cout << endl;
-    cout << "Fecha: " << getDia() << "/" << getMes() << "/"  << getAnio() << endl;
-    cout << "Hora: " << getHora() << ":"  << getMinuto() << ":"  << getSegundo() << endl;
+    cout << "   Fecha: " << getDia() << "/" << getMes() << "/" << getAnio() << endl;
+    cout << "   Hora: " << getHora() << ":" << getMinuto() << ":" << getSegundo() << endl;
 }
 
 ostream &operator<<(ostream &salida, FechaHora *fh)

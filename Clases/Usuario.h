@@ -45,7 +45,6 @@ public:
     IDictionary* getDatosClasesEnVivo() const;
     Clase* getClase(int numeroClase) const;
     DtClase* getDatosClase(int numeroClase) const;
-    IDictionary* getDatosClasesEnVivo(string email) const;
     IDictionary* getDatosClases(string codigoAsignatura) const;
     void removerClases(string codigoAsignatura);
 };

@@ -5,13 +5,17 @@
 #include "../Clases/Estudiante.h"
 #include "../Clases/Asignatura.h"
 #include "../Clases/Clase.h"
+#include "../Datatypes/DtTeorico.h"
+#include "../Datatypes/DtPractico.h"
+#include "../Datatypes/DtMonitoreo.h"
 #include "IClases.h"
 #include "HandlerAsignaturas.h"
+#include "HandlerUsuarios.h"
 
 class ControllerClases : public IClases
 {
 private:
-    ControllerClases() = default;
+    ControllerClases();
     ControllerClases(const ControllerClases&) = delete;
     ControllerClases& operator=(const ControllerClases&) = delete;
     ControllerClases(ControllerClases&&) = delete;
@@ -21,6 +25,9 @@ private:
     IDictionary* habilitados;
     Asignatura* asigActual;
     Clase* clsActual;
+    DtClase* claseNueva;
+    int numeroClase;
+    int *numeroClaseActual;
 public:
     static ControllerClases& getInstance();
 

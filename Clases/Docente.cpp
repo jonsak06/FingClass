@@ -56,9 +56,49 @@ void Docente::asignarAsignatura(Asignatura *a, TipoClase rolDictado)
     asignaciones->add(agn);
 }
 
-IDictionary *Docente::getDatosAsignaturas() const {}
-TipoClase Docente::getRolDictado(string codigoAsignatura) const {}
-void Docente::finalizarClase(int numeroClase) {}
+IDictionary *Docente::getDatosAsignaturas() const
+{
+    IDictionary *datosAsignaturas = new OrderedDictionary;
+    IIterator *it = asignaciones->getIterator();
+    IKey *k;
+    Asignacion *agn;
+    DtAsignatura *dvAsig;
+    for (it; it->hasCurrent(); it->next())
+    {
+        agn = dynamic_cast<Asignacion *>(it->getCurrent());
+        k = new String(agn->getCodigoAsignatura());
+        dvAsig = agn->getDatosAsignatura();
+        datosAsignaturas->add(k, dvAsig);
+    }
+    delete it, k;
+    return datosAsignaturas;
+}
+
+TipoClase Docente::getRolDictado(string codigoAsignatura) const
+{
+    IIterator *it = asignaciones->getIterator();
+    Asignacion *agn;
+    TipoClase rol;
+    for (it; it->hasCurrent(); it->next())
+    {
+        agn = dynamic_cast<Asignacion *>(it->getCurrent());
+        if (agn->getCodigoAsignatura() == codigoAsignatura)
+        {
+            rol = agn->getRolDictado();
+            break;
+        }
+    }
+    delete it;
+    return rol;
+}
+
+void Docente::finalizarClase(int numeroClase)
+{
+    IKey *k = new Integer(numeroClase);
+    Clase *c = dynamic_cast<Clase*>(getClases()->find(k));
+    c->finalizarClase();
+    delete k;
+}
 
 void Docente::removerAsignacion(string codigoAsignatura)
 {
