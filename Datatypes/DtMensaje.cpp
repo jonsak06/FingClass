@@ -23,3 +23,19 @@ string DtMensaje::getMensaje() const{
 FechaHora DtMensaje::getFechaHoraEnvio() const {
     return fechaHoraEnvio;
 }
+
+void DtMensaje::mostrarInfo(ostream &)
+{
+    FechaHora *fh = new FechaHora(fechaHoraEnvio);
+    cout << endl;
+    cout << "Id: " << idMensaje << endl;
+    cout << "Fecha y hora de envio: " << fh << endl;
+    cout << "Mensaje: " << mensaje << endl;
+    delete fh;
+}
+
+ostream &operator<<(ostream &salida, DtMensaje *dvMsj)
+{
+    dvMsj->mostrarInfo(salida);
+    return salida;
+}

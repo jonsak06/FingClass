@@ -6,10 +6,19 @@ Mensaje::Mensaje() {
 Mensaje::~Mensaje() {
 }
 
-Mensaje::Mensaje(int idMensaje, string mensaje, FechaHora fechaHoraEnvio) {
+Mensaje::Mensaje(Usuario *usuario, int idMensaje, Mensaje *mensajeRespondido, string mensaje, FechaHora *fh) {
+    this->usuario = usuario;
+    this->idMensaje = idMensaje;
+    this->mensajeRespondido = mensajeRespondido;
+    this->mensaje = mensaje;
+    this->fechaHoraEnvio = *fh;
+}
+
+Mensaje::Mensaje(Usuario *usuario, int idMensaje, string mensaje, FechaHora *fh) {
+    this->usuario = usuario;
     this->idMensaje = idMensaje;
     this->mensaje = mensaje;
-    this->fechaHoraEnvio = fechaHoraEnvio;
+    this->fechaHoraEnvio = *fh;
 }
 
 int Mensaje::getIdMensaje() const{
@@ -44,4 +53,6 @@ void Mensaje::setUsuario(Usuario* usuario) {
     this->usuario = usuario;
 }
 
-DtMensaje Mensaje::getDatosMensaje() const {}
+DtMensaje* Mensaje::getDatosMensaje() const {
+    return new DtMensaje(idMensaje, mensaje, fechaHoraEnvio);
+}

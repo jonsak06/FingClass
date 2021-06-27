@@ -17,71 +17,75 @@ class ControllerClases : public IClases
 {
 private:
     ControllerClases();
-    ControllerClases(const ControllerClases&) = delete;
-    ControllerClases& operator=(const ControllerClases&) = delete;
-    ControllerClases(ControllerClases&&) = delete;
-    ControllerClases& operator=(ControllerClases&&) = delete;
-    Docente* docActual;
-    Estudiante* estActual;
-    IDictionary* habilitados;
-    Asignatura* asigActual;
-    Clase* clsActual;
-    DtClase* claseNueva;
+    ControllerClases(const ControllerClases &) = delete;
+    ControllerClases &operator=(const ControllerClases &) = delete;
+    ControllerClases(ControllerClases &&) = delete;
+    ControllerClases &operator=(ControllerClases &&) = delete;
+    Docente *docActual;
+    Estudiante *estActual;
+    Usuario *usrActual;
+    IDictionary *habilitados;
+    Asignatura *asigActual;
+    Clase *clsActual;
+    DtClase *claseNueva;
     int numeroClase;
+    int idMensaje;
     int *numeroClaseActual;
+    string *mensaje;
+    Mensaje *msjActual;
+
 public:
-    static ControllerClases& getInstance();
+    static ControllerClases &getInstance();
 
     //CU inicio de clase
-    IDictionary* listarAsignaturasAsignadas(string email);
+    IDictionary *listarAsignaturasAsignadas(string email);
     TipoClase crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo);
-    IDictionary* listarEstudiantesInscriptos();
+    IDictionary *listarEstudiantesInscriptos();
     void habilitarEstudiante(string cedula);
-    DtClase* obtenerInfoClase();
+    DtClase *obtenerInfoClase();
     void confirmarInicioClase();
     void cancelarInicioClase();
 
     //CU finalizacion de clase
-    IDictionary* listarClasesEnVivo(string email);
-    DtClase* seleccionarClaseDocente(int numeroClase);
+    IDictionary *listarClasesEnVivo(string email);
+    DtClase *seleccionarClaseDocente(int numeroClase);
     void confirmarFinalizacionClase();
     void cancelarFinalizacionClase();
 
     //CU envio de mensaje
-    IDictionary* listarClasesEnVivoParticipando(string email);
-    IDictionary* listarMensajes(int numeroClase);
+    IDictionary *listarClasesEnVivoParticipando(string email);
+    IDictionary *listarMensajes(int numeroClase);
     void responderMensaje(int idMensaje, string mensaje);
     void escribirMensaje(string mensaje);
     void enviarMensaje();
     void cancelarMensaje();
 
     //CU Asistencia en vivo
-    IDictionary* listarAsignaturasCursando(string cedula);
-    IDictionary* listarClasesEnVivoHabilitado(string codigoAsignatura);
-    DtClase* seleccionarClase(int numeroClase);
+    IDictionary *listarAsignaturasCursando(string cedula);
+    IDictionary *listarClasesEnVivoHabilitado(string codigoAsignatura);
+    DtClase *seleccionarClase(int numeroClase);
     void confirmarAsistencia();
     void cancelarAsistencia();
 
     //CU reproduccion en diferido
     //IDictionary* listarAsignaturasCursando(string cedula);
-    IDictionary* listarClasesEnDiferido(string codigoAsignatura);
+    IDictionary *listarClasesEnDiferido(string codigoAsignatura);
     //DtClase* seleccionarClase(int numeroClase);
-    IDictionary* confirmarReproduccion();
+    IDictionary *confirmarReproduccion();
     void cancelarReproduccion();
 
     //CU listado de clases
     //IDictionary* listarAsignaturasAsignadas(string email);
-    IDictionary* listarClases(string codigoAsignatura);
+    IDictionary *listarClases(string codigoAsignatura);
 
     //CU tiempo de dictado
-    IDictionary* listarAsignaturasConTiempoDictado();
+    IDictionary *listarAsignaturasConTiempoDictado();
 
     //CU tiempo Asistencia
     //IDictionary* listarAsignaturasAsignadas(string email);
-    IDictionary* listarClasesDictadas(string codigoAsignatura);
+    IDictionary *listarClasesDictadas(string codigoAsignatura);
 
     void cargarDatosClases();
 };
-
 
 #endif

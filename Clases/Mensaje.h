@@ -16,10 +16,12 @@ private:
     string mensaje;
     FechaHora fechaHoraEnvio;
     Usuario* usuario;
+    Mensaje* mensajeRespondido;
 public:
     Mensaje();
     ~Mensaje();
-    Mensaje(int, string, FechaHora);
+    Mensaje(Usuario *usuario, int idMensaje, Mensaje *mensajeRespondido, string mensaje, FechaHora *fh);
+    Mensaje(Usuario *usuario, int idMensaje, string mensaje, FechaHora *fh);
     int getIdMensaje() const;
     string getMensaje() const;
     FechaHora getFechaHoraEnvio() const;
@@ -30,7 +32,7 @@ public:
     void setUsuario(Usuario*);
 
     //operaciones DCD
-    DtMensaje getDatosMensaje() const;
+    DtMensaje* getDatosMensaje() const;
 };
 
 #endif

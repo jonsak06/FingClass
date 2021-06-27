@@ -76,8 +76,8 @@ void DtAsignatura::mostrarInfo(ostream &)
          << endl;
 }
 
-ostream &operator<<(ostream &salida, DtAsignatura *a)
+ostream &operator<<(ostream &salida, DtAsignatura *dvAsig)
 {
-    a->mostrarInfo(salida);
+    dvAsig->mostrarInfo(salida);
     return salida;
 }

@@ -68,7 +68,13 @@ void Usuario::setClases(IDictionary *clases)
     this->clases = clases;
 }
 
-IDictionary *Usuario::getDatosMensajes(int numeroClase) const {}
+IDictionary *Usuario::getDatosMensajes(int numeroClase) const
+{
+    IKey *k = new Integer(numeroClase);
+    Clase *c = dynamic_cast<Clase*>(clases->find(k));
+    delete k;
+    return c->getDatosMensajes();
+}
 
 void Usuario::agregarClase(Clase *c)
 {
@@ -91,11 +97,17 @@ IDictionary *Usuario::getDatosClasesEnVivo() const
             datosClases->add(k, c->getDatosClase());
         }
     }
-    return datosClases;
     delete it;
+    return datosClases;
 }
 
-Clase *Usuario::getClase(int numeroClase) const {}
+Clase *Usuario::getClase(int numeroClase) const
+{
+    IKey *k = new Integer(numeroClase);
+    Clase *c = dynamic_cast<Clase *>(clases->find(k));
+    delete k;
+    return c;
+}
 
 DtClase *Usuario::getDatosClase(int numeroClase) const
 {

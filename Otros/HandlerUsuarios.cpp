@@ -36,7 +36,7 @@ IDictionary *HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura
     return datosDocentes;
 }
 
-Docente* HandlerUsuarios::getDocente(string email)
+Docente *HandlerUsuarios::getDocente(string email)
 {
     IKey *k = new String(email);
     Docente *d = dynamic_cast<Docente *>(usuarios->find(k));
@@ -44,14 +44,21 @@ Docente* HandlerUsuarios::getDocente(string email)
     return d;
 }
 
-Estudiante* HandlerUsuarios::getEstudiante(string cedula) {
+Estudiante *HandlerUsuarios::getEstudiante(string cedula)
+{
     IKey *k = new String(cedula);
     Estudiante *e = dynamic_cast<Estudiante *>(usuarios->find(k));
     delete k;
     return e;
 }
 
-Usuario *HandlerUsuarios::getUsuario(string email) {}
+Usuario *HandlerUsuarios::getUsuario(string email)
+{
+    IKey *k = new String(email);
+    Usuario *u = dynamic_cast<Usuario *>(usuarios->find(k));
+    delete k;
+    return u;
+}
 
 void HandlerUsuarios::agregarUsuario(DtUsuario *dvUsr)
 {

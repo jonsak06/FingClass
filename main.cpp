@@ -628,7 +628,7 @@ int main()
                 }
                 break;
 
-                case 3:
+                case 3: //agregar controles de existencia
                 {
                     string email;
                     cout << "Ingrese su direccion de email: ";
@@ -640,32 +640,43 @@ int main()
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
-                        cout << dvCls->getNombreClase(); //sobrecargar el cout en DtClase
+                        cout << dvCls;
                     }
+                    delete datosClases;
 
                     int nroCls;
+                    string num;
                     cout << "Numero de la clase seleccioanda: ";
-                    cin >> nroCls;
+                    getline(cin,num);
+                    nroCls = stringToInt(num);
                     IDictionary *datosMensajes = clases.listarMensajes(nroCls);
                     it = datosMensajes->getIterator();
-                    cout << "Mensajes de la clase:\n";
+                    cout << "\nMensajes de la clase:\n";
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
-                        cout << dvMsj->getMensaje(); //sobrecargar el cout en DtMensaje
+                        cout << dvMsj;
                     }
 
                     string mensaje;
-                    cout << "Ingrese su mensaje: ";
+                    cout << "\nIngrese su mensaje: ";
                     getline(cin >> ws, mensaje);
                     int op;
-                    cout << "Su mensaje es respuesta? 1- Si 2- No\n";
-                    cin >> op;
+                    string opc;
+                    if (datosMensajes->isEmpty())
+                    {
+                        cout << "Su mensaje es respuesta? 1- Si 2- No\n";
+                        getline(cin,opc);
+                        op = stringToInt(opc);
+                    }
+                    
+                    
                     int idMensaje;
                     if (op == 1)
                     {
                         cout << "ID del mensaje al que responde: ";
-                        cin >> idMensaje;
+                        getline(cin,num);
+                        idMensaje = stringToInt(opc);
                         clases.responderMensaje(idMensaje, mensaje);
                     }
                     else
