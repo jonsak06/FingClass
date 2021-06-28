@@ -235,25 +235,24 @@ void Clase::marcarAsistenciaVivo(Estudiante *e, string cedula)
 {
     Reloj &reloj = Reloj::getInstance();
     FechaHora * fh = reloj.getFechaHoraActual();
-    IIterator *it = asistenciasEnVivo->getIterator();
-    bool yaAsistio = true;
+    // IIterator *it = asistenciasEnVivo->getIterator();
+    bool yaAsistio = comprobarAsistenciaEnVivo(cedula);
     AsistenciaEnVivo* asisVivo;
-    while (it->hasCurrent() && yaAsistio)
-    {
-        asisVivo = dynamic_cast<AsistenciaEnVivo*>(it->getCurrent());
-        if (asisVivo->comprobarAsistencia(cedula))
-        {
-            yaAsistio = false;
-        }
-        it->next();
-    }
+
+    // while (it->hasCurrent() && yaAsistio)
+    // {
+    //     asisVivo = dynamic_cast<AsistenciaEnVivo*>(it->getCurrent());
+    //     if (asisVivo->comprobarAsistencia(cedula))
+    //     {
+    //         yaAsistio = false;
+    //     }
+    //     it->next();
+    // }
     if (!yaAsistio)
     {
         asisVivo = new AsistenciaEnVivo(e, fh);
         asistenciasEnVivo->add(asisVivo);
     }
-    delete it;
-    
 }
 
 void Clase::marcarAsistenciaDif(Estudiante *e) {}
@@ -263,4 +262,21 @@ string Clase::generarUrlGrabacion() const
     string direccion = "http://fingclass.edu.uy/clases/videos/";
     string extension = ".mp4";
     return direccion + nombreClase + extension;
+}
+
+bool Clase::comprobarAsistenciaEnVivo(string cedula) {
+    IIterator *it = asistenciasEnVivo->getIterator();
+    bool yaAsistio = false;
+    AsistenciaEnVivo* asisVivo;
+    while (it->hasCurrent() && !yaAsistio)
+    {
+        asisVivo = dynamic_cast<AsistenciaEnVivo*>(it->getCurrent());
+        if (asisVivo->comprobarAsistencia(cedula))
+        {
+            yaAsistio = true;
+        }
+        it->next();
+    }
+    delete it;
+    return yaAsistio;
 }

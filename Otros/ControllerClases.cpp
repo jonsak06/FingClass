@@ -163,7 +163,7 @@ void ControllerClases::cancelarMensaje()
     usrActual = nullptr;
     clsActual = nullptr;
     msjActual = nullptr;
-        delete mensaje;
+    delete mensaje;
 }
 
 //CU Asistencia en vivo

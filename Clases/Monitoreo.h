@@ -11,6 +11,7 @@ private:
     IDictionary* estudiantesHabilitados;
 public:
     Monitoreo();
+    virtual ~Monitoreo();
     Monitoreo(int, string, FechaHora, IDictionary*);
     IDictionary* getEstudiantesHabilitados();
     void setEstudiantesHabilitados(IDictionary*);

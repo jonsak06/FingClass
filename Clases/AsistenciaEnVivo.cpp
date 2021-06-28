@@ -1,40 +1,52 @@
 #include "AsistenciaEnVivo.h"
+#include "Estudiante.h"
 
-AsistenciaEnVivo::AsistenciaEnVivo() {
+AsistenciaEnVivo::AsistenciaEnVivo()
+{
 }
 
-AsistenciaEnVivo::~AsistenciaEnVivo() {
-    delete fechaHoraFin;
-    delete fechaHoraInicio;
+AsistenciaEnVivo::~AsistenciaEnVivo()
+{
+    delete fechaHoraFin, fechaHoraInicio;
 }
 
-AsistenciaEnVivo::AsistenciaEnVivo(Estudiante* estudiante, FechaHora *fh) {
+AsistenciaEnVivo::AsistenciaEnVivo(Estudiante *estudiante, FechaHora *fh)
+{
     this->estudiante = estudiante;
     this->fechaHoraInicio = fh;
 }
 
-Estudiante* AsistenciaEnVivo::getEstudiante() const {
+Estudiante *AsistenciaEnVivo::getEstudiante() const
+{
     return estudiante;
 }
 
-FechaHora* AsistenciaEnVivo::getFechaHoraInicio() const {
+FechaHora *AsistenciaEnVivo::getFechaHoraInicio() const
+{
     return fechaHoraInicio;
 }
 
-FechaHora* AsistenciaEnVivo::getFechaHoraFin() const {
+FechaHora *AsistenciaEnVivo::getFechaHoraFin() const
+{
     return fechaHoraFin;
 }
 
-void AsistenciaEnVivo::setEstudiante(Estudiante* estudiante) {
+void AsistenciaEnVivo::setEstudiante(Estudiante *estudiante)
+{
     this->estudiante = estudiante;
 }
 
-void AsistenciaEnVivo::setFechaHoraInicio(FechaHora* fechaHoraInicio) {
+void AsistenciaEnVivo::setFechaHoraInicio(FechaHora *fechaHoraInicio)
+{
     this->fechaHoraInicio = fechaHoraInicio;
 }
 
-void AsistenciaEnVivo::setFechaHoraFin(FechaHora* fechaHoraFin) {
+void AsistenciaEnVivo::setFechaHoraFin(FechaHora *fechaHoraFin)
+{
     this->fechaHoraFin = fechaHoraFin;
 }
 
-bool AsistenciaEnVivo::comprobarAsistencia(string cedula) const {}
+bool AsistenciaEnVivo::comprobarAsistencia(string cedula) const
+{
+    return cedula == estudiante->getCedula();
+}

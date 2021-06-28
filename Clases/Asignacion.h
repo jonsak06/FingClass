@@ -6,21 +6,19 @@
 #include "../Datatypes/DtAsignatura.h"
 #include "../ICollection/interfaces/ICollectible.h"
 
-// class Asignatura;
-
 class Asignacion : public ICollectible
 {
 private:
     TipoClase rolDictado;
-    Asignatura asignatura;
+    Asignatura* asignatura;
 public:
     Asignacion();
     ~Asignacion();
-    Asignacion(Asignatura, TipoClase);
+    Asignacion(Asignatura*, TipoClase);
     TipoClase getRolDictado() const;
-    Asignatura getAsignatura() const;
+    Asignatura* getAsignatura() const;
     void setRolDictado(TipoClase);
-    void setAsignatura(Asignatura);
+    void setAsignatura(Asignatura*);
     //operaciones DCD
     string getCodigoAsignatura();
     DtAsignatura* getDatosAsignatura() const;

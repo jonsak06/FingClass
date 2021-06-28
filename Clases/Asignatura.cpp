@@ -9,6 +9,7 @@ Asignatura::Asignatura()
 
 Asignatura::~Asignatura()
 {
+    delete estudiantesInscriptos, clases;
 }
 
 Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo, float tiempoTotalDictado)
@@ -138,7 +139,7 @@ Clase *Asignatura::iniciarClase(DtClase *dvCls) const
     }
     c->setCodigoAsignatura(dvCls->getCodigoAsignatura());
     IKey *k = new Integer(c->getNumeroClase());
-    clases->add(k,c);
+    clases->add(k, c);
     return c;
 }
 
@@ -178,9 +179,10 @@ void Asignatura::eliminarClases()
     }
 }
 
-Clase *Asignatura::getClase(int numeroClase) const {
+Clase *Asignatura::getClase(int numeroClase) const
+{
     IKey *k = new Integer(numeroClase);
-    Clase *c = dynamic_cast<Clase*>(clases->find(k));
+    Clase *c = dynamic_cast<Clase *>(clases->find(k));
     delete k;
     return c;
 }
@@ -217,18 +219,23 @@ IDictionary *Asignatura::getDatosEstudiantesInscriptos() const
 
 IDictionary *Asignatura::getDatosClasesEnVivoHabilitado(string cedula) const
 {
+    IDictionary *datosClases = new OrderedDictionary;
     IKey *k = new String(cedula);
     if (estudiantesInscriptos->find(k) != nullptr)
     {
         delete k;
         IIterator *it = clases->getIterator();
-        IDictionary *datosClases = new OrderedDictionary;
         Clase *c;
         Monitoreo *m;
         IDictionary *habilitados = new OrderedDictionary;
         for (it; it->hasCurrent(); it->next())
         {
             c = dynamic_cast<Clase *>(it->getCurrent());
+            if (c->comprobarAsistenciaEnVivo(cedula))
+            {
+                continue;
+            }
+            
             m = dynamic_cast<Monitoreo *>(c);
             if (m != nullptr && m->estaEnVivo())
             {
@@ -239,18 +246,15 @@ IDictionary *Asignatura::getDatosClasesEnVivoHabilitado(string cedula) const
                     continue;
                 }
             }
-            if (c->estaEnVivo())
+            else if (c->estaEnVivo())
             {
                 k = new Integer(c->getNumeroClase());
                 datosClases->add(k, c->getDatosClase());
             }
         }
         delete it;
-        return datosClases;
     }
-    
-
-    
+    return datosClases;
 }
 
 DtClase *Asignatura::getDatosClase(int numeroClase) const

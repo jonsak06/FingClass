@@ -68,11 +68,14 @@ void ControllerAsignaturasUsuarios::seleccionarDocente(string email, TipoClase r
 
 void ControllerAsignaturasUsuarios::confirmarAsignacion()
 {
+
+    
     HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
     HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
     Asignatura *a = hndlrAsig.getAsignatura(*codigoAsignatura);
     Docente *d = hndlrUsr.getDocente(*email);
     d->asignarAsignatura(a, *rolDictado);
+    
     delete email;
     delete rolDictado;
 }
@@ -99,6 +102,7 @@ IDictionary *ControllerAsignaturasUsuarios::listarAsignaturasNoInscripto(string 
 void ControllerAsignaturasUsuarios::seleccionarAsignatura(string codigoAsignatura)
 {
     this->codigoAsignatura = new string(codigoAsignatura);
+    
 }
 
 void ControllerAsignaturasUsuarios::confirmarInscripcion()
@@ -155,6 +159,8 @@ void ControllerAsignaturasUsuarios::cargarDatosAsigUsr()
     agregarEstudiante("Ramon Valdez", "ramon@mail.com", "1234", "http://fingclass.edu.uy/imagenes/ramonv.jpg", "34567890");
     confirmarAltaUsuario();
     
+    
+
     //alta de asignaturas
     agregarAsignatura("P1", "Programacion 1", true, true, true);
     confirmarAltaAsignatura();
@@ -162,7 +168,7 @@ void ControllerAsignaturasUsuarios::cargarDatosAsigUsr()
     confirmarAltaAsignatura();
     agregarAsignatura("P3", "Programacion 3", true, true, false);
     confirmarAltaAsignatura();
-    
+   
     //asignacion de docentes a asignaturas
     seleccionarAsignatura("P1");
     seleccionarDocente("juan@mail.com", teorico);
@@ -172,7 +178,7 @@ void ControllerAsignaturasUsuarios::cargarDatosAsigUsr()
     seleccionarDocente("jorge@mail.com", monitoreo);
     confirmarAsignacion();
     dejarDeAsignarDocentes();
-    
+     
     //inscripcion de estudiantes a asignaturas
     cedula = new string("12345678");
     seleccionarAsignatura("P1");

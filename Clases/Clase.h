@@ -73,6 +73,7 @@ public:
     void marcarAsistenciaVivo(Estudiante* e, string cedula);
     void marcarAsistenciaDif(Estudiante* e);
     string generarUrlGrabacion() const;
+    bool comprobarAsistenciaEnVivo(string cedula);
 };
 
 #endif

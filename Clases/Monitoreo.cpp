@@ -4,6 +4,10 @@ Monitoreo::Monitoreo()
 {
 }
 
+Monitoreo::~Monitoreo() {
+    delete estudiantesHabilitados;
+}
+
 Monitoreo::Monitoreo(int numero, string nombre, FechaHora fechaHoraComienzo, IDictionary *habilitados)
     : Clase(numero, nombre, fechaHoraComienzo)
 {

@@ -52,7 +52,7 @@ bool Docente::comprobarAsignacion(string codigoAsignatura) const
 
 void Docente::asignarAsignatura(Asignatura *a, TipoClase rolDictado)
 {
-    Asignacion *agn = new Asignacion(*a, rolDictado);
+    Asignacion *agn = new Asignacion(a, rolDictado);
     asignaciones->add(agn);
 }
 
