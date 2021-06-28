@@ -70,7 +70,7 @@ public:
     Mensaje* getMensaje(int idMensaje) const;
     void enviarMensaje(Usuario* u, int idMensaje, string mensaje, FechaHora* fh);
     void responderMensaje(Usuario* u, int idMensaje, Mensaje* msjRespondido, string mensaje, FechaHora* fh);
-    void marcarAsistenciaVivo(Estudiante* e);
+    void marcarAsistenciaVivo(Estudiante* e, string cedula);
     void marcarAsistenciaDif(Estudiante* e);
     string generarUrlGrabacion() const;
 };

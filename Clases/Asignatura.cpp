@@ -208,6 +208,38 @@ IDictionary *Asignatura::getDatosEstudiantesInscriptos() const
     return datosEstudiantes;
 }
 
-IDictionary *Asignatura::getDatosClasesEnVivoHabilitado(string cedula) const {}
-DtClase *Asignatura::getDatosClase(int numeroClase) const {}
-Clase *Asignatura::asistirClase(int numeroClase, Estudiante e) const {}
+IDictionary *Asignatura::getDatosClasesEnVivoHabilitado(string cedula) const
+{
+    IIterator *it = clases->getIterator();
+    IDictionary *datosClases = new OrderedDictionary;
+    IKey *k;
+    Clase *c;
+    for (it; it->hasCurrent(); it->next())
+    {
+        c = dynamic_cast<Clase *>(it->getCurrent());
+        if (c->estaEnVivo())
+        {
+            k = new Integer(c->getNumeroClase());
+            datosClases->add(k, c->getDatosClase());
+        }
+    }
+    delete it;
+    return datosClases;
+}
+
+DtClase *Asignatura::getDatosClase(int numeroClase) const
+{
+    IKey *k = new Integer(numeroClase);
+    Clase *c = dynamic_cast<Clase *>(clases->find(k));
+    delete k;
+    return c->getDatosClase();
+}
+
+Clase *Asignatura::asistirClase(int numeroClase, Estudiante* e, string cedula) const
+{
+    IKey *k = new Integer(numeroClase);
+    Clase *c = dynamic_cast<Clase *>(clases->find(k));
+    delete k;
+    c->marcarAsistenciaVivo(e, cedula);
+    return c;
+}

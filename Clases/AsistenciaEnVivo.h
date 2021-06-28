@@ -12,17 +12,17 @@ class AsistenciaEnVivo : public ICollectible
 {
 private:
     Estudiante* estudiante;
-    FechaHora fechaHoraInicio;
+    FechaHora* fechaHoraInicio;
     FechaHora* fechaHoraFin;
 public:
     AsistenciaEnVivo();
     ~AsistenciaEnVivo();
-    AsistenciaEnVivo(Estudiante*);
+    AsistenciaEnVivo(Estudiante*, FechaHora*);
     Estudiante* getEstudiante() const;
-    FechaHora getFechaHoraInicio() const;
+    FechaHora* getFechaHoraInicio() const;
     FechaHora* getFechaHoraFin() const;
     void setEstudiante(Estudiante*);
-    void setFechaHoraInicio(FechaHora);
+    void setFechaHoraInicio(FechaHora*);
     void setFechaHoraFin(FechaHora*);
 
     //operaciones DCD

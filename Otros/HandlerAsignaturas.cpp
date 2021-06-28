@@ -24,7 +24,7 @@ IDictionary *HandlerAsignaturas::getDatosAsignaturas()
         k = new String(a->getCodigoAsignatura());
         datosAsignaturas->add(k, dvAsig);
     }
-    delete it, k;
+    delete it;
     return datosAsignaturas;
 }
 
@@ -41,7 +41,7 @@ IDictionary *HandlerAsignaturas::getDatosAsignaturasConTiempoDictado()
         k = new String(a->getCodigoAsignatura());
         datosTiempoDictado->add(k, dvAsig);
     }
-    delete it, k;
+    delete it;
     return datosTiempoDictado;
 }
 
@@ -70,7 +70,7 @@ IDictionary *HandlerAsignaturas::getDatosAsignaturasNoInscripto(string cedula)
             datosAsignaturas->add(k, dvAsig);
         }
     }
-    delete it, k;
+    delete it;
     return datosAsignaturas;
 }
 
@@ -81,8 +81,26 @@ void HandlerAsignaturas::agregarAsignatura(DtAsignatura *dvAsig)
     asignaturas->add(k, a);
 }
 
-IDictionary *HandlerAsignaturas::getDatosAsignaturasCursando(string cedula) {}
-IDictionary *HandlerAsignaturas::listarClasesEnVivoHabilitado(string cedula, string codigoAsignatura) {}
+IDictionary *HandlerAsignaturas::getDatosAsignaturasCursando(string cedula)
+{
+    IDictionary *datosAsignaturas = new OrderedDictionary;
+    IIterator *it = asignaturas->getIterator();
+    IKey *k;
+    Asignatura *a;
+    DtAsignatura *dvAsig;
+    for (it; it->hasCurrent(); it->next())
+    {
+        a = dynamic_cast<Asignatura *>(it->getCurrent());
+        if (a->comprobarInscripcionEstudiante(cedula))
+        {
+            dvAsig = a->getDatosAsignatura();
+            k = new String(a->getCodigoAsignatura());
+            datosAsignaturas->add(k, dvAsig);
+        }
+    }
+    delete it;
+    return datosAsignaturas;
+}
 
 void HandlerAsignaturas::eliminarAsignatura(string codigoAsignatura)
 {

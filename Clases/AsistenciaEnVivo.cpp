@@ -4,17 +4,20 @@ AsistenciaEnVivo::AsistenciaEnVivo() {
 }
 
 AsistenciaEnVivo::~AsistenciaEnVivo() {
+    delete fechaHoraFin;
+    delete fechaHoraInicio;
 }
 
-AsistenciaEnVivo::AsistenciaEnVivo(Estudiante* estudiante) {
+AsistenciaEnVivo::AsistenciaEnVivo(Estudiante* estudiante, FechaHora *fh) {
     this->estudiante = estudiante;
+    this->fechaHoraInicio = fh;
 }
 
 Estudiante* AsistenciaEnVivo::getEstudiante() const {
     return estudiante;
 }
 
-FechaHora AsistenciaEnVivo::getFechaHoraInicio() const {
+FechaHora* AsistenciaEnVivo::getFechaHoraInicio() const {
     return fechaHoraInicio;
 }
 
@@ -26,7 +29,7 @@ void AsistenciaEnVivo::setEstudiante(Estudiante* estudiante) {
     this->estudiante = estudiante;
 }
 
-void AsistenciaEnVivo::setFechaHoraInicio(FechaHora fechaHoraInicio) {
+void AsistenciaEnVivo::setFechaHoraInicio(FechaHora* fechaHoraInicio) {
     this->fechaHoraInicio = fechaHoraInicio;
 }
 

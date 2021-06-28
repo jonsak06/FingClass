@@ -721,7 +721,7 @@ int main()
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
-                        cout << dvCls->getNombreClase(); //sobrecargar el cout en DtClase
+                        cout << dvCls;
                     }
                     system("clear");
                 }
@@ -829,7 +829,7 @@ int main()
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
-                        cout << dvCls->getNombreClase(); //sobrecargar el cout en DtClase
+                        cout << dvCls;
                     }
 
                     int nroCls;
@@ -841,7 +841,7 @@ int main()
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
-                        cout << dvMsj->getMensaje(); //sobrecargar el cout en DtMensaje
+                        cout << dvMsj;
                     }
 
                     string mensaje;
@@ -887,25 +887,29 @@ int main()
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
-                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                        cout << dvAsig;
                     }
+                    delete it;
 
                     string codAsig;
                     cout << "Codigo de la asignatura seleccionada: ";
                     getline(cin >> ws, codAsig);
                     IDictionary *datosClases = clases.listarClasesEnVivoHabilitado(codAsig);
                     it = datosClases->getIterator();
-
+                    system("clear");
                     cout << "Listado de las clases en vivo habilitado a asistir:\n";
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
-                        cout << dvCls->getNombreClase(); //sobrecargar el cout en DtClase
+                        cout << dvCls;
                     }
+                    delete it;
 
                     int nroCls;
+                    string num;
                     cout << "Numero de la clase seleccionada: ";
-                    cin >> nroCls;
+                    getline(cin,num);
+                    nroCls = stringToInt(num);
                     DtClase *dvCls = clases.seleccionarClase(nroCls);
 
                     int op = menuConfirmacion();
@@ -917,7 +921,8 @@ int main()
                     {
                         clases.cancelarAsistencia();
                     }
-                    system("clear");
+                    cout << "\nClase iniciada\n";
+                    pausarConsola();
                 }
                 break;
 
@@ -1130,7 +1135,6 @@ int menuConfirmacion()
             system("clear");
             return op;
         }
-        system("clear");
     }
 }
 

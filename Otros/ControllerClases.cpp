@@ -14,6 +14,7 @@ ControllerClases &ControllerClases::getInstance()
 }
 
 //CU inicio de clase
+
 IDictionary *ControllerClases::listarAsignaturasAsignadas(string email)
 {
     HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
@@ -165,16 +166,49 @@ void ControllerClases::cancelarMensaje()
     delete mensaje;
 }
 
-//CU AsistenciaEnDiferido en vivo
-IDictionary *ControllerClases::listarAsignaturasCursando(string cedula) {}
-IDictionary *ControllerClases::listarClasesEnVivoHabilitado(string codigoAsignatura) {}
-DtClase *ControllerClases::seleccionarClase(int numeroClase) {}
-void ControllerClases::confirmarAsistencia() {}
-void ControllerClases::cancelarAsistencia() {}
+//CU Asistencia en vivo
+IDictionary *ControllerClases::listarAsignaturasCursando(string cedula)
+{
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    estActual = hndlrUsr.getEstudiante(cedula);
+    return hndlrAsig.getDatosAsignaturasCursando(cedula);
+}
+
+IDictionary *ControllerClases::listarClasesEnVivoHabilitado(string codigoAsignatura)
+{
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    asigActual = hndlrAsig.getAsignatura(codigoAsignatura);
+    return asigActual->getDatosClasesEnVivoHabilitado(estActual->getCedula());
+}
+
+DtClase *ControllerClases::seleccionarClase(int numeroClase)
+{
+    numeroClaseActual = new int(numeroClase);
+    return asigActual->getDatosClase(numeroClase);
+}
+
+void ControllerClases::confirmarAsistencia()
+{
+    Clase *c = asigActual->asistirClase(*numeroClaseActual, estActual, estActual->getCedula());
+    estActual->agregarClase(c);
+    estActual = nullptr;
+    asigActual = nullptr;
+    delete numeroClaseActual;
+}
+
+void ControllerClases::cancelarAsistencia()
+{
+    estActual = nullptr;
+    asigActual = nullptr;
+    delete numeroClaseActual;
+}
+
 //CU reproduccion en diferido
 IDictionary *ControllerClases::listarClasesEnDiferido(string codigoAsignatura) {}
 IDictionary *ControllerClases::confirmarReproduccion() {}
 void ControllerClases::cancelarReproduccion() {}
+
 //CU listado de clases
 IDictionary *ControllerClases::listarClases(string codigoAsignatura) {}
 

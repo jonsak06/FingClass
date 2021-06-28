@@ -70,7 +70,7 @@ public:
     IDictionary *getDatosEstudiantesInscriptos() const;
     IDictionary *getDatosClasesEnVivoHabilitado(string cedula) const;
     DtClase *getDatosClase(int numeroClase) const;
-    Clase *asistirClase(int numeroClase, Estudiante e) const;
+    Clase *asistirClase(int numeroClase, Estudiante* e, string cedula) const;
 };
 
 #endif
