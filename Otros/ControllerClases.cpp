@@ -210,7 +210,11 @@ IDictionary *ControllerClases::confirmarReproduccion() {}
 void ControllerClases::cancelarReproduccion() {}
 
 //CU listado de clases
-IDictionary *ControllerClases::listarClases(string codigoAsignatura) {}
+IDictionary *ControllerClases::listarClases(string codigoAsignatura) {
+    IDictionary *datosClases = docActual->getDatosClases(codigoAsignatura);
+    docActual = nullptr;
+    return datosClases;
+}
 
 //CU tiempo de dictado
 IDictionary *ControllerClases::listarAsignaturasConTiempoDictado()

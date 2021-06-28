@@ -235,19 +235,8 @@ void Clase::marcarAsistenciaVivo(Estudiante *e, string cedula)
 {
     Reloj &reloj = Reloj::getInstance();
     FechaHora * fh = reloj.getFechaHoraActual();
-    // IIterator *it = asistenciasEnVivo->getIterator();
     bool yaAsistio = comprobarAsistenciaEnVivo(cedula);
     AsistenciaEnVivo* asisVivo;
-
-    // while (it->hasCurrent() && yaAsistio)
-    // {
-    //     asisVivo = dynamic_cast<AsistenciaEnVivo*>(it->getCurrent());
-    //     if (asisVivo->comprobarAsistencia(cedula))
-    //     {
-    //         yaAsistio = false;
-    //     }
-    //     it->next();
-    // }
     if (!yaAsistio)
     {
         asisVivo = new AsistenciaEnVivo(e, fh);

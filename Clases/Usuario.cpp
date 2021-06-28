@@ -71,7 +71,7 @@ void Usuario::setClases(IDictionary *clases)
 IDictionary *Usuario::getDatosMensajes(int numeroClase) const
 {
     IKey *k = new Integer(numeroClase);
-    Clase *c = dynamic_cast<Clase*>(clases->find(k));
+    Clase *c = dynamic_cast<Clase *>(clases->find(k));
     delete k;
     return c->getDatosMensajes();
 }
@@ -117,7 +117,21 @@ DtClase *Usuario::getDatosClase(int numeroClase) const
     return dvCls;
 }
 
-IDictionary *Usuario::getDatosClases(string codigoAsignatura) const {}
+IDictionary *Usuario::getDatosClases(string codigoAsignatura) const
+{
+    IDictionary *datosClases = new OrderedDictionary;
+    IIterator *it = clases->getIterator();
+    Clase *c;
+    IKey *k;
+    for (it; it->hasCurrent(); it->next())
+    {
+        c = dynamic_cast<Clase *>(it->getCurrent());
+        k = new Integer(c->getNumeroClase());
+        datosClases->add(k, c->getDatosClase());
+    }
+    delete it;
+    return datosClases;
+}
 
 void Usuario::removerClases(string codigoAsignatura)
 {

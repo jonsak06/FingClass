@@ -697,14 +697,14 @@ int main()
                 }
                 break;
 
-                case 4:
+                case 4: //faltan controles
                 {
                     string email;
                     cout << "Ingrese su direccion de email: ";
                     getline(cin >> ws, email);
                     IDictionary *datosAsignaturas = clases.listarAsignaturasAsignadas(email);
                     IIterator *it = datosAsignaturas->getIterator();
-                    cout << "Listado de sus asignaturas:\n";
+                    cout << "\nListado de sus asignaturas:\n";
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
@@ -716,6 +716,7 @@ int main()
                     getline(cin >> ws, codAsig);
                     IDictionary *datosClases = clases.listarClases(codAsig);
                     it = datosClases->getIterator();
+                    system("clear");
 
                     cout << "Listado de sus clases:\n";
                     for (it; it->hasCurrent(); it->next())
@@ -723,7 +724,7 @@ int main()
                         DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
                         cout << dvCls;
                     }
-                    system("clear");
+                    pausarConsola();
                 }
                 break;
 
