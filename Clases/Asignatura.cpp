@@ -132,20 +132,22 @@ Clase *Asignatura::iniciarClase(DtClase *dvCls) const
     {
         c = new Teorico(dvCls->getNumeroClase(), dvCls->getNombreClase(), dvCls->getFechaHoraComienzo());
     }
-    else if (dynamic_cast<DtPractico *>(dvCls) != nullptr)
+    else
     {
         c = new Practico(dvCls->getNumeroClase(), dvCls->getNombreClase(), dvCls->getFechaHoraComienzo());
     }
+    c->setCodigoAsignatura(dvCls->getCodigoAsignatura());
+    IKey *k = new Integer(c->getNumeroClase());
+    clases->add(k,c);
     return c;
 }
 
 Clase *Asignatura::iniciarClase(DtClase *dvCls, IDictionary *habilitados) const
 {
-    Clase *c;
-    c = new Monitoreo(dvCls->getNumeroClase(), dvCls->getNombreClase(), dvCls->getFechaHoraComienzo(), habilitados);
+    Clase *c = new Monitoreo(dvCls->getNumeroClase(), dvCls->getNombreClase(), dvCls->getFechaHoraComienzo(), habilitados);
     c->setCodigoAsignatura(dvCls->getCodigoAsignatura());
     IKey *k = new Integer(c->getNumeroClase());
-    this->clases->add(k, c);
+    clases->add(k, c);
     return c;
 }
 
@@ -176,7 +178,12 @@ void Asignatura::eliminarClases()
     }
 }
 
-Clase *Asignatura::getClase(int numeroClase) const {}
+Clase *Asignatura::getClase(int numeroClase) const {
+    IKey *k = new Integer(numeroClase);
+    Clase *c = dynamic_cast<Clase*>(clases->find(k));
+    delete k;
+    return c;
+}
 
 bool Asignatura::comprobarInscripcionEstudiante(string cedula) const
 {
@@ -204,27 +211,46 @@ IDictionary *Asignatura::getDatosEstudiantesInscriptos() const
         k = new String(dvEst->getCedula());
         datosEstudiantes->add(k, dvEst);
     }
-    delete it, k;
+    delete it;
     return datosEstudiantes;
 }
 
 IDictionary *Asignatura::getDatosClasesEnVivoHabilitado(string cedula) const
 {
-    IIterator *it = clases->getIterator();
-    IDictionary *datosClases = new OrderedDictionary;
-    IKey *k;
-    Clase *c;
-    for (it; it->hasCurrent(); it->next())
+    IKey *k = new String(cedula);
+    if (estudiantesInscriptos->find(k) != nullptr)
     {
-        c = dynamic_cast<Clase *>(it->getCurrent());
-        if (c->estaEnVivo())
+        delete k;
+        IIterator *it = clases->getIterator();
+        IDictionary *datosClases = new OrderedDictionary;
+        Clase *c;
+        Monitoreo *m;
+        IDictionary *habilitados = new OrderedDictionary;
+        for (it; it->hasCurrent(); it->next())
         {
-            k = new Integer(c->getNumeroClase());
-            datosClases->add(k, c->getDatosClase());
+            c = dynamic_cast<Clase *>(it->getCurrent());
+            m = dynamic_cast<Monitoreo *>(c);
+            if (m != nullptr && m->estaEnVivo())
+            {
+                if (m->estaHabilitado(cedula))
+                {
+                    k = new Integer(m->getNumeroClase());
+                    datosClases->add(k, m->getDatosClase());
+                    continue;
+                }
+            }
+            if (c->estaEnVivo())
+            {
+                k = new Integer(c->getNumeroClase());
+                datosClases->add(k, c->getDatosClase());
+            }
         }
+        delete it;
+        return datosClases;
     }
-    delete it;
-    return datosClases;
+    
+
+    
 }
 
 DtClase *Asignatura::getDatosClase(int numeroClase) const
@@ -235,7 +261,7 @@ DtClase *Asignatura::getDatosClase(int numeroClase) const
     return c->getDatosClase();
 }
 
-Clase *Asignatura::asistirClase(int numeroClase, Estudiante* e, string cedula) const
+Clase *Asignatura::asistirClase(int numeroClase, Estudiante *e, string cedula) const
 {
     IKey *k = new Integer(numeroClase);
     Clase *c = dynamic_cast<Clase *>(clases->find(k));

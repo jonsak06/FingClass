@@ -10,6 +10,7 @@ Clase::Clase()
 
 Clase::~Clase()
 {
+    delete asistenciasEnVivo, asistenciasEnDiferido, mensajes;
 }
 
 Clase::Clase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo)

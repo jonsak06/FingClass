@@ -32,7 +32,7 @@ IDictionary *HandlerUsuarios::getDatosDocentesSinAsignar(string codigoAsignatura
             }
         }
     }
-    delete it, k;
+    delete it;
     return datosDocentes;
 }
 

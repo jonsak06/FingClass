@@ -22,7 +22,7 @@ int main()
     IAsignaturasUsuarios &asigUsr = fabrica.getCtrlAsigUsr();
     Reloj &reloj = Reloj::getInstance();
     int opcion;
-
+    int limite = 0;
     do
     {
         opcion = menuUsuario();
@@ -436,10 +436,9 @@ int main()
                 opt = menuDocente();
                 switch (opt)
                 {
-                case 1: //falta arreglarlo
+                case 1: //listo
                 {
                     string email;
-                    //si da el tiempo: agregar listarEstudiantes para corroborar que exista o clase sesion para que no pida los datos
                     cout << "Ingrese su direccion de email: ";
                     getline(cin >> ws, email);
                     IDictionary *datosAsignaturas = clases.listarAsignaturasAsignadas(email);
@@ -494,7 +493,7 @@ int main()
                     getline(cin, num);
                     anio = stringToInt(num);
                     cout << "\nIngrese la hora de comienzo:\n";
-                    cout << "Hora: ";
+                    cout << "\nHora: ";
                     getline(cin, num);
                     hora = stringToInt(num);
                     cout << "Minuto: ";
@@ -504,9 +503,7 @@ int main()
                     getline(cin, num);
                     seg = stringToInt(num);
                     TipoClase tipoClase = clases.crearDatosClase(codAsig, nombreClase, FechaHora(dia, mes, anio, hora, min, seg));
-
                     
-
                     if (tipoClase == monitoreo)
                     {
                         system("clear");
@@ -521,18 +518,17 @@ int main()
                         
                         string cedula;
                         bool seguirHabilitando = true;
+                        bool existeEstudiante;
                         int i = 0;
                         while (seguirHabilitando && i < 15 && !datosEstudiantes->isEmpty())
                         {
+                            system("clear");
                             it = datosEstudiantes->getIterator();
 
-                            
-                            DtEstudiante *dvEst;
                             cout << "Listado de estudiantes inscriptos a la asignatura:\n";
                             for (it; it->hasCurrent(); it->next())
                             {
-                                dvEst = dynamic_cast<DtEstudiante *>(it->getCurrent());
-                                cout << dvEst;
+                                cout << dynamic_cast<DtEstudiante *>(it->getCurrent());
                             }
                             delete it;
 
@@ -550,19 +546,13 @@ int main()
                             else
                             {
                                 cout << "\nEl estudiante no existe o no cursa la asignatura\n";
-                                delete k;
+                                pausarConsola();
                                 system("clear");
+                                delete k;
                                 continue;
                             }
                             i++;
-                            if (datosEstudiantes->isEmpty())
-                            {
-                                cout << "No existen mas estudiantes inscriptos\n";
-                                pausarConsola();
-                                delete it;
-                                seguirHabilitando = false;
-                            }
-                            else if (i < 15)
+                            if (i < 15 && !datosEstudiantes->isEmpty())
                             {
                                 int op;
                                 cout << "\nDesea seguir habilitando estudiantes? 1- Si 2- No\n";
@@ -571,11 +561,10 @@ int main()
                                 if (op == 2)
                                 {
                                     seguirHabilitando = false;
+                                    delete datosEstudiantes;
                                 }
-                                system("clear");
                             }
                         }
-                        delete datosEstudiantes;
                     }
                     system("clear");
                     cout << "\nInformacion de la clase:\n";
@@ -628,7 +617,7 @@ int main()
                 }
                 break;
 
-                case 3: //agregar controles de existencia
+                case 3: //listo
                 {
                     string email;
                     cout << "Ingrese su direccion de email: ";
@@ -636,47 +625,59 @@ int main()
                     IDictionary *datosClases = clases.listarClasesEnVivoParticipando(email);
                     IIterator *it = datosClases->getIterator();
 
+                    if(datosClases->isEmpty())
+                    {
+                        cout << "\nNo tiene clases en vivo\n";
+                        pausarConsola();
+                        break;
+                    }
+
                     cout << "Listado de sus clases en vivo:\n";
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
                         cout << dvCls;
                     }
-                    delete datosClases;
 
                     int nroCls;
                     string num;
-                    cout << "Numero de la clase seleccioanda: ";
-                    getline(cin,num);
-                    nroCls = stringToInt(num);
+                    bool existeClase;
+                    do
+                    {
+                        cout << "Numero de la clase seleccionada: ";
+                        getline(cin,num);
+                        nroCls = stringToInt(num);
+                        IKey *k = new Integer(nroCls);
+                        existeClase = datosClases->find(k) != NULL;
+                        cout << "\nLa clase no existe en su lista\n";
+                    } while (!existeClase);
+                    system("clear");
+                    
                     IDictionary *datosMensajes = clases.listarMensajes(nroCls);
                     it = datosMensajes->getIterator();
-                    cout << "\nMensajes de la clase:\n";
-                    for (it; it->hasCurrent(); it->next())
+                    if (!datosMensajes->isEmpty())
                     {
-                        DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
-                        cout << dvMsj;
+                        cout << "Mensajes de la clase:\n";
+                        for (it; it->hasCurrent(); it->next())
+                        {
+                            DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
+                            cout << dvMsj;
+                        }
                     }
 
                     string mensaje;
+                    int op;
+                    int idMensaje;
                     cout << "\nIngrese su mensaje: ";
                     getline(cin >> ws, mensaje);
-                    int op;
-                    string opc;
-                    if (datosMensajes->isEmpty())
-                    {
-                        cout << "Su mensaje es respuesta? 1- Si 2- No\n";
-                        getline(cin,opc);
-                        op = stringToInt(opc);
-                    }
-                    
-                    
-                    int idMensaje;
+                    cout << "\nEs respuesta? 1- Si 2- No\n";
+                    getline(cin,num);
+                    op = stringToInt(num);
                     if (op == 1)
                     {
-                        cout << "ID del mensaje al que responde: ";
+                        cout << "\nID del mensaje al que responde: ";
                         getline(cin,num);
-                        idMensaje = stringToInt(opc);
+                        idMensaje = stringToInt(num);
                         clases.responderMensaje(idMensaje, mensaje);
                     }
                     else
@@ -693,7 +694,6 @@ int main()
                     {
                         clases.cancelarMensaje();
                     }
-                    system("clear");
                 }
                 break;
 
@@ -817,13 +817,20 @@ int main()
                 }
                 break;
 
-                case 2:
+                case 2: //listo
                 {
                     string cedula;
                     cout << "Ingrese su cedula: ";
                     getline(cin >> ws, cedula);
                     IDictionary *datosClases = clases.listarClasesEnVivoParticipando(cedula);
                     IIterator *it = datosClases->getIterator();
+
+                    if(datosClases->isEmpty())
+                    {
+                        cout << "\nNo tiene clases en vivo\n";
+                        pausarConsola();
+                        break;
+                    }
 
                     cout << "Listado de sus clases en vivo:\n";
                     for (it; it->hasCurrent(); it->next())
@@ -833,28 +840,44 @@ int main()
                     }
 
                     int nroCls;
-                    cout << "Numero de la clase seleccionada: ";
-                    cin >> nroCls;
+                    string num;
+                    bool existeClase;
+                    do
+                    {
+                        cout << "Numero de la clase seleccionada: ";
+                        getline(cin,num);
+                        nroCls = stringToInt(num);
+                        IKey *k = new Integer(nroCls);
+                        existeClase = datosClases->find(k) != NULL;
+                        cout << "\nLa clase no existe en su lista\n";
+                    } while (!existeClase);
+                    system("clear");
+                    
                     IDictionary *datosMensajes = clases.listarMensajes(nroCls);
                     it = datosMensajes->getIterator();
-                    cout << "Mensajes de la clase:\n";
-                    for (it; it->hasCurrent(); it->next())
+                    if (!datosMensajes->isEmpty())
                     {
-                        DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
-                        cout << dvMsj;
+                        cout << "Mensajes de la clase:\n";
+                        for (it; it->hasCurrent(); it->next())
+                        {
+                            DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
+                            cout << dvMsj;
+                        }
                     }
 
                     string mensaje;
-                    cout << "Ingrese su mensaje: ";
-                    getline(cin >> ws, mensaje);
                     int op;
-                    cout << "Su mensaje es respuesta? 1- Si 2- No\n";
-                    cin >> op;
                     int idMensaje;
+                    cout << "\nIngrese su mensaje: ";
+                    getline(cin >> ws, mensaje);
+                    cout << "\nEs respuesta? 1- Si 2- No\n";
+                    getline(cin,num);
+                    op = stringToInt(num);
                     if (op == 1)
                     {
-                        cout << "ID del mensaje al que responde: ";
-                        cin >> idMensaje;
+                        cout << "\nID del mensaje al que responde: ";
+                        getline(cin,num);
+                        idMensaje = stringToInt(num);
                         clases.responderMensaje(idMensaje, mensaje);
                     }
                     else
@@ -871,11 +894,10 @@ int main()
                     {
                         clases.cancelarMensaje();
                     }
-                    system("clear");
                 }
                 break;
 
-                case 3:
+                case 3: //faltan controles
                 {
                     string cedula;
                     cout << "Ingrese su cedula: ";
@@ -916,13 +938,14 @@ int main()
                     if (op == 1)
                     {
                         clases.confirmarAsistencia();
+                        cout << "\nClase iniciada\n";
+                        pausarConsola();
                     }
                     else
                     {
                         clases.cancelarAsistencia();
                     }
-                    cout << "\nClase iniciada\n";
-                    pausarConsola();
+                    
                 }
                 break;
 
@@ -992,10 +1015,19 @@ int main()
 
         case 4: //listo
         {
-            asigUsr.cargarDatosAsigUsr();
-            clases.cargarDatosClases();
-            cout << "Datos cargados\n";
-            pausarConsola();
+            if (limite < 1)
+            {
+                asigUsr.cargarDatosAsigUsr();
+                clases.cargarDatosClases();
+                limite++;
+                cout << "Datos cargados\n";
+                pausarConsola();
+            }
+            else {
+                cout << "Los datos ya fueron cargados\n";
+                pausarConsola();
+            }
+            
         }
         break;
 

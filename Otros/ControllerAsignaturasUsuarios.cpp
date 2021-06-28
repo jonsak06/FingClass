@@ -141,13 +141,13 @@ bool ControllerAsignaturasUsuarios::tieneClaseDe(string codigoAsignatura, TipoCl
 }
 void ControllerAsignaturasUsuarios::cargarDatosAsigUsr()
 {
+    //alta de usuarios
     agregarDocente("Juan Perez", "juan@mail.com", "1234", "http://fingclass.edu.uy/imagenes/juanp.jpg", "INCO");
     confirmarAltaUsuario();
     agregarDocente("Maria Pires", "maria@mail.com", "1234", "http://fingclass.edu.uy/imagenes/mariap.jpg", "INCO");
     confirmarAltaUsuario();
     agregarDocente("Jorge Chacho", "jorge@mail.com", "1234", "http://fingclass.edu.uy/imagenes/jorgec.jpg", "INCO");
     confirmarAltaUsuario();
-
     agregarEstudiante("Roberto Parra", "roberto@mail.com", "1234", "http://fingclass.edu.uy/imagenes/robertop.jpg", "12345678");
     confirmarAltaUsuario();
     agregarEstudiante("Ana Rodriguez", "ana@mail.com", "1234", "http://fingclass.edu.uy/imagenes/anar.jpg", "23456789");
@@ -155,6 +155,7 @@ void ControllerAsignaturasUsuarios::cargarDatosAsigUsr()
     agregarEstudiante("Ramon Valdez", "ramon@mail.com", "1234", "http://fingclass.edu.uy/imagenes/ramonv.jpg", "34567890");
     confirmarAltaUsuario();
     
+    //alta de asignaturas
     agregarAsignatura("P1", "Programacion 1", true, true, true);
     confirmarAltaAsignatura();
     agregarAsignatura("P2", "Programacion 2", true, true, true);
@@ -162,6 +163,7 @@ void ControllerAsignaturasUsuarios::cargarDatosAsigUsr()
     agregarAsignatura("P3", "Programacion 3", true, true, false);
     confirmarAltaAsignatura();
     
+    //asignacion de docentes a asignaturas
     seleccionarAsignatura("P1");
     seleccionarDocente("juan@mail.com", teorico);
     confirmarAsignacion();
@@ -171,6 +173,7 @@ void ControllerAsignaturasUsuarios::cargarDatosAsigUsr()
     confirmarAsignacion();
     dejarDeAsignarDocentes();
     
+    //inscripcion de estudiantes a asignaturas
     cedula = new string("12345678");
     seleccionarAsignatura("P1");
     confirmarInscripcion();

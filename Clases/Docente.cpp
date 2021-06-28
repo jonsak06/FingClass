@@ -70,7 +70,7 @@ IDictionary *Docente::getDatosAsignaturas() const
         dvAsig = agn->getDatosAsignatura();
         datosAsignaturas->add(k, dvAsig);
     }
-    delete it, k;
+    delete it;
     return datosAsignaturas;
 }
 

@@ -24,3 +24,10 @@ DtClase *Monitoreo::getDatosClase() const
 {
     return new DtMonitoreo(getNumeroClase(), getNombreClase(), getFechaHoraComienzo(), getCodigoAsignatura());
 }
+
+bool Monitoreo::estaHabilitado(string cedula) {
+    IKey *k = new String(cedula);
+    bool habilitado = estudiantesHabilitados->member(k);
+    delete k;
+    return habilitado;
+}

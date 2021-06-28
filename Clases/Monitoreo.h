@@ -3,6 +3,7 @@
 
 #include "Clase.h"
 #include "../Datatypes/DtMonitoreo.h"
+#include "../ICollection/String.h"
 
 class Monitoreo : public Clase
 {
@@ -16,6 +17,7 @@ public:
     
     //operaciones DCD
     DtClase* getDatosClase() const;
+    bool estaHabilitado(string cedula);
 };
 
 #endif

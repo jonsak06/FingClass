@@ -4,6 +4,7 @@ AsistenciaEnDiferido::AsistenciaEnDiferido() {
 }
 
 AsistenciaEnDiferido::~AsistenciaEnDiferido() {
+    delete fechaHoraFin, fechaHoraInicio;
 }
 
 AsistenciaEnDiferido::AsistenciaEnDiferido(Estudiante* estudiante) {

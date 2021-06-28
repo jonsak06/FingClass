@@ -25,6 +25,9 @@ IDictionary *ControllerClases::listarAsignaturasAsignadas(string email)
 
 TipoClase ControllerClases::crearDatosClase(string codigoAsignatura, string nombreClase, FechaHora fechaHoraComienzo)
 {
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    asigActual = hndlrAsig.getAsignatura(codigoAsignatura);
+
     TipoClase rol = docActual->getRolDictado(codigoAsignatura);
     if (rol == teorico)
     {
@@ -43,10 +46,7 @@ TipoClase ControllerClases::crearDatosClase(string codigoAsignatura, string nomb
 
 IDictionary *ControllerClases::listarEstudiantesInscriptos()
 {
-    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
-    Asignatura *a = hndlrAsig.getAsignatura(claseNueva->getCodigoAsignatura());
-    asigActual = a;
-    return a->getDatosEstudiantesInscriptos();
+    return asigActual->getDatosEstudiantesInscriptos();
 }
 
 void ControllerClases::habilitarEstudiante(string cedula)
@@ -115,10 +115,10 @@ void ControllerClases::cancelarFinalizacionClase()
 }
 
 //CU envio de mensaje
-IDictionary *ControllerClases::listarClasesEnVivoParticipando(string emailOCedula)
+IDictionary *ControllerClases::listarClasesEnVivoParticipando(string clave)
 {
     HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
-    usrActual = hndlrUsr.getUsuario(emailOCedula);
+    usrActual = hndlrUsr.getUsuario(clave);
     return usrActual->getDatosClasesEnVivo();
 }
 
@@ -163,7 +163,7 @@ void ControllerClases::cancelarMensaje()
     usrActual = nullptr;
     clsActual = nullptr;
     msjActual = nullptr;
-    delete mensaje;
+        delete mensaje;
 }
 
 //CU Asistencia en vivo
@@ -226,6 +226,7 @@ IDictionary *ControllerClases::listarClasesDictadas(string codigoAsignatura) {}
 void ControllerClases::cargarDatosClases()
 {
     Reloj &reloj = Reloj::getInstance();
+    //inicio de clase
     listarAsignaturasAsignadas("juan@mail.com");
     crearDatosClase("P1", "Intro", FechaHora(1, 5, 20, 9, 0, 0));
     confirmarInicioClase();
@@ -248,6 +249,28 @@ void ControllerClases::cargarDatosClases()
     habilitarEstudiante("34567890");
     confirmarInicioClase();
 
+    reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 9, 1, 0));
+    listarAsignaturasCursando("12345678");
+    listarClasesEnVivoHabilitado("P1");
+    seleccionarClase(1);
+    confirmarAsistencia();
+    reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 9, 2, 0));
+    listarAsignaturasCursando("23456789");
+    listarClasesEnVivoHabilitado("P1");
+    seleccionarClase(1);
+    confirmarAsistencia();
+    reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 9, 3, 0));
+    listarAsignaturasCursando("34567890");
+    listarClasesEnVivoHabilitado("P1");
+    seleccionarClase(1);
+    confirmarAsistencia();
+    reloj.setFechaHoraActual(new FechaHora(4, 5, 20, 16, 0, 0));
+    listarAsignaturasCursando("34567890");
+    listarClasesEnVivoHabilitado("P1");
+    seleccionarClase(6);
+    confirmarAsistencia();
+
+    //envio de mensaje
     listarClasesEnVivoParticipando("juan@mail.com");
     listarMensajes(1);
     escribirMensaje("Bienvenidos!");
@@ -260,25 +283,24 @@ void ControllerClases::cargarDatosClases()
     listarMensajes(6);
     escribirMensaje("Comparto pantalla");
     enviarMensaje();
+    listarClasesEnVivoParticipando("12345678");
+    listarMensajes(1);
+    responderMensaje(1, "Listo para aprender");
+    enviarMensaje();
+    listarClasesEnVivoParticipando("juan@mail.com");
+    listarMensajes(1);
+    responderMensaje(4, "Me alegro");
+    enviarMensaje();
+    listarClasesEnVivoParticipando("23456789");
+    listarMensajes(1);
+    responderMensaje(2, "Todo listo");
+    enviarMensaje();
+    listarClasesEnVivoParticipando("34567890");
+    listarMensajes(6);
+    responderMensaje(3, "Ya la vemos");
+    enviarMensaje();
 
-    //falta asistir en vivo
-    // listarClasesEnVivoParticipando("12345678");
-    // listarMensajes(1);
-    // responderMensaje(1, "Listo para aprender");
-    // enviarMensaje();
-    // listarClasesEnVivoParticipando("juan@mail.com");
-    // listarMensajes(1);
-    // responderMensaje(4, "Me alegro");
-    // enviarMensaje();
-    // listarClasesEnVivoParticipando("23456789");
-    // listarMensajes(1);
-    // responderMensaje(2, "Todo listo");
-    // enviarMensaje();
-    // listarClasesEnVivoParticipando("34567890");
-    // listarMensajes(6);
-    // responderMensaje(3, "Ya la vemos");
-    // enviarMensaje();
-
+    // finalizacion de clase
     // reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 10, 0, 0));
     // listarClasesEnVivo("juan@mail.com");
     // seleccionarClaseDocente(1);

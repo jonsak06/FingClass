@@ -2,12 +2,12 @@
 
 Teorico::Teorico()
 {
-    this->cantAsistentes = 0;
+    cantAsistentes = 0;
 }
 
 Teorico::Teorico(int numero, string nombre, FechaHora fechaHoraComienzo) : Clase(numero, nombre, fechaHoraComienzo)
 {
-    this->cantAsistentes = 0;
+    cantAsistentes = 0;
 }
 
 int Teorico::getCantAsistentes() const
