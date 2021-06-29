@@ -11,22 +11,24 @@ using namespace std;
 class AsistenciaEnVivo : public ICollectible
 {
 private:
-    Estudiante* estudiante;
-    FechaHora* fechaHoraInicio;
-    FechaHora* fechaHoraFin;
+    Estudiante *estudiante;
+    FechaHora *fechaHoraInicio;
+    FechaHora *fechaHoraFin;
+
 public:
     AsistenciaEnVivo();
     ~AsistenciaEnVivo();
-    AsistenciaEnVivo(Estudiante*, FechaHora*);
-    Estudiante* getEstudiante() const;
-    FechaHora* getFechaHoraInicio() const;
-    FechaHora* getFechaHoraFin() const;
-    void setEstudiante(Estudiante*);
-    void setFechaHoraInicio(FechaHora*);
-    void setFechaHoraFin(FechaHora*);
+    AsistenciaEnVivo(Estudiante *, FechaHora *);
+    Estudiante *getEstudiante() const;
+    FechaHora *getFechaHoraInicio() const;
+    FechaHora *getFechaHoraFin() const;
+    void setEstudiante(Estudiante *);
+    void setFechaHoraInicio(FechaHora *);
+    void setFechaHoraFin(FechaHora *);
 
     //operaciones DCD
     bool comprobarAsistencia(string cedula) const;
+    double getTiempoAsistido() const;
 };
 
 #endif

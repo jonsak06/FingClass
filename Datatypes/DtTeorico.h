@@ -10,10 +10,8 @@ private:
     string tipoClase = "teorico";
 public:
     DtTeorico();
-    DtTeorico(int numeroClase, string nombreClase);
     DtTeorico(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string codigoAsignatura);
-    DtTeorico(int numeroClase, string nombreClase, ICollection* docentes, int cantAsistentes);
-    DtTeorico(int numeroClase, string nombreClase, float promedioTiempoAsistencia);
+    DtTeorico(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string docente, double promedioTiempoAsistencia, int cantAsistentes);
     int getCantAsistentes() const;
     string getTipoClase() const;
     void mostrarInfo(ostream&);

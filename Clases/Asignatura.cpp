@@ -12,7 +12,7 @@ Asignatura::~Asignatura()
     delete estudiantesInscriptos, clases;
 }
 
-Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo, float tiempoTotalDictado)
+Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo, double tiempoTotalDictado)
 {
     clases = new OrderedDictionary;
     estudiantesInscriptos = new OrderedDictionary;
@@ -61,7 +61,7 @@ bool Asignatura::tieneMonitoreo() const
     return monitoreo;
 }
 
-float Asignatura::getTiempoTotalDictado() const
+double Asignatura::getTiempoTotalDictado() const
 {
     return tiempoTotalDictado;
 }
@@ -101,7 +101,7 @@ void Asignatura::setMonitoreo(bool monitoreo)
     this->monitoreo = monitoreo;
 }
 
-void Asignatura::setTiempoTotalDictado(float tiempoTotalDictado)
+void Asignatura::setTiempoTotalDictado(double tiempoTotalDictado)
 {
     this->tiempoTotalDictado = tiempoTotalDictado;
 }
@@ -235,7 +235,7 @@ IDictionary *Asignatura::getDatosClasesEnVivoHabilitado(string cedula) const
             {
                 continue;
             }
-            
+
             m = dynamic_cast<Monitoreo *>(c);
             if (m != nullptr && m->estaEnVivo())
             {

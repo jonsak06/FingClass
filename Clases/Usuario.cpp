@@ -126,8 +126,11 @@ IDictionary *Usuario::getDatosClases(string codigoAsignatura) const
     for (it; it->hasCurrent(); it->next())
     {
         c = dynamic_cast<Clase *>(it->getCurrent());
-        k = new Integer(c->getNumeroClase());
-        datosClases->add(k, c->getDatosClase());
+        if (c->getCodigoAsignatura() == codigoAsignatura)
+        {
+            k = new Integer(c->getNumeroClase());
+            datosClases->add(k, c->getDatosClase());
+        }
     }
     delete it;
     return datosClases;

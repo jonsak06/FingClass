@@ -8,7 +8,7 @@ DtAsignatura::~DtAsignatura()
 {
 }
 
-DtAsignatura::DtAsignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo, float tiempoTotalDictado)
+DtAsignatura::DtAsignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo, double tiempoTotalDictado)
 {
     this->codigoAsignatura = codigoAsignatura;
     this->nombreAsignatura = nombreAsignatura;
@@ -27,7 +27,7 @@ DtAsignatura::DtAsignatura(string codigoAsignatura, string nombreAsignatura, boo
     this->monitoreo = monitoreo;
 }
 
-DtAsignatura::DtAsignatura(string nombreAsignatura, float tiempoTotalDictado) {
+DtAsignatura::DtAsignatura(string nombreAsignatura, double tiempoTotalDictado) {
     this->nombreAsignatura = nombreAsignatura;
     this->tiempoTotalDictado = tiempoTotalDictado;
 }
@@ -57,7 +57,7 @@ bool DtAsignatura::tieneMonitoreo() const
     return monitoreo;
 }
 
-float DtAsignatura::getTiempoTotalDictado() const
+double DtAsignatura::getTiempoTotalDictado() const
 {
     return tiempoTotalDictado;
 }

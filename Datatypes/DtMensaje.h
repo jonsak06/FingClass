@@ -12,9 +12,11 @@ private:
     int idMensaje;
     string mensaje;
     FechaHora fechaHoraEnvio;
+    int idMensajeRespondido;
 public:
     DtMensaje();
     ~DtMensaje();
+    DtMensaje(int, string, FechaHora, int);
     DtMensaje(int, string, FechaHora);
     int getIdMensaje() const;
     string getMensaje() const;

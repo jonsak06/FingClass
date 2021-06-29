@@ -22,23 +22,11 @@ void Teorico::setCantAsistentes(int cantAsistentes)
 
 DtClase *Teorico::getDatosClase() const
 {
-    return new DtTeorico(getNumeroClase(), getNombreClase(), getFechaHoraComienzo(), getCodigoAsignatura());
+    return new DtTeorico(getNumeroClase(), getNombreClase(), getFechaHoraComienzo(), getNombreDocente(), getPromedioTiempoAsistencia(), getCantAsistentes());
 }
 
-void Teorico::finalizarClase() {
-    Reloj &reloj = Reloj::getInstance();
-    IIterator* it = getAsistenciasEnVivo()->getIterator();
-    AsistenciaEnVivo *asisVivo;
-    for(it; it->hasCurrent(); it->next()) {
-        asisVivo = dynamic_cast<AsistenciaEnVivo*>(it->getCurrent());
-        if (asisVivo->getFechaHoraFin() == nullptr)
-        {
-            asisVivo->setFechaHoraFin(reloj.getFechaHoraActual());
-        }
-        cantAsistentes++;
-    }
-    setEnVivo(false);
-    setUrlGrabacion(generarUrlGrabacion());
-    setFechaHoraFinalizacion(*reloj.getFechaHoraActual());
-    delete it;
+void Teorico::finalizarClase()
+{
+    Clase::finalizarClase();
+    cantAsistentes = getAsistenciasEnVivo()->getSize();
 }

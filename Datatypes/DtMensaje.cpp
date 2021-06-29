@@ -1,9 +1,17 @@
 #include "DtMensaje.h"
 
 DtMensaje::DtMensaje() {
+    idMensajeRespondido = 0;
 }
 
 DtMensaje::~DtMensaje() {
+}
+
+DtMensaje::DtMensaje(int idMensaje, string mensaje, FechaHora fechaHoraEnvio, int idMensajeRespondido) {
+    this->idMensaje = idMensaje;
+    this->mensaje = mensaje;
+    this->fechaHoraEnvio = fechaHoraEnvio;
+    this->idMensajeRespondido = idMensajeRespondido;
 }
 
 DtMensaje::DtMensaje(int idMensaje, string mensaje, FechaHora fechaHoraEnvio) {
@@ -29,7 +37,11 @@ void DtMensaje::mostrarInfo(ostream &)
     FechaHora *fh = new FechaHora(fechaHoraEnvio);
     cout << endl;
     cout << "Id: " << idMensaje << endl;
-    cout << "Fecha y hora de envio: " << fh << endl;
+    if (idMensajeRespondido != 0)
+    {
+        cout << "Respuesta de: " << idMensajeRespondido << endl;
+    }
+    cout << "Fecha y hora de envio: " << fh;
     cout << "Mensaje: " << mensaje << endl;
     delete fh;
 }

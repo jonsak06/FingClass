@@ -16,25 +16,23 @@ private:
     bool enVivo;
     string urlGrabacion;
     FechaHora fechaHoraFinalizacion;
-    float promedioTiempoAsistencia;
+    double promedioTiempoAsistencia;
     string codigoAsignatura;
-    ICollection* docentes; //nombre de docentes que la dictaron, coleccion de strings
+    string nombreDocente;
 public:
     DtClase();
     virtual ~DtClase() = 0;
-    DtClase(int numeroClase, string nombreClase);
     DtClase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string codigoAsignatura);
-    DtClase(int numeroClase, string nombreClase, ICollection* docentes);
-    DtClase(int numeroClase, string nombreClase, float promedioTiempoAsistencia);
+    DtClase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string nombreDocente, double promedioTiempoAsistencia);
     int getNumeroClase() const;
     string getNombreClase() const;
     FechaHora getFechaHoraComienzo() const;
     bool estaEnVivo() const;
     string getUrlGrabacion() const;
     FechaHora getFechaHoraFinalizacion() const;
-    float getPromedioTiempoAsistencia() const;
+    double getPromedioTiempoAsistencia() const;
     string getCodigoAsignatura() const;
-    ICollection* getDocentes() const;
+    string getNombreDocente() const;
     virtual void mostrarInfo(ostream&) = 0;
     friend ostream& operator<<(ostream&, DtClase*);
 };

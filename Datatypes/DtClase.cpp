@@ -1,15 +1,10 @@
 #include "DtClase.h"
 
 DtClase::DtClase() {
-    enVivo = true;
+    promedioTiempoAsistencia = 0;
 }
 
 DtClase::~DtClase() {
-}
-
-DtClase::DtClase(int numeroClase, string nombreClase) {
-    this->numeroClase = numeroClase;
-    this->nombreClase = nombreClase;
 }
 
 DtClase::DtClase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string codigoAsignatura) {
@@ -17,17 +12,14 @@ DtClase::DtClase(int numeroClase, string nombreClase, FechaHora fechaHoraComienz
     this->nombreClase = nombreClase;
     this->fechaHoraComienzo = fechaHoraComienzo;
     this->codigoAsignatura = codigoAsignatura;
+    promedioTiempoAsistencia = 0;
 }
 
-DtClase::DtClase(int numeroClase, string nombreClase, ICollection* docentes) {
+DtClase::DtClase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string nombreDocente, double promedioTiempoAsistencia) {
     this->numeroClase = numeroClase;
     this->nombreClase = nombreClase;
-    this->docentes = docentes;
-}
-
-DtClase::DtClase(int numeroClase, string nombreClase, float promedioTiempoAsistencia) {
-    this->numeroClase = numeroClase;
-    this->nombreClase = nombreClase;
+    this->fechaHoraComienzo = fechaHoraComienzo;
+    this->nombreDocente = nombreDocente;
     this->promedioTiempoAsistencia = promedioTiempoAsistencia;
 }
 
@@ -55,7 +47,7 @@ FechaHora DtClase::getFechaHoraFinalizacion() const {
     return fechaHoraFinalizacion;
 }
 
-float DtClase::getPromedioTiempoAsistencia() const {
+double DtClase::getPromedioTiempoAsistencia() const {
     return promedioTiempoAsistencia;
 }
 
@@ -63,8 +55,8 @@ string DtClase::getCodigoAsignatura() const {
     return codigoAsignatura;
 }
 
-ICollection* DtClase::getDocentes() const {
-    return docentes;
+string DtClase::getNombreDocente() const {
+    return nombreDocente;
 }
 
 ostream& operator<<(ostream& salida, DtClase* u) {

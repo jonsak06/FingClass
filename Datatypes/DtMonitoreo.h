@@ -7,14 +7,12 @@
 class DtMonitoreo : public DtClase
 {
 private:
-    ICollection* estudiantes; //nombres de estudiantes que asistieron
+    ICollection* estudiantes;
     string tipoClase = "monitoreo";
 public:
     DtMonitoreo();
-    DtMonitoreo(int numeroClase, string nombreClase);
     DtMonitoreo(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string codigoAsignatura);
-    DtMonitoreo(int numeroClase, string nombreClase, ICollection* docentes, ICollection* estudiantes);
-    DtMonitoreo(int numeroClase, string nombreClase, float promedioTiempoAsistencia);
+    DtMonitoreo(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string nombreDocente, double promedioTiempoAsistencia, ICollection* estudiantes);
     ICollection* getEstudiantes() const;
     string getTipoClase() const;
     void mostrarInfo(ostream&);

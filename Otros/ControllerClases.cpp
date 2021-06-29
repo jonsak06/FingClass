@@ -74,6 +74,7 @@ void ControllerClases::confirmarInicioClase()
         c = asigActual->iniciarClase(claseNueva);
     }
     docActual->agregarClase(c);
+    c->setNombreDocente(docActual->getNombre());
     asigActual = nullptr;
     docActual = nullptr;
     numeroClase++;
@@ -210,7 +211,8 @@ IDictionary *ControllerClases::confirmarReproduccion() {}
 void ControllerClases::cancelarReproduccion() {}
 
 //CU listado de clases
-IDictionary *ControllerClases::listarClases(string codigoAsignatura) {
+IDictionary *ControllerClases::listarClases(string codigoAsignatura)
+{
     IDictionary *datosClases = docActual->getDatosClases(codigoAsignatura);
     docActual = nullptr;
     return datosClases;
@@ -223,9 +225,7 @@ IDictionary *ControllerClases::listarAsignaturasConTiempoDictado()
     return hndlrAsig.getDatosAsignaturasConTiempoDictado();
 }
 
-//CU tiempo Asistencia
-//IDictionary* ControllerClases::listarAsignaturasAsignadas(string email) {}
-IDictionary *ControllerClases::listarClasesDictadas(string codigoAsignatura) {}
+//CU tiempo Asistencia = listarAsignaturasAsignadas y listarClases
 
 void ControllerClases::cargarDatosClases()
 {
@@ -253,6 +253,7 @@ void ControllerClases::cargarDatosClases()
     habilitarEstudiante("34567890");
     confirmarInicioClase();
 
+    //asistencia en vivo
     reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 9, 1, 0));
     listarAsignaturasCursando("12345678");
     listarClasesEnVivoHabilitado("P1");
@@ -305,28 +306,28 @@ void ControllerClases::cargarDatosClases()
     enviarMensaje();
 
     // finalizacion de clase
-    // reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 10, 0, 0));
-    // listarClasesEnVivo("juan@mail.com");
-    // seleccionarClaseDocente(1);
-    // confirmarFinalizacionClase();
-    // reloj.setFechaHoraActual(new FechaHora(3, 5, 20, 10, 0, 0));
-    // listarClasesEnVivo("juan@mail.com");
-    // seleccionarClaseDocente(2);
-    // confirmarFinalizacionClase();
-    // reloj.setFechaHoraActual(new FechaHora(8, 5, 20, 10, 0, 0));
-    // listarClasesEnVivo("juan@mail.com");
-    // seleccionarClaseDocente(3);
-    // confirmarFinalizacionClase();
-    // reloj.setFechaHoraActual(new FechaHora(2, 5, 20, 17, 0, 0));
-    // listarClasesEnVivo("maria@mail.com");
-    // seleccionarClaseDocente(4);
-    // confirmarFinalizacionClase();
-    // reloj.setFechaHoraActual(new FechaHora(3, 5, 20, 17, 0, 0));
-    // listarClasesEnVivo("maria@mail.com");
-    // seleccionarClaseDocente(5);
-    // confirmarFinalizacionClase();
-    // reloj.setFechaHoraActual(new FechaHora(4, 5, 20, 17, 0, 0));
-    // listarClasesEnVivo("jorge@mail.com");
-    // seleccionarClaseDocente(6);
-    // confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 10, 0, 0));
+    listarClasesEnVivo("juan@mail.com");
+    seleccionarClaseDocente(1);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(3, 5, 20, 10, 0, 0));
+    listarClasesEnVivo("juan@mail.com");
+    seleccionarClaseDocente(2);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(8, 5, 20, 10, 0, 0));
+    listarClasesEnVivo("juan@mail.com");
+    seleccionarClaseDocente(3);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(2, 5, 20, 17, 0, 0));
+    listarClasesEnVivo("maria@mail.com");
+    seleccionarClaseDocente(4);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(3, 5, 20, 17, 0, 0));
+    listarClasesEnVivo("maria@mail.com");
+    seleccionarClaseDocente(5);
+    confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(4, 5, 20, 17, 0, 0));
+    listarClasesEnVivo("jorge@mail.com");
+    seleccionarClaseDocente(6);
+    confirmarFinalizacionClase();
 }

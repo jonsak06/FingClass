@@ -6,6 +6,7 @@ Clase::Clase()
     asistenciasEnVivo = new List;
     mensajes = new OrderedDictionary;
     enVivo = true;
+    promedioTiempoAsistencia = 0;
 }
 
 Clase::~Clase()
@@ -22,6 +23,7 @@ Clase::Clase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo)
     asistenciasEnVivo = new List;
     mensajes = new OrderedDictionary;
     enVivo = true;
+    promedioTiempoAsistencia = 0;
 }
 
 string Clase::getNombreClase() const
@@ -54,9 +56,9 @@ FechaHora Clase::getFechaHoraFinalizacion() const
     return fechaHoraFinalizacion;
 }
 
-float Clase::getPromedioTiempoAsistenciaEnDiferido() const
+double Clase::getPromedioTiempoAsistencia() const
 {
-    return promedioTiempoAsistenciaEnDiferido;
+    return promedioTiempoAsistencia;
 }
 
 ICollection *Clase::getAsistenciasEnDiferido() const
@@ -77,6 +79,11 @@ IDictionary *Clase::getMensajes() const
 string Clase::getCodigoAsignatura() const
 {
     return codigoAsignatura;
+}
+
+string Clase::getNombreDocente() const
+{
+    return nombreDocente;
 }
 
 void Clase::setNombreClase(string nombreClase)
@@ -109,9 +116,9 @@ void Clase::setFechaHoraFinalizacion(FechaHora fechaHoraFinalizacion)
     this->fechaHoraFinalizacion = fechaHoraFinalizacion;
 }
 
-void Clase::setPromedioTiempoAsistenciaEnDiferido(float promedioTiempoAsistenciaEnDiferido)
+void Clase::setPromedioTiempoAsistencia(double promedioTiempoAsistenciao)
 {
-    this->promedioTiempoAsistenciaEnDiferido = promedioTiempoAsistenciaEnDiferido;
+    this->promedioTiempoAsistencia = promedioTiempoAsistencia;
 }
 
 void Clase::setAsistenciasEnDiferido(ICollection *asistenciasEnDiferido)
@@ -134,6 +141,11 @@ void Clase::setCodigoAsignatura(string codigoAsignatura)
     this->codigoAsignatura = codigoAsignatura;
 }
 
+void Clase::setNombreDocente(string nombreDocente)
+{
+    this->nombreDocente = nombreDocente;
+}
+
 void Clase::finalizarClase()
 {
     Reloj &reloj = Reloj::getInstance();
@@ -147,10 +159,22 @@ void Clase::finalizarClase()
             asisVivo->setFechaHoraFin(reloj.getFechaHoraActual());
         }
     }
+    delete it;
+    it = asistenciasEnVivo->getIterator();
+    double tiempoTotalAsistido = 0;
+    if (!asistenciasEnVivo->isEmpty())
+    {
+        for (it; it->hasCurrent(); it->next())
+        {
+            asisVivo = dynamic_cast<AsistenciaEnVivo *>(it->getCurrent());
+            tiempoTotalAsistido += asisVivo->getTiempoAsistido();
+        }
+        delete it;
+        promedioTiempoAsistencia = (tiempoTotalAsistido / asistenciasEnVivo->getSize());
+    }
     enVivo = false;
     urlGrabacion = generarUrlGrabacion();
     fechaHoraFinalizacion = *reloj.getFechaHoraActual();
-    delete it;
 }
 
 void Clase::setInicioAsistenciaEnDiferido(Estudiante *e) {}
@@ -234,9 +258,9 @@ void Clase::responderMensaje(Usuario *u, int idMensaje, Mensaje *msjRespondido, 
 void Clase::marcarAsistenciaVivo(Estudiante *e, string cedula)
 {
     Reloj &reloj = Reloj::getInstance();
-    FechaHora * fh = reloj.getFechaHoraActual();
+    FechaHora *fh = reloj.getFechaHoraActual();
     bool yaAsistio = comprobarAsistenciaEnVivo(cedula);
-    AsistenciaEnVivo* asisVivo;
+    AsistenciaEnVivo *asisVivo;
     if (!yaAsistio)
     {
         asisVivo = new AsistenciaEnVivo(e, fh);
@@ -253,13 +277,14 @@ string Clase::generarUrlGrabacion() const
     return direccion + nombreClase + extension;
 }
 
-bool Clase::comprobarAsistenciaEnVivo(string cedula) {
+bool Clase::comprobarAsistenciaEnVivo(string cedula)
+{
     IIterator *it = asistenciasEnVivo->getIterator();
     bool yaAsistio = false;
-    AsistenciaEnVivo* asisVivo;
+    AsistenciaEnVivo *asisVivo;
     while (it->hasCurrent() && !yaAsistio)
     {
-        asisVivo = dynamic_cast<AsistenciaEnVivo*>(it->getCurrent());
+        asisVivo = dynamic_cast<AsistenciaEnVivo *>(it->getCurrent());
         if (asisVivo->comprobarAsistencia(cedula))
         {
             yaAsistio = true;

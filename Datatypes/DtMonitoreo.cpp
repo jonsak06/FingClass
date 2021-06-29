@@ -4,24 +4,15 @@ DtMonitoreo::DtMonitoreo()
 {
 }
 
-DtMonitoreo::DtMonitoreo(int numeroClase, string nombreClase) : DtClase(numeroClase, nombreClase)
-{
-}
-
 DtMonitoreo::DtMonitoreo(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string codigoAsignatura)
     : DtClase(numeroClase, nombreClase, fechaHoraComienzo, codigoAsignatura)
 {
 }
 
-DtMonitoreo::DtMonitoreo(int numeroClase, string nombreClase, ICollection *docentes, ICollection *estudiantes)
-    : DtClase(numeroClase, nombreClase, docentes)
+DtMonitoreo::DtMonitoreo(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string nombreDocente, double promedioTiempoAsistencia, ICollection *estudiantes)
+    : DtClase(numeroClase, nombreClase, fechaHoraComienzo, nombreDocente, promedioTiempoAsistencia)
 {
     this->estudiantes = estudiantes;
-}
-
-DtMonitoreo::DtMonitoreo(int numeroClase, string nombreClase, float promedioTiempoAsistencia)
-    : DtClase(numeroClase, nombreClase, promedioTiempoAsistencia)
-{
 }
 
 ICollection *DtMonitoreo::getEstudiantes() const
@@ -40,7 +31,6 @@ void DtMonitoreo::mostrarInfo(ostream &)
     cout << endl;
     cout << "Numero: " << getNumeroClase() << endl;
     cout << "Nombre: " << getNombreClase() << endl;
-    cout << "Codigo de asignatura: " << getCodigoAsignatura() << endl;
     cout << "Fecha y hora de comienzo: " << fh << endl;
     delete fh;
 }

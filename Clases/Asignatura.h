@@ -30,21 +30,21 @@ private:
     bool teorico;
     bool practico;
     bool monitoreo;
-    float tiempoTotalDictado;
+    double tiempoTotalDictado;
     IDictionary *estudiantesInscriptos;
     IDictionary *clases;
 
 public:
     Asignatura();
     ~Asignatura();
-    Asignatura(string, string, bool, bool, bool, float);
+    Asignatura(string, string, bool, bool, bool, double);
     Asignatura(string, string, bool, bool, bool);
     string getCodigoAsignatura() const;
     string getNombreAsignatura() const;
     bool tieneTeorico() const;
     bool tienePractico() const;
     bool tieneMonitoreo() const;
-    float getTiempoTotalDictado() const;
+    double getTiempoTotalDictado() const;
     IDictionary *getEstudiantesInscriptos() const;
     IDictionary *getClases() const;
     void setCodigoAsignatura(string);
@@ -52,14 +52,14 @@ public:
     void setTeorico(bool);
     void setPractico(bool);
     void setMonitoreo(bool);
-    void setTiempoTotalDictado(float);
+    void setTiempoTotalDictado(double);
     void setEstudiantesInscriptos(IDictionary *);
     void setClases(IDictionary *);
 
     //operaciones DCD
     DtAsignatura *getDatosAsignatura() const;
     DtAsignatura *getDatosConTiempoDictado() const;
-    Clase * iniciarClase(DtClase *dvCls) const;
+    Clase *iniciarClase(DtClase *dvCls) const;
     Clase *iniciarClase(DtClase *dvCls, IDictionary *habilitados) const;
     IDictionary *getDatosClasesEnDiferido() const;
     IDictionary *reproducirClase(int numeroClase, Estudiante e) const;
@@ -70,7 +70,7 @@ public:
     IDictionary *getDatosEstudiantesInscriptos() const;
     IDictionary *getDatosClasesEnVivoHabilitado(string cedula) const;
     DtClase *getDatosClase(int numeroClase) const;
-    Clase *asistirClase(int numeroClase, Estudiante* e, string cedula) const;
+    Clase *asistirClase(int numeroClase, Estudiante *e, string cedula) const;
 };
 
 #endif

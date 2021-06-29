@@ -1,10 +1,12 @@
 #include "Monitoreo.h"
+#include "Estudiante.h"
 
 Monitoreo::Monitoreo()
 {
 }
 
-Monitoreo::~Monitoreo() {
+Monitoreo::~Monitoreo()
+{
     delete estudiantesHabilitados;
 }
 
@@ -26,10 +28,20 @@ void Monitoreo::setEstudiantesHabilitados(IDictionary *habilitados)
 
 DtClase *Monitoreo::getDatosClase() const
 {
-    return new DtMonitoreo(getNumeroClase(), getNombreClase(), getFechaHoraComienzo(), getCodigoAsignatura());
+    ICollection *nombresEstudiantes = new List;
+    IIterator *it = estudiantesHabilitados->getIterator();
+    Estudiante *e;
+    for (it; it->hasCurrent(); it->next())
+    {
+        e = dynamic_cast<Estudiante *>(it->getCurrent());
+        nombresEstudiantes->add(new String(e->getNombre()));
+    }
+    delete it;
+    return new DtMonitoreo(getNumeroClase(), getNombreClase(), getFechaHoraComienzo(), getNombreDocente(), getPromedioTiempoAsistencia(), nombresEstudiantes);
 }
 
-bool Monitoreo::estaHabilitado(string cedula) {
+bool Monitoreo::estaHabilitado(string cedula)
+{
     IKey *k = new String(cedula);
     bool habilitado = estudiantesHabilitados->member(k);
     delete k;

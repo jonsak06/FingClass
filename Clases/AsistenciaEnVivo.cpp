@@ -50,3 +50,8 @@ bool AsistenciaEnVivo::comprobarAsistencia(string cedula) const
 {
     return cedula == estudiante->getCedula();
 }
+
+double AsistenciaEnVivo::getTiempoAsistido() const
+{
+    return (fechaHoraFin->getHora() * 60 + fechaHoraFin->getMinuto()) - (fechaHoraInicio->getHora() * 60 + fechaHoraInicio->getMinuto());
+}

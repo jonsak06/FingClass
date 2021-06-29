@@ -83,7 +83,7 @@ public:
 
     //CU tiempo Asistencia
     //IDictionary* listarAsignaturasAsignadas(string email);
-    IDictionary *listarClasesDictadas(string codigoAsignatura);
+    // IDictionary *listarClases(string codigoAsignatura);
 
     void cargarDatosClases();
 };
