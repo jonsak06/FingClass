@@ -119,7 +119,9 @@ void Asignatura::setClases(IDictionary *clases)
 DtAsignatura *Asignatura::getDatosAsignatura()
 {
     calcularTiempoTotalDictado();
-    return new DtAsignatura(codigoAsignatura, nombreAsignatura, teorico, practico, monitoreo, tiempoTotalDictado);
+    DtAsignatura *dvAsig = new DtAsignatura(codigoAsignatura, nombreAsignatura, teorico, practico, monitoreo, tiempoTotalDictado);
+    tiempoTotalDictado = 0;
+    return dvAsig;
 }
 
 Clase *Asignatura::iniciarClase(DtClase *dvCls) const
