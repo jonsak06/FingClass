@@ -17,6 +17,7 @@ public:
 
     //operaciones DCD
     DtEstudiante* getDatosUsuario() const;
+    // void finalizarReproduccionClase(int numeroClase);
 };
 
 #endif

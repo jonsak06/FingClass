@@ -268,7 +268,33 @@ void Clase::marcarAsistenciaVivo(Estudiante *e, string cedula)
     }
 }
 
-void Clase::marcarAsistenciaDif(Estudiante *e) {}
+void Clase::marcarAsistenciaDif(Estudiante *e, string cedula)
+{
+    Reloj &reloj = Reloj::getInstance();
+    FechaHora *fh = reloj.getFechaHoraActual();
+    bool yaAsistio = comprobarAsistenciaEnDiferido(cedula);
+    AsistenciaEnDiferido *asisDif;
+    if (!yaAsistio)
+    {
+        asisDif = new AsistenciaEnDiferido(e, fh);
+        asistenciasEnDiferido->add(asisDif);
+
+    }
+    else
+    {
+        IIterator *it = asistenciasEnDiferido->getIterator();
+        for (it; it->hasCurrent(); it->next())
+        {
+            asisDif = dynamic_cast<AsistenciaEnDiferido *>(it->getCurrent());
+            if (asisDif->comprobarAsistencia(cedula))
+            {
+                asisDif->agregarFechaHoraInicio(fh);
+                break;
+            }
+        }
+        delete it;
+    }
+}
 
 string Clase::generarUrlGrabacion() const
 {
@@ -286,6 +312,24 @@ bool Clase::comprobarAsistenciaEnVivo(string cedula)
     {
         asisVivo = dynamic_cast<AsistenciaEnVivo *>(it->getCurrent());
         if (asisVivo->comprobarAsistencia(cedula))
+        {
+            yaAsistio = true;
+        }
+        it->next();
+    }
+    delete it;
+    return yaAsistio;
+}
+
+bool Clase::comprobarAsistenciaEnDiferido(string cedula)
+{
+    IIterator *it = asistenciasEnDiferido->getIterator();
+    bool yaAsistio = false;
+    AsistenciaEnDiferido *asisDif;
+    while (it->hasCurrent() && !yaAsistio)
+    {
+        asisDif = dynamic_cast<AsistenciaEnDiferido *>(it->getCurrent());
+        if (asisDif->comprobarAsistencia(cedula))
         {
             yaAsistio = true;
         }

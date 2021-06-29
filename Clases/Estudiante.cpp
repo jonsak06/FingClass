@@ -18,3 +18,7 @@ void Estudiante::setCedula(string) {
 DtEstudiante* Estudiante::getDatosUsuario() const {
     return new DtEstudiante(getNombre(), getEmail(), getContrasenia(), getUrlImgPerfil(), cedula);
 }
+
+// void finalizarReproduccionClase(int numeroClase) {
+
+// }

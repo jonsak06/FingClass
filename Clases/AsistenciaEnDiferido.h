@@ -18,7 +18,7 @@ private:
 public:
     AsistenciaEnDiferido();
     ~AsistenciaEnDiferido();
-    AsistenciaEnDiferido(Estudiante*);
+    AsistenciaEnDiferido(Estudiante*, FechaHora*);
     Estudiante* getEstudiante() const;
     ICollection* getFechaHoraInicio() const;
     ICollection* getFechaHoraFin() const;
@@ -28,6 +28,7 @@ public:
 
     //operaciones DCD
     bool comprobarAsistencia(string cedula) const;
+    void agregarFechaHoraInicio(FechaHora *fh);
 };
 
 #endif

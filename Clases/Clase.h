@@ -75,9 +75,10 @@ public:
     void enviarMensaje(Usuario *u, int idMensaje, string mensaje, FechaHora *fh);
     void responderMensaje(Usuario *u, int idMensaje, Mensaje *msjRespondido, string mensaje, FechaHora *fh);
     void marcarAsistenciaVivo(Estudiante *e, string cedula);
-    void marcarAsistenciaDif(Estudiante *e);
+    void marcarAsistenciaDif(Estudiante *e, string cedula);
     string generarUrlGrabacion() const;
     bool comprobarAsistenciaEnVivo(string cedula);
+    bool comprobarAsistenciaEnDiferido(string cedula);
     double getTiempoDictado() const;
 };
 

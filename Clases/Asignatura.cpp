@@ -150,8 +150,34 @@ Clase *Asignatura::iniciarClase(DtClase *dvCls, IDictionary *habilitados) const
     return c;
 }
 
-IDictionary *Asignatura::getDatosClasesEnDiferido() const {}
-IDictionary *Asignatura::reproducirClase(int, Estudiante) const {}
+IDictionary *Asignatura::getDatosClasesEnDiferido() const
+{
+    IDictionary *datosClases = new OrderedDictionary;
+    IIterator *it = clases->getIterator();
+    IKey *k;
+    Clase *c;
+    IDictionary *habilitados = new OrderedDictionary;
+    for (it; it->hasCurrent(); it->next())
+    {
+        c = dynamic_cast<Clase *>(it->getCurrent());
+        if (!c->estaEnVivo())
+        {
+            k = new Integer(c->getNumeroClase());
+            datosClases->add(k, c->getDatosClase());
+        }
+    }
+    delete it;
+    return datosClases;
+}
+
+IDictionary *Asignatura::reproducirClase(int numeroClase, Estudiante *e) const
+{
+    IKey *k = new Integer(numeroClase);
+    Clase *c = dynamic_cast<Clase *>(clases->find(k));
+    delete k;
+    c->marcarAsistenciaDif(e, e->getCedula());
+    return c->getDatosMensajes();
+}
 
 void Asignatura::eliminarClases()
 {
@@ -272,12 +298,13 @@ Clase *Asignatura::asistirClase(int numeroClase, Estudiante *e, string cedula) c
     return c;
 }
 
-void Asignatura::calcularTiempoTotalDictado() {
+void Asignatura::calcularTiempoTotalDictado()
+{
     IIterator *it = clases->getIterator();
     Clase *c;
-    for(it;it->hasCurrent();it->next())
+    for (it; it->hasCurrent(); it->next())
     {
-        c = dynamic_cast<Clase*>(it->getCurrent());
+        c = dynamic_cast<Clase *>(it->getCurrent());
         if (!c->estaEnVivo())
         {
             tiempoTotalDictado += c->getTiempoDictado();

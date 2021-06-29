@@ -1109,7 +1109,6 @@ int main()
                     int nroCls;
                     string num;
                     bool existeClase;
-                    IKey *k;
                     do
                     {
                         cout << "Numero de la clase seleccionada: ";
@@ -1141,7 +1140,7 @@ int main()
                 }
                 break;
 
-                case 4: //faltan operaciones
+                case 4: //listo
                 {
                     string cedula;
                     cout << "Ingrese su cedula: ";
@@ -1159,7 +1158,7 @@ int main()
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
-                        cout << dvAsig->getNombreAsignatura(); //sobrecargar el cout en DtAsignatura
+                        cout << dvAsig;
                     }
                     delete it;
 
@@ -1194,14 +1193,13 @@ int main()
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
-                        cout << dvCls->getNombreClase(); //sobrecargar el cout en DtClase
+                        cout << dvCls;
                     }
                     delete it;
 
                     int nroCls;
                     string num;
                     bool existeClase;
-                    IKey *k;
                     do
                     {
                         cout << "Numero de la clase seleccionada: ";
@@ -1222,6 +1220,9 @@ int main()
                     int op = menuConfirmacion();
                     if (op == 1)
                     {
+                        cout << "\nReproduccion iniciada\n";
+                        pausarConsola();
+                        system("clear");
                         IDictionary *datosMensajes = clases.confirmarReproduccion();
                         if (!datosMensajes->isEmpty())
                         {
@@ -1230,10 +1231,12 @@ int main()
                             for (it; it->hasCurrent(); it->next())
                             {
                                 DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
-                                cout << dvMsj->getMensaje(); //sobrecargar el cout en DtMensaje
+                                cout << dvMsj;
                             }
-                            delete it, datosMensajes;
+                            delete it;
+                            pausarConsola();
                         }
+                        delete datosMensajes;
                     }
                     else
                     {
