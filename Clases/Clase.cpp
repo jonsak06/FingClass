@@ -294,3 +294,8 @@ bool Clase::comprobarAsistenciaEnVivo(string cedula)
     delete it;
     return yaAsistio;
 }
+
+double Clase::getTiempoDictado() const
+{
+    return (fechaHoraFinalizacion.getHora() + fechaHoraFinalizacion.getMinuto() / 60) - (fechaHoraComienzo.getHora() + fechaHoraComienzo.getMinuto() / 60);
+}

@@ -79,7 +79,7 @@ public:
     IDictionary *listarClases(string codigoAsignatura);
 
     //CU tiempo de dictado
-    IDictionary *listarAsignaturasConTiempoDictado();
+    IDictionary *listarAsignaturas();
 
     //CU tiempo Asistencia
     //IDictionary* listarAsignaturasAsignadas(string email);

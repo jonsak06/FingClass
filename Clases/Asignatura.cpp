@@ -116,14 +116,10 @@ void Asignatura::setClases(IDictionary *clases)
     this->clases = clases;
 }
 
-DtAsignatura *Asignatura::getDatosAsignatura() const
+DtAsignatura *Asignatura::getDatosAsignatura()
 {
+    calcularTiempoTotalDictado();
     return new DtAsignatura(codigoAsignatura, nombreAsignatura, teorico, practico, monitoreo, tiempoTotalDictado);
-}
-
-DtAsignatura *Asignatura::getDatosConTiempoDictado() const
-{
-    return new DtAsignatura(nombreAsignatura, tiempoTotalDictado);
 }
 
 Clase *Asignatura::iniciarClase(DtClase *dvCls) const
@@ -272,4 +268,18 @@ Clase *Asignatura::asistirClase(int numeroClase, Estudiante *e, string cedula) c
     delete k;
     c->marcarAsistenciaVivo(e, cedula);
     return c;
+}
+
+void Asignatura::calcularTiempoTotalDictado() {
+    IIterator *it = clases->getIterator();
+    Clase *c;
+    for(it;it->hasCurrent();it->next())
+    {
+        c = dynamic_cast<Clase*>(it->getCurrent());
+        if (!c->estaEnVivo())
+        {
+            tiempoTotalDictado += c->getTiempoDictado();
+        }
+    }
+    delete it;
 }

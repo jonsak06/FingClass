@@ -78,6 +78,7 @@ public:
     void marcarAsistenciaDif(Estudiante *e);
     string generarUrlGrabacion() const;
     bool comprobarAsistenciaEnVivo(string cedula);
+    double getTiempoDictado() const;
 };
 
 #endif

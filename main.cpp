@@ -294,7 +294,7 @@ int main()
 
                 case 4: //listo
                 {
-                    IDictionary *datosAsignaturas = clases.listarAsignaturasConTiempoDictado();
+                    IDictionary *datosAsignaturas = clases.listarAsignaturas();
                     IIterator *it = datosAsignaturas->getIterator();
 
                     if (datosAsignaturas->isEmpty())
@@ -311,7 +311,7 @@ int main()
                         DtAsignatura *dvAsig = dynamic_cast<DtAsignatura *>(it->getCurrent());
                         cout << endl
                              << "Nombre: " << dvAsig->getNombreAsignatura() << endl;
-                        cout << "Tiempo de dictado: " << dvAsig->getTiempoTotalDictado() << endl;
+                        cout << "Tiempo de dictado: " << dvAsig->getTiempoTotalDictado() << " horas" << endl;
                     }
                     pausarConsola();
                 }

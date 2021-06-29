@@ -57,8 +57,7 @@ public:
     void setClases(IDictionary *);
 
     //operaciones DCD
-    DtAsignatura *getDatosAsignatura() const;
-    DtAsignatura *getDatosConTiempoDictado() const;
+    DtAsignatura *getDatosAsignatura();
     Clase *iniciarClase(DtClase *dvCls) const;
     Clase *iniciarClase(DtClase *dvCls, IDictionary *habilitados) const;
     IDictionary *getDatosClasesEnDiferido() const;
@@ -71,6 +70,7 @@ public:
     IDictionary *getDatosClasesEnVivoHabilitado(string cedula) const;
     DtClase *getDatosClase(int numeroClase) const;
     Clase *asistirClase(int numeroClase, Estudiante *e, string cedula) const;
+    void calcularTiempoTotalDictado();
 };
 
 #endif

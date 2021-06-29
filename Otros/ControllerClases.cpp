@@ -219,10 +219,10 @@ IDictionary *ControllerClases::listarClases(string codigoAsignatura)
 }
 
 //CU tiempo de dictado
-IDictionary *ControllerClases::listarAsignaturasConTiempoDictado()
+IDictionary *ControllerClases::listarAsignaturas()
 {
     HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
-    return hndlrAsig.getDatosAsignaturasConTiempoDictado();
+    return hndlrAsig.getDatosAsignaturas();
 }
 
 //CU tiempo Asistencia = listarAsignaturasAsignadas y listarClases
