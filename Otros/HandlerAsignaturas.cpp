@@ -89,6 +89,7 @@ void HandlerAsignaturas::eliminarAsignatura(string codigoAsignatura)
 {
     IKey *k = new String(codigoAsignatura);
     asignaturas->remove(k);
+    delete k;
 }
 
 bool HandlerAsignaturas::tieneClaseDe(string codigoAsignatura, TipoClase tipoClase)

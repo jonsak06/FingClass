@@ -181,25 +181,34 @@ IDictionary *Asignatura::reproducirClase(int numeroClase, Estudiante *e) const
 
 void Asignatura::eliminarClases()
 {
-    IIterator *it = clases->getIterator();
-    Clase *c;
-    for (it; it->hasCurrent(); it->next())
+    if (!clases->isEmpty())
     {
-        c = dynamic_cast<Clase *>(it->getCurrent());
-        c->eliminarAsistencias();
-        c->eliminarMensajes();
-    }
-    delete it;
+        IIterator *it = clases->getIterator();
+        Clase *c;
+        for (it; it->hasCurrent(); it->next())
+        {
+            c = dynamic_cast<Clase *>(it->getCurrent());
+            c->eliminarAsistencias();
+            // c->eliminarMensajes();
+        }
+        do
+        {
+            cout << '\n'
+                 << "Presione enter para continuar...";
+        } while (cin.get() != '\n');
+        delete it;
 
-    it = clases->getIterator();
-    IKey *k;
-    while (!clases->isEmpty())
-    {
-        c = dynamic_cast<Clase *>(it->getCurrent());
-        k = new Integer(c->getNumeroClase());
-        clases->remove(k);
-        delete c, k;
-        it->next();
+        it = clases->getIterator();
+        IKey *k;
+        while (!clases->isEmpty())
+        {
+            c = dynamic_cast<Clase *>(it->getCurrent());
+            k = new Integer(c->getNumeroClase());
+            clases->remove(k);
+            delete c, k;
+            it->next();
+        }
+        delete it;
     }
 }
 

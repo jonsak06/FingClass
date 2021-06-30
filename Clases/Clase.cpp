@@ -199,37 +199,58 @@ IDictionary *Clase::getDatosMensajes() const
 
 void Clase::eliminarAsistencias()
 {
-    IIterator *it = asistenciasEnVivo->getIterator();
-    AsistenciaEnVivo *asVivo;
-    while (!asistenciasEnVivo->isEmpty())
+    if (!asistenciasEnVivo->isEmpty())
     {
-        asVivo = dynamic_cast<AsistenciaEnVivo *>(it->getCurrent());
-        asistenciasEnVivo->remove(asVivo);
-        delete asVivo;
-        it->next();
+        IIterator *it = asistenciasEnVivo->getIterator();
+        AsistenciaEnVivo *asVivo;
+        while (!asistenciasEnVivo->isEmpty())
+        {
+            asVivo = dynamic_cast<AsistenciaEnVivo *>(it->getCurrent());
+            asistenciasEnVivo->remove(asVivo);
+            delete asVivo;
+            it->next();
+        }
+        delete it;
     }
-    AsistenciaEnDiferido *asDif;
-    while (!asistenciasEnDiferido->isEmpty())
+
+    if (!asistenciasEnDiferido->isEmpty())
     {
-        asDif = dynamic_cast<AsistenciaEnDiferido *>(it->getCurrent());
-        asistenciasEnDiferido->remove(asDif);
-        delete asDif;
-        it->next();
+        IIterator *it = asistenciasEnDiferido->getIterator();
+        AsistenciaEnDiferido *asDif;
+        while (!asistenciasEnDiferido->isEmpty())
+        {
+            asDif = dynamic_cast<AsistenciaEnDiferido *>(it->getCurrent());
+            asistenciasEnDiferido->remove(asDif);
+            delete asDif;
+            it->next();
+        }
+        delete it;
     }
-    delete it;
 }
 
 void Clase::eliminarMensajes()
 {
-    IIterator *it = mensajes->getIterator();
-    Mensaje *m;
-    IKey *k;
-    while (!mensajes->isEmpty())
+    if (!mensajes->isEmpty())
     {
-        m = dynamic_cast<Mensaje *>(it->getCurrent());
-        k = new Integer(m->getIdMensaje());
-        mensajes->remove(k);
-        delete m, k;
+        IIterator *it = mensajes->getIterator();
+        Mensaje *m;
+        IKey *k;
+        while (!mensajes->isEmpty())
+        {
+            m = dynamic_cast<Mensaje *>(it->getCurrent());
+            cout << endl
+                 << numeroClase << m->getMensaje() << endl;
+            k = new Integer(m->getIdMensaje());
+            do
+            {
+                cout << '\n'
+                     << "Presione enter para continuar...";
+            } while (cin.get() != '\n');
+            mensajes->remove(k);
+            // delete k, m;
+            it->next();
+        }
+        delete it;
     }
 }
 
@@ -278,7 +299,6 @@ void Clase::marcarAsistenciaDif(Estudiante *e, string cedula)
     {
         asisDif = new AsistenciaEnDiferido(e, fh);
         asistenciasEnDiferido->add(asisDif);
-
     }
     else
     {

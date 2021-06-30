@@ -7,6 +7,8 @@ Mensaje::Mensaje()
 
 Mensaje::~Mensaje()
 {
+    usuario = nullptr;
+    mensajeRespondido = nullptr;
 }
 
 Mensaje::Mensaje(Usuario *usuario, int idMensaje, Mensaje *mensajeRespondido, string mensaje, FechaHora *fh)

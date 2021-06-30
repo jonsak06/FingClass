@@ -352,11 +352,11 @@ int main()
                         getline(cin >> ws, codAsig);
                         k = new String(codAsig);
                         existeAsignatura = datosAsignaturas->find(k) != NULL;
+                        delete k;
                         if (!existeAsignatura)
                         {
                             cout << "\nLa asignatura no existe\n";
                         }
-                        delete k;
                     } while (!existeAsignatura);
                     delete datosAsignaturas;
 
@@ -454,7 +454,6 @@ int main()
                     {
                         cout << "No tiene asignaturas asignadas\n";
                         pausarConsola();
-                        clases.cancelarInicioClase();
                         break;
                     }
                     IIterator *it = datosAsignaturas->getIterator();
@@ -519,7 +518,6 @@ int main()
                         {
                             cout << "No existen estudiantes inscriptos para habilitar\n";
                             pausarConsola();
-                            clases.cancelarInicioClase();
                             break;
                         }
 
@@ -549,6 +547,13 @@ int main()
                                 delete k;
                                 system("clear");
                                 cout << "\nEstudiante habilitado\n";
+                                if (datosEstudiantes->isEmpty())
+                                {
+                                    cout << "\nNo quedan estudiantes para habilitar\n";
+                                    pausarConsola();
+                                    break;
+                                }
+                                
                             }
                             else
                             {
@@ -571,7 +576,10 @@ int main()
                                 }
                             }
                         }
-                        delete datosEstudiantes;
+                        if (!datosEstudiantes->isEmpty())
+                        {
+                            delete datosEstudiantes;
+                        }
                     }
                     system("clear");
                     cout << "\nInformacion de la clase:\n";
@@ -1130,7 +1138,7 @@ int main()
                     if (op == 1)
                     {
                         clases.confirmarAsistencia();
-                        cout << "\nClase iniciada\n";
+                        cout << "Clase iniciada\n";
                         pausarConsola();
                     }
                     else
@@ -1228,15 +1236,15 @@ int main()
                         {
                             it = datosMensajes->getIterator();
                             cout << "Mensajes de la clase:\n";
+                            DtMensaje *dvMsj;
                             for (it; it->hasCurrent(); it->next())
                             {
-                                DtMensaje *dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
+                                dvMsj = dynamic_cast<DtMensaje *>(it->getCurrent());
                                 cout << dvMsj;
                             }
-                            delete it;
+                            delete it, datosMensajes;
                             pausarConsola();
                         }
-                        delete datosMensajes;
                     }
                     else
                     {

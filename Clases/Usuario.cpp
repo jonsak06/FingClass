@@ -138,22 +138,27 @@ IDictionary *Usuario::getDatosClases(string codigoAsignatura) const
 
 void Usuario::removerClases(string codigoAsignatura)
 {
-    IIterator *it = clases->getIterator();
-    Clase *c;
-    ICollection *numeroClases = new List;
-    for (it; it->hasCurrent(); it->next())
+    if (!clases->isEmpty())
     {
-        c = dynamic_cast<Clase *>(it->getCurrent());
-        if (c->getCodigoAsignatura() == codigoAsignatura)
+        IIterator *it = clases->getIterator();
+        Clase *c;
+        ICollection *numeroClases = new List;
+        for (it; it->hasCurrent(); it->next())
         {
-            numeroClases->add(new Integer(c->getNumeroClase()));
+            c = dynamic_cast<Clase *>(it->getCurrent());
+            if (c->getCodigoAsignatura() == codigoAsignatura)
+            {
+                numeroClases->add(new Integer(c->getNumeroClase()));
+            }
         }
+        delete it;
+        it = numeroClases->getIterator();
+        Integer *numCls;
+        for (it; it->hasCurrent(); it->next())
+        {
+            numCls = dynamic_cast<Integer*>(it->getCurrent());
+            clases->remove(numCls);
+        }
+        delete it, numeroClases;
     }
-    delete it;
-    it = numeroClases->getIterator();
-    for (it; it->hasCurrent(); it->next())
-    {
-        numeroClases->remove(it->getCurrent());
-    }
-    delete it, numeroClases;
 }

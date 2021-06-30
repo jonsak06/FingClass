@@ -95,23 +95,26 @@ TipoClase Docente::getRolDictado(string codigoAsignatura) const
 void Docente::finalizarClase(int numeroClase)
 {
     IKey *k = new Integer(numeroClase);
-    Clase *c = dynamic_cast<Clase*>(getClases()->find(k));
+    Clase *c = dynamic_cast<Clase *>(getClases()->find(k));
     c->finalizarClase();
     delete k;
 }
 
 void Docente::removerAsignacion(string codigoAsignatura)
 {
-    IIterator *it = asignaciones->getIterator();
-    Asignacion *agn;
-    for (it; it->hasCurrent(); it->next())
+    if (!asignaciones->isEmpty())
     {
-        if (dynamic_cast<Asignacion *>(it->getCurrent())->getCodigoAsignatura() == codigoAsignatura)
+        IIterator *it = asignaciones->getIterator();
+        Asignacion *agn;
+        for (it; it->hasCurrent(); it->next())
         {
             agn = dynamic_cast<Asignacion *>(it->getCurrent());
-            break;
+            if (agn->getCodigoAsignatura() == codigoAsignatura)
+            {
+                break;
+            }
         }
+        asignaciones->remove(agn);
+        delete it, agn;
     }
-    asignaciones->remove(agn);
-    delete it, agn;
 }
