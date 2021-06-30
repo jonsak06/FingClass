@@ -59,3 +59,8 @@ void AsistenciaEnDiferido::agregarFechaHoraInicio(FechaHora *fh)
 {
     fechaHoraInicio->add(fh);
 }
+
+void AsistenciaEnDiferido::agregarFechaHoraFin(FechaHora *fh)
+{
+    fechaHoraFin->add(fh);
+}

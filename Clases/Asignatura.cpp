@@ -314,3 +314,11 @@ void Asignatura::calcularTiempoTotalDictado()
     }
     delete it;
 }
+
+void Asignatura::finalizarReproduccion(string cedula, int numeroClase)
+{
+    IKey *k = new Integer(numeroClase);
+    Clase *c = dynamic_cast<Clase*>(clases->find(k));
+    delete k;
+    c->finalizarReproduccion(cedula);
+}

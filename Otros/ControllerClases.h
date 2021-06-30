@@ -85,6 +85,7 @@ public:
     //IDictionary* listarAsignaturasAsignadas(string email);
     // IDictionary *listarClases(string codigoAsignatura);
 
+    void finalizarReproduccion(string cedula, string codigoAsignatura, int numeroClase);
     void cargarDatosClases();
 };
 

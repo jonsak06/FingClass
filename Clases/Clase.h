@@ -79,6 +79,7 @@ public:
     bool comprobarAsistenciaEnVivo(string cedula);
     bool comprobarAsistenciaEnDiferido(string cedula);
     double getTiempoDictado() const;
+    void finalizarReproduccion(string cedula);
 };
 
 #endif

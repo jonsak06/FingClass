@@ -325,3 +325,21 @@ double Clase::getTiempoDictado() const
 {
     return (fechaHoraFinalizacion.getHora() + fechaHoraFinalizacion.getMinuto() / 60) - (fechaHoraComienzo.getHora() + fechaHoraComienzo.getMinuto() / 60);
 }
+
+void Clase::finalizarReproduccion(string cedula)
+{
+    Reloj &reloj = Reloj::getInstance();
+    FechaHora *fh = reloj.getFechaHoraActual();
+    IIterator *it = asistenciasEnDiferido->getIterator();
+    AsistenciaEnDiferido *asDif;
+    for(it;it->hasCurrent();it->next())
+    {
+        asDif = dynamic_cast<AsistenciaEnDiferido*>(it->getCurrent());
+        if (asDif->comprobarAsistencia(cedula))
+        {
+            asDif->agregarFechaHoraFin(fh);
+            break;
+        }
+    }
+    delete it;
+}

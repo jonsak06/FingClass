@@ -70,6 +70,7 @@ public:
     DtClase *getDatosClase(int numeroClase) const;
     Clase *asistirClase(int numeroClase, Estudiante *e, string cedula) const;
     void calcularTiempoTotalDictado();
+    void finalizarReproduccion(string cedula, int numeroClase);
 };
 
 #endif

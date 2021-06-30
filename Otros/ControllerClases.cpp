@@ -247,6 +247,13 @@ IDictionary *ControllerClases::listarAsignaturas()
 
 //CU tiempo Asistencia = listarAsignaturasAsignadas y listarClases
 
+void ControllerClases::finalizarReproduccion(string cedula, string codigoAsignatura, int numeroClase)
+{
+    HandlerAsignaturas &hndlrAsig = HandlerAsignaturas::getInstance();
+    Asignatura *a = hndlrAsig.getAsignatura(codigoAsignatura);
+    a->finalizarReproduccion(cedula, numeroClase);
+}
+
 void ControllerClases::cargarDatosClases()
 {
     Reloj &reloj = Reloj::getInstance();
@@ -372,4 +379,14 @@ void ControllerClases::cargarDatosClases()
     listarClasesEnDiferido("P1");
     seleccionarClase(2);
     confirmarReproduccion();
+
+    //finalizacion de reproduccion en diferido
+    reloj.setFechaHoraActual(new FechaHora(12, 5, 20, 9, 31, 0));
+    finalizarReproduccion("12345678", "P1", 1);
+    reloj.setFechaHoraActual(new FechaHora(12, 5, 20, 9, 41, 0));
+    finalizarReproduccion("23456789", "P1", 2);
+    reloj.setFechaHoraActual(new FechaHora(13, 5, 20, 11, 41, 0));
+    finalizarReproduccion("23456789", "P1", 2);
+    reloj.setFechaHoraActual(new FechaHora(14, 5, 20, 9, 41, 0));
+    finalizarReproduccion("23456789", "P1", 2);
 }

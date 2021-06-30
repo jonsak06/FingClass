@@ -29,6 +29,7 @@ public:
     bool confirmarPass(string clave, string password);
     IDictionary *getDatosEstudiantes();
     IDictionary *getDatosDocentes();
+    IDictionary *getDatosReproduccionesClases(string cedula);
 };
 
 #endif

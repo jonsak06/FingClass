@@ -29,6 +29,7 @@ public:
 
     bool comprobarAsistencia(string cedula) const;
     void agregarFechaHoraInicio(FechaHora *fh);
+    void agregarFechaHoraFin(FechaHora *fh);
 };
 
 #endif
