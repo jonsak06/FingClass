@@ -56,12 +56,11 @@ public:
     void setEstudiantesInscriptos(IDictionary *);
     void setClases(IDictionary *);
 
-    //operaciones DCD
     DtAsignatura *getDatosAsignatura();
     Clase *iniciarClase(DtClase *dvCls) const;
     Clase *iniciarClase(DtClase *dvCls, IDictionary *habilitados) const;
     IDictionary *getDatosClasesEnDiferido() const;
-    IDictionary *reproducirClase(int numeroClase, Estudiante* e) const;
+    IDictionary *reproducirClase(int numeroClase, Estudiante *e) const;
     void eliminarClases();
     Clase *getClase(int numeroClase) const;
     bool comprobarInscripcionEstudiante(string cedula) const;

@@ -12,6 +12,8 @@ int menuEstudiante();
 int menuConfirmacion();
 void pausarConsola();
 int stringToInt(string);
+string seleccionEstudiante();
+string seleccionDocente();
 
 using namespace std;
 
@@ -36,7 +38,7 @@ int main()
                 opt = menuAdministrador();
                 switch (opt)
                 {
-                case 1: //listo
+                case 1:
                 {
                     string opc;
                     int op;
@@ -90,7 +92,7 @@ int main()
                 }
                 break;
 
-                case 2: //listo
+                case 2:
                 {
                     string nombreAsignatura, codigoAsignatura;
                     bool teorico, practico, monitoreo;
@@ -154,7 +156,7 @@ int main()
                 }
                 break;
 
-                case 3: //listo
+                case 3:
                 {
                     IDictionary *datosAsignaturas = asigUsr.listarAsignaturas();
 
@@ -294,11 +296,14 @@ int main()
                             asigUsr.dejarDeAsignarDocentes();
                         }
                     } while (seguirAsignando);
-                    delete datosDocentes;
+                    if (!datosDocentes->isEmpty())
+                    {
+                        delete datosDocentes;
+                    }
                 }
                 break;
 
-                case 4: //listo
+                case 4:
                 {
                     IDictionary *datosAsignaturas = clases.listarAsignaturas();
 
@@ -323,7 +328,7 @@ int main()
                 }
                 break;
 
-                case 5: //arreglar operaciones
+                case 5:
                 {
                     IDictionary *datosAsignaturas = asigUsr.listarAsignaturas();
 
@@ -376,7 +381,7 @@ int main()
                 }
                 break;
 
-                case 6: //listo
+                case 6:
                 {
                     FechaHora *fh = reloj.getFechaHoraActual();
                     if (fh != NULL)
@@ -393,7 +398,7 @@ int main()
                 }
                 break;
 
-                case 7: //listo
+                case 7:
                 {
                     string num;
                     int dia, mes, anio, hora, min, seg;
@@ -437,17 +442,33 @@ int main()
 
         case 2:
         {
+            string email;
+            IDictionary *docentes = asigUsr.listarDocentes();
+            if (docentes->isEmpty())
+            {
+                cout << "No existen docentes en el sistema\n";
+                pausarConsola();
+                break;
+            }
+            
+            IIterator *it = docentes->getIterator();
+            cout << "Lista de docentes en el sistema\n";
+            DtDocente *dvDoc;
+            for (it; it->hasCurrent(); it->next())
+            {
+                dvDoc = dynamic_cast<DtDocente *>(it->getCurrent());
+                cout << dvDoc;
+            }
+            delete it, docentes;
+            email = seleccionDocente();
             int opt;
             do
             {
                 opt = menuDocente();
                 switch (opt)
                 {
-                case 1: //listo
+                case 1:
                 {
-                    string email;
-                    cout << "Ingrese su direccion de email: ";
-                    getline(cin >> ws, email);
                     IDictionary *datosAsignaturas = clases.listarAsignaturasAsignadas(email);
 
                     if (datosAsignaturas->isEmpty())
@@ -553,7 +574,6 @@ int main()
                                     pausarConsola();
                                     break;
                                 }
-                                
                             }
                             else
                             {
@@ -583,7 +603,12 @@ int main()
                     }
                     system("clear");
                     cout << "\nInformacion de la clase:\n";
-                    cout << clases.obtenerInfoClase();
+                    DtClase *dvCls = clases.obtenerInfoClase();
+                    FechaHora *fh = new FechaHora(dvCls->getFechaHoraComienzo());
+                    cout << "\nNumero: " << dvCls->getNumeroClase() << endl;
+                    cout << "Nombre: " << dvCls->getNombreClase() << endl;
+                    cout << "Fecha y hora de comienzo: " << fh << endl;
+                    delete fh;
 
                     int op = menuConfirmacion();
                     if (op == 1)
@@ -599,11 +624,8 @@ int main()
                 }
                 break;
 
-                case 2: //listo
+                case 2:
                 {
-                    string email;
-                    cout << "Ingrese su direccion de email: ";
-                    getline(cin >> ws, email);
                     IDictionary *datosClases = clases.listarClasesEnVivo(email);
 
                     if (datosClases->isEmpty())
@@ -656,11 +678,8 @@ int main()
                 }
                 break;
 
-                case 3: //listo
+                case 3:
                 {
-                    string email;
-                    cout << "Ingrese su direccion de email: ";
-                    getline(cin >> ws, email);
                     IDictionary *datosClases = clases.listarClasesEnVivoParticipando(email);
 
                     if (datosClases->isEmpty())
@@ -742,7 +761,10 @@ int main()
                     {
                         clases.escribirMensaje(mensaje);
                     }
-                    delete datosMensajes;
+                    if (!datosMensajes->isEmpty())
+                    {
+                        delete datosMensajes;
+                    }
 
                     op = menuConfirmacion();
                     if (op == 1)
@@ -758,12 +780,8 @@ int main()
                 }
                 break;
 
-                case 4: //listo
+                case 4:
                 {
-                    string email;
-                    cout << "Ingrese su direccion de email: ";
-                    getline(cin >> ws, email);
-
                     IDictionary *datosAsignaturas = clases.listarAsignaturasAsignadas(email);
                     if (datosAsignaturas->isEmpty())
                     {
@@ -771,7 +789,7 @@ int main()
                         pausarConsola();
                         break;
                     }
-                    
+
                     IIterator *it = datosAsignaturas->getIterator();
                     cout << "\nListado de sus asignaturas:\n";
                     for (it; it->hasCurrent(); it->next())
@@ -805,7 +823,7 @@ int main()
                         pausarConsola();
                         break;
                     }
-                    
+
                     it = datosClases->getIterator();
                     DtClase *dvCls;
                     cout << "Listado de sus clases:\n";
@@ -818,11 +836,8 @@ int main()
                 }
                 break;
 
-                case 5: //listo
+                case 5:
                 {
-                    string email;
-                    cout << "Ingrese su direccion de email: ";
-                    getline(cin >> ws, email);
                     IDictionary *datosAsignaturas = clases.listarAsignaturasAsignadas(email);
                     if (datosAsignaturas->isEmpty())
                     {
@@ -893,17 +908,34 @@ int main()
 
         case 3:
         {
+            string cedula;
+            IDictionary *estudiantes = asigUsr.listarEstudiantes();
+            if (estudiantes->isEmpty())
+            {
+                cout << "No existen estudiantes en el sistema\n";
+                pausarConsola();
+                break;
+            }
+            
+            IIterator *it = estudiantes->getIterator();
+            cout << "Lista de estudiantes en el sistema\n";
+            DtEstudiante *dvEst;
+            for (it; it->hasCurrent(); it->next())
+            {
+                dvEst = dynamic_cast<DtEstudiante *>(it->getCurrent());
+                cout << dvEst;
+            }
+            delete it, estudiantes;
+            cedula = seleccionEstudiante();
+            
             int opt;
             do
             {
                 opt = menuEstudiante();
                 switch (opt)
                 {
-                case 1: //listo
+                case 1:
                 {
-                    string cedula;
-                    cout << "Ingrese su cedula: ";
-                    getline(cin >> ws, cedula);
                     IDictionary *datosAsignaturas = asigUsr.listarAsignaturasNoInscripto(cedula);
 
                     if (datosAsignaturas->isEmpty())
@@ -933,7 +965,7 @@ int main()
                         existeAsignatura = datosAsignaturas->find(k) != NULL;
                         if (!existeAsignatura)
                         {
-                            cout << "\nLa asignatura no existe\n";
+                            cout << "\nLa asignatura no existe o ya esta inscripto\n";
                         }
                         delete k;
                     } while (!existeAsignatura);
@@ -951,15 +983,11 @@ int main()
                     {
                         asigUsr.cancelarInscripcion();
                     }
-                    
                 }
                 break;
 
-                case 2: //listo
+                case 2:
                 {
-                    string cedula;
-                    cout << "Ingrese su cedula: ";
-                    getline(cin >> ws, cedula);
                     IDictionary *datosClases = clases.listarClasesEnVivoParticipando(cedula);
 
                     if (datosClases->isEmpty())
@@ -1020,6 +1048,7 @@ int main()
                     cout << "\nEs respuesta? 1- Si 2- No\n";
                     getline(cin, num);
                     op = stringToInt(num);
+
                     if (op == 1)
                     {
                         bool existeMensaje;
@@ -1041,7 +1070,10 @@ int main()
                     {
                         clases.escribirMensaje(mensaje);
                     }
-                    delete datosMensajes;
+                    if (!datosMensajes->isEmpty())
+                    {
+                        delete datosMensajes;
+                    }
 
                     op = menuConfirmacion();
                     if (op == 1)
@@ -1057,11 +1089,8 @@ int main()
                 }
                 break;
 
-                case 3: //listo
+                case 3:
                 {
-                    string cedula;
-                    cout << "Ingrese su cedula: ";
-                    getline(cin >> ws, cedula);
                     IDictionary *datosAsignaturas = clases.listarAsignaturasCursando(cedula);
                     if (datosAsignaturas->isEmpty())
                     {
@@ -1104,13 +1133,17 @@ int main()
                         pausarConsola();
                         break;
                     }
-                    
+
                     it = datosClases->getIterator();
                     cout << "Listado de las clases en vivo habilitado a asistir:\n";
                     for (it; it->hasCurrent(); it->next())
                     {
                         DtClase *dvCls = dynamic_cast<DtClase *>(it->getCurrent());
-                        cout << dvCls;
+                        FechaHora *fh = new FechaHora(dvCls->getFechaHoraComienzo());
+                        cout << "\nNumero: " << dvCls->getNumeroClase() << endl;
+                        cout << "Nombre: " << dvCls->getNombreClase() << endl;
+                        cout << "Fecha y hora de comienzo: " << fh << endl;
+                        delete fh;
                     }
                     delete it;
 
@@ -1148,11 +1181,8 @@ int main()
                 }
                 break;
 
-                case 4: //listo
+                case 4:
                 {
-                    string cedula;
-                    cout << "Ingrese su cedula: ";
-                    getline(cin >> ws, cedula);
                     IDictionary *datosAsignaturas = clases.listarAsignaturasCursando(cedula);
                     if (datosAsignaturas->isEmpty())
                     {
@@ -1160,7 +1190,7 @@ int main()
                         pausarConsola();
                         break;
                     }
-                    
+
                     IIterator *it = datosAsignaturas->getIterator();
                     cout << "Listado de sus asignaturas:\n";
                     for (it; it->hasCurrent(); it->next())
@@ -1195,7 +1225,7 @@ int main()
                         pausarConsola();
                         break;
                     }
-                    
+
                     it = datosClases->getIterator();
                     cout << "Listado de clases en diferido:\n";
                     for (it; it->hasCurrent(); it->next())
@@ -1263,7 +1293,7 @@ int main()
         }
         break;
 
-        case 4: //listo
+        case 4:
         {
             if (limite < 1)
             {
@@ -1435,4 +1465,44 @@ int stringToInt(string s)
     int x;
     convertir >> x;
     return x;
+}
+
+string seleccionEstudiante()
+{
+    Factory &fabrica = Factory::getInstance();
+    IAsignaturasUsuarios &asigUsr = fabrica.getCtrlAsigUsr();
+    string opt, pas;
+    do
+    {
+        cout << "Inicie sesion seleccionando una cedula de la lista: ";
+        getline(cin, opt);
+
+    } while (!asigUsr.existeUsuario(opt));
+    do
+    {
+        cout << "Password: ";
+        getline(cin, pas);
+
+    } while (!asigUsr.confirmarPassword(opt, pas));
+    return opt;
+}
+
+string seleccionDocente()
+{
+    Factory &fabrica = Factory::getInstance();
+    IAsignaturasUsuarios &asigUsr = fabrica.getCtrlAsigUsr();
+    string opt, pas;
+    do
+    {
+        cout << "Inicie sesion seleccionando un email de la lista: ";
+        getline(cin, opt);
+
+    } while (!asigUsr.existeUsuario(opt));
+    do
+    {
+        cout << "Password: ";
+        getline(cin, pas);
+
+    } while (!asigUsr.confirmarPassword(opt, pas));
+    return opt;
 }

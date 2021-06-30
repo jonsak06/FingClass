@@ -22,7 +22,8 @@ private:
     string email;
     string urlImgPerfil;
     string contrasenia;
-    IDictionary* clases;
+    IDictionary *clases;
+
 public:
     Usuario();
     virtual ~Usuario() = 0;
@@ -31,21 +32,20 @@ public:
     string getEmail() const;
     string getUrlImgPerfil() const;
     string getContrasenia() const;
-    IDictionary* getClases() const;
+    IDictionary *getClases() const;
     void setNombre(string);
     void setEmail(string);
     void setUrlImgPerfil(string);
     void setContrasenia(string);
-    void setClases(IDictionary*);
+    void setClases(IDictionary *);
 
-    //operaciones DCD
-    virtual DtUsuario* getDatosUsuario() const = 0;
-    IDictionary* getDatosMensajes(int numeroClase) const;
-    void agregarClase(Clase* c);
-    IDictionary* getDatosClasesEnVivo() const;
-    Clase* getClase(int numeroClase) const;
-    DtClase* getDatosClase(int numeroClase) const;
-    IDictionary* getDatosClases(string codigoAsignatura) const;
+    virtual DtUsuario *getDatosUsuario() const = 0;
+    IDictionary *getDatosMensajes(int numeroClase) const;
+    void agregarClase(Clase *c);
+    IDictionary *getDatosClasesEnVivo() const;
+    Clase *getClase(int numeroClase) const;
+    DtClase *getDatosClase(int numeroClase) const;
+    IDictionary *getDatosClases(string codigoAsignatura) const;
     void removerClases(string codigoAsignatura);
 };
 

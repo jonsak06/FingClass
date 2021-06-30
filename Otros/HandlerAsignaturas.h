@@ -10,20 +10,20 @@ class HandlerAsignaturas
 {
 private:
     HandlerAsignaturas();
-    HandlerAsignaturas(const HandlerAsignaturas&) = delete;
-    HandlerAsignaturas& operator=(const HandlerAsignaturas&) = delete;
-    HandlerAsignaturas(HandlerAsignaturas&&) = delete;
-    HandlerAsignaturas& operator=(HandlerAsignaturas&&) = delete;
-    IDictionary* asignaturas;
-public:
-    static HandlerAsignaturas& getInstance();
+    HandlerAsignaturas(const HandlerAsignaturas &) = delete;
+    HandlerAsignaturas &operator=(const HandlerAsignaturas &) = delete;
+    HandlerAsignaturas(HandlerAsignaturas &&) = delete;
+    HandlerAsignaturas &operator=(HandlerAsignaturas &&) = delete;
+    IDictionary *asignaturas;
 
-    //operaciones DCD
-    IDictionary* getDatosAsignaturas();
-    Asignatura* getAsignatura(string codigoAsignatura);
-    IDictionary* getDatosAsignaturasNoInscripto(string cedula);
-    void agregarAsignatura(DtAsignatura* dvAsig);
-    IDictionary* getDatosAsignaturasCursando(string cedula);
+public:
+    static HandlerAsignaturas &getInstance();
+
+    IDictionary *getDatosAsignaturas();
+    Asignatura *getAsignatura(string codigoAsignatura);
+    IDictionary *getDatosAsignaturasNoInscripto(string cedula);
+    void agregarAsignatura(DtAsignatura *dvAsig);
+    IDictionary *getDatosAsignaturasCursando(string cedula);
     void eliminarAsignatura(string codigoAsignatura);
     bool tieneClaseDe(string codigoAsignatura, TipoClase tipoClase);
 };

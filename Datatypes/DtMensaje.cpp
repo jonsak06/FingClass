@@ -1,34 +1,41 @@
 #include "DtMensaje.h"
 
-DtMensaje::DtMensaje() {
+DtMensaje::DtMensaje()
+{
     idMensajeRespondido = 0;
 }
 
-DtMensaje::~DtMensaje() {
+DtMensaje::~DtMensaje()
+{
 }
 
-DtMensaje::DtMensaje(int idMensaje, string mensaje, FechaHora fechaHoraEnvio, int idMensajeRespondido) {
+DtMensaje::DtMensaje(int idMensaje, string mensaje, FechaHora fechaHoraEnvio, int idMensajeRespondido)
+{
     this->idMensaje = idMensaje;
     this->mensaje = mensaje;
     this->fechaHoraEnvio = fechaHoraEnvio;
     this->idMensajeRespondido = idMensajeRespondido;
 }
 
-DtMensaje::DtMensaje(int idMensaje, string mensaje, FechaHora fechaHoraEnvio) {
+DtMensaje::DtMensaje(int idMensaje, string mensaje, FechaHora fechaHoraEnvio)
+{
     this->idMensaje = idMensaje;
     this->mensaje = mensaje;
     this->fechaHoraEnvio = fechaHoraEnvio;
 }
 
-int DtMensaje::getIdMensaje() const{
+int DtMensaje::getIdMensaje() const
+{
     return idMensaje;
 }
 
-string DtMensaje::getMensaje() const{
+string DtMensaje::getMensaje() const
+{
     return mensaje;
 }
 
-FechaHora DtMensaje::getFechaHoraEnvio() const {
+FechaHora DtMensaje::getFechaHoraEnvio() const
+{
     return fechaHoraEnvio;
 }
 

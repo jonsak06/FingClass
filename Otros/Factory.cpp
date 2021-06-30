@@ -1,14 +1,17 @@
 #include "Factory.h"
 
-Factory& Factory::getInstance() {
-    static Factory* factory = new Factory();
+Factory &Factory::getInstance()
+{
+    static Factory *factory = new Factory();
     return *factory;
 }
 
-IAsignaturasUsuarios& Factory::getCtrlAsigUsr() {
+IAsignaturasUsuarios &Factory::getCtrlAsigUsr()
+{
     return ControllerAsignaturasUsuarios::getInstance();
 }
 
-IClases& Factory::getCtrlClases() {
+IClases &Factory::getCtrlClases()
+{
     return ControllerClases::getInstance();
 }

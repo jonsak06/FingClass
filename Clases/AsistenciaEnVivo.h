@@ -26,7 +26,6 @@ public:
     void setFechaHoraInicio(FechaHora *);
     void setFechaHoraFin(FechaHora *);
 
-    //operaciones DCD
     bool comprobarAsistencia(string cedula) const;
     double getTiempoAsistido() const;
 };

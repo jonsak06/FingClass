@@ -9,14 +9,14 @@
 
 #include "OrderedKey.h"
 
-bool OrderedKey::equals(IKey* k) const
+bool OrderedKey::equals(IKey *k) const
 {
     OrderedKey *key = dynamic_cast<OrderedKey *>(k);
-    if(key == NULL)
+    if (key == NULL)
         throw std::invalid_argument("Se esperaba un OrderedKey");
     return compare(key) == EQUAL;
 }
 
-OrderedKey::~OrderedKey() {
+OrderedKey::~OrderedKey()
+{
 }
-

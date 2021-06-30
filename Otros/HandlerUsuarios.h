@@ -18,14 +18,17 @@ private:
 public:
     static HandlerUsuarios &getInstance();
 
-    //operaciones DCD
     IDictionary *getDatosDocentesSinAsignar(string codigoAsignatura);
-    Docente* getDocente(string email);
-    Estudiante* getEstudiante(string cedula);
+    Docente *getDocente(string email);
+    Estudiante *getEstudiante(string cedula);
     Usuario *getUsuario(string email);
     void agregarUsuario(DtUsuario *dvUsr);
     void removerClasesYAsignacionDocentes(string codigoAsignatura);
     void removerClasesEstudiantes(string codigoAsignatura);
+    bool existeUsuario(string clave);
+    bool confirmarPass(string clave, string password);
+    IDictionary *getDatosEstudiantes();
+    IDictionary *getDatosDocentes();
 };
 
 #endif

@@ -60,6 +60,10 @@ public:
 
     bool tieneClaseDe(string, TipoClase);
     void cargarDatosAsigUsr();
+    IDictionary *listarEstudiantes();
+    IDictionary *listarDocentes();
+    bool existeUsuario(string clave);
+    bool confirmarPassword(string clave, string password);
 };
 
 #endif

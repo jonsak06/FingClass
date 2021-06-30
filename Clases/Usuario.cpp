@@ -156,7 +156,7 @@ void Usuario::removerClases(string codigoAsignatura)
         Integer *numCls;
         for (it; it->hasCurrent(); it->next())
         {
-            numCls = dynamic_cast<Integer*>(it->getCurrent());
+            numCls = dynamic_cast<Integer *>(it->getCurrent());
             clases->remove(numCls);
         }
         delete it, numeroClases;

@@ -10,18 +10,19 @@ class Asignacion : public ICollectible
 {
 private:
     TipoClase rolDictado;
-    Asignatura* asignatura;
+    Asignatura *asignatura;
+
 public:
     Asignacion();
     ~Asignacion();
-    Asignacion(Asignatura*, TipoClase);
+    Asignacion(Asignatura *, TipoClase);
     TipoClase getRolDictado() const;
-    Asignatura* getAsignatura() const;
+    Asignatura *getAsignatura() const;
     void setRolDictado(TipoClase);
-    void setAsignatura(Asignatura*);
-    //operaciones DCD
+    void setAsignatura(Asignatura *);
+    
     string getCodigoAsignatura();
-    DtAsignatura* getDatosAsignatura() const;
+    DtAsignatura *getDatosAsignatura() const;
 };
 
 #endif

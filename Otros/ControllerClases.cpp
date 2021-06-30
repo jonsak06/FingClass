@@ -14,7 +14,6 @@ ControllerClases &ControllerClases::getInstance()
 }
 
 //CU inicio de clase
-
 IDictionary *ControllerClases::listarAsignaturasAsignadas(string email)
 {
     HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
@@ -248,13 +247,6 @@ IDictionary *ControllerClases::listarAsignaturas()
 
 //CU tiempo Asistencia = listarAsignaturasAsignadas y listarClases
 
-
-// void ControllerClases::finalizarReproduccionClase(string cedula, int numeroClase) {
-//     HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
-//     Estudiante *e = hndlrUsr.getEstudiante(cedula);
-//     e->finalizarReproduccionClase(numeroClase);
-// }
-
 void ControllerClases::cargarDatosClases()
 {
     Reloj &reloj = Reloj::getInstance();
@@ -274,12 +266,12 @@ void ControllerClases::cargarDatosClases()
     listarAsignaturasAsignadas("maria@mail.com");
     crearDatosClase("P1", "Pra 2", FechaHora(3, 5, 20, 16, 0, 0));
     confirmarInicioClase();
-    // listarAsignaturasAsignadas("jorge@mail.com");
-    // crearDatosClase("P1", "01/06/20", FechaHora(4, 5, 20, 16, 0, 0));
-    // listarEstudiantesInscriptos();
-    // habilitarEstudiante("23456789");
-    // habilitarEstudiante("34567890");
-    // confirmarInicioClase();
+    listarAsignaturasAsignadas("jorge@mail.com");
+    crearDatosClase("P1", "01/06/20", FechaHora(4, 5, 20, 16, 0, 0));
+    listarEstudiantesInscriptos();
+    habilitarEstudiante("23456789");
+    habilitarEstudiante("34567890");
+    confirmarInicioClase();
 
     //asistencia en vivo
     reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 9, 1, 0));
@@ -297,11 +289,11 @@ void ControllerClases::cargarDatosClases()
     listarClasesEnVivoHabilitado("P1");
     seleccionarClase(1);
     confirmarAsistencia();
-    // reloj.setFechaHoraActual(new FechaHora(4, 5, 20, 16, 0, 0));
-    // listarAsignaturasCursando("34567890");
-    // listarClasesEnVivoHabilitado("P1");
-    // seleccionarClase(6);
-    // confirmarAsistencia();
+    reloj.setFechaHoraActual(new FechaHora(4, 5, 20, 16, 0, 0));
+    listarAsignaturasCursando("34567890");
+    listarClasesEnVivoHabilitado("P1");
+    seleccionarClase(6);
+    confirmarAsistencia();
 
     //envio de mensaje
     listarClasesEnVivoParticipando("juan@mail.com");
@@ -312,10 +304,10 @@ void ControllerClases::cargarDatosClases()
     listarMensajes(1);
     escribirMensaje("Confirmen materiales por favor.");
     enviarMensaje();
-    // listarClasesEnVivoParticipando("jorge@mail.com");
-    // listarMensajes(6);
-    // escribirMensaje("Comparto pantalla");
-    // enviarMensaje();
+    listarClasesEnVivoParticipando("jorge@mail.com");
+    listarMensajes(6);
+    escribirMensaje("Comparto pantalla");
+    enviarMensaje();
     listarClasesEnVivoParticipando("12345678");
     listarMensajes(1);
     responderMensaje(1, "Listo para aprender");
@@ -328,10 +320,10 @@ void ControllerClases::cargarDatosClases()
     listarMensajes(1);
     responderMensaje(2, "Todo listo");
     enviarMensaje();
-    // listarClasesEnVivoParticipando("34567890");
-    // listarMensajes(6);
-    // responderMensaje(3, "Ya la vemos");
-    // enviarMensaje();
+    listarClasesEnVivoParticipando("34567890");
+    listarMensajes(6);
+    responderMensaje(3, "Ya la vemos");
+    enviarMensaje();
 
     // finalizacion de clase
     reloj.setFechaHoraActual(new FechaHora(1, 5, 20, 10, 0, 0));
@@ -354,27 +346,28 @@ void ControllerClases::cargarDatosClases()
     listarClasesEnVivo("maria@mail.com");
     seleccionarClaseDocente(5);
     confirmarFinalizacionClase();
-    // reloj.setFechaHoraActual(new FechaHora(4, 5, 20, 17, 0, 0));
-    // listarClasesEnVivo("jorge@mail.com");
-    // seleccionarClaseDocente(6);
-    // confirmarFinalizacionClase();
+    reloj.setFechaHoraActual(new FechaHora(4, 5, 20, 17, 0, 0));
+    listarClasesEnVivo("jorge@mail.com");
+    seleccionarClaseDocente(6);
+    confirmarFinalizacionClase();
 
-    reloj.setFechaHoraActual(new FechaHora(12,5,20,9,1,0));
+    //reproduccion en diferido
+    reloj.setFechaHoraActual(new FechaHora(12, 5, 20, 9, 1, 0));
     listarAsignaturasCursando("12345678");
     listarClasesEnDiferido("P1");
     seleccionarClase(1);
     confirmarReproduccion();
-    reloj.setFechaHoraActual(new FechaHora(12,5,20,9,1,0));
+    reloj.setFechaHoraActual(new FechaHora(12, 5, 20, 9, 1, 0));
     listarAsignaturasCursando("23456789");
     listarClasesEnDiferido("P1");
     seleccionarClase(2);
     confirmarReproduccion();
-    reloj.setFechaHoraActual(new FechaHora(13,5,20,10,1,0));
+    reloj.setFechaHoraActual(new FechaHora(13, 5, 20, 10, 1, 0));
     listarAsignaturasCursando("23456789");
     listarClasesEnDiferido("P1");
     seleccionarClase(2);
     confirmarReproduccion();
-    reloj.setFechaHoraActual(new FechaHora(14,5,20,9,1,0));
+    reloj.setFechaHoraActual(new FechaHora(14, 5, 20, 9, 1, 0));
     listarAsignaturasCursando("23456789");
     listarClasesEnDiferido("P1");
     seleccionarClase(2);

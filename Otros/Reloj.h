@@ -7,16 +7,16 @@ class Reloj
 {
 private:
     Reloj();
-    Reloj(const Reloj&) = delete;
-    Reloj& operator=(const Reloj&) = delete;
-    Reloj(Reloj&&) = delete;
-    Reloj& operator=(Reloj&&) = delete;
+    Reloj(const Reloj &) = delete;
+    Reloj &operator=(const Reloj &) = delete;
+    Reloj(Reloj &&) = delete;
+    Reloj &operator=(Reloj &&) = delete;
     FechaHora *fechaHoraActual;
-public:
-    static Reloj& getInstance();
-    FechaHora* getFechaHoraActual() const;
-    void setFechaHoraActual(FechaHora*);
-};
 
+public:
+    static Reloj &getInstance();
+    FechaHora *getFechaHoraActual() const;
+    void setFechaHoraActual(FechaHora *);
+};
 
 #endif

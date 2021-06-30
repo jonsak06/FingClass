@@ -9,7 +9,7 @@ Asignatura::Asignatura()
 
 Asignatura::~Asignatura()
 {
-    delete estudiantesInscriptos, clases;
+    delete estudiantesInscriptos;
 }
 
 Asignatura::Asignatura(string codigoAsignatura, string nombreAsignatura, bool teorico, bool practico, bool monitoreo, double tiempoTotalDictado)
@@ -189,24 +189,17 @@ void Asignatura::eliminarClases()
         {
             c = dynamic_cast<Clase *>(it->getCurrent());
             c->eliminarAsistencias();
-            // c->eliminarMensajes();
+            c->eliminarMensajes();
         }
-        do
-        {
-            cout << '\n'
-                 << "Presione enter para continuar...";
-        } while (cin.get() != '\n');
         delete it;
-
         it = clases->getIterator();
         IKey *k;
-        while (!clases->isEmpty())
+        for (it; it->hasCurrent(); it->next())
         {
             c = dynamic_cast<Clase *>(it->getCurrent());
             k = new Integer(c->getNumeroClase());
             clases->remove(k);
             delete c, k;
-            it->next();
         }
         delete it;
     }

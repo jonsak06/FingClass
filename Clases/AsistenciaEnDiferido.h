@@ -12,21 +12,21 @@ using namespace std;
 class AsistenciaEnDiferido : public ICollectible
 {
 private:
-    Estudiante* estudiante;
-    ICollection* fechaHoraInicio;
-    ICollection* fechaHoraFin;
+    Estudiante *estudiante;
+    ICollection *fechaHoraInicio;
+    ICollection *fechaHoraFin;
+
 public:
     AsistenciaEnDiferido();
     ~AsistenciaEnDiferido();
-    AsistenciaEnDiferido(Estudiante*, FechaHora*);
-    Estudiante* getEstudiante() const;
-    ICollection* getFechaHoraInicio() const;
-    ICollection* getFechaHoraFin() const;
-    void setEstudiante(Estudiante*);
-    void setFechaHoraInicio(ICollection*);
-    void setFechaHoraFin(ICollection*);
+    AsistenciaEnDiferido(Estudiante *, FechaHora *);
+    Estudiante *getEstudiante() const;
+    ICollection *getFechaHoraInicio() const;
+    ICollection *getFechaHoraFin() const;
+    void setEstudiante(Estudiante *);
+    void setFechaHoraInicio(ICollection *);
+    void setFechaHoraFin(ICollection *);
 
-    //operaciones DCD
     bool comprobarAsistencia(string cedula) const;
     void agregarFechaHoraInicio(FechaHora *fh);
 };

@@ -1,7 +1,8 @@
 #ifndef TIPOCLASE_H
 #define TIPOCLASE_H
 
-enum TipoClase {
+enum TipoClase
+{
     teorico,
     practico,
     monitoreo

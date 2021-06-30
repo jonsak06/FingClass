@@ -11,7 +11,6 @@ Clase::Clase()
 
 Clase::~Clase()
 {
-    delete asistenciasEnVivo, asistenciasEnDiferido, mensajes;
 }
 
 Clase::Clase(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo)
@@ -199,59 +198,22 @@ IDictionary *Clase::getDatosMensajes() const
 
 void Clase::eliminarAsistencias()
 {
-    if (!asistenciasEnVivo->isEmpty())
-    {
-        IIterator *it = asistenciasEnVivo->getIterator();
-        AsistenciaEnVivo *asVivo;
-        while (!asistenciasEnVivo->isEmpty())
-        {
-            asVivo = dynamic_cast<AsistenciaEnVivo *>(it->getCurrent());
-            asistenciasEnVivo->remove(asVivo);
-            delete asVivo;
-            it->next();
-        }
-        delete it;
-    }
-
-    if (!asistenciasEnDiferido->isEmpty())
-    {
-        IIterator *it = asistenciasEnDiferido->getIterator();
-        AsistenciaEnDiferido *asDif;
-        while (!asistenciasEnDiferido->isEmpty())
-        {
-            asDif = dynamic_cast<AsistenciaEnDiferido *>(it->getCurrent());
-            asistenciasEnDiferido->remove(asDif);
-            delete asDif;
-            it->next();
-        }
-        delete it;
-    }
+    delete asistenciasEnVivo, asistenciasEnDiferido;
 }
 
 void Clase::eliminarMensajes()
 {
-    if (!mensajes->isEmpty())
+    IIterator *it = mensajes->getIterator();
+    Mensaje *m;
+    IKey *k;
+    for (it; it->hasCurrent(); it->next())
     {
-        IIterator *it = mensajes->getIterator();
-        Mensaje *m;
-        IKey *k;
-        while (!mensajes->isEmpty())
-        {
-            m = dynamic_cast<Mensaje *>(it->getCurrent());
-            cout << endl
-                 << numeroClase << m->getMensaje() << endl;
-            k = new Integer(m->getIdMensaje());
-            do
-            {
-                cout << '\n'
-                     << "Presione enter para continuar...";
-            } while (cin.get() != '\n');
-            mensajes->remove(k);
-            // delete k, m;
-            it->next();
-        }
-        delete it;
+        m = dynamic_cast<Mensaje *>(it->getCurrent());
+        k = new Integer(m->getIdMensaje());
+        mensajes->remove(k);
+        delete k, m;
     }
+    delete it;
 }
 
 Mensaje *Clase::getMensaje(int idMensaje) const

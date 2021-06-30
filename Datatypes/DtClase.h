@@ -19,6 +19,7 @@ private:
     double promedioTiempoAsistencia;
     string codigoAsignatura;
     string nombreDocente;
+
 public:
     DtClase();
     virtual ~DtClase() = 0;
@@ -33,8 +34,8 @@ public:
     double getPromedioTiempoAsistencia() const;
     string getCodigoAsignatura() const;
     string getNombreDocente() const;
-    virtual void mostrarInfo(ostream&) = 0;
-    friend ostream& operator<<(ostream&, DtClase*);
+    virtual void mostrarInfo(ostream &) = 0;
+    friend ostream &operator<<(ostream &, DtClase *);
 };
 
 #endif

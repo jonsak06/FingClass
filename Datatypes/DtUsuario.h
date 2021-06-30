@@ -13,6 +13,7 @@ private:
     string email;
     string contrasenia;
     string urlImgPerfil;
+
 public:
     DtUsuario();
     virtual ~DtUsuario() = 0;
@@ -25,8 +26,8 @@ public:
     string getUrlImgPerfil() const;
     virtual string getNombreInstituto() const = 0;
     virtual string getCedula() const = 0;
-    virtual void mostrarInfo(ostream&) = 0;
-    friend ostream& operator<<(ostream&, DtUsuario*);
+    virtual void mostrarInfo(ostream &) = 0;
+    friend ostream &operator<<(ostream &, DtUsuario *);
 };
 
 #endif

@@ -27,10 +27,8 @@ string DtTeorico::getTipoClase() const
 
 void DtTeorico::mostrarInfo(ostream &)
 {
-    FechaHora *fh = new FechaHora(getFechaHoraComienzo());
     cout << endl;
     cout << "Numero: " << getNumeroClase() << endl;
     cout << "Nombre: " << getNombreClase() << endl;
-    cout << "Fecha y hora de comienzo: " << fh << endl;
-    delete fh;
+    cout << "Cantidad de asistentes: " << cantAsistentes << endl;
 }

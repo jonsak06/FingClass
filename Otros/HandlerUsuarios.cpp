@@ -107,3 +107,53 @@ void HandlerUsuarios::removerClasesEstudiantes(string codigoAsignatura)
     }
     delete it;
 }
+
+bool HandlerUsuarios::existeUsuario(string clave)
+{
+    IKey *k = new String(clave);
+    bool existe = usuarios->member(k);
+    delete k;
+    return existe;
+}
+
+bool HandlerUsuarios::confirmarPass(string clave, string password)
+{
+    IKey *k = new String(clave);
+    Usuario *u = dynamic_cast<Usuario *>(usuarios->find(k));
+    delete k;
+    return u->getContrasenia() == password;
+}
+
+IDictionary *HandlerUsuarios::getDatosEstudiantes()
+{
+    IIterator *it = usuarios->getIterator();
+    IDictionary *estudiantes = new OrderedDictionary;
+    for (it; it->hasCurrent(); it->next())
+    {
+        if (dynamic_cast<Estudiante *>(it->getCurrent()) != nullptr)
+        {
+            Estudiante *e = dynamic_cast<Estudiante *>(it->getCurrent());
+            IKey *k = new String(e->getCedula());
+            estudiantes->add(k, e->getDatosUsuario());
+        }
+    }
+    delete it;
+    return estudiantes;
+}
+
+IDictionary *HandlerUsuarios::getDatosDocentes()
+{
+    IIterator *it = usuarios->getIterator();
+    IDictionary *docentes = new OrderedDictionary;
+    for (it; it->hasCurrent(); it->next())
+    {
+        if (dynamic_cast<Docente *>(it->getCurrent()) != nullptr)
+        {
+            Docente *d = dynamic_cast<Docente *>(it->getCurrent());
+            IKey *k = new String(d->getEmail());
+            docentes->add(k, d->getDatosUsuario());
+        }
+    }
+    delete it;
+    return docentes;
+}

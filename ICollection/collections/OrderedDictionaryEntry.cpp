@@ -10,22 +10,21 @@
 #include <stdexcept>
 
 OrderedDictionaryEntry::OrderedDictionaryEntry(
-            OrderedKey *key,
-            ICollectible *val,
-            OrderedDictionaryEntry *l,
-            OrderedDictionaryEntry *g
-            )
-        : lesser(l), greater(g)
+    OrderedKey *key,
+    ICollectible *val,
+    OrderedDictionaryEntry *l,
+    OrderedDictionaryEntry *g)
+    : lesser(l), greater(g)
 {
-    if(key == NULL)
+    if (key == NULL)
         throw std::invalid_argument("key is NULL");
     this->key = key;
-    
-    if(val == NULL)
+
+    if (val == NULL)
         throw std::invalid_argument("val is NULL");
     this->val = val;
 }
-    
+
 OrderedKey *OrderedDictionaryEntry::getKey()
 {
     return key;
@@ -38,7 +37,7 @@ ICollectible *OrderedDictionaryEntry::getVal()
 
 void OrderedDictionaryEntry::setVal(ICollectible *i)
 {
-    if(val == NULL)
+    if (val == NULL)
         throw std::invalid_argument("val is NULL");
     this->val = i;
 }
@@ -66,7 +65,7 @@ void OrderedDictionaryEntry::setGreater(OrderedDictionaryEntry *e)
 OrderedDictionaryEntry *OrderedDictionaryEntry::getLeastElement()
 {
     OrderedDictionaryEntry *res = this;
-    while(res->lesser != NULL)
+    while (res->lesser != NULL)
         res = res->lesser;
     return res;
 }
@@ -74,23 +73,26 @@ OrderedDictionaryEntry *OrderedDictionaryEntry::getLeastElement()
 OrderedDictionaryEntry *OrderedDictionaryEntry::getGreatestElement()
 {
     OrderedDictionaryEntry *res = this;
-    while(res->greater != NULL)
+    while (res->greater != NULL)
         res = res->greater;
     return res;
 }
 
 void OrderedDictionaryEntry::deleteInDepth()
 {
-    if(lesser != NULL){
+    if (lesser != NULL)
+    {
         lesser->deleteInDepth();
         delete lesser;
-    }if(greater != NULL){
+    }
+    if (greater != NULL)
+    {
         greater->deleteInDepth();
         delete greater;
     }
 }
 
-OrderedDictionaryEntry::~OrderedDictionaryEntry() {
+OrderedDictionaryEntry::~OrderedDictionaryEntry()
+{
     delete key;
 }
-

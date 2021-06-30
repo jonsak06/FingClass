@@ -6,17 +6,23 @@
  */
 
 #ifndef ORDEREDKEY_H
-#define	ORDEREDKEY_H
+#define ORDEREDKEY_H
 
 #include "IKey.h"
 
 // Resultado de la comparación entre objetos de la clase OrderedKey
-enum ComparisonRes { LESSER, EQUAL, GREATER };
+enum ComparisonRes
+{
+    LESSER,
+    EQUAL,
+    GREATER
+};
 
 /**
  * Subclase abstracta de IKey para claves con ordenación total
  */
-class OrderedKey: public IKey {
+class OrderedKey : public IKey
+{
 public:
     /**
      * Compara objetos de la clase ordered key
@@ -25,17 +31,16 @@ public:
      *         IGUAL si k es igual a this
      *         MAYOR si k es mayor a this
      */
-    virtual ComparisonRes compare(OrderedKey *k) const = 0 ;
-    
+    virtual ComparisonRes compare(OrderedKey *k) const = 0;
+
     /**
      * Equivalente a compare(k) == EQUAL
      * @param k
      * @return 
      */
     bool equals(IKey *k) const;
-    
+
     virtual ~OrderedKey();
 };
 
-#endif	/* ORDEREDKEY_H */
-
+#endif /* ORDEREDKEY_H */

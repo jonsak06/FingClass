@@ -8,6 +8,7 @@ AsistenciaEnVivo::AsistenciaEnVivo()
 AsistenciaEnVivo::~AsistenciaEnVivo()
 {
     delete fechaHoraFin, fechaHoraInicio;
+    estudiante = nullptr;
 }
 
 AsistenciaEnVivo::AsistenciaEnVivo(Estudiante *estudiante, FechaHora *fh)

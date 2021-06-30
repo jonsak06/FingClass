@@ -8,16 +8,16 @@
 class Monitoreo : public Clase
 {
 private:
-    IDictionary* estudiantesHabilitados;
+    IDictionary *estudiantesHabilitados;
+
 public:
     Monitoreo();
     virtual ~Monitoreo();
-    Monitoreo(int, string, FechaHora, IDictionary*);
-    IDictionary* getEstudiantesHabilitados();
-    void setEstudiantesHabilitados(IDictionary*);
-    
-    //operaciones DCD
-    DtClase* getDatosClase() const;
+    Monitoreo(int, string, FechaHora, IDictionary *);
+    IDictionary *getEstudiantesHabilitados();
+    void setEstudiantesHabilitados(IDictionary *);
+
+    DtClase *getDatosClase() const;
     bool estaHabilitado(string cedula);
 };
 

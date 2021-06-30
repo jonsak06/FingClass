@@ -10,6 +10,7 @@ class FechaHora : public ICollectible
 {
 private:
     int dia, mes, anio, hora, minuto, segundo;
+
 public:
     FechaHora();
     ~FechaHora();
@@ -20,8 +21,8 @@ public:
     int getHora() const;
     int getMinuto() const;
     int getSegundo() const;
-    void mostrarInfo(ostream&);
-    friend ostream& operator<<(ostream&, FechaHora*);
+    void mostrarInfo(ostream &);
+    friend ostream &operator<<(ostream &, FechaHora *);
 };
 
 #endif

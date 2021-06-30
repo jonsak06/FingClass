@@ -64,7 +64,6 @@ public:
     void setCodigoAsignatura(string);
     void setNombreDocente(string);
 
-    //operaciones DCD
     virtual DtClase *getDatosClase() const = 0;
     virtual void finalizarClase();
     void setInicioAsistenciaEnDiferido(Estudiante *e);

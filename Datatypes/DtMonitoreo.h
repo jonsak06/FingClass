@@ -3,19 +3,22 @@
 
 #include "DtClase.h"
 #include "../ICollection/interfaces/IDictionary.h"
+#include "../ICollection/String.h"
+#include "../ICollection/collections/List.h"
 
 class DtMonitoreo : public DtClase
 {
 private:
-    ICollection* estudiantes;
+    ICollection *estudiantes;
     string tipoClase = "monitoreo";
+
 public:
     DtMonitoreo();
     DtMonitoreo(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string codigoAsignatura);
-    DtMonitoreo(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string nombreDocente, double promedioTiempoAsistencia, ICollection* estudiantes);
-    ICollection* getEstudiantes() const;
+    DtMonitoreo(int numeroClase, string nombreClase, FechaHora fechaHoraComienzo, string nombreDocente, double promedioTiempoAsistencia, ICollection *estudiantes);
+    ICollection *getEstudiantes() const;
     string getTipoClase() const;
-    void mostrarInfo(ostream&);
+    void mostrarInfo(ostream &);
 };
 
 #endif

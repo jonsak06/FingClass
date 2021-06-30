@@ -13,6 +13,7 @@ private:
     string mensaje;
     FechaHora fechaHoraEnvio;
     int idMensajeRespondido;
+
 public:
     DtMensaje();
     ~DtMensaje();
@@ -21,8 +22,8 @@ public:
     int getIdMensaje() const;
     string getMensaje() const;
     FechaHora getFechaHoraEnvio() const;
-    void mostrarInfo(ostream&);
-    friend ostream& operator<<(ostream&, DtMensaje*);
+    void mostrarInfo(ostream &);
+    friend ostream &operator<<(ostream &, DtMensaje *);
 };
 
 #endif

@@ -142,6 +142,30 @@ bool ControllerAsignaturasUsuarios::tieneClaseDe(string codigoAsignatura, TipoCl
     return hndlrAsig.tieneClaseDe(codigoAsignatura, tipoClase);
 }
 
+IDictionary *ControllerAsignaturasUsuarios::listarEstudiantes()
+{
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    return hndlrUsr.getDatosEstudiantes();
+}
+
+IDictionary *ControllerAsignaturasUsuarios::listarDocentes()
+{
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    return hndlrUsr.getDatosDocentes();
+}
+
+bool ControllerAsignaturasUsuarios::existeUsuario(string clave)
+{
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    return hndlrUsr.existeUsuario(clave);
+}
+
+bool ControllerAsignaturasUsuarios::confirmarPassword(string clave, string password)
+{
+    HandlerUsuarios &hndlrUsr = HandlerUsuarios::getInstance();
+    return hndlrUsr.confirmarPass(clave, password);
+}
+
 void ControllerAsignaturasUsuarios::cargarDatosAsigUsr()
 {
     //alta de usuarios

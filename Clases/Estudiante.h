@@ -9,15 +9,14 @@ class Estudiante : public Usuario
 {
 private:
     string cedula;
+
 public:
     Estudiante();
     Estudiante(string, string, string, string, string);
     string getCedula() const;
     void setCedula(string);
 
-    //operaciones DCD
-    DtEstudiante* getDatosUsuario() const;
-    // void finalizarReproduccionClase(int numeroClase);
+    DtEstudiante *getDatosUsuario() const;
 };
 
 #endif

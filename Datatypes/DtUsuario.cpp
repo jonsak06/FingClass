@@ -1,44 +1,54 @@
 #include "DtUsuario.h"
 
-DtUsuario::DtUsuario() {
+DtUsuario::DtUsuario()
+{
 }
 
-DtUsuario::~DtUsuario() {
+DtUsuario::~DtUsuario()
+{
 }
 
-DtUsuario::DtUsuario(string nombre, string email, string contrasenia, string urlImgPerfil) {
+DtUsuario::DtUsuario(string nombre, string email, string contrasenia, string urlImgPerfil)
+{
     this->nombre = nombre;
     this->email = email;
     this->contrasenia = contrasenia;
     this->urlImgPerfil = urlImgPerfil;
 }
 
-DtUsuario::DtUsuario(string nombre, string email) {
+DtUsuario::DtUsuario(string nombre, string email)
+{
     this->nombre = nombre;
     this->email = email;
 }
 
-DtUsuario::DtUsuario(string nombre) {
+DtUsuario::DtUsuario(string nombre)
+{
     this->nombre = nombre;
 }
 
-string DtUsuario::getNombre() const {
+string DtUsuario::getNombre() const
+{
     return nombre;
 }
 
-string DtUsuario::getEmail() const {
+string DtUsuario::getEmail() const
+{
     return email;
 }
 
-string DtUsuario::getContrasenia() const {
+string DtUsuario::getContrasenia() const
+{
     return contrasenia;
 }
 
-string DtUsuario::getUrlImgPerfil() const {
+string DtUsuario::getUrlImgPerfil() const
+{
     return urlImgPerfil;
 }
 
-ostream& operator<<(ostream& salida, DtUsuario* u) {
+ostream &operator<<(ostream &salida, DtUsuario *u)
+{
     u->mostrarInfo(salida);
     return salida;
 }

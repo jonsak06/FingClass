@@ -16,6 +16,7 @@ private:
     bool practico;
     bool monitoreo;
     double tiempoTotalDictado;
+
 public:
     DtAsignatura();
     ~DtAsignatura();
@@ -28,8 +29,8 @@ public:
     bool tienePractico() const;
     bool tieneMonitoreo() const;
     double getTiempoTotalDictado() const;
-    void mostrarInfo(ostream&);
-    friend ostream& operator<<(ostream&, DtAsignatura*);
+    void mostrarInfo(ostream &);
+    friend ostream &operator<<(ostream &, DtAsignatura *);
 };
 
 #endif

@@ -8,14 +8,15 @@ class Factory
 {
 private:
     Factory() = default;
-    Factory(const Factory&) = delete;
-    Factory& operator=(const Factory&) = delete;
-    Factory(Factory&&) = delete;
-    Factory& operator=(Factory&&) = delete;
+    Factory(const Factory &) = delete;
+    Factory &operator=(const Factory &) = delete;
+    Factory(Factory &&) = delete;
+    Factory &operator=(Factory &&) = delete;
+
 public:
-    static Factory& getInstance();
-    IAsignaturasUsuarios& getCtrlAsigUsr();
-    IClases& getCtrlClases();
+    static Factory &getInstance();
+    IAsignaturasUsuarios &getCtrlAsigUsr();
+    IClases &getCtrlClases();
 };
 
 #endif

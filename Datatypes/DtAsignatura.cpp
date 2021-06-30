@@ -27,7 +27,8 @@ DtAsignatura::DtAsignatura(string codigoAsignatura, string nombreAsignatura, boo
     this->monitoreo = monitoreo;
 }
 
-DtAsignatura::DtAsignatura(string nombreAsignatura, double tiempoTotalDictado) {
+DtAsignatura::DtAsignatura(string nombreAsignatura, double tiempoTotalDictado)
+{
     this->nombreAsignatura = nombreAsignatura;
     this->tiempoTotalDictado = tiempoTotalDictado;
 }

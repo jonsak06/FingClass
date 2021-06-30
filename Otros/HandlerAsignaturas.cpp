@@ -88,8 +88,9 @@ IDictionary *HandlerAsignaturas::getDatosAsignaturasCursando(string cedula)
 void HandlerAsignaturas::eliminarAsignatura(string codigoAsignatura)
 {
     IKey *k = new String(codigoAsignatura);
+    Asignatura *a = dynamic_cast<Asignatura *>(asignaturas->find(k));
     asignaturas->remove(k);
-    delete k;
+    delete k, a;
 }
 
 bool HandlerAsignaturas::tieneClaseDe(string codigoAsignatura, TipoClase tipoClase)
